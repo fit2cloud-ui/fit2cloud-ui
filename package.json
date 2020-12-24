@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build-demo": "vue-cli-service build --dest dist",
+    "build": "vue-cli-service build --target lib --name fit2cloud-ui --dest lib ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -32,7 +33,14 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/no-unused-components": "off",
+      "no-case-declarations": "off",
+      "no-console": "off",
+      "no-unused-vars": "off",
+      "no-unused-expressions": "off",
+      "no-unused-labels": "off"
+    }
   },
   "browserslist": [
     "> 1%",
