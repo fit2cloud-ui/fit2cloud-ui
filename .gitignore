@@ -4,7 +4,7 @@ node_modules
 
 
 # local env files
-.env.local
+.env.demo
 .env.*.local
 
 # Log files
@@ -21,3 +21,5 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+package-lock.json

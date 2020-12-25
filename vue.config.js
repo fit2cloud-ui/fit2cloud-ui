@@ -15,7 +15,7 @@ module.exports = {
       }
     },
     output: {
-      library: 'Fit2Cloud-UI',
+      library: 'Fit2CloudUI',
     }
   },
   pages: {
