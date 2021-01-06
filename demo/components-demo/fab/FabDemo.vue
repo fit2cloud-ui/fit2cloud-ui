@@ -34,7 +34,10 @@
     </fab>
 
     <fab bottom="50%" right="10%" :items="items" size="small" direction="left" :manual="true" ref="fab"/>
-    <el-button size="small" class="fab-demo-manual" @click="toggle">手动开关</el-button>
+    <el-button size="small" class="fab-demo-manual" @click="toggle">
+      <span v-if="active">关闭</span>
+      <span v-else>打开</span>
+    </el-button>
   </div>
 </template>
 

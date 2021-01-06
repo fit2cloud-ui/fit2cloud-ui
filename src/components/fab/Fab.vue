@@ -192,6 +192,9 @@ export default {
   },
   computed: {
     hashChildren() {
+      if (this.items && this.items.length > 0) {
+        return true;
+      }
       return this.$slots && this.$slots.default
     },
     getIcon() {
