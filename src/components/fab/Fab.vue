@@ -245,10 +245,13 @@ export default {
 /deep/ .fab {
   box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .3);
   transition: all 0.3s;
-  transform: unset !important;
 }
 
-/deep/ .fab.fab-active {
-  transform: rotate(360deg) !important;
+/deep/ .fab-active {
+  transform: scale(1) rotate(360deg)
+}
+
+/deep/ .fab-active:hover {
+  transform: scale(1.1) rotate(360deg)
 }
 </style>
