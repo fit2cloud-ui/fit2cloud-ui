@@ -192,7 +192,7 @@ export default {
   },
   computed: {
     hashChildren() {
-      return this.$children.length > 1
+      return this.$slots && this.$slots.default
     },
     getIcon() {
       return this.activeIcon === this.icon ? this.icon : this.active ? this.activeIcon : this.icon
