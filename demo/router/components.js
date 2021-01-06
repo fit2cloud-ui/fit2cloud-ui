@@ -1,5 +1,6 @@
 import Layout from "../Layout";
-import Fab from "../components-demo/fab/Fab";
+import FabDemo from "../components-demo/fab/FabDemo";
+import SearchDemo from "../components-demo/search/SearchDemo";
 
 export default {
   path: "/components",
@@ -8,11 +9,11 @@ export default {
   children: [
     {
       path: 'fab',
-      component: Fab,
+      component: FabDemo,
       meta: {title: '浮动按钮'}
     }, {
       path: 'search',
-      component: Fab,
+      component: SearchDemo,
       meta: {title: '搜索框'}
     }
   ]

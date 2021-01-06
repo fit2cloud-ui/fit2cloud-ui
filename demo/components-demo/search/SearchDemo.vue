@@ -1,12 +1,12 @@
 <template>
   <div>
-    <el-button type="primary" icon="el-icon-plus" circle></el-button>
+    TODO
   </div>
 </template>
 
 <script>
 export default {
-  name: "Fab"
+  name: "SearchDemo"
 }
 </script>
 
