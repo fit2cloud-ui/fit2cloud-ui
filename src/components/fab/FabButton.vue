@@ -40,11 +40,7 @@ export default {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2)
 }
 
-.fab-button:hover {
-  transform: scale(1.1);
-}
-
 .fab-button:active {
-  transform: scale(1);
+  transform: scale(0.9);
 }
 </style>

@@ -251,11 +251,7 @@ export default {
   transform: scale(1) rotate(360deg)
 }
 
-/deep/ .fab-active:hover {
-  transform: scale(1.1) rotate(360deg)
-}
-
 /deep/ .fab-active:active {
-  transform: scale(1) rotate(360deg)
+  transform: scale(0.9) rotate(360deg)
 }
 </style>
