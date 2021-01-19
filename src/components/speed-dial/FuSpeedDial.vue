@@ -45,6 +45,12 @@ export default {
       type: Boolean,
       default: false
     },
+    position: {
+      type: String,
+      default: "fixed"
+    },
+    left: String,
+    top: String,
     right: {
       type: String,
       default: "10%"
@@ -105,9 +111,9 @@ export default {
       moving: false,
       style: {
         zIndex: this.zIndex,
-        position: "fixed",
-        left: undefined,
-        top: undefined,
+        position: this.position,
+        left: this.left,
+        top: this.top,
         right: this.right,
         bottom: this.bottom
       },
