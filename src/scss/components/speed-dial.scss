@@ -1,0 +1,53 @@
+@import "src/scss/common/var";
+
+.fu-speed-dial-fab {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .3);
+  transition: all 0.3s;
+  background-color: $--color-primary;
+  color: $--color-white;
+
+  &.is-active {
+    transform: scale(1) rotate(360deg)
+  }
+
+  &.is-active:active {
+    transform: scale(0.9) rotate(360deg)
+  }
+}
+
+.fu-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fu-speed-dial-button {
+  @extend .fu-flex-center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.fu-speed-dial-item-title {
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+  white-space: nowrap;
+  padding: 2px 5px;
+  line-height: 1;
+  box-sizing: border-box;
+  border-radius: 2px;
+
+  &:hover {
+    transform: scale(1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

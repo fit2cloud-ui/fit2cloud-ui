@@ -1,20 +1,19 @@
 <template>
   <transition :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave">
-    <div v-if="isActive">
+    <div v-if="isActive" class="fu-flex-center" :style="itemSize">
       <slot>
-        <fab-item-button :index="getIndex" v-bind="item" @click="click"/>
+        <fu-speed-dial-title-button :index="getIndex" v-bind="item" @click="click"/>
       </slot>
     </div>
   </transition>
 </template>
 
 <script>
-
-import FabItemButton from "@/components/fab/FabItemButton";
+import FuSpeedDialTitleButton from "@/components/speed-dial/FuSpeedDialTitleButton";
 
 export default {
-  name: "FabItem",
-  components: {FabItemButton},
+  name: "FuSpeedDialItem",
+  components: {FuSpeedDialTitleButton},
   props: {
     index: {
       type: Number,
@@ -22,28 +21,38 @@ export default {
     },
     item: Object,
   },
-  inject: ["fab"],
+  inject: ["FuSpeedDial"],
   computed: {
     getIndex() {
       return this.item === undefined || this.item.index === undefined ? this.index : this.item.index;
     },
+    config() {
+      return this["FuSpeedDial"].config
+    },
     isActive() {
-      return this["fab"].active
+      return this["FuSpeedDial"].active
     },
     size() {
-      return this["fab"].size
+      return this["FuSpeedDial"].size
     },
     direction() {
-      return this["fab"].direction
+      return this["FuSpeedDial"].direction
     },
     spacing() {
-      return this["fab"].config.item.spacing || 0;
+      return this.config.item.spacing || 0;
     },
     directionPosition() {
       if (["top", "left"].includes(this.direction)) {
-        return -this["fab"].config.fab.size - this.spacing
+        return -this.config.fab.size - this.spacing
       }
-      return this["fab"].config.fab.size + this.spacing
+      return this.config.fab.size + this.spacing
+    },
+    itemSize() {
+      let size = this.config.fab.size + "px";
+      return {
+        width: size,
+        height: size,
+      }
     },
   },
   methods: {

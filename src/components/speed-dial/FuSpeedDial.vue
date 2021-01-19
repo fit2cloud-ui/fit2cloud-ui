@@ -1,26 +1,25 @@
 <template>
   <div :style="style" v-outside-click="outsideClickClose">
-    <div class="fab-container" :style="containerStyle">
+    <slot name="fab">
+      <fu-speed-dial-button :class="['fu-speed-dial-fab', {'is-active': active}]" v-bind="buttonProps"
+                            @click="click" @mousedown="mousedown"/>
+    </slot>
+    <div :style="contentPosition">
       <slot>
-        <fab-item v-for="(item, index) in items" :index="index" :key="index" :item="item"/>
+        <fu-speed-dial-item v-for="(item, index) in items" :index="index" :key="index" :item="item"/>
       </slot>
     </div>
-    <slot name="button">
-      <fab-button :class="['fab', {'fab-active': active}]" :style="buttonStyle" :icon="getIcon" :size="buttonSize"
-                  @click="click" @mousedown="mousedown"/>
-    </slot>
   </div>
 </template>
 
 <script>
-
-import FabItem from "@/components/fab/FabItem";
-import FabButton from "@/components/fab/FabButton";
 import OutsideClick from "element-ui/src/utils/clickoutside";
+import FuSpeedDialButton from "@/components/speed-dial/FuSpeedDialButton";
+import FuSpeedDialItem from "@/components/speed-dial/FuSpeedDialItem";
 
 export default {
-  name: "Fab",
-  components: {FabButton, FabItem},
+  name: "FuSpeedDial",
+  components: {FuSpeedDialItem, FuSpeedDialButton},
   directives: {OutsideClick},
   props: {
     items: Array,
@@ -54,14 +53,8 @@ export default {
       type: String,
       default: "10%"
     },
-    backgroundColor: {
-      type: String,
-      default: "#409EFF",
-    },
-    color: {
-      type: String,
-      default: "#FFF",
-    },
+    backgroundColor: String,
+    color: String,
     zIndex: {
       type: Number,
       default: 5
@@ -117,13 +110,13 @@ export default {
         top: undefined,
         right: this.right,
         bottom: this.bottom
-      }
+      },
     }
   },
   provide() {
     return {
-      fab: this
-    };
+      FuSpeedDial: this
+    }
   },
   methods: {
     toggle(active) {
@@ -197,35 +190,32 @@ export default {
       }
       return this.$slots && this.$slots.default
     },
-    getIcon() {
-      return this.activeIcon === this.icon ? this.icon : this.active ? this.activeIcon : this.icon
-    },
     config() {
       return this.sizeOptions[this.size] || this.sizeOptions["default"];
     },
-    buttonSize() {
-      return this.config.fab.size + "px"
-    },
-    buttonStyle() {
+    buttonProps() {
       let backgroundColor = this.backgroundColor;
       let color = this.color
-      return {backgroundColor, color}
+      let size = this.config.fab.size + "px"
+      let icon = this.activeIcon === this.icon ? this.icon : this.active ? this.activeIcon : this.icon
+      return {backgroundColor, color, size, icon}
     },
-    spacing() { // FAB按钮与FABItem的间距
+    spacing() {
       let spacing = this.config.item.spacing || 0;
       spacing += (this.config.fab.size - this.config.item.size) / 2
       return spacing;
     },
-    containerStyle() { // container的位置，根据方向变化
+    contentPosition() {
       let position = this.config.fab.size + this.spacing;
       if (["top", "left"].includes(this.direction)) {
         position = -this.config.fab.size - this.spacing
       }
 
-      let style = {};
+      let style = {position: "absolute"};
       if (["top", "bottom"].includes(this.direction)) {
         style.top = position + "px";
       } else {
+        style.top = 0;
         style.left = position + "px";
       }
       return style;
@@ -236,22 +226,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.fab-container {
-  position: absolute;
-}
-
-/deep/ .fab {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .3);
-  transition: all 0.3s;
-}
-
-/deep/ .fab-active {
-  transform: scale(1) rotate(360deg)
-}
-
-/deep/ .fab-active:active {
-  transform: scale(0.9) rotate(360deg)
-}
-</style>

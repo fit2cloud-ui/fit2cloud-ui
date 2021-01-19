@@ -1,6 +1,6 @@
 import Layout from "../Layout";
-import FabDemo from "../components-demo/fab/FabDemo";
 import SearchDemo from "../components-demo/search/SearchDemo";
+import SpeedDialDemo from "../components-demo/speed-dial/SpeedDialDemo";
 
 export default {
   path: "/components",
@@ -8,8 +8,8 @@ export default {
   component: Layout,
   children: [
     {
-      path: 'fab',
-      component: FabDemo,
+      path: 'speed-dial',
+      component: SpeedDialDemo,
       meta: {title: '浮动按钮'}
     }, {
       path: 'search',
