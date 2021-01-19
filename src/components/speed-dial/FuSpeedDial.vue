@@ -1,8 +1,7 @@
 <template>
   <div :style="style" v-outside-click="outsideClickClose">
     <slot name="fab">
-      <fu-speed-dial-button :class="['fu-speed-dial-fab', {'is-active': active}]" v-bind="buttonProps"
-                            @click="click" @mousedown="mousedown"/>
+      <fu-speed-dial-button v-bind="buttonProps" @click="click" @mousedown="mousedown"/>
     </slot>
     <div :style="contentPosition">
       <slot>
@@ -59,8 +58,6 @@ export default {
       type: String,
       default: "10%"
     },
-    backgroundColor: String,
-    color: String,
     zIndex: {
       type: Number,
       default: 5
@@ -200,11 +197,12 @@ export default {
       return this.sizeOptions[this.size] || this.sizeOptions["default"];
     },
     buttonProps() {
-      let backgroundColor = this.backgroundColor;
-      let color = this.color
+      let type = "primary"
+      let rotate = true
+      let active = true
       let size = this.config.fab.size + "px"
       let icon = this.activeIcon === this.icon ? this.icon : this.active ? this.activeIcon : this.icon
-      return {backgroundColor, color, size, icon}
+      return {type, rotate, active, size, icon}
     },
     spacing() {
       let spacing = this.config.item.spacing || 0;

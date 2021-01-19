@@ -1,28 +1,46 @@
 @import "src/scss/common/var";
+@import "src/scss/mixins/mixins";
 
-.fu-speed-dial-fab {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .3);
-  transition: all 0.3s;
-  background-color: $--color-primary;
-  color: $--color-white;
-
-  &.is-active {
-    transform: scale(1) rotate(360deg)
-  }
-
-  &.is-active:active {
-    transform: scale(0.9) rotate(360deg)
-  }
-}
-
-.fu-flex-center {
+@mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.fu-speed-dial-button {
-  @extend .fu-flex-center;
+@mixin speed-dial-button-variant($color, $background-color) {
+  color: $color;
+  background-color: $background-color;
+
+  &:hover,
+  &:focus {
+    background: mix($--color-white, $background-color, $--button-hover-tint-percent);
+    color: $color;
+  }
+
+  &:active {
+    background: mix($--color-black, $background-color, $--button-active-shade-percent);
+    color: $color;
+    outline: none;
+  }
+
+  &.is-active {
+    background: mix($--color-black, $background-color, $--button-active-shade-percent);
+    color: $color;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--color-white;
+      background-color: mix($background-color, $--color-white);
+    }
+  }
+}
+
+@include b(speed-dial-button) {
+  @include flex-center;
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
@@ -30,6 +48,37 @@
 
   &:active {
     transform: scale(0.9);
+  }
+
+  @include m(rotate) {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .3);
+    transition: all 0.3s;
+
+    @include when(active) {
+      transform: scale(1) rotate(360deg);
+      &:active {
+        transform: scale(0.9) rotate(360deg)
+      }
+    }
+  }
+
+  @include m(default) {
+    @include speed-dial-button-variant($--button-default-font-color, $--button-default-background-color);
+  }
+  @include m(primary) {
+    @include speed-dial-button-variant($--button-primary-font-color, $--button-primary-background-color);
+  }
+  @include m(success) {
+    @include speed-dial-button-variant($--button-success-font-color, $--button-success-background-color);
+  }
+  @include m(warning) {
+    @include speed-dial-button-variant($--button-warning-font-color, $--button-warning-background-color);
+  }
+  @include m(danger) {
+    @include speed-dial-button-variant($--button-danger-font-color, $--button-danger-background-color);
+  }
+  @include m(info) {
+    @include speed-dial-button-variant($--button-info-font-color, $--button-info-background-color);
   }
 }
 

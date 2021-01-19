@@ -1,6 +1,6 @@
 <template>
-  <div class="fu-flex-center">
-    <div v-if="title" class="fu-flex-center" :style="titleSize">
+  <div>
+    <div v-if="title" class="fu-speed-dial-title-button" :style="titleSize">
       <slot name="title">
         <div class="fu-speed-dial-item-title" :class="titleClass" :style="titleStyle" @click="click">{{ title }}</div>
       </slot>

@@ -5,7 +5,7 @@
       <li>props说明 TODO</li>
       <li>事件说明 TODO</li>
     </ul>
-    <fu-speed-dial bottom="50%" right="70%" size="big" :movable="true" background-color="#67C23A">
+    <fu-speed-dial bottom="50%" right="70%" size="big" :movable="true">
       <fu-speed-dial-item :index="0" :item="{title: 'No.0', click: clickItem}"/>
       <fu-speed-dial-item :index="1">
         <el-button type="primary" circle icon="el-icon-plus" @click="clickItem('No.1', 1, $event)"></el-button>
