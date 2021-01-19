@@ -43,8 +43,8 @@ export default {
       return this["FuSpeedDial"].clickClose;
     },
     titleSize() {
-      let style = {position: "absolute", height: this.containerSize};
       let size = this.config.fab.size + "px";
+      let style = {position: "absolute", height: size};
       if (["top", "bottom"].includes(this.direction)) {
         style.textAlign = "right"
         style.right = size
