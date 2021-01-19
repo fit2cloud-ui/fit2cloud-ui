@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div v-if="title" class="fu-speed-dial-title-button" :style="titleSize">
+  <div class="fu-speed-dial-action-button">
+    <div v-if="title" class="fu-speed-dial-action-button__title" :style="titleSize">
       <slot name="title">
-        <div class="fu-speed-dial-item-title" :class="titleClass" :style="titleStyle" @click="click">{{ title }}</div>
+        <div class="title-text" :class="titleClass" :style="titleStyle" @click="click">{{ title }}</div>
       </slot>
     </div>
     <slot>
@@ -15,7 +15,7 @@
 import FuSpeedDialButton from "@/components/speed-dial/FuSpeedDialButton";
 
 export default {
-  name: "FuSpeedDialTitleButton",
+  name: "FuSpeedDialActionButton",
   components: {FuSpeedDialButton},
   props: {
     index: Number,

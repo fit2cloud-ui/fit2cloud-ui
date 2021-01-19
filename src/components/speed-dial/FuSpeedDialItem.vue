@@ -1,19 +1,19 @@
 <template>
   <transition :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave">
-    <div v-if="isActive" class="fu-flex-center" :style="itemSize">
+    <div v-if="isActive" class="fu-speed-dial-item" :style="itemSize">
       <slot>
-        <fu-speed-dial-title-button :index="getIndex" v-bind="item" @click="click"/>
+        <fu-speed-dial-action-button :index="getIndex" v-bind="item" @click="click"/>
       </slot>
     </div>
   </transition>
 </template>
 
 <script>
-import FuSpeedDialTitleButton from "@/components/speed-dial/FuSpeedDialTitleButton";
+import FuSpeedDialActionButton from "@/components/speed-dial/FuSpeedDialActionButton";
 
 export default {
   name: "FuSpeedDialItem",
-  components: {FuSpeedDialTitleButton},
+  components: {FuSpeedDialActionButton},
   props: {
     index: {
       type: Number,
