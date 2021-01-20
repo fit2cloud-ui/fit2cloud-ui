@@ -2,9 +2,9 @@
 
 Fit2cloud UI使用scss编写样式，命名规范遵循BEM规范
 
-## BEM:
+## 命名规范:
 
-命名规范: namespace-block__element--modifier
+namespace-block__element--modifier
 
 ### 命名空间 namespace
 
