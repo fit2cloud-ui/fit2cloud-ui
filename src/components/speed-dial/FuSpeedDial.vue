@@ -199,7 +199,7 @@ export default {
     buttonProps() {
       let type = "primary"
       let rotate = true
-      let active = true
+      let active = this.active
       let size = this.config.fab.size + "px"
       let icon = this.activeIcon === this.icon ? this.icon : this.active ? this.activeIcon : this.icon
       return {type, rotate, active, size, icon}
