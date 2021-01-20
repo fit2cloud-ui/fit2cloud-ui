@@ -92,20 +92,20 @@
   @include e(title) {
     @include flex-center;
     position: absolute;
+  }
 
-    & .title-text {
-      cursor: pointer;
-      width: 100%;
-      font-size: 14px;
-      white-space: nowrap;
-      padding: 2px 5px;
-      line-height: 1;
-      box-sizing: border-box;
-      border-radius: 2px;
+  @include e(text) {
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+    white-space: nowrap;
+    padding: 2px 5px;
+    line-height: 1;
+    box-sizing: border-box;
+    border-radius: 2px;
 
-      &:active {
-        transform: scale(0.9);
-      }
+    &:active {
+      transform: scale(0.9);
     }
   }
 }
