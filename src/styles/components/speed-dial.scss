@@ -1,5 +1,5 @@
-@import "src/scss/common/var";
-@import "src/scss/mixins/mixins";
+@import "../common/variables";
+@import "../common/mixins";
 
 @mixin flex-center {
   display: flex;
