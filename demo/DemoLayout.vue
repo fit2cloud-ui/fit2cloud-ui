@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-layout">
     <div class="header">FIT2CLOUD UI 组件示例</div>
     <div class="sidebar">
       <menus/>
@@ -14,12 +14,15 @@
 import Menus from "./Menus";
 
 export default {
-  name: "Layout",
+  name: "DemoLayout",
   components: {Menus}
 }
 </script>
 
 <style scoped>
+.demo-layout {
+  background-color: #E6EBF5;
+}
 
 .header {
   position: fixed;

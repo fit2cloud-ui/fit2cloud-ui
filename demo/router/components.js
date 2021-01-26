@@ -1,11 +1,11 @@
-import Layout from "../Layout";
+import DemoLayout from "../DemoLayout";
 import SearchDemo from "../components-demo/search/SearchDemo";
 import SpeedDialDemo from "../components-demo/speed-dial/SpeedDialDemo";
 
 export default {
   path: "/components",
   meta: {title: "组件"},
-  component: Layout,
+  component: DemoLayout,
   children: [
     {
       path: 'speed-dial',
