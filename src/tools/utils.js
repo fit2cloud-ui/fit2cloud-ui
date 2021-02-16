@@ -29,3 +29,7 @@ export const uuid = function () {
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
   });
 };
+
+export const hasOwn = function (obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key);
+}

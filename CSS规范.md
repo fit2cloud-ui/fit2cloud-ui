@@ -30,7 +30,7 @@ FIT2CLOUD UI 规定namespace为 fu，所以css的命名都符合 fu-block__eleme
 
 ### 元素 element
 
-element 是 block 的子节点
+element 是 block 的子节点，使用__分隔
 
 如果一个组件由多部分构成，为了明确构成，一般将各个部分设为 element，例如
 
@@ -40,16 +40,16 @@ element 是 block 的子节点
 
 ### 修饰符 modifier
 
-modifier 是改变某个块或元素的外观的标志
+modifier 是改变某个块或元素的外观的标志，使用--分隔
 
 一个组件或组件的一部分会根据参数设定来设置不同的样式，比如一个组件有多种主题可选，那么就需要用到 modifier 例如：组件fu-speed-dial-button的主题样式
 
 ```scss
-.fu-speed-dial-button-default {
+.fu-speed-dial-button--default {
   ...
 }
 
-.fu-speed-dial-button-primary {
+.fu-speed-dial-button--primary {
   ...
 } 
 ```

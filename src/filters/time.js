@@ -1,4 +1,4 @@
-export const datetimeFormat = function (timestamp) {
+export const datetimeFormat = timestamp => {
   const dt = new Date(timestamp)
   const y = dt.getFullYear()
   const m = (dt.getMonth() + 1 + '').padStart(2, '0')
@@ -10,7 +10,7 @@ export const datetimeFormat = function (timestamp) {
   return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
 }
 
-export const dateFormat = function (timestamp) {
+export const dateFormat = timestamp => {
   const dt = new Date(timestamp)
   const y = dt.getFullYear()
   const m = (dt.getMonth() + 1 + '').padStart(2, '0')

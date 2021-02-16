@@ -32,6 +32,7 @@ export default {
 .menus {
   height: 100%;
   padding: 10px 0;
+  box-sizing: border-box;
 }
 
 .menu-group {

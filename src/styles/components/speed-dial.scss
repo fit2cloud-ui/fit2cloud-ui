@@ -1,12 +1,6 @@
 @import "../common/variables";
 @import "../common/mixins";
 
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @mixin speed-dial-button-variant($color, $background-color) {
   color: $color;
   background-color: $background-color;
@@ -40,15 +34,12 @@
 }
 
 @include b(speed-dial-button) {
-  @include flex-center;
+  @include flex-row(center, center);
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
-
-  &:active {
-    transform: scale(0.9);
-  }
+  @include active-scale(0.9);
 
   @include m(rotate) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .3);
@@ -83,14 +74,14 @@
 }
 
 @include b(speed-dial-item) {
-  @include flex-center;
+  @include flex-row(center, center);
 }
 
 @include b(speed-dial-action-button) {
-  @include flex-center;
+  @include flex-row(center, center);
 
   @include e(title) {
-    @include flex-center;
+    @include flex-row(center, center);
     position: absolute;
   }
 
@@ -103,9 +94,6 @@
     line-height: 1;
     box-sizing: border-box;
     border-radius: 2px;
-
-    &:active {
-      transform: scale(0.9);
-    }
+    @include active-scale(0.9);
   }
 }

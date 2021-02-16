@@ -1,7 +1,6 @@
 @import "function";
 
-/* BEM
- -------------------------- */
+/* BEM -------------------------- */
 @mixin b($block) {
   $B: $namespace+'-'+$block !global;
 
@@ -62,3 +61,20 @@
     @content
   }
 }
+
+@mixin flex-row($justify: flex-start, $align: stretch) {
+  display: flex;
+  @if $justify != flex-start {
+    justify-content: $justify;
+  }
+  @if $align != stretch {
+    align-items: $align;
+  }
+}
+
+@mixin active-scale($scale:0.95) {
+  &:active {
+    transform: scale($scale);
+  }
+}
+
