@@ -46,14 +46,14 @@ export default {
     },
     ok() {
       this.toggle = false
-      let conditionMap = new Map();
+      let conditions = [];
       this.components.forEach(c => {
         let condition = this.$refs[c.field][0].getCondition()
         if (condition && condition.value) {
-          conditionMap.set(c.field, condition)
+          conditions.push(condition)
         }
       })
-      this.$emit("submit", conditionMap)
+      this.$emit("submit", conditions)
     }
   }
 }

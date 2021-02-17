@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components"/>
+    <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search"/>
   </div>
 </template>
 
@@ -28,6 +28,11 @@ export default {
         },
         {field: "create_time", label: "创建时间", component: "FuDateTimeComponent"},
       ]
+    }
+  },
+  methods: {
+    search(condition) {
+      console.log(condition)
     }
   }
 }

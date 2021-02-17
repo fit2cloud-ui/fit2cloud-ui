@@ -52,6 +52,10 @@
     box-sizing: border-box;
     color: $--button-default-font-color;
 
+    &:focus {
+      outline: none;
+    }
+
     &::placeholder {
       color: $--input-placeholder-color;
     }
@@ -115,6 +119,7 @@
       min-width: 80px;
       padding: 10px;
       color: $--color-primary;
+      cursor: pointer;
       @include active-scale;
     }
   }

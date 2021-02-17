@@ -24,6 +24,23 @@
 <script>
 import FuComplexComponents from "@/components/search-bar/complex-components/FuComplexComponents";
 
+function merge(source, target) {
+  let conditions = source.concat(target)
+  let conditionMap = new Map()
+
+  for (let condition of conditions) {
+    if (!conditionMap.has(condition.field)) {
+      conditionMap.set(condition.field, condition)
+    }
+  }
+  let result = [];
+  conditionMap.forEach(c => {
+    result.push(c)
+  })
+
+  return result
+}
+
 export default {
   name: "FuComplexSearch",
   components: {FuComplexComponents},
@@ -32,32 +49,21 @@ export default {
   },
   data() {
     return {
-      conditionMap: new Map(),
       conditions: []
     }
   },
   methods: {
-    updateConditions() {
-      this.conditions = []
-      this.conditionMap.forEach(condition => {
-        this.conditions.push(condition)
-      })
+    submit(conditions) {
+      this.conditions = merge(this.conditions, conditions)
+      this.$emit("change", this.conditions)
     },
-    submit(conditionMap) {
-      conditionMap.forEach((condition, field) => {
-        this.conditionMap.set(field, condition)
-      })
-      this.updateConditions()
-      this.$emit("change", this.conditionMap)
-    },
-    remove(field) {
-      this.conditionMap.delete(field)
-      this.updateConditions()
-      this.$emit("change", this.conditionMap)
+    remove(index) {
+      this.conditions.splice(index, 1)
+      this.$emit("change", this.conditions)
     },
     clean() {
-      this.conditionMap.clear()
-      this.updateConditions()
+      this.conditions = [];
+      this.$emit("change", this.conditions)
     }
   }
 }

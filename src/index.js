@@ -1,4 +1,5 @@
 import locale from "@/locale"
+import "@/styles/index.scss"
 
 const components = require.context('@/components/', true, /index\.js$/);
 
