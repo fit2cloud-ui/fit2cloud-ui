@@ -20,19 +20,19 @@ export default {
     }
   },
   methods: {
-    blur() {
-      this.$emit("change", this.value)
+    blur(e) {
+      this.$emit("change", this.value, e)
     },
     keydown(e) {
       if (e.keyCode === 13) {
-        this.$emit("change", this.value)
+        this.$emit("change", this.value, e)
       }
     },
     clear(e) {
       // 用mousedown代替click事件，避免触发blur
       if (e.button === 0) {
         this.value = ""
-        this.$emit("change", this.value)
+        this.$emit("change", this.value, e)
       }
     }
   }

@@ -43,9 +43,9 @@ export default {
     }
   },
   methods: {
-    quickChange(value) {
+    quickChange(value, e) {
       this.quick = value
-      this.$emit("exec", this.condition)
+      this.$emit("exec", this.condition, e)
     },
     change(conditions) {
       if (!this.combine) {

@@ -31,8 +31,8 @@ export default {
     }
   },
   methods: {
-    search(condition) {
-      console.log(condition)
+    search(condition, e) {
+      console.log(condition, e)
     }
   }
 }
