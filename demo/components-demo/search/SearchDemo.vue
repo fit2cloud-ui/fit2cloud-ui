@@ -1,15 +1,19 @@
 <template>
   <div>
-    <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search"/>
+    <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search">
+      <fu-search-bar-button icon="el-icon-more" tooltip="选择列"/>
+      <fu-search-bar-button icon="el-icon-download" tooltip="导出Excel"/>
+    </fu-search-bar>
   </div>
 </template>
 
 <script>
 import FuSearchBar from "@/components/search-bar"
+import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 
 export default {
   name: "SearchDemo",
-  components: {FuSearchBar},
+  components: {FuSearchBarButton, FuSearchBar},
   data() {
     return {
       components: [

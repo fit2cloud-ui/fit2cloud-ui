@@ -6,8 +6,8 @@
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
+        <fu-search-bar-button icon="el-icon-refresh" @click="exec" :tooltip="t('fu.search_bar.refresh')"/>
         <slot></slot>
-        <fu-search-bar-button icon="el-icon-refresh" @click="exec"/>
       </slot>
     </div>
   </div>
@@ -17,10 +17,12 @@
 import FuQuickSearch from "./FuQuickSearch";
 import FuComplexSearch from "./FuComplexSearch";
 import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
+import Locale from "@/mixins/locale";
 
 export default {
   name: "FuSearchBar",
   components: {FuSearchBarButton, FuComplexSearch, FuQuickSearch},
+  mixins: [Locale],
   props: {
     quickPlaceholder: String,
     components: Array,

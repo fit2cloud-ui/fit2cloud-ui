@@ -25,6 +25,7 @@ export default {
       end_date_time: '结束日期时间',
       range_separator: "至",
       data_time_error: "开始日期不能大于结束日期",
+      refresh: "刷新"
     }
   }
 }

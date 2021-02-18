@@ -17,14 +17,15 @@ export default {
       eq: "equal to",
       ne: "not equal to",
       between: "Between",
-      select_date:'Select date',
-      start_date:'Start date',
-      end_date:'End date',
-      select_date_time:'Select date and time',
-      start_date_time:'Start date and time',
-      end_date_time:'End date and time',
+      select_date: 'Select date',
+      start_date: 'Start date',
+      end_date: 'End date',
+      select_date_time: 'Select date and time',
+      start_date_time: 'Start date and time',
+      end_date_time: 'End date and time',
       range_separator: "to",
       data_time_error: "The start date cannot be greater than the end date",
+      refresh: "Refresh"
     }
   }
 }
