@@ -6,8 +6,8 @@
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
-        <el-button circle icon="el-icon-more" size="medium"/>
-        <el-button circle icon="el-icon-refresh" size="medium"/>
+        <slot></slot>
+        <fu-search-bar-button icon="el-icon-refresh" @click="exec"/>
       </slot>
     </div>
   </div>
@@ -16,10 +16,11 @@
 <script>
 import FuQuickSearch from "./FuQuickSearch";
 import FuComplexSearch from "./FuComplexSearch";
+import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 
 export default {
   name: "FuSearchBar",
-  components: {FuComplexSearch, FuQuickSearch},
+  components: {FuSearchBarButton, FuComplexSearch, FuQuickSearch},
   props: {
     quickPlaceholder: String,
     components: Array,
@@ -45,14 +46,17 @@ export default {
   methods: {
     quickChange(value, e) {
       this.quick = value
-      this.$emit("exec", this.condition, e)
+      this.exec(e)
     },
     change(conditions) {
       if (!this.combine) {
         this.quick = undefined;
       }
       this.conditions = conditions
-      this.$emit("exec", this.condition)
+      this.exec()
+    },
+    exec(e) {
+      this.$emit("exec", this.condition, e)
     }
   },
   computed: {

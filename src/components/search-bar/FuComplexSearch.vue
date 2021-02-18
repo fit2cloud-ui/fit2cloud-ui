@@ -12,17 +12,14 @@
     </div>
 
     <div class="fu-complex-search__buttons">
-      <el-button icon="el-icon-close clean-condition"
-                 size="medium"
-                 circle
-                 @click="clean"
-                 v-if="conditions.length > 0"/>
+      <fu-search-bar-button icon="el-icon-close" @click="clean" v-if="conditions.length > 0"/>
     </div>
   </div>
 </template>
 
 <script>
 import FuComplexComponents from "@/components/search-bar/complex-components/FuComplexComponents";
+import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 
 function merge(source, target) {
   let conditions = source.concat(target)
@@ -43,7 +40,7 @@ function merge(source, target) {
 
 export default {
   name: "FuComplexSearch",
-  components: {FuComplexComponents},
+  components: {FuSearchBarButton, FuComplexComponents},
   props: {
     components: Array
   },

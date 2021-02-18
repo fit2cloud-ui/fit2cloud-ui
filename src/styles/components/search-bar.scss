@@ -37,6 +37,14 @@
   }
 }
 
+@include b(search-bar-button) {
+  .el-button {
+    border: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+    @include active-scale(0.9)
+  }
+}
+
 @include b(quick-search) {
   @include flex-row(flex-start, center);
   height: 100%;
@@ -131,12 +139,6 @@
     height: 100%;
     margin-left: 10px;
     margin-right: 10px;
-
-    .el-button {
-      border: none;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
-      @include active-scale(0.9)
-    }
   }
 }
 
