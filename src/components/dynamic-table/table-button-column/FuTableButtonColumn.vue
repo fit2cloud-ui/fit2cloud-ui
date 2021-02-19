@@ -1,5 +1,5 @@
 <template>
-  <el-table-column :width="width" :label="t('fu.dynamic_table.operations')">
+  <el-table-column :width="width" v-bind="$attrs" v-on="$listeners">
     <template v-slot:default="{row}">
       <fu-table-button v-for="(btn, i) in noEllipsisButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
       <fu-table-ext-buttons :buttons="ellipsisButtons" :row="row" v-if="ellipsisButtons.length > 0"/>
@@ -9,11 +9,11 @@
 
 <script>
 import FuTableButton from "./FuTableButton";
-import FuTableExtButtons from "@/components/dynamic-table/table-buttons/FuTableExtButtons";
+import FuTableExtButtons from "@/components/dynamic-table/table-button-column/FuTableExtButtons";
 import Locale from "@/mixins/locale";
 
 export default {
-  name: "FuTableButtons",
+  name: "FuTableButtonColumn",
   components: {FuTableExtButtons, FuTableButton},
   mixins: [Locale],
   props: {

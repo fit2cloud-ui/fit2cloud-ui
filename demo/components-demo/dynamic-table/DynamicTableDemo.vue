@@ -1,8 +1,8 @@
 <template>
   <div>
     <fu-dynamic-table header="动态表格" :data="data" :buttons="buttons" :search-config="searchConfig">
-      <el-table-column label="姓名" width="200" prop="username"/>
-      <el-table-column label="状态" width="200">
+      <el-table-column label="姓名" min-width="200" prop="username"/>
+      <el-table-column label="状态" min-width="200" fix>
         <template v-slot:default="{row}">
           <el-tag v-if="row.status === 'Enabled'" type="success" size="small">启用</el-tag>
           <el-tag v-if="row.status === 'Disabled'" type="info" size="small">禁用</el-tag>

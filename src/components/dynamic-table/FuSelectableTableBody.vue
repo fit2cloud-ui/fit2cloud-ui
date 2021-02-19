@@ -1,4 +1,8 @@
 <script>
+const isFix = attrs => {
+  const {fix} = attrs
+  return fix !== undefined && fix !== false
+}
 export default {
   name: "FuSelectableTableBody",
   functional: true,
@@ -10,34 +14,35 @@ export default {
   },
   render(h, context) {
     const {columns} = context.props
-    const slots = context.slots()
+    const children = context.children
     const nodes = [];
-    if (!slots.default) return nodes
+
+    if (!children) return nodes
 
     // 初始化
     if (columns.length === 0) {
-      slots.default.forEach(node => {
-        const {label, show, width} = node.componentOptions.propsData
+      children.forEach(node => {
+        let {label} = node.componentOptions.propsData
+        label ??= node.data.attrs.label
+        const {show} = node.data.attrs
+        const fix = isFix(node.data.attrs);
         if (!label) {
           throw new Error("column's label is required.")
         }
-        columns.push({label, show})
-        if (show !== false) {
-          nodes.push(node);
-        }
+        columns.push({label, show, fix})
       })
     } else {
       // 只渲染show为undefined或true的
-      slots.default.forEach((node, i) => {
-        if (columns[i].show !== false) {
+      children.forEach((node, i) => {
+        let {label} = node.componentOptions.propsData
+        if (isFix(node.data.attrs) || columns[i].show !== false) {
           nodes.push(node);
+          console.log(label, node)
         }
       })
     }
-    if (nodes.length > 0) {
-      nodes[nodes.length - 1].componentOptions.propsData.width = undefined;
-    }
-    return nodes
-  },
+
+    return h('el-table', context.data, nodes)
+  }
 }
 </script>

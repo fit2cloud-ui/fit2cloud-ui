@@ -13,16 +13,12 @@
     </div>
 
     <div class="fu-dynamic-table__body">
-      <slot name="body">
-        <el-table v-on="$listeners" v-bind="$attrs" :data="data">
-          <fu-selectable-column :columns="columns">
-            <slot></slot>
-          </fu-selectable-column>
-          <slot name="buttons">
-            <fu-table-buttons :buttons="buttons" v-if="buttons"/>
-          </slot>
-        </el-table>
-      </slot>
+      <fu-selectable-table-body :columns="columns" v-on="$listeners" v-bind="$attrs" :data="data">
+        <slot></slot>
+        <slot name="buttons">
+<!--          <fu-table-button-column :buttons="buttons" :label="t('fu.dynamic_table.operations')" fix v-if="buttons"/>-->
+        </slot>
+      </fu-selectable-table-body>
     </div>
   </div>
 </template>
@@ -31,12 +27,14 @@
 import FuSearchBar from "../search-bar"
 import FuQuickSearch from "../search-bar/FuQuickSearch";
 import FuColumnSelect from "../dynamic-table/FuColumnSelect";
-import FuTableButtons from "./table-buttons/FuTableButtons";
-import FuSelectableColumn from "@/components/dynamic-table/FuSelectableTableBody";
+import FuTableButtonColumn from "./table-button-column/FuTableButtonColumn";
+import FuSelectableTableBody from "@/components/dynamic-table/FuSelectableTableBody";
+import Locale from "@/mixins/locale";
 
 export default {
   name: "FuDynamicTable",
-  components: {FuSelectableColumn, FuTableButtons, FuQuickSearch, FuColumnSelect, FuSearchBar},
+  components: {FuSelectableTableBody, FuTableButtonColumn, FuQuickSearch, FuColumnSelect, FuSearchBar},
+  mixins: [Locale],
   props: {
     header: String,
     searchConfig: Object,

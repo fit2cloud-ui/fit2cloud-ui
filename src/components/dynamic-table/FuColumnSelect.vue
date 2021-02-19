@@ -1,6 +1,6 @@
 <template>
   <el-popover trigger="click" :visible-arrow="false" class="fu-column-select">
-    <div v-for="(c, i) in columns" :key="i">
+    <div v-for="(c, i) in selectable" :key="i">
       <el-checkbox v-model="c.show" :checked="c.show !== false">
         {{ c.label }}
       </el-checkbox>
@@ -17,6 +17,11 @@ export default {
   components: {FuSearchBarButton},
   props: {
     columns: Array
+  },
+  computed: {
+    selectable({columns}) {
+      return columns.filter(c => !c.fix)
+    }
   }
 }
 </script>
