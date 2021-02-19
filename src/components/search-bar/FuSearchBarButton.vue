@@ -6,7 +6,6 @@
       </slot>
     </el-button>
   </el-tooltip>
-
 </template>
 
 <script>

@@ -4,7 +4,7 @@
     <label>
       <input :placeholder="placeholder" v-model="value" @blur="blur" @keydown="keydown"/>
     </label>
-    <i class="el-icon-close clear-button" @mousedown.prevent="clear" v-if="value"/>
+    <i class="el-icon-close clean-button" @mousedown.prevent="clear" v-if="showCleanButton"/>
   </div>
 </template>
 
@@ -12,7 +12,8 @@
 export default {
   name: "FuQuickSearch",
   props: {
-    placeholder: String
+    placeholder: String,
+    useCleanButton: Boolean
   },
   data() {
     return {
@@ -34,6 +35,11 @@ export default {
         this.value = ""
         this.$emit("change", this.value, e)
       }
+    }
+  },
+  computed: {
+    showCleanButton() {
+      return this.useCleanButton && this.value
     }
   }
 }

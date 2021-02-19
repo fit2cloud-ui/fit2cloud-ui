@@ -26,6 +26,9 @@ export default {
       range_separator: "至",
       data_time_error: "开始日期不能大于结束日期",
       refresh: "刷新"
+    },
+    dynamic_table: {
+      operations: "操作"
     }
   }
 }

@@ -6,6 +6,7 @@
   position: relative;
   width: 100%;
   height: 48px;
+  font-size: 14px;
 
   &:after {
     content: "";
@@ -38,7 +39,7 @@
 }
 
 @include b(search-bar-button) {
-  .el-button {
+  &.el-button {
     border: none;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
     @include active-scale(0.9)
@@ -46,16 +47,26 @@
 }
 
 @include b(quick-search) {
-  @include flex-row(flex-start, center);
   height: 100%;
+  min-width: 230px;
+  position: relative;
+  @include flex-row(flex-start, center);
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #D5D5D5;
+  }
 
   input {
     border: none;
     position: relative;
     font-size: 14px;
     padding: 10px;
-    min-width: 120px;
-    max-width: 200px;
     width: 200px;
     box-sizing: border-box;
     color: $--button-default-font-color;
@@ -69,7 +80,7 @@
     }
   }
 
-  .clear-button {
+  .clean-button {
     cursor: pointer;
     @include active-scale;
 
@@ -83,7 +94,7 @@
   @include flex-row(flex-start, center);
   width: 100%;
   height: 100%;
-  padding: 0 5px;
+  padding: 0 10px;
   overflow-x: auto;
 
   @include e(condition) {
@@ -137,8 +148,6 @@
     @include flex-row(flex-end, center);
     flex: auto;
     height: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
   }
 }
 

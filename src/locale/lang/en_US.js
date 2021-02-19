@@ -26,6 +26,9 @@ export default {
       range_separator: "to",
       data_time_error: "The start date cannot be greater than the end date",
       refresh: "Refresh"
+    },
+    dynamic_table: {
+      operations: "Operations"
     }
   }
 }

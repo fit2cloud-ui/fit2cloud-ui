@@ -2,7 +2,7 @@
   <div class="fu-search-bar">
     <div class="fu-search-bar__content">
       <fu-quick-search :placeholder="quickPlaceholder" @change="quickChange" v-if="showQuickSearch"/>
-      <fu-complex-search :components="components" @change="change" v-if="useComplexSearch"/>
+      <fu-complex-search :components="components" @change="change" v-if="showComplexSearch"/>
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
@@ -36,7 +36,7 @@ export default {
     },
     combine: { // 是否同时使用快速查询和高级查询
       type: Boolean,
-      default: true
+      default: false
     }
   },
   data() {
@@ -64,6 +64,9 @@ export default {
   computed: {
     showQuickSearch() {
       return this.useQuickSearch && (this.combine || this.conditions.length === 0)
+    },
+    showComplexSearch() {
+      return this.useComplexSearch && this.components && this.components.length > 0
     },
     condition() {
       const condition = {}
