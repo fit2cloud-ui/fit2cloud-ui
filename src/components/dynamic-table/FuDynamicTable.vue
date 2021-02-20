@@ -100,24 +100,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import "~@/styles/common/mixins.scss";
-
-@include b(dynamic-table) {
-  @include e(header) {
-    @include flex-row(flex-start, center);
-    height: 60px;
-    font-size: 20px;
-  }
-
-  @include e(toolbar) {
-    @include flex-row(flex-end, center);
-  }
-
-  @include e(pagination) {
-    margin-top: 20px;
-    @include flex-row(flex-end);
-  }
-}
-</style>
