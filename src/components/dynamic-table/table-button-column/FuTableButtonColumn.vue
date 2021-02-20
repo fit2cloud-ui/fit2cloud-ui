@@ -1,5 +1,5 @@
 <template>
-  <el-table-column :width="width" v-bind="$attrs" v-on="$listeners">
+  <el-table-column :width="width" v-bind="$attrs" v-on="$listeners" v-if="showButtons">
     <template v-slot:default="{row}">
       <fu-table-button v-for="(btn, i) in noEllipsisButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
       <fu-table-ext-buttons :buttons="ellipsisButtons" :row="row" v-if="ellipsisButtons.length > 0"/>

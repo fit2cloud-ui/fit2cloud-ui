@@ -1,8 +1,14 @@
 <template>
   <div>
-    <fu-dynamic-table header="动态表格" :data="data" :buttons="buttons" :search-config="searchConfig">
+    <fu-dynamic-table header="动态表格"
+                      local-key="demo"
+                      :data="data"
+                      :buttons="buttons"
+                      :search-config="searchConfig"
+                      :pagination-config="paginationConfig"
+                      @search="search">
       <el-table-column label="姓名" min-width="200" prop="username"/>
-      <el-table-column label="状态" min-width="200" fix>
+      <el-table-column label="状态" min-width="200" :show="false">
         <template v-slot:default="{row}">
           <el-tag v-if="row.status === 'Enabled'" type="success" size="small">启用</el-tag>
           <el-tag v-if="row.status === 'Disabled'" type="info" size="small">禁用</el-tag>
@@ -19,6 +25,22 @@
 
 <script>
 import FuDynamicTable from "@/components/dynamic-table/FuDynamicTable";
+
+const data = [
+  {username: "admin", status: "Enabled", createTime: 1613641857019},
+  {username: "editor", status: "Enabled", createTime: 1613641857019},
+  {username: "readonly", status: "Enabled", createTime: 1613641857019},
+  {username: "other1", status: "Disabled", createTime: 1613641857019},
+  {username: "other2", status: "Enabled", createTime: 1613641857019},
+  {username: "other3", status: "Disabled", createTime: 1613641857019},
+  {username: "other4", status: "Enabled", createTime: 1613641857019},
+  {username: "other5", status: "Disabled", createTime: 1613641857019},
+  {username: "other6", status: "Enabled", createTime: 1613641857019},
+  {username: "other7", status: "Enabled", createTime: 1613641857019},
+  {username: "other8", status: "Disabled", createTime: 1613641857019},
+  {username: "other9", status: "Disabled", createTime: 1613641857019},
+  {username: "other10", status: "Disabled", createTime: 1613641857019},
+]
 
 export default {
   name: "DynamicTableDemo",
@@ -48,12 +70,6 @@ export default {
           }
         }
       ],
-      data: [
-        {username: "admin", status: "Enabled", createTime: 1613641857019},
-        {username: "editor", status: "Enabled", createTime: 1613641857019},
-        {username: "readonly", status: "Enabled", createTime: 1613641857019},
-        {username: "other", status: "Disabled", createTime: 1613641857019},
-      ],
       searchConfig: {
         quickPlaceholder: "按 姓名/邮箱 搜索",
         components: [
@@ -72,8 +88,27 @@ export default {
           },
           {field: "create_time", label: "创建时间", component: "FuDateTimeComponent"},
         ]
-      }
+      },
+      paginationConfig: {
+        currentPage: 1,
+        pageSize: 5,
+        total: 0,
+      },
+      data: [],
     }
+  },
+  methods: {
+    search(condition) {
+      console.log(condition)
+      this.paginationConfig.total = data.length
+      const {currentPage, pageSize} = this.paginationConfig
+      let start = (currentPage - 1) * pageSize
+      let end = currentPage * pageSize
+      this.data = data.slice(start, end)
+    }
+  },
+  created() {
+    this.search()
   }
 }
 </script>

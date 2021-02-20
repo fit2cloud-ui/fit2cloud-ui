@@ -4,7 +4,7 @@
     <label>
       <input :placeholder="placeholder" v-model="value" @blur="blur" @keydown="keydown"/>
     </label>
-    <i class="el-icon-close clean-button" @mousedown.prevent="clear" v-if="showCleanButton"/>
+    <i class="el-icon-close clean-button" @mousedown.prevent="clean" v-if="showCleanButton"/>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
         this.$emit("change", this.value, e)
       }
     },
-    clear(e) {
+    clean(e) {
       // 用mousedown代替click事件，避免触发blur
       if (e.button === 0) {
         this.value = ""
