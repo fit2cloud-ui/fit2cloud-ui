@@ -1,11 +1,12 @@
 import locale from "@/locale"
 import "@/styles/index.scss"
+import PackageJSON from "../package.json"
 
 const components = require.context('@/components/', true, /index\.js$/);
 
 const plugin = {
   name: "Fit2CloudUI",
-  version: '0.1.3',
+  version: PackageJSON.version,
   locale: locale.use,
   i18n: locale.i18n,
   install: function (Vue, opts = {}) {
