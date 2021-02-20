@@ -19,6 +19,11 @@ const initColumns = (nodes, columns) => {
 }
 
 const updateColumns = (nodes, columns) => {
+  // 如果列数修改了，则清空，重新初始化
+  if (nodes.length !== columns.length) {
+    columns.splice(0, columns.length)
+    return
+  }
   nodes.forEach((node, i) => {
     const fix = isFix(node);
     if (fix !== columns[i].fix) {
@@ -54,7 +59,7 @@ export default {
       if (key !== refreshKey) {
         updateColumns(children, columns)
         key = refreshKey
-        return nodes
+        return []
       }
       // 只渲染show为undefined或true的
       children.forEach((node, i) => {
