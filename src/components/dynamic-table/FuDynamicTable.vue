@@ -1,5 +1,6 @@
 <template>
   <div class="fu-dynamic-table">
+
     <div class="fu-dynamic-table__header" v-if="$slots.header || header">
       <slot name="header">{{ header }}</slot>
     </div>
@@ -13,12 +14,14 @@
     </div>
 
     <div class="fu-dynamic-table__body">
-      <fu-selectable-table-body :columns="columns" v-on="$listeners" v-bind="$attrs" :data="data">
-        <slot></slot>
-        <slot name="buttons">
-<!--          <fu-table-button-column :buttons="buttons" :label="t('fu.dynamic_table.operations')" fix v-if="buttons"/>-->
-        </slot>
-      </fu-selectable-table-body>
+      <el-table v-on="$listeners" v-bind="$attrs" :data="data" :key="key">
+        <fu-dynamic-table-body :columns="columns">
+          <slot></slot>
+          <slot name="buttons">
+            <fu-table-button-column :buttons="buttons" :label="t('fu.dynamic_table.operations')" fix v-if="buttons"/>
+          </slot>
+        </fu-dynamic-table-body>
+      </el-table>
     </div>
   </div>
 </template>
@@ -28,12 +31,12 @@ import FuSearchBar from "../search-bar"
 import FuQuickSearch from "../search-bar/FuQuickSearch";
 import FuColumnSelect from "../dynamic-table/FuColumnSelect";
 import FuTableButtonColumn from "./table-button-column/FuTableButtonColumn";
-import FuSelectableTableBody from "@/components/dynamic-table/FuSelectableTableBody";
+import FuDynamicTableBody from "@/components/dynamic-table/FuDynamicTableBody";
 import Locale from "@/mixins/locale";
 
 export default {
   name: "FuDynamicTable",
-  components: {FuSelectableTableBody, FuTableButtonColumn, FuQuickSearch, FuColumnSelect, FuSearchBar},
+  components: {FuDynamicTableBody, FuTableButtonColumn, FuQuickSearch, FuColumnSelect, FuSearchBar},
   mixins: [Locale],
   props: {
     header: String,
@@ -42,6 +45,14 @@ export default {
     data: Array,
     buttons: Array,
   },
+  watch: {
+    columns: {
+      handler: function () {
+        this.key++ // 解决el-table tbody不能正确渲染的问题
+      },
+      deep: true
+    }
+  },
   methods: {
     search(condition, e) {
       this.$emit("search", condition, e)
@@ -49,6 +60,7 @@ export default {
   },
   data() {
     return {
+      key: 0,
       columns: []
     }
   }

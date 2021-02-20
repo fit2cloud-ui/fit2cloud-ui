@@ -1,10 +1,11 @@
 <script>
-const isFix = attrs => {
-  const {fix} = attrs
+const isFix = node => {
+  const {fix} = node.data.attrs
   return fix !== undefined && fix !== false
 }
+
 export default {
-  name: "FuSelectableTableBody",
+  name: "FuDynamicTableBody",
   functional: true,
   props: {
     columns: {
@@ -19,30 +20,29 @@ export default {
 
     if (!children) return nodes
 
-    // 初始化
     if (columns.length === 0) {
+      // 初始化columns
       children.forEach(node => {
         let {label} = node.componentOptions.propsData
         label ??= node.data.attrs.label
-        const {show} = node.data.attrs
-        const fix = isFix(node.data.attrs);
         if (!label) {
           throw new Error("column's label is required.")
         }
+        const {show} = node.data.attrs
+        const fix = isFix(node);
+
         columns.push({label, show, fix})
       })
     } else {
       // 只渲染show为undefined或true的
       children.forEach((node, i) => {
-        let {label} = node.componentOptions.propsData
-        if (isFix(node.data.attrs) || columns[i].show !== false) {
+        if (isFix(node) || columns[i].show !== false) {
           nodes.push(node);
-          console.log(label, node)
         }
       })
     }
 
-    return h('el-table', context.data, nodes)
+    return nodes
   }
 }
 </script>
