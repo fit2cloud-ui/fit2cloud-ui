@@ -21,14 +21,13 @@
 import FuComplexComponents from "@/components/search-bar/complex-components/FuComplexComponents";
 import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 
+// target覆盖source相同的field
 function merge(source, target) {
   let conditions = source.concat(target)
   let conditionMap = new Map()
 
   for (let condition of conditions) {
-    if (!conditionMap.has(condition.field)) {
-      conditionMap.set(condition.field, condition)
-    }
+    conditionMap.set(condition.field, condition)
   }
   let result = [];
   conditionMap.forEach(c => {
