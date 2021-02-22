@@ -52,7 +52,6 @@ export default {
     searchConfig: Object,
     paginationConfig: Object,
     data: Array,
-    buttons: Array,
   },
   watch: {
     columns: {
