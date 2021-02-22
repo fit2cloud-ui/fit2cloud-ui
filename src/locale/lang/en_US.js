@@ -1,6 +1,7 @@
 export default {
   fu: {
     search_bar: {
+      search: "Search",
       adv_search: "Advanced Search",
       ok: "OK",
       cancel: "Cancel",
@@ -25,6 +26,7 @@ export default {
       end_date_time: 'End date and time',
       range_separator: "to",
       data_time_error: "The start date cannot be greater than the end date",
+      clean: "Clean",
       refresh: "Refresh"
     },
   }

@@ -4,9 +4,9 @@
 @include b(search-bar) {
   @include flex-row(flex-start, center);
   position: relative;
-  width: 100%;
-  height: 48px;
-  font-size: 14px;
+  width: $fu-search-bar-width;
+  height: $fu-search-bar-height;
+  font-size: $fu-search-bar-font-size;
 
   &:after {
     content: "";
@@ -20,7 +20,7 @@
 
   @include e(content) {
     @include flex-row(flex-start, center);
-    width: 100%;
+    margin-right: 10px;
     height: 100%;
     overflow-x: auto;
   }
@@ -40,17 +40,58 @@
 
 @include b(search-bar-button) {
   &.el-button {
+    @include active-scale(0.9);
     border: none;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
-    @include active-scale(0.9)
+  }
+}
+
+@include b(search-conditions) {
+  @include flex-row(flex-start, center);
+
+  @include e(item) {
+    @include flex-row(flex-start, center);
+    position: relative;
+    box-sizing: border-box;
+    height: $fu-search-bar-condition-height;
+    padding: 0 10px;
+    border-radius: 12px;
+    color: $fu-search-bar-condition-color;
+    background-color: $fu-search-bar-condition-bgColor;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+    margin-left: 10px;
+
+    &:last-child {
+      margin-right: 10px;
+    }
+
+    div + div {
+      margin-left: 4px;
+    }
+
+    .condition-value {
+      font-style: italic;
+    }
+
+    .condition-remove {
+      @include active-scale(0.9);
+      margin-left: 6px;
+      margin-right: -6px;
+      cursor: pointer;
+
+      &:hover {
+        color: $--color-primary;
+      }
+    }
   }
 }
 
 @include b(quick-search) {
+  @include flex-row(flex-start, center);
   height: 100%;
   min-width: 230px;
   position: relative;
-  @include flex-row(flex-start, center);
+  overflow-x: auto;
 
   &:after {
     content: "";
@@ -81,8 +122,8 @@
   }
 
   .clean-button {
-    cursor: pointer;
     @include active-scale;
+    cursor: pointer;
 
     &:hover {
       color: $--color-primary;
@@ -91,64 +132,7 @@
 }
 
 @include b(complex-search) {
-  @include flex-row(flex-start, center);
-  width: 100%;
-  height: 100%;
-  padding: 0 10px;
-  overflow-x: auto;
-
-  @include e(condition) {
-    @include flex-row(flex-start, center);
-    position: relative;
-    box-sizing: border-box;
-    min-width: 100px;
-    height: 30px;
-    padding: 0 10px;
-    border-radius: 16px;
-    background-color: #E6E6E6;
-    color: #424242;
-    font-size: 14px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
-
-    & + & {
-      margin-left: 10px;
-    }
-
-    div + div {
-      margin-left: 4px;
-    }
-
-    .condition-value {
-      font-style: italic;
-    }
-
-    .condition-remove {
-      margin-left: 6px;
-      margin-right: -6px;
-      cursor: pointer;
-      @include active-scale(0.9);
-
-      &:hover {
-        color: $--color-primary;
-      }
-    }
-  }
-
-  @include e(components) {
-    .adv-search {
-      min-width: 80px;
-      padding: 10px;
-      color: $--color-primary;
-      cursor: pointer;
-      @include active-scale;
-    }
-  }
-
-  @include e(buttons) {
-    @include flex-row(flex-end, center);
-    flex: auto;
-    height: 100%;
-  }
+  padding: 4px;
 }
 
 @include b(complex-components) {

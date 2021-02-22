@@ -1,10 +1,9 @@
 <template>
   <div class="fu-quick-search">
-    <i class="el-icon-search"/>
+    <i class="el-icon-search" v-if="useIcon"/>
     <label>
-      <input :placeholder="placeholder" v-model="value" @blur="blur" @keydown="keydown"/>
+      <input :placeholder="placeholder" v-model="quick" @input="input" @blur="blur" @keydown="keydown"/>
     </label>
-    <i class="el-icon-close clean-button" @mousedown.prevent="clean" v-if="showCleanButton"/>
   </div>
 </template>
 
@@ -12,34 +11,35 @@
 export default {
   name: "FuQuickSearch",
   props: {
+    value: String,
     placeholder: String,
-    useCleanButton: Boolean
+    useCleanButton: Boolean,
+    useIcon: {
+      type: Boolean,
+      default: true
+    }
+  },
+  watch: {
+    value: function (v) {
+      this.quick = v
+    }
   },
   data() {
     return {
-      value: ""
+      quick: ""
     }
   },
   methods: {
+    input() {
+      this.$emit("input", this.quick)
+    },
     blur(e) {
-      this.$emit("change", this.value, e)
+      this.$emit("change", this.quick, e)
     },
     keydown(e) {
       if (e.keyCode === 13) {
-        this.$emit("change", this.value, e)
+        this.$emit("change", this.quick, e)
       }
-    },
-    clean(e) {
-      // 用mousedown代替click事件，避免触发blur
-      if (e.button === 0) {
-        this.value = ""
-        this.$emit("change", this.value, e)
-      }
-    }
-  },
-  computed: {
-    showCleanButton() {
-      return this.useCleanButton && this.value
     }
   }
 }

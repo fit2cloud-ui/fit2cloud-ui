@@ -1,6 +1,7 @@
 export default {
   fu: {
     search_bar: {
+      search: "搜索",
       adv_search: "高级搜索",
       ok: "确定",
       cancel: "取消",
@@ -25,7 +26,8 @@ export default {
       end_date_time: '结束日期时间',
       range_separator: "至",
       data_time_error: "开始日期不能大于结束日期",
-      refresh: "刷新"
+      clean: "清空",
+      refresh: "刷新",
     },
   }
 }

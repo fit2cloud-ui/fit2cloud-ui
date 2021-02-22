@@ -1,6 +1,6 @@
 <template>
   <el-tooltip :content="tooltip" :disabled="!tooltip">
-    <el-button class="fu-search-bar-button" :type="type" circle size="medium" @click="click">
+    <el-button circle class="fu-search-bar-button" :type="type" :size="size" @click="click">
       <slot>
         <i :class="icon"/>
       </slot>
@@ -12,6 +12,10 @@
 export default {
   name: "FuSearchBarButton",
   props: {
+    size: {
+      type: String,
+      default: "small"
+    },
     icon: String,
     type: String,
     tooltip: String
