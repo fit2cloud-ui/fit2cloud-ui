@@ -46,6 +46,10 @@ export default {
   components: {FuSearchConditions, FuSearchBarButton, FuComplexSearch, FuQuickSearch},
   mixins: [Locale],
   props: {
+    quickKey: {
+      type: String,
+      default: "quick"
+    },
     quickPlaceholder: String,
     components: Array,
     useQuickSearch: { // 是否使用快速查询
@@ -70,7 +74,7 @@ export default {
   methods: {
     quickChange(value, e) {
       if (value) {
-        const field = "quick"
+        const field = this.quickKey
         const valueLabel = value
         this.conditions = merge(this.conditions, [new ComplexCondition({field, value, valueLabel})])
         this.exec(e)
