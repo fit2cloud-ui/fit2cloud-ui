@@ -1,7 +1,7 @@
 <template>
   <el-table-column :width="computeWidth" v-bind="$attrs" v-on="$listeners" v-if="showButtons">
     <template v-slot:default="{row}">
-      <fu-table-button v-for="(btn, i) in directButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
+      <fu-table-button v-for="(btn, i) in defaultButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
       <fu-table-more-button :buttons="moreButtons" :row="row" v-if="moreButtons.length > 0"/>
     </template>
   </el-table-column>
@@ -17,9 +17,9 @@ export default {
   props: {
     width: [String, Number],
     minWidth: [String, Number],
-    ellipsis: { // 超过几个按钮时显示省略号，如果只多出来一个也不会显示省略号
+    ellipsis: { // 超过几个按钮时显示省略号，如果只超过一个也不显示省略号
       type: Number,
-      default: 0
+      default: 3
     },
     buttons: {
       type: Array,
@@ -30,22 +30,21 @@ export default {
     showButtons() {
       return this.buttons?.filter(btn => btn.show !== false)
     },
-    computeWidth() {
-      let buttonsWidth = 20 + 28 + (this.directButtons.length - 1) * 38 + 38
-      if (this.minWidth) {
-        buttonsWidth = buttonsWidth < this.minWidth ? this.minWidth : buttonsWidth
-      }
-      return this.width ? this.width : buttonsWidth
+    hasMore() {
+      return this.showButtons?.length > this.ellipsis + 1;
     },
-    directButtons() {
+    defaultButtons() {
       return this.hasMore ? this.showButtons.slice(0, this.ellipsis) : this.showButtons;
     },
     moreButtons() {
       return this.hasMore ? this.showButtons.slice(this.ellipsis) : [];
     },
-    hasMore() {
-      // 只超过一个时，不需要省略
-      return this.showButtons?.length > this.ellipsis + 1;
+    computeWidth() {
+      let buttonsWidth = 20 + 28 + (this.defaultButtons.length - 1) * 38 + 38
+      if (this.minWidth) {
+        buttonsWidth = buttonsWidth < this.minWidth ? this.minWidth : buttonsWidth
+      }
+      return this.width ? this.width : buttonsWidth
     }
   }
 }
