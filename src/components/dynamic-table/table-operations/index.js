@@ -1,11 +1,11 @@
 import FuTableOperations from "./FuTableOperations";
 import FuTableButton from "./FuTableButton";
-import FuTableEllipsisButton from "./FuTableEllipsisButton";
+import FuTableMoreButton from "./FuTableMoreButton";
 
 FuTableOperations.install = function (Vue) {
   Vue.component(FuTableOperations.name, FuTableOperations);
   Vue.component(FuTableButton.name, FuTableButton);
-  Vue.component(FuTableEllipsisButton.name, FuTableEllipsisButton);
+  Vue.component(FuTableMoreButton.name, FuTableMoreButton);
 };
 
 export default FuTableOperations;

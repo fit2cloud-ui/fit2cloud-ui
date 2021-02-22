@@ -1,6 +1,6 @@
 <template>
   <el-popover trigger="click" :visible-arrow="false" class="fu-column-select" v-if="!isFixAll">
-    <div v-for="(c, i) in selectable" :key="i">
+    <div v-for="(c, i) in selectable" :key="i" class="fu-column-select__item">
       <el-checkbox v-model="c.show" :checked="c.show !== false">
         {{ c.label }}
       </el-checkbox>

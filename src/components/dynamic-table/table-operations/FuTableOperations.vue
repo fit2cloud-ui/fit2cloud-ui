@@ -1,25 +1,25 @@
 <template>
-  <el-table-column :width="width" v-bind="$attrs" v-on="$listeners" v-if="showButtons">
+  <el-table-column :width="computeWidth" v-bind="$attrs" v-on="$listeners" v-if="showButtons">
     <template v-slot:default="{row}">
-      <fu-table-button v-for="(btn, i) in noEllipsisButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
-      <fu-table-ellipsis-button :buttons="ellipsisButtons" :row="row" v-if="ellipsisButtons.length > 0"/>
+      <fu-table-button v-for="(btn, i) in directButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
+      <fu-table-more-button :buttons="moreButtons" :row="row" v-if="moreButtons.length > 0"/>
     </template>
   </el-table-column>
 </template>
 
 <script>
 import FuTableButton from "./FuTableButton";
-import FuTableEllipsisButton from "@/components/dynamic-table/table-operations/FuTableEllipsisButton";
-import Locale from "@/mixins/locale";
+import FuTableMoreButton from "./FuTableMoreButton";
 
 export default {
   name: "FuTableOperations",
-  components: {FuTableEllipsisButton, FuTableButton},
-  mixins: [Locale],
+  components: {FuTableMoreButton, FuTableButton},
   props: {
+    width: [String, Number],
+    minWidth: [String, Number],
     ellipsis: { // 超过几个按钮时显示省略号，如果只多出来一个也不会显示省略号
       type: Number,
-      default: 3
+      default: 0
     },
     buttons: {
       type: Array,
@@ -30,26 +30,21 @@ export default {
     showButtons() {
       return this.buttons?.filter(btn => btn.show !== false)
     },
-    width() {
-      let width
-      const MIN_WIDTH = 80;
-      if (this.hasEllipsis) {
-        // padding + first btn + other btn(margin left 10) + ellipsis
-        width = 20 + 28 + (this.noEllipsisButtons.length - 1) * 38 + 24;
-      } else {
-        // padding + first btn + other btn(margin left 10)
-        width = 20 + 28 + (this.showButtons.length - 1) * 38;
+    computeWidth() {
+      let buttonsWidth = 20 + 28 + (this.directButtons.length - 1) * 38 + 38
+      if (this.minWidth) {
+        buttonsWidth = buttonsWidth < this.minWidth ? this.minWidth : buttonsWidth
       }
-      return width < MIN_WIDTH ? MIN_WIDTH : width
+      return this.width ? this.width : buttonsWidth
     },
-    noEllipsisButtons() {
-      return this.hasEllipsis ? this.showButtons.slice(0, this.ellipsis) : this.showButtons;
+    directButtons() {
+      return this.hasMore ? this.showButtons.slice(0, this.ellipsis) : this.showButtons;
     },
-    ellipsisButtons() {
-      return this.hasEllipsis ? this.showButtons.slice(this.ellipsis) : [];
+    moreButtons() {
+      return this.hasMore ? this.showButtons.slice(this.ellipsis) : [];
     },
-    hasEllipsis() {
-      // 省略号本身也占一个按钮的位置
+    hasMore() {
+      // 只超过一个时，不需要省略
       return this.showButtons?.length > this.ellipsis + 1;
     }
   }

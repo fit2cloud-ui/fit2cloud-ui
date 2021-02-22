@@ -1,8 +1,6 @@
 <template>
-  <el-dropdown @command="handleCommand" class="fu-table-ellipsis-button">
-    <el-link :underline="false">
-      <el-icon class="el-icon-more"></el-icon>
-    </el-link>
+  <el-dropdown @command="handleCommand" class="fu-table-more-button">
+    <el-button circle icon="el-icon-more" :size="size"/>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item v-for="(btn, i) in buttons" :key="i" :icon="btn.icon" :disabled="btn.disabled" :command="btn">
         {{ btn.label }}
@@ -14,7 +12,7 @@
 import FuTableButton from "./FuTableButton";
 
 export default {
-  name: "FuTableEllipsisButton",
+  name: "FuTableMoreButton",
   components: {FuTableButton},
   props: {
     row: Object,
@@ -24,7 +22,7 @@ export default {
     },
     size: {
       type: String,
-      default: "medium"
+      default: "mini"
     }
   },
   methods: {
