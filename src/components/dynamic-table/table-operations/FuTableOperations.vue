@@ -40,7 +40,7 @@ export default {
       return this.hasMore ? this.showButtons.slice(this.ellipsis) : [];
     },
     computeWidth() {
-      let buttonsWidth = 20 + 28 + (this.defaultButtons.length - 1) * 38 + 38
+      let buttonsWidth = 20 + this.defaultButtons.length * 38 + 38
       if (this.minWidth) {
         buttonsWidth = buttonsWidth < this.minWidth ? this.minWidth : buttonsWidth
       }
