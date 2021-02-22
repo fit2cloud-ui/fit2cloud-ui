@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown @command="handleCommand" class="fu-table-ext-buttons">
+  <el-dropdown @command="handleCommand" class="fu-table-ellipsis-button">
     <el-link :underline="false">
       <el-icon class="el-icon-more"></el-icon>
     </el-link>
@@ -14,7 +14,7 @@
 import FuTableButton from "./FuTableButton";
 
 export default {
-  name: "FuTableExtButtons",
+  name: "FuTableEllipsisButton",
   components: {FuTableButton},
   props: {
     row: Object,

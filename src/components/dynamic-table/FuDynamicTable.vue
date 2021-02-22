@@ -7,7 +7,8 @@
     <div class="fu-dynamic-table__toolbar" v-if="$slots.toolbar || searchConfig">
       <slot name="toolbar">
         <fu-search-bar v-bind="searchConfig" @exec="search">
-          <fu-column-select :columns="columns"/>
+          <slot name="search-bar"></slot>
+          <fu-column-select :columns="columns" v-if="searchConfig.useColSelect !== false"/>
         </fu-search-bar>
       </slot>
     </div>
@@ -16,9 +17,6 @@
       <el-table v-on="$listeners" v-bind="$attrs" :data="data" :key="key">
         <fu-dynamic-table-body :columns="columns" :refresh-key="key">
           <slot></slot>
-          <slot name="buttons">
-            <fu-table-button-column :buttons="buttons" :label="t('fu.dynamic_table.operations')" fix v-if="buttons"/>
-          </slot>
         </fu-dynamic-table-body>
       </el-table>
     </div>
@@ -38,16 +36,17 @@
 import FuSearchBar from "../search-bar"
 import FuQuickSearch from "../search-bar/FuQuickSearch";
 import FuColumnSelect from "../dynamic-table/FuColumnSelect";
-import FuTableButtonColumn from "./table-button-column/FuTableButtonColumn";
 import FuDynamicTableBody from "@/components/dynamic-table/FuDynamicTableBody";
-import Locale from "@/mixins/locale";
 import FuTablePagination from "@/components/dynamic-table/FuTablePagination";
 
 export default {
   name: "FuDynamicTable",
-  components: {FuTablePagination, FuDynamicTableBody, FuTableButtonColumn, FuQuickSearch, FuColumnSelect, FuSearchBar},
-  mixins: [Locale],
+  components: {FuTablePagination, FuDynamicTableBody, FuQuickSearch, FuColumnSelect, FuSearchBar},
   props: {
+    columns: {
+      type: Array,
+      default: () => []
+    },
     localKey: String, // 如果需要记住选择的列，则这里添加一个唯一的Key
     header: String,
     searchConfig: Object,
@@ -69,7 +68,6 @@ export default {
   data() {
     return {
       key: 0,
-      columns: [],
       condition: {}
     }
   },
@@ -91,7 +89,10 @@ export default {
       let columnsKey = localStorage.getItem(this.columnsKey)
       if (columnsKey) {
         try {
-          this.columns = JSON.parse(localStorage.getItem(this.columnsKey))
+          if (this.columns.length > 0) {
+            this.columns.splice(0, this.columns.length)
+          }
+          this.columns.concat(JSON.parse(localStorage.getItem(this.columnsKey)))
         } catch (e) {
           console.warn("get columns error", e)
         }

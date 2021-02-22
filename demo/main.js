@@ -4,10 +4,12 @@ import ElementUI from 'element-ui';
 import '@/styles/index.scss';
 import router from "./router";
 import filters from "@/filters"
+import Fit2CloudUI from "@/index"
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+Vue.use(Fit2CloudUI)
 Vue.use(filters)
 
 new Vue({

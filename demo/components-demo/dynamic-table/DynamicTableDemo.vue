@@ -19,12 +19,12 @@
           {{ row.createTime | datetimeFormat }}
         </template>
       </el-table-column>
+      <fu-table-operations :buttons="buttons" label="操作" fix/>
     </fu-dynamic-table>
   </div>
 </template>
 
 <script>
-import FuDynamicTable from "@/components/dynamic-table/FuDynamicTable";
 
 const data = [
   {username: "admin", status: "Enabled", createTime: 1613641857019},
@@ -44,7 +44,6 @@ const data = [
 
 export default {
   name: "DynamicTableDemo",
-  components: {FuDynamicTable},
   data() {
     return {
       buttons: [

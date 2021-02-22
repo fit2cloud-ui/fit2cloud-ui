@@ -4,15 +4,20 @@ const isFix = node => {
   return fix !== undefined && fix !== false
 }
 
+const getLabel = node => {
+  let {label} = node.componentOptions.propsData
+  label ??= node.data.attrs.label
+  return label;
+}
+
 const initColumns = (nodes, columns) => {
   nodes.forEach(node => {
-    let {label} = node.componentOptions.propsData
-    label ??= node.data.attrs.label
-    if (!label) {
-      throw new Error("column's label is required.")
+    let label = getLabel(node)
+    const fix = isFix(node);
+    if (!label && !fix) {
+      throw new Error("unfixed column's label is required.")
     }
     const {show} = node.data.attrs
-    const fix = isFix(node);
 
     columns.push({label, show, fix})
   })
@@ -25,10 +30,8 @@ const updateColumns = (nodes, columns) => {
     return
   }
   nodes.forEach((node, i) => {
-    const fix = isFix(node);
-    if (fix !== columns[i].fix) {
-      columns[i].fix = fix
-    }
+    columns[i].label = getLabel(node)
+    columns[i].fix = isFix(node)
   })
 }
 
@@ -67,11 +70,6 @@ export default {
           nodes.push(node);
         }
       })
-    }
-
-    // 如果只有操作列，则不显示操作列
-    if (nodes.length === 1 && [nodes[0].componentOptions.tag === "fu-table-button-column"]) {
-      return []
     }
 
     return nodes

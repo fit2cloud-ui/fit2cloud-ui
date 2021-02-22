@@ -2,19 +2,19 @@
   <el-table-column :width="width" v-bind="$attrs" v-on="$listeners" v-if="showButtons">
     <template v-slot:default="{row}">
       <fu-table-button v-for="(btn, i) in noEllipsisButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
-      <fu-table-ext-buttons :buttons="ellipsisButtons" :row="row" v-if="ellipsisButtons.length > 0"/>
+      <fu-table-ellipsis-button :buttons="ellipsisButtons" :row="row" v-if="ellipsisButtons.length > 0"/>
     </template>
   </el-table-column>
 </template>
 
 <script>
 import FuTableButton from "./FuTableButton";
-import FuTableExtButtons from "@/components/dynamic-table/table-button-column/FuTableExtButtons";
+import FuTableEllipsisButton from "@/components/dynamic-table/table-operations/FuTableEllipsisButton";
 import Locale from "@/mixins/locale";
 
 export default {
-  name: "FuTableButtonColumn",
-  components: {FuTableExtButtons, FuTableButton},
+  name: "FuTableOperations",
+  components: {FuTableEllipsisButton, FuTableButton},
   mixins: [Locale],
   props: {
     ellipsis: { // 超过几个按钮时显示省略号，如果只多出来一个也不会显示省略号
@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     showButtons() {
-      return this.buttons.filter(btn => btn.show !== false)
+      return this.buttons?.filter(btn => btn.show !== false)
     },
     width() {
       let width
@@ -50,7 +50,7 @@ export default {
     },
     hasEllipsis() {
       // 省略号本身也占一个按钮的位置
-      return this.showButtons.length > this.ellipsis + 1;
+      return this.showButtons?.length > this.ellipsis + 1;
     }
   }
 }

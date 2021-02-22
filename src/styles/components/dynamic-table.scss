@@ -23,7 +23,7 @@
   margin-right: 10px;
 }
 
-@include b(table-ext-buttons) {
+@include b(table-ellipsis-button) {
   button + & {
     margin-left: 10px;
   }
