@@ -37,6 +37,11 @@ export default {
       value: this.operator
     }
   },
+  watch: {
+    operator: function (v) {
+      this.value = v
+    }
+  },
   methods: {
     change(value) {
       this.$emit('change', value);

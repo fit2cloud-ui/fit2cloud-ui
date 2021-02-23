@@ -17,6 +17,24 @@ import {ComplexCondition} from "@/components/search-bar/model";
 import mixins from "./mixins";
 import FuComplexOperator from "./FuComplexOperator";
 
+const MULTIPLE_OPERATORS = [
+  {
+    label: "fu.search_bar.in",
+    value: "in"
+  }, {
+    label: "fu.search_bar.not_in",
+    value: "not in"
+  }
+]
+const OPERATORS = [
+  {
+    label: "fu.search_bar.eq",
+    value: "eq"
+  }, {
+    label: "fu.search_bar.ne",
+    value: "ne"
+  }
+]
 export default {
   name: "FuComplexAsyncSelect",
   components: {FuComplexOperator},
@@ -31,21 +49,8 @@ export default {
     return {
       loading: {status: true},
       options: [],
-      operator: this.defaultOperator || "in",
+      operator: "",
       value: "",
-      operators: [{
-        label: "fu.search_bar.in",
-        value: "in"
-      }, {
-        label: "fu.search_bar.not_in",
-        value: "not in"
-      }, {
-        label: "fu.search_bar.eq",
-        value: "eq"
-      }, {
-        label: "fu.search_bar.ne",
-        value: "ne"
-      }],
     }
   },
   methods: {
@@ -64,12 +69,18 @@ export default {
     },
     init() {
       this.value = ""
+      this.operator = this.defaultOperator || this.operators[0].value
+      console.log(this.operator)
       this.loading.status = true
       this.options = []
       this.initOptions(this.options, this.loading)
     }
   },
   computed: {
+    operators() {
+      const {multiple} = this.$attrs
+      return multiple ? MULTIPLE_OPERATORS : OPERATORS
+    },
     valueLabel() {
       const {multiple} = this.$attrs
       if (multiple) {

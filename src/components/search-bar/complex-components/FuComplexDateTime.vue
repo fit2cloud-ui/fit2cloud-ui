@@ -17,7 +17,7 @@ import FuComplexOperator from "./FuComplexOperator";
 import {datetimeFormat} from "@/filters/time";
 
 export default {
-  name: "FuDateTimeComponent",
+  name: "FuComplexDateTime",
   components: {FuComplexOperator},
   mixins: [mixins],
   props: {

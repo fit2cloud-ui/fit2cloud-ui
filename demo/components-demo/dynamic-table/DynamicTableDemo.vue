@@ -72,12 +72,12 @@ export default {
       searchConfig: {
         quickPlaceholder: "按 姓名/邮箱 搜索",
         components: [
-          {field: "name", label: "姓名", component: "FuInputComponent", defaultOperator: "eq"},
-          {field: "email", label: "Email", component: "FuInputComponent"},
+          {field: "name", label: "姓名", component: "FuComplexInput", defaultOperator: "eq"},
+          {field: "email", label: "Email", component: "FuComplexInput"},
           {
             field: "status",
             label: "状态",
-            component: "FuSelectComponent",
+            component: "FuComplexSelect",
             options: [
               {label: "运行中", value: "Running"},
               {label: "成功", value: "Success"},
@@ -85,7 +85,7 @@ export default {
             ],
             multiple: true
           },
-          {field: "create_time", label: "创建时间", component: "FuDateTimeComponent"},
+          {field: "create_time", label: "创建时间", component: "FuComplexDateTime"},
         ]
       },
       paginationConfig: {
