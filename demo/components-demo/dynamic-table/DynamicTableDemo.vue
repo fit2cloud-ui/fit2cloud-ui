@@ -3,10 +3,16 @@
     <fu-dynamic-table header="动态表格"
                       local-key="demo"
                       :data="data"
+                      :columns="columns"
                       :buttons="buttons"
                       :search-config="searchConfig"
                       :pagination-config="paginationConfig"
                       @search="search">
+      <template #toolbar>
+        <fu-search-bar v-bind="searchConfig" @exec="search">
+          <fu-column-select :columns="columns"/>
+        </fu-search-bar>
+      </template>
       <el-table-column label="姓名" min-width="200" prop="username"/>
       <el-table-column label="状态" min-width="200" :show="false">
         <template v-slot:default="{row}">
@@ -46,6 +52,7 @@ export default {
   name: "DynamicTableDemo",
   data() {
     return {
+      columns: [],
       buttons: [
         {
           label: "编辑", icon: "el-icon-edit", click: (row) => {

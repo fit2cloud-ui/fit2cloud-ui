@@ -14,7 +14,7 @@ export default {
   props: {
     size: {
       type: String,
-      default: "small"
+      default: "mini"
     },
     icon: String,
     type: String,

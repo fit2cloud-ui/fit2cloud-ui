@@ -17,7 +17,6 @@
       <fu-search-bar-button
         :class="['fu-complex-search__trigger',{'is-active':toggle}]"
         slot="reference"
-        size="mini"
         icon="el-icon-arrow-right"
         @click="open"
         :tooltip="t('fu.search_bar.adv_search')"/>

@@ -5,12 +5,7 @@
     </div>
 
     <div class="fu-dynamic-table__toolbar" v-if="$slots.toolbar || searchConfig">
-      <slot name="toolbar">
-        <fu-search-bar v-bind="searchConfig" @exec="search">
-          <slot name="search-bar"></slot>
-          <fu-column-select :columns="columns" v-if="searchConfig.useColSelect !== false"/>
-        </fu-search-bar>
-      </slot>
+      <slot name="toolbar"></slot>
     </div>
 
     <div class="fu-dynamic-table__body">
