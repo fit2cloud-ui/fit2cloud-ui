@@ -1,7 +1,8 @@
 <script>
 const isFix = node => {
   const {fix} = node.data.attrs
-  return fix !== undefined && fix !== false
+  let {type} = node.componentOptions.propsData
+  return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type)
 }
 
 const getLabel = node => {

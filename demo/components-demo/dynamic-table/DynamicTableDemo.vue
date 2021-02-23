@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-dynamic-table header="动态表格" v-if="false"
+    <fu-dynamic-table header="动态表格"
                       local-key="demo"
                       :data="data"
                       :columns="columns"
@@ -28,25 +28,6 @@
       </el-table-column>
       <fu-table-operations :buttons="buttons" label="操作" fix/>
     </fu-dynamic-table>
-
-    <fu-search-bar v-bind="searchConfig" @exec="search">
-      <fu-column-select :columns="columns"/>
-    </fu-search-bar>
-    <fu-table :columns="columns" :data="data">
-      <fu-table-column type="selection"></fu-table-column>
-      <fu-table-column label="姓名" min-width="200" prop="username"/>
-      <fu-table-column label="状态" min-width="200" :show="false">
-        <template v-slot:default="{row}">
-          <el-tag v-if="row.status === 'Enabled'" type="success" size="small">启用</el-tag>
-          <el-tag v-if="row.status === 'Disabled'" type="info" size="small">禁用</el-tag>
-        </template>
-      </fu-table-column>
-      <fu-table-column label="创建时间">
-        <template v-slot:default="{row}">
-          {{ row.createTime | datetimeFormat }}
-        </template>
-      </fu-table-column>
-    </fu-table>
   </div>
 </template>
 
