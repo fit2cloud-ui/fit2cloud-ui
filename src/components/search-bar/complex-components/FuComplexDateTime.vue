@@ -1,24 +1,24 @@
 <template>
-  <fu-operator-component :label="label" v-model="operator" :operators="operators">
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators">
     <el-date-picker v-model="value" class="width-100"
-                    :placeholder="t('fu.search_bar.select_date')" size="small"
+                    :placeholder="t('fu.search_bar.select_date_time')" size="small"
                     :type="type" :key="type" value-format="timestamp"
                     :range-separator="t('fu.search_bar.range_separator')"
-                    :start-placeholder="t('fu.search_bar.start_date')"
-                    :end-placeholder="t('fu.search_bar.end_date')">
+                    :start-placeholder="t('fu.search_bar.start_date_time')"
+                    :end-placeholder="t('fu.search_bar.end_date_time')">
     </el-date-picker>
-  </fu-operator-component>
+  </fu-complex-operator>
 </template>
 
 <script>
 import {ComplexCondition} from "@/components/search-bar/model";
-import mixins from "@/components/search-bar/complex-components/mixins";
-import FuOperatorComponent from "@/components/search-bar/complex-components/FuOperatorComponent";
-import {dateFormat} from "@/filters/time";
+import mixins from "./mixins";
+import FuComplexOperator from "./FuComplexOperator";
+import {datetimeFormat} from "@/filters/time";
 
 export default {
   name: "FuDateTimeComponent",
-  components: {FuOperatorComponent},
+  components: {FuComplexOperator},
   mixins: [mixins],
   props: {
     field: String,
@@ -71,7 +71,7 @@ export default {
       }
       return new ComplexCondition({field, label, operator, operatorLabel, value, valueLabel})
     },
-    clean() {
+    init() {
       this.value = "";
     }
   },
@@ -80,17 +80,17 @@ export default {
       return this.operator === "between"
     },
     type() {
-      if (this.operator === "between") {
-        return "daterange";
+      if (this.isBetween) {
+        return "datetimerange";
       } else {
-        return "date";
+        return "datetime";
       }
     },
     valueLabel() {
       if (this.isBetween) {
-        return dateFormat(this.value[0]) + " " + this.t('fu.search_bar.range_separator') + " " + dateFormat(this.value[1])
+        return datetimeFormat(this.value[0]) + " " + this.t('fu.search_bar.range_separator') + " " + datetimeFormat(this.value[1])
       }
-      return dateFormat(this.value)
+      return datetimeFormat(this.value)
     }
   }
 }

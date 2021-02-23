@@ -29,20 +29,12 @@
     @include flex-row(flex-end, center);
     flex: auto;
     height: 100%;
-
-    .el-button {
-      border: none;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
-      @include active-scale(0.9)
-    }
   }
 }
 
 @include b(search-bar-button) {
   &.el-button {
     @include active-scale(0.9);
-    border: none;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
   }
 }
 
@@ -55,7 +47,7 @@
     box-sizing: border-box;
     height: $fu-search-bar-condition-height;
     padding: 0 10px;
-    border-radius: 12px;
+    border-radius: $fu-search-bar-condition-border-radius;
     color: $fu-search-bar-condition-color;
     background-color: $fu-search-bar-condition-bgColor;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
@@ -132,7 +124,17 @@
 }
 
 @include b(complex-search) {
-  padding: 4px;
+  @include e(trigger) {
+    i {
+      transition: transform 0.2s;
+    }
+
+    &.is-active {
+      i {
+        transform: rotate(90deg);
+      }
+    }
+  }
 }
 
 @include b(complex-components) {
@@ -171,7 +173,7 @@
   @include e(value) {
     padding: 0 5px;
     flex-grow: 1;
-    min-width: 300px;
+    min-width: 240px;
 
     .width-100 {
       width: 100%;

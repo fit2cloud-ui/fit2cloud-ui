@@ -21,7 +21,7 @@
 import Locale from "@/mixins/locale";
 
 export default {
-  name: "FuOperatorComponent",
+  name: "FuComplexOperator",
   mixins: [Locale],
   model: {
     prop: 'operator',

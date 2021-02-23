@@ -11,6 +11,18 @@
 import FuSearchBar from "@/components/search-bar"
 import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 
+const getOptions = () => {
+  const options = [
+    {label: "成功", value: "Success"},
+    {label: "失败", value: "Fail"}
+  ]
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(options)
+    }, 3000)
+  })
+}
+
 export default {
   name: "SearchDemo",
   components: {FuSearchBarButton, FuSearchBar},
@@ -28,7 +40,23 @@ export default {
             {label: "成功", value: "Success"},
             {label: "失败", value: "Fail"}
           ],
-          multiple: true
+          multiple: true,
+          filterable: true,
+        },
+        {
+          field: "async_status",
+          label: "异步状态",
+          component: "FuAsyncSelectComponent",
+          initOptions: (options, loading) => {
+            getOptions().then(response => {
+              response.forEach(o => {
+                options.push(o)
+                loading.status = false
+              })
+            })
+          },
+          multiple: true,
+          filterable: true,
         },
         {field: "create_time", label: "创建时间", component: "FuDateTimeComponent"},
       ]

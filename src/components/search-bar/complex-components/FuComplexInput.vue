@@ -1,17 +1,17 @@
 <template>
-  <fu-operator-component :label="label" v-model="operator" :operators="operators">
-    <el-input v-model="value" :placeholder="t('fu.search_bar.please_input')" size="small"/>
-  </fu-operator-component>
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators">
+    <el-input v-model="value" :placeholder="t('fu.search_bar.please_input')" size="small" v-bind="$attrs"/>
+  </fu-complex-operator>
 </template>
 
 <script>
 import {ComplexCondition} from "@/components/search-bar/model";
-import mixins from "@/components/search-bar/complex-components/mixins";
-import FuOperatorComponent from "@/components/search-bar/complex-components/FuOperatorComponent";
+import mixins from "./mixins";
+import FuComplexOperator from "./FuComplexOperator";
 
 export default {
-  name: "FuInputComponent",
-  components: {FuOperatorComponent},
+  name: "FuComplexInput",
+  components: {FuComplexOperator},
   mixins: [mixins],
   props: {
     field: String,
@@ -43,7 +43,7 @@ export default {
       let {field, label, operator, operatorLabel, value} = this
       return new ComplexCondition({field, label, operator, operatorLabel, value})
     },
-    clean() {
+    init() {
       this.value = "";
     }
   }
