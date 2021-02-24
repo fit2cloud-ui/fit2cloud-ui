@@ -1,0 +1,19 @@
+@import "~@/styles/common/mixins.scss";
+@import "~@/styles/common/variables.scss";
+
+@include b(table) {
+  &.el-table {
+    td {
+      padding: 8px 0;
+    }
+
+    th > .cell {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    &.el-table--striped .el-table__body tr.el-table__row--striped td {
+      background: $fu-table-striped-color;
+    }
+  }
+}

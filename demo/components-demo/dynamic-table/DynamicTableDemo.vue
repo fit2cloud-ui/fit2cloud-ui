@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-dynamic-table header="动态表格"
+    <fu-complex-table header="动态表格"
                       local-key="demo"
                       :data="data"
                       :columns="columns"
@@ -27,7 +27,7 @@
         </template>
       </el-table-column>
       <fu-table-operations :buttons="buttons" label="操作" fix/>
-    </fu-dynamic-table>
+    </fu-complex-table>
   </div>
 </template>
 

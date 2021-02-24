@@ -39,7 +39,7 @@ const updateColumns = (nodes, columns) => {
 let key = 0
 
 export default {
-  name: "FuDynamicTableBody",
+  name: "FuTableBody",
   functional: true,
   props: {
     refreshKey: Number,

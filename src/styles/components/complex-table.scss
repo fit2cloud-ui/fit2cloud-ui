@@ -12,16 +12,6 @@
     @include flex-row(flex-end, center);
   }
 
-  @include e(body) {
-    .el-table td {
-      padding: 8px 0;
-    }
-
-    .el-table--striped .el-table__body tr.el-table__row--striped td {
-      background: $fu-table-striped-color;
-    }
-  }
-
   @include e(pagination) {
     margin-top: 20px;
     @include flex-row(flex-end);

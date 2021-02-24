@@ -1,11 +1,9 @@
-import FuDynamicTable from "./FuDynamicTable";
+import FuDynamicTable from "./FuComplexTable";
 import FuColumnSelect from "./FuColumnSelect";
-import FuTablePagination from "./FuTablePagination";
 
 FuDynamicTable.install = function (Vue) {
   Vue.component(FuDynamicTable.name, FuDynamicTable);
   Vue.component(FuColumnSelect.name, FuColumnSelect);
-  Vue.component(FuTablePagination.name, FuTablePagination);
 };
 
 export default FuDynamicTable;
