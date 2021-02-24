@@ -1,7 +1,7 @@
 @import "~@/styles/common/mixins.scss";
 @import "~@/styles/common/variables.scss";
 
-@include b(dynamic-table) {
+@include b(complex-table) {
   @include e(header) {
     @include flex-row(flex-start, center);
     height: 60px;
