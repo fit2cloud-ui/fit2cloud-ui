@@ -28,7 +28,7 @@
 <script>
 import FuSearchBar from "../search-bar"
 import FuQuickSearch from "../search-bar/FuQuickSearch";
-import FuColumnSelect from "../complex-table/FuColumnSelect";
+import FuColumnSelect from "../table/FuColumnSelect";
 import FuTablePagination from "../table/FuTablePagination";
 
 export default {
