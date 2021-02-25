@@ -101,7 +101,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /deep/ .custom-fu-speed-dial-item-title {
   font-style: italic;
   font-weight: 600;

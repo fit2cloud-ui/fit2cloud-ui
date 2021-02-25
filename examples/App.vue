@@ -15,7 +15,9 @@ export default {
 <style>
 body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  color: #333333;
+  font-size:14px;
 }
 
 #app {
@@ -38,15 +40,22 @@ a:hover {
   color: inherit;
   text-decoration: none;
 }
-
+/* 列表元素 */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
+  scrollbar-width:none;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: #4A4B4D;
+  background-color: rgba(144,147,153,.3);
 }
 
 ::-webkit-scrollbar-track {

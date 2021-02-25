@@ -1,15 +1,14 @@
 import Vue from "vue";
 import VueRouter from 'vue-router'
-import Home from "../Home";
+import Home from '../layout'
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
-    {path: "/", redirect: '/home'},
     {
-      path: "/home",
-      meta: {title: "首页"},
+      path: "/:comName",
+      meta: { title: "首页" },
       component: Home,
     }
   ]
