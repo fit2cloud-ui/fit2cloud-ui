@@ -1,6 +1,6 @@
 <template>
-  <el-popover :trigger="trigger" :visible-arrow="false" class="fu-column-select" v-if="!isFixAll">
-    <div v-for="(c, i) in selectable" :key="i" class="fu-column-select__item">
+  <el-popover :trigger="trigger" :visible-arrow="false" class="fu-table-column-select" v-if="!isFixAll">
+    <div v-for="(c, i) in selectable" :key="i" class="fu-table-column-select__item">
       <el-checkbox v-model="c.show" :checked="c.show !== false">
         {{ c.label }}
       </el-checkbox>
@@ -15,7 +15,7 @@ import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 const triggers = []
 
 export default {
-  name: "FuColumnSelect",
+  name: "FuTableColumnSelect",
   components: {FuSearchBarButton},
   props: {
     trigger: {

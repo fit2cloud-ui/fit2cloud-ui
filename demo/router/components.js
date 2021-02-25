@@ -1,7 +1,7 @@
 import DemoLayout from "../DemoLayout";
 import SearchDemo from "../components-demo/search/SearchDemo";
 import SpeedDialDemo from "../components-demo/speed-dial/SpeedDialDemo";
-import DynamicTableDemo from "../components-demo/dynamic-table/DynamicTableDemo";
+import ComplexTableDemo from "../components-demo/table/TableDemo";
 
 export default {
   path: "/components",
@@ -18,7 +18,7 @@ export default {
       meta: {title: '搜索框'}
     }, {
       path: 'dynamic-table',
-      component: DynamicTableDemo,
+      component: ComplexTableDemo,
       meta: {title: '动态表格'}
     }
   ]

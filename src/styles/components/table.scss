@@ -17,3 +17,19 @@
     }
   }
 }
+
+@include b(table-column-select) {
+  margin-left: 10px;
+  margin-right: 10px;
+  @include e(item) {
+    & + & {
+      margin-top: 5px;
+    }
+  }
+}
+
+@include b(table-more-button) {
+  button + & {
+    margin-left: 10px;
+  }
+}

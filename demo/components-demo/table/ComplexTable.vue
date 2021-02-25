@@ -1,20 +1,25 @@
 <template>
-  <div class="fu-complex-table">
-    <div class="fu-complex-table__header" v-if="$slots.header || header">
+  <div class="complex-table">
+    <div class="complex-table__header" v-if="$slots.header || header">
       <slot name="header">{{ header }}</slot>
     </div>
 
-    <div class="fu-complex-table__toolbar" v-if="$slots.toolbar || searchConfig">
-      <slot name="toolbar"></slot>
+    <div class="complex-table__toolbar" v-if="$slots.toolbar || searchConfig">
+      <slot name="toolbar">
+        <fu-search-bar v-bind="searchConfig" @exec="search">
+          <slot name="buttons"></slot>
+          <fu-table-column-select :columns="columns"/>
+        </fu-search-bar>
+      </slot>
     </div>
 
-    <div class="fu-complex-table__body">
+    <div class="complex-table__body">
       <fu-table v-on="$listeners" v-bind="$attrs" :columns="columns" :local-key="localKey">
         <slot></slot>
       </fu-table>
     </div>
 
-    <div class="fu-complex-table__pagination" v-if="$slots.pagination || paginationConfig">
+    <div class="complex-table__pagination" v-if="$slots.pagination || paginationConfig">
       <slot name="pagination">
         <fu-table-pagination :current-page.sync="paginationConfig.currentPage"
                              :page-size.sync="paginationConfig.pageSize"
@@ -26,14 +31,9 @@
 </template>
 
 <script>
-import FuSearchBar from "../search-bar"
-import FuQuickSearch from "../search-bar/FuQuickSearch";
-import FuColumnSelect from "../table/FuColumnSelect";
-import FuTablePagination from "../table/FuTablePagination";
 
 export default {
-  name: "FuComplexTable",
-  components: {FuTablePagination, FuQuickSearch, FuColumnSelect, FuSearchBar},
+  name: "ComplexTable",
   props: {
     columns: {
       type: Array,
@@ -59,3 +59,26 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+@import "~@/styles/common/mixins.scss";
+@import "~@/styles/common/variables.scss";
+
+.complex-table {
+  .complex-table__header {
+    @include flex-row(flex-start, center);
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .complex-table__toolbar {
+    @include flex-row(flex-end, center);
+  }
+
+  .complex-table__pagination {
+    margin-top: 20px;
+    @include flex-row(flex-end);
+  }
+}
+
+</style>
