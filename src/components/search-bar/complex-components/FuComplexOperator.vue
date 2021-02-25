@@ -1,13 +1,15 @@
 <template>
   <div class="fu-operator-component">
-    <div class="fu-operator-component__label">
+    <div :class="['fu-operator-component__label', 'fu-operator-component__label--' + size]">
       {{ label }}
     </div>
     <div class="fu-operator-component__operator">
       <el-select class="search-operator"
                  v-model="value"
                  :placeholder="t('fu.search_bar.please_select')"
-                 size="small" @change="change" @input="change">
+                 :size="size"
+                 @change="change"
+                 @input="change">
         <el-option v-for="o in operators" :key="o.value" :label="t(o.label)" :value="o.value"/>
       </el-select>
     </div>
@@ -28,6 +30,10 @@ export default {
     event: 'change'
   },
   props: {
+    size: {
+      type: String,
+      default: "mini"
+    },
     label: String,
     operator: String,
     operators: Array,

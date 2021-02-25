@@ -6,7 +6,6 @@
   position: relative;
   width: $fu-search-bar-width;
   height: $fu-search-bar-height;
-  font-size: $fu-search-bar-font-size;
 
   &:after {
     content: "";
@@ -41,17 +40,36 @@
 @include b(search-conditions) {
   @include flex-row(flex-start, center);
 
+  @include m(medium) {
+    font-size: 14px;
+    @include e(item) {
+      height: 28px;
+    }
+  }
+  @include m(small) {
+    font-size: 13px;
+    @include e(item) {
+      height: 26px;
+    }
+  }
+  @include m(mini) {
+    font-size: 12px;
+    @include e(item) {
+      height: 24px;
+    }
+  }
+
   @include e(item) {
     @include flex-row(flex-start, center);
     position: relative;
     box-sizing: border-box;
-    height: $fu-search-bar-condition-height;
     padding: 0 10px;
-    border-radius: $fu-search-bar-condition-border-radius;
+    border-radius: 50px;
     color: $fu-search-bar-condition-color;
     background-color: $fu-search-bar-condition-bgColor;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
     margin-left: 10px;
+    font-size: inherit;
 
     &:last-child {
       margin-right: 10px;
@@ -85,6 +103,18 @@
   position: relative;
   overflow-x: auto;
 
+  @include m(medium) {
+    font-size: 14px;
+  }
+
+  @include m(small) {
+    font-size: 13px;
+  }
+
+  @include m(mini) {
+    font-size: 12px;
+  }
+
   &:after {
     content: "";
     position: absolute;
@@ -98,7 +128,7 @@
   input {
     border: none;
     position: relative;
-    font-size: 14px;
+    font-size: inherit;
     padding: 10px;
     width: 200px;
     box-sizing: border-box;
@@ -129,7 +159,7 @@
       transition: transform 0.2s;
     }
 
-    &.is-active {
+    @include when(active) {
       i {
         transform: rotate(90deg);
       }
@@ -161,6 +191,17 @@
     padding: 0 5px;
     flex-grow: 0;
     flex-shrink: 0;
+    font-size: inherit;
+
+    @include m(small) {
+      width: 100px;
+      font-size: 13px;
+    }
+
+    @include m(mini) {
+      width: 100px;
+      font-size: 12px;
+    }
   }
 
   @include e(operator) {

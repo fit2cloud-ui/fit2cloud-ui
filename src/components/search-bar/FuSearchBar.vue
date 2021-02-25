@@ -1,16 +1,26 @@
 <template>
   <div class="fu-search-bar">
     <div class="fu-search-bar__content">
-      <fu-complex-search :components="components" @change="change" v-if="showComplex"/>
-      <fu-search-conditions :conditions="conditions"/>
-      <fu-quick-search :use-icon="false" :placeholder="placeholder" v-model="quick" @change="quickChange"
+      <fu-complex-search :components="components" @change="change" :size="size" v-if="showComplex"/>
+      <fu-search-conditions :conditions="conditions" :size="size"/>
+      <fu-quick-search :size="size"
+                       :use-icon="false"
+                       :placeholder="placeholder"
+                       v-model="quick"
+                       @change="quickChange"
                        v-if="showQuick"/>
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
-        <fu-search-bar-button icon="el-icon-close" @click="clean" :tooltip="t('fu.search_bar.clean')"
+        <fu-search-bar-button icon="el-icon-close"
+                              @click="clean"
+                              :size="size"
+                              :tooltip="t('fu.search_bar.clean')"
                               v-if="showClean"/>
-        <fu-search-bar-button icon="el-icon-refresh" @click="exec" :tooltip="t('fu.search_bar.refresh')"/>
+        <fu-search-bar-button icon="el-icon-refresh"
+                              @click="exec"
+                              :size="size"
+                              :tooltip="t('fu.search_bar.refresh')"/>
         <slot></slot>
       </slot>
     </div>
@@ -46,12 +56,15 @@ export default {
   components: {FuSearchConditions, FuSearchBarButton, FuComplexSearch, FuQuickSearch},
   mixins: [Locale],
   props: {
+    size: {
+      type: String,
+      default: "mini"
+    },
     quickKey: {
       type: String,
       default: "quick"
     },
     quickPlaceholder: String,
-    components: Array,
     useQuickSearch: { // 是否使用快速查询
       type: Boolean,
       default: true
@@ -63,7 +76,8 @@ export default {
     combine: { // 是否同时使用快速查询和高级查询
       type: Boolean,
       default: true
-    }
+    },
+    components: Array
   },
   data() {
     return {

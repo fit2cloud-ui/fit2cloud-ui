@@ -1,7 +1,10 @@
 <template>
-  <fu-complex-operator :label="label" v-model="operator" :operators="operators">
-    <el-date-picker v-model="value" class="width-100"
-                    :placeholder="t('fu.search_bar.select_date_time')" size="small"
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="size">
+    <el-date-picker class="width-100"
+                    v-model="value"
+                    v-bind="$attrs"
+                    :size="size"
+                    :placeholder="t('fu.search_bar.select_date_time')"
                     :type="type" :key="type" value-format="timestamp"
                     :range-separator="t('fu.search_bar.range_separator')"
                     :start-placeholder="t('fu.search_bar.start_date_time')"
@@ -21,6 +24,10 @@ export default {
   components: {FuComplexOperator},
   mixins: [mixins],
   props: {
+    size: {
+      type: String,
+      default: "mini"
+    },
     field: String,
     label: String,
     defaultOperator: String,
