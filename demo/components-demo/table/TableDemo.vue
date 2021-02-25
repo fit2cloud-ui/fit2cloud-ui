@@ -1,18 +1,12 @@
 <template>
   <div>
-    <fu-complex-table header="动态表格"
-                      local-key="demo"
-                      :data="data"
-                      :columns="columns"
-                      :buttons="buttons"
-                      :search-config="searchConfig"
-                      :pagination-config="paginationConfig"
-                      @search="search">
-      <template #toolbar>
-        <fu-search-bar v-bind="searchConfig" @exec="search">
-          <fu-column-select :columns="columns"/>
-        </fu-search-bar>
-      </template>
+    <complex-table header="动态表格"
+                   local-key="demo"
+                   :data="data"
+                   :columns="columns"
+                   :search-config="searchConfig"
+                   :pagination-config="paginationConfig"
+                   @search="search">
       <el-table-column type="selection"></el-table-column>
       <el-table-column label="姓名" min-width="200" prop="username"/>
       <el-table-column label="状态" min-width="200" :show="false">
@@ -27,11 +21,13 @@
         </template>
       </el-table-column>
       <fu-table-operations :buttons="buttons" label="操作" fix/>
-    </fu-complex-table>
+    </complex-table>
   </div>
 </template>
 
 <script>
+
+import ComplexTable from "./ComplexTable";
 
 const data = [
   {username: "admin", status: "Enabled", createTime: 1613641857019},
@@ -50,7 +46,8 @@ const data = [
 ]
 
 export default {
-  name: "DynamicTableDemo",
+  name: "ComplexTableDemo",
+  components: {ComplexTable},
   data() {
     return {
       columns: [],

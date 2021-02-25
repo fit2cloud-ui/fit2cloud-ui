@@ -1,5 +1,5 @@
 <template>
-  <div class="fu-quick-search">
+  <div :class="['fu-quick-search', 'fu-quick-search--' + size]">
     <i class="el-icon-search" v-if="useIcon"/>
     <label>
       <input :placeholder="placeholder" v-model="quick" @input="input" @blur="blur" @keydown="keydown"/>
@@ -11,6 +11,10 @@
 export default {
   name: "FuQuickSearch",
   props: {
+    size: {
+      type: String,
+      default: "mini"
+    },
     value: String,
     placeholder: String,
     useCleanButton: Boolean,
