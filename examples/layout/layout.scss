@@ -1,0 +1,26 @@
+$headerHeight: 60px;
+$sideBarWidth: 250px;
+.header-wrapper{
+    height: $headerHeight;
+    line-height: $headerHeight;
+    border-bottom: 1px solid #dcdfe6;
+}
+.app-container{
+    height: calc(100% - #{$sideBarWidth});
+    margin-top: $headerHeight;
+}
+.sidebar-container{
+    transition: width 0.28s;
+    width: $sideBarWidth !important;
+    height: calc(100% - #{$headerHeight});
+    position: fixed;
+    top: $headerHeight;
+    bottom: 0;
+    z-index: 88;
+    overflow: hidden;
+    border-right: 1px solid #dcdfe6;
+}
+.app-main{
+    padding:20px 20px 20px $sideBarWidth+20px;
+
+}

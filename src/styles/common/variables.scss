@@ -1,0 +1,22 @@
+// element ui variables
+$--color-primary: #2D61A2 !default;
+$--color-success: #13CE66 !default;
+$--color-warning: #FFBA00 !default;
+$--color-danger: #FF4949 !default;
+
+$--background-color-base: #F5F5F5 !default;
+
+$--border-color-light: #DFE4ED !default;
+$--border-color-lighter: #E6EBF5 !default;
+
+$--table-border: 1px solid #DFE6EC !default;
+
+@import "~element-ui/packages/theme-chalk/src/common/var";
+
+// fit2cloud ui variables
+$fu-search-bar-width: 100% !default;
+$fu-search-bar-height: 48px !default;
+$fu-search-bar-condition-color: #424242 !default;
+$fu-search-bar-condition-bgColor: #E6E6E6 !default;
+
+$fu-table-striped-bgColor: mix($--color-primary, #FFF, 5%) !default;
