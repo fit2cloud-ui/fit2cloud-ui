@@ -11,15 +11,15 @@
 </template>
 
 <script>
-  import highlight from 'highlight.js/lib/highlight.js'
-  import highlightSCSS from 'highlight.js/lib/languages/scss'
-  import highlightXML from 'highlight.js/lib/languages/xml'
-  import highlightJavascript from 'highlight.js/lib/languages/javascript'
-  import highlightShell from 'highlight.js/lib/languages/shell'
-  import Clipboard from 'clipboard'
-  import codeSource from 'docs-mixins/codeSource'
+import highlight from 'highlight.js/lib/highlight.js'
+import highlightSCSS from 'highlight.js/lib/languages/scss'
+import highlightXML from 'highlight.js/lib/languages/xml'
+import highlightJavascript from 'highlight.js/lib/languages/javascript'
+import highlightShell from 'highlight.js/lib/languages/shell'
+import Clipboard from 'clipboard'
+import codeSource from 'docs-mixins/codeSource'
 
-  highlight.registerLanguage('scss', highlightSCSS)
+highlight.registerLanguage('scss', highlightSCSS)
   highlight.registerLanguage('xml', highlightXML)
   highlight.registerLanguage('javascript', highlightJavascript)
   highlight.registerLanguage('shell', highlightShell)

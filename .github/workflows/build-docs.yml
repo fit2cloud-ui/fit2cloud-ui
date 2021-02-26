@@ -1,0 +1,30 @@
+# push docs分支时触发，自动构建文档，以便发布到Github Pages
+
+name: FIT2CLOUD UI Build Docs
+
+on:
+  push:
+    branches:
+      - docs
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build-examples
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          repository-name: fit2cloud-ui/docs
+          target-folder: docs
+          branch: main
+          folder: docs
+          token: ${{secrets.ACCESS_TOKEN}}
+          commit-message: github action update docs

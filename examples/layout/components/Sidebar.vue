@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import {navList,getTypeName} from "../../utils/nav";
+import {getTypeName, navList} from "../../utils/nav";
+
 export default {
   name: "Sidebar",
   data() {

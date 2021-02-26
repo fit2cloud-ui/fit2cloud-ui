@@ -5,7 +5,8 @@
   </div>
 </template>
 <script>
-import { getComponent } from "../../utils/nav";
+import {getComponent} from "../../utils/nav";
+
 export default {
   name: "AppMain",
   data() {

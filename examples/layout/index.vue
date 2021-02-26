@@ -10,7 +10,8 @@
 
 <script>
 import "./layout.scss";
-import { AppHeader, Sidebar, AppMain } from "./components";
+import {AppHeader, AppMain, Sidebar} from "./components";
+
 export default {
   name: "Home",
   components: {
