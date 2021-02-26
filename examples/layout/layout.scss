@@ -21,6 +21,6 @@ $sideBarWidth: 250px;
     border-right: 1px solid #dcdfe6;
 }
 .app-main{
-    padding-left: $sideBarWidth;
+    padding:20px 20px 20px $sideBarWidth+20px;
 
 }
