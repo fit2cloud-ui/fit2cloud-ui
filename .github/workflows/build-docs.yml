@@ -1,0 +1,29 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: FIT2CLOUD UI Build Docs
+
+on:
+  push:
+    branches:
+      - docs
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: docs
+          folder: docs
+          token: ${{secrets.NPM_TOKEN}}
+          commit-message: github action update docs
