@@ -24,7 +24,7 @@ jobs:
         with:
           repository-name: fit2cloud-ui/docs
           target-folder: docs
-          branch: docs
+          branch: main
           folder: docs
           token: ${{secrets.ACCESS_TOKEN}}
           commit-message: github action update docs
