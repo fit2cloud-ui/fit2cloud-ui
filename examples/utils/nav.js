@@ -18,7 +18,7 @@ const navList = {
         {
             name: 'ComplexTable 复合表格',
             path: 'table',
-            component: 'ComplexTableDemo'
+            component: 'TableDoc'
         },
         {
             name: 'Speed Dial',
@@ -44,7 +44,6 @@ function getTypeName(val) {
 }
 function getComponent(path,type) {
     let componentName
-    console.log(type)
     navList[type].map(item => {
         if (path === item.path) { componentName = item.component }
     })

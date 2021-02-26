@@ -1,6 +1,7 @@
 <template>
   <div class="main-wrapper">
     <component :is='nowComponent' />
+    
   </div>
 </template>
 <script>
