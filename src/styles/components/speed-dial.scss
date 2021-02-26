@@ -1,0 +1,99 @@
+@import "../common/variables";
+@import "../common/mixins";
+
+@mixin speed-dial-button-variant($color, $background-color) {
+  color: $color;
+  background-color: $background-color;
+
+  &:hover,
+  &:focus {
+    background: mix($--color-white, $background-color, $--button-hover-tint-percent);
+    color: $color;
+  }
+
+  &:active {
+    background: mix($--color-black, $background-color, $--button-active-shade-percent);
+    color: $color;
+    outline: none;
+  }
+
+  &.is-active {
+    background: mix($--color-black, $background-color, $--button-active-shade-percent);
+    color: $color;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--color-white;
+      background-color: mix($background-color, $--color-white);
+    }
+  }
+}
+
+@include b(speed-dial-button) {
+  @include flex-row(center, center);
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  @include active-scale(0.9);
+
+  @include m(rotate) {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3), 0 0 6px rgba(0, 0, 0, .3);
+    transition: all 0.3s;
+
+    @include when(active) {
+      transform: scale(1) rotate(360deg);
+      &:active {
+        transform: scale(0.9) rotate(360deg)
+      }
+    }
+  }
+
+  @include m(default) {
+    @include speed-dial-button-variant($--button-default-font-color, $--button-default-background-color);
+  }
+  @include m(primary) {
+    @include speed-dial-button-variant($--button-primary-font-color, $--button-primary-background-color);
+  }
+  @include m(success) {
+    @include speed-dial-button-variant($--button-success-font-color, $--button-success-background-color);
+  }
+  @include m(warning) {
+    @include speed-dial-button-variant($--button-warning-font-color, $--button-warning-background-color);
+  }
+  @include m(danger) {
+    @include speed-dial-button-variant($--button-danger-font-color, $--button-danger-background-color);
+  }
+  @include m(info) {
+    @include speed-dial-button-variant($--button-info-font-color, $--button-info-background-color);
+  }
+}
+
+@include b(speed-dial-item) {
+  @include flex-row(center, center);
+}
+
+@include b(speed-dial-action-button) {
+  @include flex-row(center, center);
+
+  @include e(title) {
+    @include flex-row(center, center);
+    position: absolute;
+  }
+
+  @include e(text) {
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+    white-space: nowrap;
+    padding: 2px 5px;
+    line-height: 1;
+    box-sizing: border-box;
+    border-radius: 2px;
+    @include active-scale(0.9);
+  }
+}
