@@ -1,11 +1,11 @@
 <template>
   <el-scrollbar>
     <div class="sidebar" v-for="(value, key, index) in navList" :key="index">
-      <h1>{{ key }}</h1>
+      <h1>{{ getTypeName(key) }}</h1>
       <ul v-for="(item, i) in value" :key="i">
         <li
           :class="{ active: showPath === item.path }"
-          @click="isPath(item.path)"
+          @click="isPath(item.path,key)"
         >
           {{ item.name }}
         </li>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import navList from "../../utils/nav";
+import {navList,getTypeName} from "../../utils/nav";
 export default {
   name: "Sidebar",
   data() {
@@ -25,20 +25,14 @@ export default {
     };
   },
   created() {
-    // this.clickLists(Number(this.$route.params.parentId), this.$route.query.parentName)
+    this.showPath=this.$route.params.comName
   },
   methods: {
-    isPath(path) {
+    getTypeName,
+    isPath(path,key) {
       this.showPath = path;
+      this.$router.replace(`/${key}/${path}`)
     },
-    // clickLists (id, name) {
-    //   this.hoverIndex = String(id)
-    //   // this.$router.push(`/view360/${item.id}`)
-    //   this.$store.commit('view360/SAVE_VIEWID', id)
-    //   this.$emit('title', name)
-    //   window.history.replaceState({}, '', `#/view360/${this.$route.params.personId}/${id}?parentName=${name}`)
-    // },
-    handleSelect(key, keyPath) {},
   },
 };
 </script>

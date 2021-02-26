@@ -3,19 +3,22 @@
     <app-header class="app-header">header</app-header>
     <div class="app-container">
       <sidebar class="sidebar-container" />
-      <div class="app-main">examples</div>
+      <div class="app-main"><app-main /></div>
     </div>
   </div>
 </template>
 
 <script>
-import './layout.scss'
-import { AppHeader, Sidebar } from "./components";
+import "./layout.scss";
+import { AppHeader, Sidebar, AppMain } from "./components";
 export default {
   name: "Home",
   components: {
     Sidebar,
     AppHeader,
+    AppMain,
+  },
+  created() {
   },
 };
 </script>
