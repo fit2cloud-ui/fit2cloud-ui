@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div> -->
     <complex-table header="动态表格"
                    local-key="demo"
                    :data="data"
@@ -22,7 +22,7 @@
       </el-table-column>
       <fu-table-operations :buttons="buttons" label="操作" fix/>
     </complex-table>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
