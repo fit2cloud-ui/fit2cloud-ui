@@ -15,9 +15,9 @@ function pages() {
     }
   }
   return {
-    demo: {
-      entry: "./demo/main.js",
-      template: "./demo/index.html",
+    dev: {
+      entry: "./dev/main.js",
+      template: "./dev/index.html",
       filename: "index.html"
     }
   }

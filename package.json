@@ -6,7 +6,6 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve-examples": "vue-cli-service serve --mode examples",
-    "build-demo": "vue-cli-service build --dest dist",
     "build-examples": "vue-cli-service build --mode examples --dest docs",
     "build": "vue-cli-service build --target lib --name fit2cloud-ui --dest lib ./src/index.js",
     "lint": "vue-cli-service lint"
