@@ -23,6 +23,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
           branch: docs
-          folder: docs
+          folder: .
           token: ${{secrets.ACCESS_TOKEN}}
           commit-message: github action update docs
