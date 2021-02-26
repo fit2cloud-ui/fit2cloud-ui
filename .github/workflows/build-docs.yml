@@ -22,7 +22,9 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
+          repository-name: fit2cloud-ui/docs
+          target-folder: docs
           branch: docs
-          folder: .
+          folder: docs
           token: ${{secrets.ACCESS_TOKEN}}
           commit-message: github action update docs
