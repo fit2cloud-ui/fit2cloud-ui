@@ -29,5 +29,8 @@ export default {
       clean: "Clean",
       refresh: "Refresh"
     },
+    table: {
+      select_columns: "Select columns"
+    }
   }
 }

@@ -7,7 +7,7 @@
       padding: 8px 0;
     }
 
-    th > .cell {
+    th.el-table-column--selection > .cell {
       padding-left: 14px;
       padding-right: 14px;
     }
@@ -21,10 +21,27 @@
 @include b(table-column-select) {
   margin-left: 10px;
   margin-right: 10px;
+
+  @include e(title) {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
   @include e(item) {
     & + & {
       margin-top: 5px;
     }
+  }
+}
+
+@include b(table-column-select-popper) {
+  min-width: 100px;
+}
+
+@include b(table-operations) {
+  @include e(header) {
+    @include flex-row(flex-start, center);
   }
 }
 

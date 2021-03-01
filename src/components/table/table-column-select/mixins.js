@@ -1,34 +1,12 @@
-<template>
-  <el-popover :trigger="trigger"
-              :visible-arrow="false"
-              class="fu-table-column-select"
-              popper-class="fu-table-column-select-popper"
-              v-if="!isFixAll">
-    <div class="fu-table-column-select__title">
-      {{ t('fu.table.select_columns') }}
-    </div>
-    <div v-for="(c, i) in selectable" :key="i" class="fu-table-column-select__item">
-      <el-checkbox v-model="c.show" :checked="c.show !== false">
-        {{ c.label }}
-      </el-checkbox>
-    </div>
-    <fu-search-bar-button slot="reference" :icon="icon" :size="size"/>
-  </el-popover>
-</template>
-
-<script>
-import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 import Locale from "@/mixins/locale";
 
 export default {
-  name: "FuTableColumnSelect",
-  components: {FuSearchBarButton},
   mixins: [Locale],
   props: {
     size: String,
     icon: {
       type: String,
-      default: "el-icon-setting"
+      default: "el-icon-s-grid"
     },
     trigger: {
       type: String,
@@ -67,5 +45,4 @@ export default {
       return this.columns.every(c => c.fix)
     }
   }
-}
-</script>
+};

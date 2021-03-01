@@ -29,5 +29,8 @@ export default {
       clean: "清空",
       refresh: "刷新",
     },
+    table: {
+      select_columns: "选列"
+    }
   }
 }
