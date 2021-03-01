@@ -37,5 +37,13 @@ module.exports = {
       library: 'Fit2CloudUI',
     }
   },
-  pages: pages()
+  pages: pages(),
+  chainWebpack: config => {
+    config.module
+      .rule('example')
+      .resourceQuery(/blockType=example/)
+      .use('example-loader')
+      .loader('./loaders/example-loader')
+      .end()
+  }
 };
