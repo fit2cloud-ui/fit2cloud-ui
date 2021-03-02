@@ -10,6 +10,7 @@
 <script>
 import FuSearchBar from "@/components/search-bar"
 import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
+import CustomCondition from "./CustomCondtion"
 
 const getOptions = () => {
   const options = [
@@ -57,6 +58,7 @@ export default {
           },
         },
         {field: "create_time", label: "创建时间", component: "FuComplexDateTime"},
+        {field: "user", component: CustomCondition}, // 如何自定义搜索控件，看CustomCondition
       ]
     }
   },

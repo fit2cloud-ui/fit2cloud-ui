@@ -67,7 +67,7 @@ export default {
         if (ref.getCondition) {
           condition = ref.getCondition()
         }
-        if (condition && condition.value) {
+        if (condition && condition.value !== undefined) {
           conditions.push(condition)
         }
       })
