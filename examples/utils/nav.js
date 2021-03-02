@@ -52,13 +52,13 @@ function getTypeName(val) {
 }
 
 function getComponent(path, type) {
-  let componentName
+  let component
   navList[type].map(item => {
     if (path === item.path) {
-      componentName = item.component
+      component = item
     }
   })
-  return componentName || 'table'
+  return component || navList['components'][0]
 }
 
 // export default navList

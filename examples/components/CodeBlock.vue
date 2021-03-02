@@ -3,75 +3,76 @@
     <div class="code-block-wrapper" :style="{ 'max-height': height }">
       <pre><code ref="block" :class="lang"><slot v-pre/></code></pre>
 
-      <span class="copy-message" :class="{ 'active': showMessage }">Code copied!</span>
+      <span class="copy-message" :class="{ active: showMessage }"
+        >Code copied!</span
+      >
     </div>
 
-    <el-button ref="copy">Copy</el-button>
+    <el-button ref="copy" class="copy">Copy</el-button>
   </div>
 </template>
 
 <script>
-import highlight from 'highlight.js/lib/highlight.js'
-import highlightSCSS from 'highlight.js/lib/languages/scss'
-import highlightXML from 'highlight.js/lib/languages/xml'
-import highlightJavascript from 'highlight.js/lib/languages/javascript'
-import highlightShell from 'highlight.js/lib/languages/shell'
-import Clipboard from 'clipboard'
-import codeSource from '../mixins/codeSource'
+import highlight from "highlight.js/lib/highlight.js";
+import highlightSCSS from "highlight.js/lib/languages/scss";
+import highlightXML from "highlight.js/lib/languages/xml";
+import highlightJavascript from "highlight.js/lib/languages/javascript";
+import highlightShell from "highlight.js/lib/languages/shell";
+import Clipboard from "clipboard";
+import codeSource from "../mixins/codeSource";
 
-highlight.registerLanguage('scss', highlightSCSS)
-highlight.registerLanguage('xml', highlightXML)
-highlight.registerLanguage('javascript', highlightJavascript)
-highlight.registerLanguage('shell', highlightShell)
+highlight.registerLanguage("scss", highlightSCSS);
+highlight.registerLanguage("xml", highlightXML);
+highlight.registerLanguage("javascript", highlightJavascript);
+highlight.registerLanguage("shell", highlightShell);
 
 export default {
-  name: 'CodeBlock',
+  name: "CodeBlock",
   mixins: [codeSource],
   props: {
     lang: String,
     label: String,
     height: {
       type: [Number, String],
-      default: '450px'
-    }
+      default: "450px",
+    },
   },
   data: () => ({
-    showMessage: false
+    showMessage: false,
   }),
   methods: {
     reindentSource: codeSource.reindentSource,
     enableCopy() {
       if (this.$refs.copy) {
         const clipboard = new Clipboard(this.$refs.copy.$el, {
-          target: () => this.$refs.block
-        })
-        let timer = null
+          target: () => this.$refs.block,
+        });
+        let timer = null;
 
-        clipboard.on('success', (event) => {
-          event.clearSelection()
-          this.showMessage = true
+        clipboard.on("success", (event) => {
+          event.clearSelection();
+          this.showMessage = true;
 
-          window.clearTimeout(timer)
+          window.clearTimeout(timer);
           timer = window.setTimeout(() => {
-            this.showMessage = false
-          }, 2000)
-        })
+            this.showMessage = false;
+          }, 2000);
+        });
       }
-    }
+    },
   },
   mounted() {
     this.$nextTick().then(() => {
-      this.reindentSource()
-      this.enableCopy()
+      this.reindentSource();
+      this.enableCopy();
 
-      highlight.highlightBlock(this.$refs.block)
-    })
-  }
-}
+      highlight.highlightBlock(this.$refs.block);
+    });
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 .code-block {
   max-width: 100%;
   overflow: hidden;
@@ -87,18 +88,12 @@ export default {
     margin-top: 24px;
   }
 
-  &:hover {
-    .md-button {
-      opacity: 1;
-    }
-  }
-
   &:after {
     position: absolute;
     top: 16px;
     right: 16px;
-    transition: .4s cubic-bezier(.25, .8, .25, 1);
-    color: rgba(#fff, .38);
+    transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: rgba(#fff, 0.38);
     content: attr(data-lang);
     font-size: 11px;
     line-height: 1em;
@@ -118,44 +113,38 @@ export default {
 }
 
 .code-block-wrapper {
-  min-width: 100%;
+  // min-width: 100%;
   max-height: 450px;
   min-height: 86px;
-  padding: 16px;
+  padding: 25px;
   overflow: auto;
 }
-
-.md-button {
-  min-width: 56px;
-  margin: 8px;
+.copy {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
+  right: 26px;
+  bottom:26px;
 }
-
 .copy-message {
   padding: 8px 12px;
   position: absolute;
   top: 8px;
   right: 8px;
-  background-color: #a4a3a3;
+  background-color: #f4f4f5;
   border-radius: 2px;
   transform: translate3d(0, -48px, 0);
-  transition: .3s cubic-bezier(.55, 0, .55, .2);
-  color: grey;
+  transition: 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  color: #909399;
   font-size: 14px;
   line-height: 1em;
 
   &.active {
-    transition: .3s cubic-bezier(.25, .8, .25, 1);
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform: translate3d(0, 0, 0);
   }
 }
 </style>
 
 <style lang="scss">
-
 .hljs {
   color: #a4a3a3;
   font-family: "Roboto Mono", monospace;
@@ -189,7 +178,7 @@ export default {
 .hljs-selector-class,
 .hljs-selector-id,
 .hljs-built_in {
-  color: #FDD835;
+  color: #fdd835;
 }
 
 .hljs-attr,
@@ -225,12 +214,12 @@ export default {
 .hljs-variable,
 .hljs-template-variable,
 .hljs-literal {
-  color: #FFAB40;
+  color: #ffab40;
 }
 
 .hljs-number,
 .hljs-deletion {
-  color: #FFAB40;
+  color: #ffab40;
 }
 
 .hljs-emphasis {
