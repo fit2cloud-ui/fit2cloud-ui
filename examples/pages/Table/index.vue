@@ -2,24 +2,28 @@
 
 <template>
   <div>
-   <code-example title="ComplexTable" :component="examples['complex-table-demo']"/>
+    <document-table :data="attributes"/>
+    <code-example
+      title="ComplexTable"
+      :component="examples['complex-table-demo']"
+    />
   </div>
 </template>
 
 <script>
-import examples from '../../mixins/docsExample'
+import examples from "../../mixins/docsExample";
+import attributes from './attributes';
 export default {
   name: "TableDoc",
   mixins: [examples],
   data() {
-    return {};
+    return {
+      attributes
+    };
   },
   methods: {},
-  created() {
-  },
-  mounted() {
-    // console.log(ComplexTableDemo.data);
-  },
+  created() {},
+  mounted() {},
 };
 </script>
 
