@@ -1,31 +1,19 @@
-
+<example path="./examples/ComplexTableDemo.vue"/>
 
 <template>
-  <div class="demo-block">
-    <!-- <div v-html=""></div> -->
-    <!-- <div id="codeView" v-highlight>
-      <pre><code>
-      <complex-table-demo>12232323</complex-table-demo>
-        </code></pre>
-    </div> -->
-
-    <!-- <complex-table-demo>12232323</complex-table-demo> -->
-    <complex-table-md></complex-table-md>
-    <ComplexTableDemo />
+  <div>
+   <code-example title="ComplexTable" :component="examples['complex-table-demo']"/>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import ComplexTableDemo from "./examples/ComplexTableDemo";
-import ComplexTableMd from "./examples/ComplexTableDemo.md";
+import examples from '../../mixins/docsExample'
 export default {
   name: "TableDoc",
+  mixins: [examples],
   data() {
     return {};
   },
-  components: { ComplexTableDemo, ComplexTableMd },
-
   methods: {},
   created() {
   },

@@ -1,6 +1,8 @@
 /* Components */
 import Vue from 'vue'
-import DemoBlock from './DemoBlock'
+import CodeBlock from './CodeBlock'
+import CodeExample from './CodeExample'
 import DocumentTable from './DocumentTable'
-Vue.component(DemoBlock.name, DemoBlock)
+Vue.component(CodeBlock.name, CodeBlock)
+Vue.component(CodeExample.name, CodeExample)
 Vue.component(DocumentTable.name, DocumentTable)

@@ -35,21 +35,14 @@ module.exports = {
     output: {
       library: 'Fit2CloudUI',
     },
-    module: {
-      rules: [
-        {
-          test: /\.md$/,
-          use: [
-            {
-              loader: 'vue-loader',
-            },
-            {
-              loader: require.resolve('./markdown-loader'),
-            },
-          ]
-        }
-      ]
-    },
   },
-  pages: pages()
+  pages: pages(),
+  chainWebpack: config => {
+    config.module
+      .rule('example')
+      .resourceQuery(/blockType=example/)
+      .use('example-loader')
+      .loader('./loaders/example-loader')
+      .end()
+  }
 };
