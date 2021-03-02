@@ -2,10 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import ElementUI from 'element-ui';
 import '@/styles/index.scss';
+import './style/markdown.css';
 import router from "./router";
 import filters from "@/filters"
 import Fit2CloudUI from "@/index"
 import './pages'
+import './components'
+
 
 Vue.config.productionTip = false
 

@@ -1,3 +1,4 @@
+```
 <template>
   <!-- <div> -->
     <complex-table header="动态表格"
@@ -120,3 +121,4 @@ export default {
 <style scoped>
 
 </style>
+```

@@ -22,7 +22,6 @@ function pages() {
     }
   }
 }
-
 module.exports = {
   publicPath: "./",
   productionSourceMap: true,
@@ -30,12 +29,27 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
       alias: {
-        '@': resolve('./src')
+        '@': resolve('./src'),
       }
     },
     output: {
       library: 'Fit2CloudUI',
-    }
+    },
+    module: {
+      rules: [
+        {
+          test: /\.md$/,
+          use: [
+            {
+              loader: 'vue-loader',
+            },
+            {
+              loader: require.resolve('./markdown-loader'),
+            },
+          ]
+        }
+      ]
+    },
   },
   pages: pages()
 };
