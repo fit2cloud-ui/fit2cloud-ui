@@ -1,7 +1,7 @@
 import locale from "@/locale"
 import "@/styles/index.scss"
 import PackageJSON from "../package.json"
-import 'prismjs/themes/prism.css';
+
 const components = require.context('@/components/', true, /index\.js$/);
 
 const plugin = {
