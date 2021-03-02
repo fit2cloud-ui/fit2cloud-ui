@@ -6,6 +6,8 @@ import router from "./router";
 import filters from "@/filters"
 import Fit2CloudUI from "@/index"
 import './pages'
+import './components'
+
 
 Vue.config.productionTip = false
 

@@ -22,7 +22,6 @@ function pages() {
     }
   }
 }
-
 module.exports = {
   publicPath: "./",
   productionSourceMap: true,
@@ -30,12 +29,12 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
       alias: {
-        '@': resolve('./src')
+        '@': resolve('./src'),
       }
     },
     output: {
       library: 'Fit2CloudUI',
-    }
+    },
   },
   pages: pages(),
   chainWebpack: config => {

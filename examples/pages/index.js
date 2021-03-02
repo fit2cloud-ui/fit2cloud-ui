@@ -2,7 +2,7 @@
 import Vue from 'vue'
 import SearchDemo from './search/SearchDemo'
 import SpeedDialDemo from './speed-dial/SpeedDialDemo'
-import TableDoc from './table'
+import TableDoc from './Table'
 import ExampleLoader from './example-loader'
 
 Vue.component(SearchDemo.name, SearchDemo)
