@@ -23,12 +23,12 @@ const navList = {
     {
       name: 'Speed Dial',
       path: 'speed-dial',
-      component: 'SpeedDialDemo'
+      component: 'SpeedDialDoc'
     },
     {
       name: 'SearchBar 搜索条',
       path: 'search',
-      component: 'SearchDemo'
+      component: 'SearchDoc'
     },
     {
       name: 'Example 文档加载',
