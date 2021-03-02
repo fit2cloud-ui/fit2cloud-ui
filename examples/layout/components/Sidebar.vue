@@ -38,6 +38,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$themeColor:#2D61A2;
 .sidebar {
   h1 {
     font-size: 16px;
@@ -53,7 +54,7 @@ export default {
       padding: 5px 0;
       padding-left: 30px;
       &:hover {
-        color: #1890ff;
+        color: $themeColor;
       }
     }
     .active {
@@ -65,7 +66,7 @@ export default {
         top: 0;
         right: 0;
         bottom: 0;
-        border-right: 3px solid #1890ff;
+        border-right: 3px solid $themeColor;
       }
     }
   }

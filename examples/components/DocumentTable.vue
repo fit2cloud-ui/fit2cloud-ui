@@ -65,7 +65,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .table {
   padding: 15px;
 }
@@ -74,13 +74,12 @@ export default {
   right: 120px;
   top: 100px;
   z-index: 5;
-  box-shadow: 0 0 6px rgb(0 0 0 / 12%);
-  color: #409eff;
+  box-shadow: 0 0 6px rgba(0,0,0,.12);
 }
 .el-icon-s-flag {
   color: #409eff;
 }
-.el-drawer__header {
+/deep/.el-drawer__header {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 0;
