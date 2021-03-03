@@ -1,6 +1,6 @@
 {
   "name": "fit2cloud-ui",
-  "version": "0.1.10",
+  "version": "0.1.12",
   "main": "./lib/fit2cloud-ui.common.js",
   "private": false,
   "scripts": {
@@ -17,6 +17,7 @@
     "url": "git+https://github.com/fit2cloud-ui/fit2cloud-ui.git"
   },
   "dependencies": {
+    "clipboard": "^2.0.6",
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
     "vue": "^2.6.11",
@@ -26,9 +27,12 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "highlight.js": "^9.15.6",
+    "loader-utils": "^2.0.0",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
     "vue-template-compiler": "^2.6.11"

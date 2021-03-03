@@ -1,19 +1,29 @@
+<example path="./examples/ComplexTableDemo.vue"/>
 
 <template>
-  <div class="demo-block"><ComplexTableDemo /></div>
+  <div>
+    <document-table :data="attributes"/>
+    <code-example
+      title="ComplexTable"
+      :component="examples['complex-table-demo']"
+    />
+  </div>
 </template>
 
 <script>
-import ComplexTableDemo from "./examples/ComplexTableDemo";
+import examples from "../../mixins/docsExample";
+import attributes from './attributes';
 export default {
   name: "TableDoc",
+  mixins: [examples],
   data() {
-    return {};
+    return {
+      attributes
+    };
   },
-  components: { ComplexTableDemo },
-
   methods: {},
   created() {},
+  mounted() {},
 };
 </script>
 
@@ -22,9 +32,9 @@ export default {
   border: 1px solid #ebebeb;
   border-radius: 3px;
   transition: 0.2s;
-  padding:5px 20px 15px;
+  padding: 5px 20px 15px;
   &:hover {
-    box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
   }
 }
 </style>

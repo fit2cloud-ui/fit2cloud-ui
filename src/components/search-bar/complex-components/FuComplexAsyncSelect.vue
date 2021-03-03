@@ -74,7 +74,6 @@ export default {
     init() {
       this.value = ""
       this.operator = this.defaultOperator || this.operators[0].value
-      console.log(this.operator)
       this.loading.status = true
       this.options = []
       this.initOptions(this.options, this.loading)

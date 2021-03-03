@@ -26,7 +26,6 @@
 </template>
 
 <script>
-
 import ComplexTable from "./ComplexTable";
 
 const data = [
@@ -109,7 +108,8 @@ export default {
       let start = (currentPage - 1) * pageSize
       let end = currentPage * pageSize
       this.data = data.slice(start, end)
-    }
+    },
+
   },
   created() {
     this.search()

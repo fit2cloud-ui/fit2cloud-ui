@@ -1,153 +1,149 @@
 <template>
-  <div class="code-example">
-    <md-toolbar class="md-primary md-dense" md-theme="dark" md-elevation="0" v-if="title">
-      <span class="md-title">{{ title }}</span>
-      <md-button class="md-icon-button md-dense" @click="toggleCode" v-if="component.name">
-        <md-icon>code</md-icon>
-        <md-tooltip md-theme="default">Code</md-tooltip>
-      </md-button>
-      <codesandbox-edit :component="component" :title="title" v-if="component.name" />
-    </md-toolbar>
-
-    <transition name="block">
-      <code-block :label="label" :lang="lang" v-if="!component.name || $slots.default || showCode">
+  <div
+    class="code-example"
+    @mouseenter="hovering = true"
+    @mouseleave="hovering = false"
+  >
+    <div class="source">
+      <component :is="component.name" />
+    </div>
+    <div class="meta" ref="meta" :style="{ height: childHeight }">
+      <code-block
+        :label="label"
+        :lang="lang"
+        ref="code-block"
+        v-show="showCode"
+      >
         <slot>{{ component.source }}</slot>
       </code-block>
-
-      <md-content class="demo" :md-theme="theme" v-else>
-        <div class="demo-content">
-          <component :is="component.name" />
-        </div>
-
-        <md-button class="button-theme md-icon-button md-dense md-raised md-accent" @click="toggleTheme" v-if="component.name">
-          <md-icon>invert_colors</md-icon>
-          <md-tooltip md-direction="top">Invert Colors</md-tooltip>
-        </md-button>
-      </md-content>
-    </transition>
+    </div>
+    <div class="demo-block-control" ref="control" @click="showCode = !showCode">
+      <transition name="arrow-slide">
+        <i :class="[iconClass(), { hovering: hovering }]"></i>
+      </transition>
+      <transition name="text-slide">
+        <span v-show="hovering">{{ controlText() }}</span>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import CodeBlock from "./CodeBlock";
 
 export default {
-    name: 'CodeExample',
-    props: {
-      component: {
-        type: Object,
-        default: () => ({})
-      },
-      title: String,
-      label: {
-        type: String,
-        default: 'Vue'
-      },
-      lang: String
+  name: "CodeExample",
+  components: { CodeBlock },
+  props: {
+    component: {
+      type: Object,
+      default: () => ({}),
     },
-    data: () => ({
-      showCode: false,
-      isThemeDark: false
-    }),
-    computed: {
-      ...mapState({
-        currentTheme: 'theme'
-      }),
-      theme () {
-        if (this.isThemeDark) {
-          return this.getThemeName('dark')
-        }
-
-        return this.getThemeName('light')
-      }
+    title: String,
+    label: {
+      type: String,
+      default: "Vue",
     },
-    watch: {
-      currentTheme (theme) {
-        this.isThemeDark = this.currentTheme.includes('dark')
-      }
+    lang: String,
+  },
+  data: () => ({
+    showCode: false,
+    hovering: false,
+    childHeight: "0",
+  }),
+  watch: {
+    showCode(val) {
+      this.$nextTick(() => {
+        this.childHeight = val
+          ? `${this.$refs["code-block"].$el.offsetHeight}px`
+          : "0";
+      });
     },
-    methods: {
-      getThemeName (baseName) {
-        return `demo-${baseName}`
-      },
-      toggleCode () {
-        this.showCode = !this.showCode
-      },
-      toggleTheme () {
-        this.isThemeDark = !this.isThemeDark
-      }
-    }
-  }
+  },
+  methods: {
+    iconClass() {
+      return this.showCode ? "el-icon-caret-top" : "el-icon-caret-bottom";
+    },
+    controlText() {
+      return this.showCode ? "隐藏代码" : "显示代码";
+    },
+    codeArea() {
+      return this.$ref["code-block"];
+    },
+  },
+};
 </script>
-
 <style lang="scss" scoped>
-  @import "~vue-material/components/MdAnimation/variables";
-  @import "~vue-material/theme/engine";
-
-  $color: md-get-palette-color(grey, 700);
-
-  .code-example {
-    margin: 36px 0;
+.code-example {
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
   }
-
-  .md-toolbar.md-primary {
+  .source {
+    padding: 24px;
+  }
+  .meta {
+    background-color: #fafafa;
+    border-top: solid 1px #eaeefb;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.2s;
+  }
+  .demo-block-control {
+    border-top: solid 1px #eaeefb;
+    height: 44px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    text-align: center;
+    margin-top: -1px;
+    color: #d3dce6;
+    cursor: pointer;
     position: relative;
-    z-index: 1;
-    background-color: $color;
-    color: #fff;
 
-    .md-icon {
-      color: #fff;
+    // &.is-fixed {
+    //   position: fixed;
+    //   bottom: 0;
+    //   width: 978px;
+    // }
+    i {
+      font-size: 16px;
+      line-height: 44px;
+      transition: 0.3s;
+      &.hovering {
+        transform: translateX(-40px);
+      }
+    }
+    > span {
+      position: absolute;
+      transform: translateX(-30px);
+      font-size: 14px;
+      line-height: 44px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    &:hover {
+      color: #409eff;
+      background-color: #f9fafc;
+    }
+    & .text-slide-enter,
+    & .text-slide-leave-active {
+      opacity: 0;
+      transform: translateX(10px);
+    }
+
+    .control-button {
+      line-height: 26px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 14px;
+      padding-left: 5px;
+      padding-right: 25px;
     }
   }
-
-  .md-title {
-    flex: 1;
-    color: #fff !important;
-  }
-
-  .md-button {
-    margin: 8px;
-  }
-
-  .demo {
-    min-height: 86px;
-    padding: 16px;
-    position: relative;
-    border: 1px solid $color;
-    border-top: 0;
-
-    &.md-theme-demo-light {
-      background-color: md-get-palette-color(grey, 50);
-    }
-
-    &.md-theme-demo-dark {
-      background-color: md-get-palette-color(grey, 900);
-    }
-  }
-
-  .demo-content {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  .button-theme {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 40;
-  }
-
-  .block-leave-active {
-    display: none;
-  }
-
-  .block-enter-active {
-    opacity: 0;
-    transition: opacity .4s $md-transition-default-timing;
-    will-change: opacity;
-  }
-
-  .block-enter-to {
-    opacity: 1;
-  }
+}
 </style>
