@@ -17,6 +17,7 @@
         <slot>{{ component.source }}</slot>
       </code-block>
     </div>
+
     <div class="demo-block-control" ref="control" @click="showCode = !showCode">
       <transition name="arrow-slide">
         <i :class="[iconClass(), { hovering: hovering }]"></i>
@@ -25,6 +26,15 @@
         <span v-show="hovering">{{ controlText() }}</span>
       </transition>
     </div>
+    <el-tooltip content="隐藏代码" placement="left">
+      <el-button
+        v-show="fixedControl"
+        class="is-fixed"
+        @click="showCode = false"
+        icon="el-icon-caret-top"
+        circle
+      ></el-button>
+    </el-tooltip>
   </div>
 </template>
 
@@ -50,6 +60,8 @@ export default {
     showCode: false,
     hovering: false,
     childHeight: "0",
+    fixedControl: false,
+    scrollParent: null,
   }),
   watch: {
     showCode(val) {
@@ -58,6 +70,16 @@ export default {
           ? `${this.$refs["code-block"].$el.offsetHeight}px`
           : "0";
       });
+      if (!val) {
+        this.fixedControl = false;
+        this.$refs.control.style.left = "0";
+        this.removeScrollHandler();
+        return;
+      }
+      setTimeout(() => {
+        window.addEventListener("scroll", this.scrollHandler);
+        this.scrollHandler();
+      }, 200);
     },
   },
   methods: {
@@ -69,6 +91,19 @@ export default {
     },
     codeArea() {
       return this.$ref["code-block"];
+    },
+    scrollHandler() {
+      const { top, bottom, left } = this.$refs.meta.getBoundingClientRect();
+
+      this.fixedControl =
+        bottom > document.documentElement.clientHeight &&
+        top + 44 <= document.documentElement.clientHeight;
+      this.$refs.control.style.left = this.fixedControl ? `${left}px` : "0";
+    },
+
+    removeScrollHandler() {
+      this.scrollParent &&
+        this.scrollParent.removeEventListener("scroll", this.scrollHandler);
     },
   },
 };
@@ -91,6 +126,13 @@ export default {
     height: 0;
     transition: height 0.2s;
   }
+  .is-fixed {
+    position: fixed;
+    bottom: 50px;
+    right: 150px;
+    color: #2D61A2;
+    font-size: 16px;
+  }
   .demo-block-control {
     border-top: solid 1px #eaeefb;
     height: 44px;
@@ -104,11 +146,6 @@ export default {
     cursor: pointer;
     position: relative;
 
-    // &.is-fixed {
-    //   position: fixed;
-    //   bottom: 0;
-    //   width: 978px;
-    // }
     i {
       font-size: 16px;
       line-height: 44px;
