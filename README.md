@@ -1,6 +1,6 @@
 # FIT2CLOUD UI
 
-FIT2CLOUD UI 是基于Element UI二次开发的前端组件库，提供企业软件开发时常用的组件，过滤器，指令，工具等
+FIT2CLOUD UI 是基于Element UI二次开发的前端组件库，提供企业软件开发时常用的组件，过滤器，指令等
 
 ## 快速开始
 
