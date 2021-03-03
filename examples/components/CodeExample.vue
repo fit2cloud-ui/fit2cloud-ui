@@ -31,9 +31,9 @@
         v-show="fixedControl"
         class="is-fixed"
         @click="showCode = false"
-        icon="el-icon-caret-top"
         circle
-      ></el-button>
+        ><img src="../assets/hidden-code.png" width="18"
+      /></el-button>
     </el-tooltip>
   </div>
 </template>
@@ -82,6 +82,9 @@ export default {
       }, 200);
     },
   },
+  beforeDestroy() {
+    this.removeScrollHandler();
+  },
   methods: {
     iconClass() {
       return this.showCode ? "el-icon-caret-top" : "el-icon-caret-bottom";
@@ -94,7 +97,6 @@ export default {
     },
     scrollHandler() {
       const { top, bottom, left } = this.$refs.meta.getBoundingClientRect();
-
       this.fixedControl =
         bottom > document.documentElement.clientHeight &&
         top + 44 <= document.documentElement.clientHeight;
@@ -102,8 +104,7 @@ export default {
     },
 
     removeScrollHandler() {
-      this.scrollParent &&
-        this.scrollParent.removeEventListener("scroll", this.scrollHandler);
+      window.removeEventListener("scroll", this.scrollHandler);
     },
   },
 };
@@ -130,7 +131,7 @@ export default {
     position: fixed;
     bottom: 50px;
     right: 150px;
-    color: #2D61A2;
+    color: #2d61a2;
     font-size: 16px;
   }
   .demo-block-control {

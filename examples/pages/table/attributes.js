@@ -1,46 +1,65 @@
+/**
+ * 说明文档
+ * @name 表格名称
+ * @header 表格头部参数,任意定义
+ * @table table内容,字段要和header定义的属性保持一直
+ */
 export default [
   {
-    prop: 'collapse',
-    desc: '菜单是否折叠',
-    type: 'Boolean',
-    enum: 'true / false',
-    default: 'false',
-    config: true,
+    name: 'Table Attributes',
+    header: { prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值" },
+    table: [
+      {
+        prop: 'header',
+        desc: '表格标题',
+        type: 'string',
+        enum: '—',
+        default: '—',
+      },
+      {
+        prop: 'local-key',
+        desc: '-',
+        type: 'string',
+        enum: '-',
+        default: '—',
+      },
+      {
+        prop: 'columns',
+        desc: '-',
+        type: '-',
+        enum: '-',
+        default: '—',
+      },
+      {
+        prop: 'search-config',
+        desc: '-',
+        type: 'Boolean',
+        enum: '—',
+        default: 'false',
+      },
+      {
+        prop: 'pagination-config',
+        desc: '分页展示',
+        type: 'Object',
+        enum: '—',
+        default: '-',
+      },
+    ]
   },
   {
-    prop: 'theme',
-    desc: '皮肤类型',
-    type: 'String',
-    enum: 'white / dark',
-    default: 'dark',
-    config: true,
-  },
-  {
-    prop: 'data',
-    desc: '页面导航菜单配置文件',
-    type: 'Array',
-    enum: '-',
-    default: '[]',
-  },
-  {
-    prop: 'value / v-mode',
-    desc: '当前激活菜单 path',
-    type: 'String',
-    enum: '-',
-    default: '-',
-  },
-  {
-    prop: 'router',
-    desc: '是否启用 vue-router 模式',
-    type: 'Boolean',
-    enum: 'true / false',
-    default: 'false',
-  },
-  {
-    prop: 'otherHeight',
-    desc: '排除高度，默认占高100%，如父容器有其他元素可通过这个属性设定',
-    type: 'String',
-    enum: '-',
-    default: '-',
-  },
+    name: 'Table Methods',
+    header: { methods: '方法名', desc: "说明", value: '参数' },
+    table: [
+      {
+        methods: 'search',
+        desc: '搜索条',
+        value: '—',
+      },
+      {
+        methods: 'toggleRowSelection',
+        desc: '用于多选表格，切换某一行的选中状态，如果使用了第二个参数，则是设置这一行选中与否（selected 为 true 则选中）',
+        value: 'row, selected',
+      },
+    ]
+  }
 ];
