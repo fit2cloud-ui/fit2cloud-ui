@@ -16,6 +16,12 @@ npm install fit2cloud-ui
 npm install element-ui
 ```
 
+因为需要使用scss，所以需要安装sass
+
+```sh
+npm install -D sass-loader node-sass
+```
+
 ### 引入
 
 ```sh
