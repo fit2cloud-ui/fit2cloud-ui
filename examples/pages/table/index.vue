@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <document-table :data="attributes"/>
+    <document-table :data="attributes" />
     <code-example
       title="ComplexTable"
       :component="examples['complex-table-demo']"
@@ -12,13 +12,14 @@
 
 <script>
 import examples from "../../mixins/docsExample";
-import attributes from './attributes.js';
+import attributes from "./attributes";
 export default {
   name: "TableDoc",
   mixins: [examples],
   data() {
     return {
-      attributes
+      attributes,
+      value1: '',
     };
   },
   methods: {},

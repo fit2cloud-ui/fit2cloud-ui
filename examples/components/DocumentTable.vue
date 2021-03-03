@@ -1,11 +1,13 @@
 <template>
   <div>
-    <el-button
-      @click="drawer = true"
-      class="attributesButton"
-      icon="el-icon-reading"
-      circle
-    ></el-button>
+    <el-tooltip content="代码说明" placement="left">
+      <el-button
+        @click="drawer = true"
+        class="attributesButton"
+        icon="el-icon-reading"
+        circle
+      ></el-button>
+    </el-tooltip>
     <el-drawer
       title="Attributes"
       :visible.sync="drawer"
@@ -74,7 +76,7 @@ export default {
   right: 120px;
   top: 100px;
   z-index: 5;
-  box-shadow: 0 0 6px rgba(0,0,0,.12);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
 }
 .el-icon-s-flag {
   color: #409eff;
