@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrapper">
     <h1>{{ nowComponent.name }}</h1>
-    <component :is="nowComponent.component" />
+    <component :is="nowComponent.component" class="page-container" />
   </div>
 </template>
 <script>
@@ -45,6 +45,18 @@ export default {
   h1 {
     font-weight: 400;
     color: #1f2f3d;
+    font-size: 28px;
+  }
+  /deep/.page-container {
+    p {
+      font-size: 14px;
+      color: #5e6d82;
+      line-height: 1.5em;
+    }
+    h2 {
+      font-weight: 400;
+      color: #1f2f3d;
+    }
   }
 }
 </style>
