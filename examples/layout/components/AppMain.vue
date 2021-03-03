@@ -1,31 +1,40 @@
 <template>
   <div class="main-wrapper">
-    <h1>{{nowComponent.name}}</h1>
-    <component :is='nowComponent.component'/>
-    
+    <h1>{{ nowComponent.name }}</h1>
+    <component :is="nowComponent.component" class="page-container" />
   </div>
 </template>
 <script>
-import {getComponent} from "../../utils/nav";
-
+import { navList } from "../../utils/nav";
 export default {
   name: "AppMain",
   data() {
     return {
+      navList,
       nowComponent: null,
-      showPath: "complex-table",
     };
   },
   watch: {
     $route: {
       immediate: true,
       handler: function (newValue, oldValue) {
-        this.nowComponent=getComponent(newValue.params.comName,newValue.params.type)
+        this.nowComponent = this.getComponent(
+          newValue.params.comName,
+          newValue.params.type
+        );
       },
     },
   },
   methods: {
-    getComponent,
+    getComponent(path, type) {
+      let component;
+      navList[type].map((item) => {
+        if (path === item.path) {
+          component = item;
+        }
+      });
+      return component || navList["components"][0];
+    },
   },
 };
 </script>
@@ -33,9 +42,21 @@ export default {
 <style lang="scss" scoped>
 .main-wrapper {
   width: 90%;
-  h1{
+  h1 {
     font-weight: 400;
     color: #1f2f3d;
+    font-size: 28px;
+  }
+  /deep/.page-container {
+    p {
+      font-size: 14px;
+      color: #5e6d82;
+      line-height: 1.5em;
+    }
+    h2 {
+      font-weight: 400;
+      color: #1f2f3d;
+    }
   }
 }
 </style>

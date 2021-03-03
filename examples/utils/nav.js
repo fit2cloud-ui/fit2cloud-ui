@@ -1,18 +1,9 @@
-const type = [
-  {
-    name: '组件',
-    value: 'components'
-  },
-  {
-    name: '过滤器',
-    value: 'filters'
-  },
-  {
-    name: '指令',
-    value: 'directives'
-  },
-
-]
+/**
+ * @navList 配置导航目录
+ * {component}是pages下每个文件夹的index.vue的name, 命名规则第一个字母大写Doc结尾
+ * {path},动态路由
+ * {name},目录的中文名以及页面标题
+ */
 const navList = {
   "components": [
     {
@@ -40,7 +31,27 @@ const navList = {
   "filters": [],
   "directives": [],
 }
+/**
+ * @type 一级分类 
+ */
+const type = [
+  {
+    name: '组件',
+    value: 'components'
+  },
+  {
+    name: '过滤器',
+    value: 'filters'
+  },
+  {
+    name: '指令',
+    value: 'directives'
+  },
 
+]
+/**
+ * @getTypeName 将一级分类的value转name 
+ */
 function getTypeName(val) {
   let name
   type.map(item => {
@@ -51,19 +62,7 @@ function getTypeName(val) {
   return name || '组件'
 }
 
-function getComponent(path, type) {
-  let component
-  navList[type].map(item => {
-    if (path === item.path) {
-      component = item
-    }
-  })
-  return component || navList['components'][0]
-}
-
-// export default navList
 export {
   navList,
-  getComponent,
   getTypeName
 }

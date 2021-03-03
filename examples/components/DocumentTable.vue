@@ -1,41 +1,34 @@
 <template>
   <div>
-    <el-button
-      @click="drawer = true"
-      class="attributesButton"
-      icon="el-icon-reading"
-      circle
-    ></el-button>
-    <el-drawer
-      title="Attributes"
-      :visible.sync="drawer"
-      direction="rtl"
-      size="60%"
-    >
-      <div class="table">
-        <el-table :data="data" style="width: 100%" :height="height">
-          <template>
-            <el-table-column prop="prop" label="参数" width="170">
-              <template slot-scope="scope">
-                {{ scope.row.prop }}
-                <el-tooltip
-                  v-if="scope.row.config"
-                  effect="dark"
-                  content="此参数未配置默认使用全局联动配置项"
-                  placement="top-start"
-                >
-                  <a class="el-icon-s-flag"></a>
-                </el-tooltip>
-              </template>
-            </el-table-column>
-            <el-table-column prop="desc" label="说明"> </el-table-column>
-            <el-table-column prop="type" label="类型" width="150">
-            </el-table-column>
-            <el-table-column prop="enum" label="可选值"> </el-table-column>
-            <el-table-column prop="default" label="默认值" width="100">
-            </el-table-column>
-          </template>
-        </el-table>
+    <el-tooltip content="代码说明" placement="left">
+      <el-button
+        @click="drawer = true"
+        class="attributesButton"
+        icon="el-icon-reading"
+        circle
+      ></el-button>
+    </el-tooltip>
+    <el-drawer :visible.sync="drawer" direction="rtl" size="60%">
+      <div class="drawer-container">
+        <div class="table" v-for="(item, index) in data" :key="index">
+          <!-- <el-scrollbar> -->
+          <h1>{{ item.name || 'Attributes'}}</h1>
+          <el-table :data="item.table" style="width: 100%" border header-row-class-name="attr-table-th">
+            <template>
+              <el-table-column
+                v-for="(value,key) in item.header"
+                :key="key"
+                :prop="key"
+                :label="value"
+              >
+                <template slot-scope="scope">{{
+                  scope.row[key]
+                }}</template>
+              </el-table-column>
+            </template>
+          </el-table>
+        </div>
+        <!-- </el-scrollbar> -->
       </div>
     </el-drawer>
   </div>
@@ -61,20 +54,17 @@ export default {
   methods: {},
   created() {},
   mounted() {
-    this.height = document.documentElement.clientHeight - 100;
+    // this.height = document.documentElement.clientHeight - 100;
   },
 };
 </script>
 <style scoped lang="scss">
-.table {
-  padding: 15px;
-}
 .attributesButton {
   position: fixed;
   right: 120px;
   top: 100px;
   z-index: 5;
-  box-shadow: 0 0 6px rgba(0,0,0,.12);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
 }
 .el-icon-s-flag {
   color: #409eff;
@@ -83,5 +73,16 @@ export default {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 0;
+}
+.drawer-container {
+  height: calc(100vh - 55px);
+  overflow: auto;
+  padding: 0 20px;
+}
+.table{
+  margin-bottom: 40px;
+}
+/deep/.attr-table-th th{
+   background: #f5f7fa;
 }
 </style>
