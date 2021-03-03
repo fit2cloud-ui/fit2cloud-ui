@@ -1,8 +1,9 @@
 $headerHeight: 60px;
 $sideBarWidth: 250px;
+$themeColor:#2D61A2;
 .header-wrapper{
     height: $headerHeight;
-    line-height: $headerHeight;
+    // line-height: $headerHeight;
     border-bottom: 1px solid #dcdfe6;
 }
 .app-container{
@@ -23,4 +24,7 @@ $sideBarWidth: 250px;
 .app-main{
     padding:20px 20px 20px $sideBarWidth+20px;
 
+}
+.attributesButton{
+    color: $themeColor;
 }

@@ -1,39 +1,57 @@
 <template>
   <div class="header-wrapper">
-   FIT2CLOUD UI 组件示例
+    <div class="logo">
+      <img src="../../assets/logo.png" height="25" alt="" />
+    </div>
+    <div class="right">
+      <span class="version">{{ PackageJSON.version }}</span>
+      <a href="https://github.com/fit2cloud-ui/fit2cloud-ui" target="_blank"><img src="../../assets/github.png" height="30" alt="" /></a>
+    </div>
   </div>
 </template>
 <script>
+import PackageJSON from "../../../package.json";
 export default {
-  name: 'AppHeader',
-  components: {
-  },
+  name: "AppHeader",
+  components: {},
 
-  watch: {
-  },
-  data () {
+  watch: {},
+  data() {
     return {
+      PackageJSON,
       isDot: false,
-      number: '',
-      input2: ''
+      number: "",
+      input2: "",
       // dialogUpdateForm: false
-    }
+    };
   },
-  mounted () {
+  mounted() {
     // this.unread()
   },
-  methods: {
-  
-  }
-}
-
+  methods: {},
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.header-wrapper{
+.header-wrapper {
   background-color: #fff;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  .logo {
+    margin-left: 25px;
+  }
+  .right {
+    margin-right: 25px;
+  }
+  .version {
+    font-size: 16px;
+    margin-right: 25px;
+    vertical-align: super;
+    color: #888;
+  }
 }
-
 </style>
 

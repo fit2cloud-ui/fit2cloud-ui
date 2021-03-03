@@ -1,6 +1,6 @@
 <template>
   <div class="code-block" :data-label="label">
-    <div class="code-block-wrapper" :style="{ 'max-height': height }">
+    <div class="code-block-wrapper">
       <pre><code ref="block" :class="lang"><slot v-pre/></code></pre>
 
       <span class="copy-message" :class="{ active: showMessage }"
@@ -32,10 +32,10 @@ export default {
   props: {
     lang: String,
     label: String,
-    height: {
-      type: [Number, String],
-      default: "450px",
-    },
+    // height: {
+    //   type: [Number, String],
+    //   default: "450px",
+    // },
   },
   data: () => ({
     showMessage: false,
@@ -114,7 +114,7 @@ export default {
 
 .code-block-wrapper {
   // min-width: 100%;
-  max-height: 450px;
+  // max-height: 450px;
   min-height: 86px;
   padding: 25px;
   overflow: auto;

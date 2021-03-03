@@ -1,24 +1,23 @@
-<example path="./examples/ComplexTableDemo.vue"/>
+<example path="./examples/SearchDemo.vue"/>
 
 <template>
   <div>
-    <document-table :data="attributes"/>
+    <!-- <document-table :data="attributes"/> -->
     <code-example
       title="ComplexTable"
-      :component="examples['complex-table-demo']"
+      :component="examples['search-demo']"
     />
   </div>
 </template>
 
 <script>
 import examples from "../../mixins/docsExample";
-import attributes from './attributes.js';
 export default {
-  name: "TableDoc",
+  name: "SearchDoc",
   mixins: [examples],
   data() {
     return {
-      attributes
+      // attributes
     };
   },
   methods: {},
