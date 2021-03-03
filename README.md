@@ -1,6 +1,6 @@
 # FIT2CLOUD UI
 
-FIT2CLOUD UI 是基于Element UI二次开发的前端组件库，提供企业软件开发时常用的组件，过滤器，指令等
+FIT2CLOUD UI 是基于Element UI二次开发的Vue组件库，提供企业软件开发时常用的组件，过滤器，指令等
 
 ## 快速开始
 
@@ -14,6 +14,12 @@ npm install fit2cloud-ui
 
 ```sh
 npm install element-ui
+```
+
+因为需要使用scss，所以需要安装sass
+
+```sh
+npm install -D sass-loader node-sass
 ```
 
 ### 引入
