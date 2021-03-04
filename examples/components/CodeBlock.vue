@@ -1,12 +1,19 @@
 <template>
-  <div class="code-block" :data-label="label">
+  <div class="code-block"
+       :data-label="label">
+    <div class="description"
+         v-html="description"
+         v-if="description">
+      <!--描述-->
+    </div>
     <div class="code-block-wrapper">
       <pre><code ref="block" :class="lang"><slot v-pre/></code></pre>
-
-      <span class="copy-message" :class="{ active: showMessage }">Code copied!</span>
+      <span class="copy-message"
+            :class="{ active: showMessage }">Code copied!</span>
     </div>
 
-    <el-button ref="copy" class="copy">Copy</el-button>
+    <el-button ref="copy"
+               class="copy">Copy</el-button>
   </div>
 </template>
 
@@ -28,6 +35,7 @@ export default {
   name: "CodeBlock",
   mixins: [codeSource],
   props: {
+    description: String,
     lang: String,
     label: String,
     // height: {
@@ -75,7 +83,7 @@ export default {
   max-width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #fafafa;
+  background-color: #f5f9ff;
 
   ::selection {
     background-color: #3e3d3d;
@@ -107,6 +115,25 @@ export default {
   code {
     padding: 0;
     background: none;
+  }
+  .description {
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #999999;
+    word-break: break-word;
+    margin: 10px;
+    background-color: #fff;
+    /deep/keyword {
+      color: #5e6d82;
+      background-color: #e6effb;
+      margin: 0 4px;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
   }
 }
 
@@ -144,12 +171,12 @@ export default {
 
 <style lang="scss">
 .hljs {
-  color: #a4a3a3;
-  font-family: "Roboto Mono", monospace;
-  font-size: 15px;
+  color: #333333;
+  font-family: Menlo, Monaco, Consolas, Courier, monospace;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: normal;
-  line-height: 1.5em;
+  line-height: 1.5rem;
 }
 
 .hljs-comment,
@@ -161,12 +188,12 @@ export default {
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-name {
-  color: #f07178;
+  color: #3182bd;
 }
 
 .hljs-tag,
 .hljs-params {
-  color: #89ddff;
+  color: #3182bd;
 }
 
 .hljs-attribute {
@@ -176,7 +203,7 @@ export default {
 .hljs-selector-class,
 .hljs-selector-id,
 .hljs-built_in {
-  color: #fdd835;
+  color: #31a354;
 }
 
 .hljs-attr,
@@ -188,7 +215,7 @@ export default {
 
 .hljs-string,
 .hljs-addition {
-  color: #bbdf88;
+  color: #666666;
 }
 
 .hljs-subst {
@@ -212,7 +239,7 @@ export default {
 .hljs-variable,
 .hljs-template-variable,
 .hljs-literal {
-  color: #ffab40;
+  color: #31a354;
 }
 
 .hljs-number,
@@ -234,6 +261,6 @@ export default {
 }
 
 .javascript .hljs-attr {
-  color: #bbdf88;
+  color: #3182bd;
 }
 </style>

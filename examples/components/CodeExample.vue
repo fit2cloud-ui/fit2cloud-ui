@@ -1,15 +1,24 @@
 <template>
-  <div class="code-example" @mouseenter="hovering = true" @mouseleave="hovering = false">
+  <div class="code-example"
+       @mouseenter="hovering = true"
+       @mouseleave="hovering = false">
     <div class="source">
       <component :is="component.name" />
     </div>
-    <div class="meta" ref="meta" :style="{ height: childHeight }">
-      <code-block :label="label" :lang="lang" ref="code-block" v-show="showCode">
+    <div class="meta"
+         ref="meta"
+         :style="{ height: childHeight }">
+      <code-block :label="label"
+                  :lang="lang"
+                  :description="description"
+                  ref="code-block"
+                  v-show="showCode">
         <slot>{{ component.source }}</slot>
       </code-block>
     </div>
-
-    <div class="demo-block-control" ref="control" @click="showCode = !showCode">
+    <div class="demo-block-control"
+         ref="control"
+         @click="showCode = !showCode">
       <transition name="arrow-slide">
         <i :class="[iconClass(), { hovering: hovering }]"></i>
       </transition>
@@ -17,9 +26,14 @@
         <span v-show="hovering">{{ controlText() }}</span>
       </transition>
     </div>
-    <el-tooltip content="隐藏代码" placement="left">
-      <el-button v-show="fixedControl" class="is-fixed" @click="showCode = false" circle>
-        <img src="../assets/hidden-code.png" width="18" />
+    <el-tooltip content="隐藏代码"
+                placement="left">
+      <el-button v-show="fixedControl"
+                 class="is-fixed"
+                 @click="showCode = false"
+                 circle>
+        <img src="../assets/hidden-code.png"
+             width="18" />
       </el-button>
     </el-tooltip>
   </div>
@@ -37,6 +51,7 @@ export default {
       default: () => ({})
     },
     title: String,
+    description: String,
     label: {
       type: String,
       default: "Vue",
@@ -96,6 +111,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$themeColor: #2d61a2;
 .code-example {
   border: 1px solid #ebebeb;
   border-radius: 3px;
@@ -116,7 +132,8 @@ export default {
   .is-fixed {
     position: fixed;
     bottom: 50px;
-    right: 150px;
+    margin-left: 790px;
+    // right: 150px;
     color: #2d61a2;
     font-size: 16px;
   }
@@ -150,7 +167,7 @@ export default {
       display: inline-block;
     }
     &:hover {
-      color: #409eff;
+      color: $themeColor;
       background-color: #f9fafc;
     }
     & .text-slide-enter,
@@ -168,6 +185,11 @@ export default {
       padding-left: 5px;
       padding-right: 25px;
     }
+  }
+}
+@media (max-width: 1140px) {
+  .is-fixed {
+    right: 0;
   }
 }
 </style>

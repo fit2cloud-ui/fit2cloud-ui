@@ -1,16 +1,20 @@
 <template>
   <div class="app-wrapper">
-    <app-header class="app-header">header</app-header>
+    <div class="app-header">
+      <app-header>header</app-header>
+    </div>
     <div class="app-container">
       <sidebar class="sidebar-container" />
-      <div class="app-main"><app-main /></div>
+      <div class="app-main">
+        <app-main />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import "./layout.scss";
-import {AppHeader, AppMain, Sidebar} from "./components";
+import { AppHeader, AppMain, Sidebar } from "./components";
 
 export default {
   name: "Home",
@@ -19,7 +23,7 @@ export default {
     AppHeader,
     AppMain,
   },
-  created() {
+  created () {
   },
 };
 </script>
@@ -34,6 +38,8 @@ export default {
   width: 100%;
   left: 0;
   top: 0;
+  background-color: #0e355d;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   z-index: 1500;
 }
 </style>

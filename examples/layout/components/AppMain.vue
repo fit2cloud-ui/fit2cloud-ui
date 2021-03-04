@@ -41,13 +41,14 @@ export default {
 
 <style lang="scss" scoped>
 .main-wrapper {
-  width: 90%;
+  width: 100%;
   h1 {
     font-weight: 400;
     color: #1f2f3d;
     font-size: 28px;
   }
   /deep/.page-container {
+    position: relative;
     p {
       font-size: 14px;
       color: #5e6d82;
