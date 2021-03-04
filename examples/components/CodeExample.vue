@@ -131,7 +131,7 @@ $themeColor: #2d61a2;
   }
   .is-fixed {
     position: fixed;
-    bottom: 40%;
+    bottom: 150px;
     margin-left: 795px;
     // right: 150px;
     color: #2d61a2;
