@@ -90,9 +90,4 @@ export default {
 /deep/.attr-table-th th {
   background: #f5f7fa;
 }
-@media (max-width: 1140px) {
-  .attributesButton {
-    right: 0;
-  }
-}
 </style>

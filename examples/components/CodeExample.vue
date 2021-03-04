@@ -131,8 +131,8 @@ $themeColor: #2d61a2;
   }
   .is-fixed {
     position: fixed;
-    bottom: 50px;
-    margin-left: 790px;
+    bottom: 40%;
+    margin-left: 795px;
     // right: 150px;
     color: #2d61a2;
     font-size: 16px;
@@ -187,9 +187,5 @@ $themeColor: #2d61a2;
     }
   }
 }
-@media (max-width: 1140px) {
-  .is-fixed {
-    right: 0;
-  }
-}
+
 </style>

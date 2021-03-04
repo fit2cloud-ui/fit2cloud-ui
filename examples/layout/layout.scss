@@ -32,10 +32,17 @@ $themeColor: #2d61a2;
 .attributesButton {
   color: $themeColor;
 }
+
 @media (max-width: 1140px) {
   .header-wrapper,
   .app-container {
     width: 100%;
+  }
+  .attributesButton {
+    right: 0;
+  }
+  .is-fixed {
+    right: 0;
   }
 }
 
@@ -45,4 +52,16 @@ $themeColor: #2d61a2;
     padding: 0 20px;
   }
 
+}
+@media (min-width: 1600px) {
+  .header-wrapper,
+  .app-container {
+    width: 80%;
+  }
+  .attributesButton {
+    right: 10%;
+  }
+  .is-fixed {
+    right: 10%;
+  }
 }
