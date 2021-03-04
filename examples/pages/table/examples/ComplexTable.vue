@@ -8,7 +8,7 @@
       <slot name="toolbar">
         <fu-search-bar v-bind="searchConfig" @exec="search">
           <slot name="buttons"></slot>
-          <fu-table-column-select :columns="columns"/>
+          <fu-table-column-select :columns="columns" />
         </fu-search-bar>
       </slot>
     </div>
@@ -22,9 +22,7 @@
     <div class="complex-table__pagination" v-if="$slots.pagination || paginationConfig">
       <slot name="pagination">
         <fu-table-pagination :current-page.sync="paginationConfig.currentPage"
-                             :page-size.sync="paginationConfig.pageSize"
-                             v-bind="paginationConfig"
-                             @change="search"/>
+          :page-size.sync="paginationConfig.pageSize" v-bind="paginationConfig" @change="search" />
       </slot>
     </div>
   </div>
@@ -44,13 +42,13 @@ export default {
     searchConfig: Object,
     paginationConfig: Object,
   },
-  data() {
+  data () {
     return {
       condition: {}
     }
   },
   methods: {
-    search(condition, e) {
+    search (condition, e) {
       if (condition) {
         this.condition = condition
       }
@@ -80,5 +78,4 @@ export default {
     @include flex-row(flex-end);
   }
 }
-
 </style>

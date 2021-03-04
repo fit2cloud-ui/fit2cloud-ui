@@ -3,9 +3,7 @@
     <div class="code-block-wrapper">
       <pre><code ref="block" :class="lang"><slot v-pre/></code></pre>
 
-      <span class="copy-message" :class="{ active: showMessage }"
-        >Code copied!</span
-      >
+      <span class="copy-message" :class="{ active: showMessage }">Code copied!</span>
     </div>
 
     <el-button ref="copy" class="copy">Copy</el-button>
@@ -42,7 +40,7 @@ export default {
   }),
   methods: {
     reindentSource: codeSource.reindentSource,
-    enableCopy() {
+    enableCopy () {
       if (this.$refs.copy) {
         const clipboard = new Clipboard(this.$refs.copy.$el, {
           target: () => this.$refs.block,
@@ -61,7 +59,7 @@ export default {
       }
     },
   },
-  mounted() {
+  mounted () {
     this.$nextTick().then(() => {
       this.reindentSource();
       this.enableCopy();
@@ -122,7 +120,7 @@ export default {
 .copy {
   position: absolute;
   right: 26px;
-  bottom:26px;
+  bottom: 26px;
 }
 .copy-message {
   padding: 8px 12px;

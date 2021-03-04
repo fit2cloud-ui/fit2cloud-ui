@@ -8,7 +8,8 @@
            
 
 ### 命名
-每个目录下index.vue命名规则第一个字母大写Doc结尾
+每个目录下index.vue命名规则第一个字母大写Doc结尾，
+例如：table目录下 name: "TableDoc",
 
 ### 需要组件
 DocumentTable 文档展示组建，传入attributes.js 即可，例如
