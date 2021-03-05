@@ -7,6 +7,7 @@ const isFix = node => {
 
 const getLabel = node => {
   let {label} = node.componentOptions.propsData
+  console.log(label)
   label ??= node.data.attrs.label
   return label;
 }
@@ -36,20 +37,17 @@ const updateColumns = (nodes, columns) => {
   })
 }
 
-let key = 0
-
 export default {
   name: "FuTableBody",
   functional: true,
   props: {
-    refreshKey: Number,
     columns: {
       type: Array,
       required: true
     }
   },
   render(h, context) {
-    let {columns, refreshKey} = context.props
+    let {columns} = context.props
     const children = context.children
     const nodes = [];
 
@@ -59,12 +57,7 @@ export default {
       // 初始化columns
       initColumns(children, columns)
     } else {
-      // 避免因为外部刷新，导致渲染2次nodes
-      if (key !== refreshKey) {
-        updateColumns(children, columns)
-        key = refreshKey
-        return []
-      }
+      updateColumns(children, columns)
       // 只渲染show为undefined或true的
       children.forEach((node, i) => {
         if (isFix(node) || columns[i].show !== false) {

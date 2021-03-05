@@ -1,6 +1,6 @@
 <template>
   <el-table class="fu-table" v-on="$listeners" v-bind="$attrs" :key="key">
-    <fu-table-body :columns="columns" :refresh-key="key">
+    <fu-table-body :columns="columns">
       <slot></slot>
     </fu-table-body>
   </el-table>
