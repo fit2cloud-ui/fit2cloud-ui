@@ -49,15 +49,6 @@ export default {
   }
   /deep/.page-container {
     position: relative;
-    p {
-      font-size: 14px;
-      color: #5e6d82;
-      line-height: 1.5em;
-    }
-    h2 {
-      font-weight: 400;
-      color: #1f2f3d;
-    }
   }
 }
 </style>

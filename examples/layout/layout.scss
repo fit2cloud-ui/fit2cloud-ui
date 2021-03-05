@@ -1,6 +1,7 @@
 $headerHeight: 70px;
 $sideBarWidth: 270px;
 $themeColor: #2d61a2;
+
 .header-wrapper {
   height: $headerHeight;
   width: 1140px;
@@ -9,12 +10,14 @@ $themeColor: #2d61a2;
   // line-height: $headerHeight;
   // border-bottom: 1px solid #dcdfe6;
 }
+
 .app-container {
   height: calc(100% - #{$sideBarWidth});
   width: 1140px;
   padding: 0;
   margin: $headerHeight auto 0;
 }
+
 .sidebar-container {
   transition: width 0.28s;
   width: $sideBarWidth !important;
@@ -26,41 +29,51 @@ $themeColor: #2d61a2;
   overflow: hidden;
   border-right: 1px solid #f0f0f0;
 }
+
 .app-main {
   padding: 20px 0 20px $sideBarWidth + 30px;
 }
+
 .attributesButton {
   color: $themeColor;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1200px) {
+
   .header-wrapper,
   .app-container {
     width: 100%;
   }
+
   .attributesButton {
     right: 0;
   }
+
   .is-fixed {
     right: 0;
   }
 }
 
 @media (max-width: 768px) {
+
   .header-wrapper,
   .app-container {
     padding: 0 20px;
   }
 
 }
+
 @media (min-width: 1600px) {
+
   .header-wrapper,
   .app-container {
     width: 80%;
   }
+
   .attributesButton {
-    right: 10%;
+    right: 8%;
   }
+
   .is-fixed {
     right: 10%;
   }

@@ -29,33 +29,32 @@
 </template>
 
 <script>
-
 export default {
   name: "ComplexTable",
   props: {
     columns: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     localKey: String, // 如果需要记住选择的列，则这里添加一个唯一的Key
     header: String,
     searchConfig: Object,
     paginationConfig: Object,
   },
-  data () {
+  data() {
     return {
-      condition: {}
-    }
+      condition: {},
+    };
   },
   methods: {
-    search (condition, e) {
+    search(condition, e) {
       if (condition) {
-        this.condition = condition
+        this.condition = condition;
       }
-      this.$emit("search", this.condition, e)
-    }
+      this.$emit("search", this.condition, e);
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">

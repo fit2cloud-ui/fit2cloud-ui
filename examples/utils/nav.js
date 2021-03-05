@@ -32,7 +32,7 @@ const navList = {
   "directives": [],
 }
 /**
- * @type 一级分类 
+ * @type 一级分类
  */
 const type = [
   {
@@ -50,9 +50,9 @@ const type = [
 
 ]
 /**
- * @getTypeName 将一级分类的value转name 
+ * @getTypeName 将一级分类的value转name
  */
-function getTypeName(val) {
+function getTypeName (val) {
   let name
   type.map(item => {
     if (val === item.value) {

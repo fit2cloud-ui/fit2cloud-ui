@@ -1,24 +1,15 @@
 <template>
-  <div class="code-example"
-       @mouseenter="hovering = true"
-       @mouseleave="hovering = false">
+  <div class="code-example" @mouseenter="hovering = true" @mouseleave="hovering = false">
     <div class="source">
       <component :is="component.name" />
     </div>
-    <div class="meta"
-         ref="meta"
-         :style="{ height: childHeight }">
-      <code-block :label="label"
-                  :lang="lang"
-                  :description="description"
-                  ref="code-block"
-                  v-show="showCode">
+    <div class="meta" ref="meta" :style="{ height: childHeight }">
+      <code-block :label="label" :lang="lang" :description="description" ref="code-block"
+        v-show="showCode">
         <slot>{{ component.source }}</slot>
       </code-block>
     </div>
-    <div class="demo-block-control"
-         ref="control"
-         @click="showCode = !showCode">
+    <div class="demo-block-control" ref="control" @click="showCode = !showCode">
       <transition name="arrow-slide">
         <i :class="[iconClass(), { hovering: hovering }]"></i>
       </transition>
@@ -26,14 +17,9 @@
         <span v-show="hovering">{{ controlText() }}</span>
       </transition>
     </div>
-    <el-tooltip content="隐藏代码"
-                placement="left">
-      <el-button v-show="fixedControl"
-                 class="is-fixed"
-                 @click="showCode = false"
-                 circle>
-        <img src="../assets/hidden-code.png"
-             width="18" />
+    <el-tooltip content="隐藏代码" placement="left">
+      <el-button v-show="fixedControl" class="is-fixed" @click="showCode = false" circle>
+        <img src="../assets/hidden-code.png" width="18" />
       </el-button>
     </el-tooltip>
   </div>
@@ -48,9 +34,8 @@ export default {
   props: {
     component: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
-    title: String,
     description: String,
     label: {
       type: String,
@@ -65,7 +50,7 @@ export default {
     fixedControl: false,
   }),
   watch: {
-    showCode (val) {
+    showCode(val) {
       this.$nextTick(() => {
         this.childHeight = val
           ? `${this.$refs["code-block"].$el.offsetHeight}px`
@@ -81,22 +66,22 @@ export default {
         window.addEventListener("scroll", this.scrollHandler);
         this.scrollHandler();
       }, 200);
-    }
+    },
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.removeScrollHandler();
   },
   methods: {
-    iconClass () {
+    iconClass() {
       return this.showCode ? "el-icon-caret-top" : "el-icon-caret-bottom";
     },
-    controlText () {
+    controlText() {
       return this.showCode ? "隐藏代码" : "显示代码";
     },
-    codeArea () {
+    codeArea() {
       return this.$ref["code-block"];
     },
-    scrollHandler () {
+    scrollHandler() {
       const { top, bottom, left } = this.$refs.meta.getBoundingClientRect();
       this.fixedControl =
         bottom > document.documentElement.clientHeight &&
@@ -104,10 +89,10 @@ export default {
       this.$refs.control.style.left = this.fixedControl ? `${left}px` : "0";
     },
 
-    removeScrollHandler () {
+    removeScrollHandler() {
       window.removeEventListener("scroll", this.scrollHandler);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -187,5 +172,4 @@ $themeColor: #2d61a2;
     }
   }
 }
-
 </style>
