@@ -41,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-wrapper {
-  width: 100%;
+  // width: 100%;
   h1 {
     font-weight: 400;
     color: #1f2f3d;

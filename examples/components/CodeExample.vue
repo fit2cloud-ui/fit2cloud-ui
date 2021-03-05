@@ -48,6 +48,7 @@ export default {
     hovering: false,
     childHeight: "0",
     fixedControl: false,
+    scrollParent: null,
   }),
   watch: {
     showCode(val) {
@@ -63,7 +64,11 @@ export default {
         return;
       }
       setTimeout(() => {
-        window.addEventListener("scroll", this.scrollHandler);
+        this.scrollParent = document.querySelector(
+          ".page-component__scroll > .el-scrollbar__wrap"
+        );
+        this.scrollParent &&
+          this.scrollParent.addEventListener("scroll", this.scrollHandler);
         this.scrollHandler();
       }, 200);
     },
@@ -90,7 +95,8 @@ export default {
     },
 
     removeScrollHandler() {
-      window.removeEventListener("scroll", this.scrollHandler);
+      this.scrollParent &&
+        this.scrollParent.removeEventListener("scroll", this.scrollHandler);
     },
   },
 };

@@ -11,11 +11,9 @@ $themeColor: #2d61a2;
   // border-bottom: 1px solid #dcdfe6;
 }
 
-.app-container {
-  height: calc(100% - #{$sideBarWidth});
-  width: 1140px;
-  padding: 0;
-  margin: $headerHeight auto 0;
+.page-component__scroll {
+  height: calc(100vh - #{$headerHeight});
+  margin-top: $headerHeight;
 }
 
 .sidebar-container {
@@ -30,7 +28,7 @@ $themeColor: #2d61a2;
   border-right: 1px solid #f0f0f0;
 }
 
-.app-main {
+.main-wrapper {
   padding: 20px 0 20px $sideBarWidth + 30px;
 }
 
@@ -40,9 +38,12 @@ $themeColor: #2d61a2;
 
 @media (max-width: 1200px) {
 
-  .header-wrapper,
-  .app-container {
+  .header-wrapper {
     width: 100%;
+  }
+
+  .app-main {
+    width: 100% !important;
   }
 
   .attributesButton {
@@ -54,20 +55,14 @@ $themeColor: #2d61a2;
   }
 }
 
-@media (max-width: 768px) {
-
-  .header-wrapper,
-  .app-container {
-    padding: 0 20px;
-  }
-
-}
-
 @media (min-width: 1600px) {
 
-  .header-wrapper,
-  .app-container {
+  .header-wrapper {
     width: 80%;
+  }
+
+  .app-main {
+    width: 80% !important;
   }
 
   .attributesButton {
