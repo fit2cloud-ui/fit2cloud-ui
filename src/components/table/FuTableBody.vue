@@ -7,7 +7,6 @@ const isFix = node => {
 
 const getLabel = node => {
   let {label} = node.componentOptions.propsData
-  console.log(label)
   label ??= node.data.attrs.label
   return label;
 }
