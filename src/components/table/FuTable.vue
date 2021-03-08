@@ -1,5 +1,5 @@
 <template>
-  <el-table class="fu-table" v-on="$listeners" v-bind="$attrs">
+  <el-table class="fu-table" v-on="$listeners" v-bind="$attrs" :key="key">
     <fu-table-body :columns="columns">
       <slot></slot>
     </fu-table-body>
@@ -8,6 +8,57 @@
 
 <script>
 import FuTableBody from "@/components/table/FuTableBody";
+import {randomId} from "@/tools/utils";
+
+const isFix = node => {
+  const {fix} = node.data.attrs
+  let {type} = node.componentOptions.propsData
+  return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type)
+}
+
+const getLabel = node => {
+  let {label} = node.componentOptions.propsData
+  label ??= node.data.attrs.label
+  return label;
+}
+
+const cleanColumns = columns => {
+  columns.splice(0, columns.length)
+}
+
+const initColumns = (nodes, columns) => {
+  nodes.forEach(node => {
+    let label = getLabel(node)
+    const fix = isFix(node);
+    if (!label && !fix) {
+      throw new Error("unfixed column's label is required.")
+    }
+    const {show} = node.data.attrs
+
+    columns.push({label, show, fix})
+  })
+}
+
+const copyColumns = (source, target) => {
+  source.forEach(col => {
+    target.push(col)
+  })
+}
+
+const updateColumns = (nodes, columns) => {
+  if (nodes.length !== columns.length) {
+    cleanColumns()
+    initColumns(nodes, columns)
+    return;
+  }
+  nodes.forEach((node, i) => {
+    columns[i].label = getLabel(node)
+    columns[i].fix = isFix(node)
+    if (!node.data.key) {
+      node.data.key = columns[i].label || randomId()
+    }
+  })
+}
 
 export default {
   name: "FuTable",
@@ -17,11 +68,24 @@ export default {
       type: Array,
       default: () => []
     },
+    refresh: {
+      type: Boolean,
+      default: true
+    },
     localKey: String, // 如果需要记住选择的列，则这里添加一个唯一的Key
+  },
+  data() {
+    return {
+      key: 0
+    }
   },
   watch: {
     columns: {
       handler: function () {
+        // 设置refresh，可以避免抖动或闪烁，但是table会更新一次
+        if (this.refresh) {
+          this.key++
+        }
         if (this.localKey) {
           localStorage.setItem(this.columnsKey, JSON.stringify(this.columns))
         }
@@ -35,14 +99,22 @@ export default {
     }
   },
   created() {
+    const children = this.$slots.default
+    // 不需要读取localStorage
+    if (!this.localKey && this.columns.length === 0) {
+      initColumns(children, this.columns)
+    }
+
+    // 需要读取localStorage
     if (this.localKey) {
       let columnsKey = localStorage.getItem(this.columnsKey)
       if (columnsKey) {
         try {
-          if (this.columns.length > 0) {
-            this.columns.splice(0, this.columns.length)
-          }
-          this.columns.concat(JSON.parse(localStorage.getItem(this.columnsKey)))
+          cleanColumns(this.columns)
+          const columns = JSON.parse(localStorage.getItem(this.columnsKey))
+          copyColumns(columns, this.columns)
+          // 如果保存的列跟实际的列冲突则以实际的为准
+          updateColumns(children, this.columns)
         } catch (e) {
           console.warn("get columns error", e)
         }
