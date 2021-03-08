@@ -1,4 +1,6 @@
 <script>
+import {randomId} from "@/tools/utils"
+
 const isFix = node => {
   const {fix} = node.data.attrs
   let {type} = node.componentOptions.propsData
@@ -33,6 +35,9 @@ const updateColumns = (nodes, columns) => {
   nodes.forEach((node, i) => {
     columns[i].label = getLabel(node)
     columns[i].fix = isFix(node)
+    if (!node.data.key) {
+      node.data.key = columns[i].label || randomId()
+    }
   })
 }
 
