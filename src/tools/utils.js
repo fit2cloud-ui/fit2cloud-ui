@@ -30,6 +30,10 @@ export const uuid = function () {
   });
 };
 
+export const randomId = function () {
+  return Math.floor(Math.random() * 10000);
+}
+
 export const hasOwn = function (obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }

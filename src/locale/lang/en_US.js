@@ -30,6 +30,7 @@ export default {
       refresh: "Refresh"
     },
     table: {
+      ok: "OK",
       select_columns: "Select columns"
     }
   }

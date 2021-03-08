@@ -20,7 +20,7 @@
           {{ row.createTime | datetimeFormat }}
         </template>
       </el-table-column>
-      <fu-table-operations :buttons="buttons" label="操作" fix/>
+      <fu-table-operations :columns="columns" :buttons="buttons" label="操作" fix/>
     </complex-table>
   </div>
 </template>
