@@ -9,7 +9,21 @@
         <div class="table" v-for="(item, index) in data" :key="index">
           <!-- <el-scrollbar> -->
           <h1>{{ item.name || 'Attributes'}}</h1>
-          <el-table :data="item.table" style="width: 100%" border
+          <div v-if="item.children&&item.children.length>0">
+            <div v-for="(child, i) in item.children" :key="i">
+              <h4>{{ child.name || 'Attributes'}}</h4>
+              <el-table :data="child.table" style="width: 100%" border
+                header-row-class-name="attr-table-th">
+                <template>
+                  <el-table-column v-for="(value,key) in child.header" :key="key" :prop="key"
+                    :label="value">
+                    <template slot-scope="scope">{{scope.row[key]}}</template>
+                  </el-table-column>
+                </template>
+              </el-table>
+            </div>
+          </div>
+          <el-table v-else :data="item.table" style="width: 100%" border
             header-row-class-name="attr-table-th">
             <template>
               <el-table-column v-for="(value,key) in item.header" :key="key" :prop="key"
@@ -73,6 +87,10 @@ export default {
 }
 .table {
   margin-bottom: 40px;
+  h4 {
+    font-size: 18px;
+    color: #999999;
+  }
 }
 /deep/.attr-table-th th {
   background: #f5f7fa;

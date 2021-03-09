@@ -17,7 +17,7 @@ const plugin = {
       let component = components(key).default;
       Vue.use(component);
     })
-  }
+  },
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
