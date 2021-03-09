@@ -9,10 +9,7 @@ export default {
   name: "FuTableBody",
   functional: true,
   props: {
-    columns: {
-      type: Array,
-      required: true
-    }
+    columns: Array
   },
   render(h, context) {
     let {columns} = context.props
@@ -20,6 +17,7 @@ export default {
     const nodes = [];
 
     if (!children) return nodes
+    if (!columns) return children
     // 只渲染show为undefined或true的
     children.forEach((node, i) => {
       if (isFix(node) || columns[i].show !== false) {
