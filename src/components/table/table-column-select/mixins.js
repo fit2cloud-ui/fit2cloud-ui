@@ -14,7 +14,7 @@ export default {
     trigger: {
       type: String,
       default: "hover",
-      validator: value => ['click', 'focus', 'hover', 'manual'].includes(value)
+      validator: value => ['click', 'hover'].includes(value)
     },
     columns: Array
   },
