@@ -4,7 +4,7 @@
               :visible-arrow="false"
               class="fu-table-column-select"
               popper-class="fu-table-column-select-popper"
-              v-if="!isFixAll">
+              v-if="hasSelect">
     <div class="fu-table-column-select__title">
       {{ t('fu.table.select_columns') }}
     </div>
@@ -37,7 +37,7 @@ const cloneColumns = (source, target) => {
 }
 
 export default {
-  name: "FuTableColumnSelectIcon",
+  name: "FuTableColumnSelectConfirm",
   components: {FuSearchBarButton},
   mixins: [mixins],
   data() {

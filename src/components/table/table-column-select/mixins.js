@@ -23,7 +23,10 @@ export default {
       return columns.filter(c => !c.fix)
     },
     isFixAll() {
-      return this.columns.every(c => c.fix)
+      return this.columns?.every(c => c.fix)
+    },
+    hasSelect() {
+      return this.columns?.length > 0 && !this.isFixAll
     }
   }
 };

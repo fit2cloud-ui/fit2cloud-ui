@@ -3,7 +3,7 @@
               :visible-arrow="false"
               class="fu-table-column-select"
               popper-class="fu-table-column-select-popper"
-              v-if="!isFixAll">
+              v-if="hasSelect">
     <div class="fu-table-column-select__title">
       {{ t('fu.table.select_columns') }}
     </div>
@@ -23,7 +23,7 @@ import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 import mixins from "@/components/table/table-column-select/mixins";
 
 export default {
-  name: "FuTableColumnSelectButton",
+  name: "FuTableColumnSelectImmediate",
   components: {FuSearchBarButton},
   mixins: [mixins],
 }
