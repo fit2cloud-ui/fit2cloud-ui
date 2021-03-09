@@ -20,12 +20,7 @@ const navList = {
       name: 'SearchBar 搜索条',
       path: 'search',
       component: 'SearchDoc'
-    },
-    {
-      name: 'Example 文档加载',
-      path: 'example-loader',
-      component: 'ExampleLoader'
-    },
+    }
 
   ],
   "filters": [],
