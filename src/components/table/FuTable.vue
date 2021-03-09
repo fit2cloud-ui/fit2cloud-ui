@@ -100,11 +100,6 @@ export default {
     // 表格没有内容或者不需要选列
     if (!children || !this.columns) return
 
-    // 不需要读取localStorage
-    if (!this.localKey && this.columns.length === 0) {
-      initColumns(children, this.columns)
-    }
-
     // 需要读取localStorage
     if (this.localKey) {
       let columnsKey = localStorage.getItem(this.columnsKey)
@@ -115,10 +110,15 @@ export default {
           copyColumns(columns, this.columns)
           // 如果保存的列跟实际的列冲突则以实际的为准
           updateColumns(children, this.columns)
+          return
         } catch (e) {
           console.warn("get columns error", e)
         }
       }
+    }
+
+    if (this.columns.length === 0) {
+      initColumns(children, this.columns)
     }
   }
 }

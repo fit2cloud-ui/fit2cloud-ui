@@ -17,7 +17,7 @@ export default {
     const nodes = [];
 
     if (!children) return nodes
-    if (!columns) return children
+    if (!columns || columns?.length === 0) return children
     // 只渲染show为undefined或true的
     children.forEach((node, i) => {
       if (isFix(node) || columns[i].show !== false) {
