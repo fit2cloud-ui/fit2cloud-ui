@@ -64,10 +64,7 @@ export default {
   name: "FuTable",
   components: {FuTableBody},
   props: {
-    columns: {
-      type: Array,
-      default: () => []
-    },
+    columns: Array,
     refresh: {
       type: Boolean,
       default: true
@@ -100,7 +97,9 @@ export default {
   },
   created() {
     const children = this.$slots.default
-    if (!children) return
+    // 表格没有内容或者不需要选列
+    if (!children || !this.columns) return
+
     // 不需要读取localStorage
     if (!this.localKey && this.columns.length === 0) {
       initColumns(children, this.columns)
