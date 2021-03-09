@@ -28,10 +28,25 @@
     margin-bottom: 10px;
   }
 
+  @include e(body) {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
   @include e(item) {
     & + & {
       margin-top: 5px;
     }
+  }
+
+  @include e(footer) {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  @include e(trigger) {
+    cursor: pointer;
+    @include active-scale()
   }
 }
 

@@ -1,23 +1,14 @@
 <template>
-  <div
-    class="code-example"
-    @mouseenter="hovering = true"
-    @mouseleave="hovering = false"
-  >
+  <div class="code-example" @mouseenter="hovering = true" @mouseleave="hovering = false">
     <div class="source">
       <component :is="component.name" />
     </div>
     <div class="meta" ref="meta" :style="{ height: childHeight }">
-      <code-block
-        :label="label"
-        :lang="lang"
-        ref="code-block"
-        v-show="showCode"
-      >
+      <code-block :label="label" :lang="lang" :description="description" ref="code-block"
+        v-show="showCode">
         <slot>{{ component.source }}</slot>
       </code-block>
     </div>
-
     <div class="demo-block-control" ref="control" @click="showCode = !showCode">
       <transition name="arrow-slide">
         <i :class="[iconClass(), { hovering: hovering }]"></i>
@@ -27,13 +18,9 @@
       </transition>
     </div>
     <el-tooltip content="隐藏代码" placement="left">
-      <el-button
-        v-show="fixedControl"
-        class="is-fixed"
-        @click="showCode = false"
-        circle
-        ><img src="../assets/hidden-code.png" width="18"
-      /></el-button>
+      <el-button v-show="fixedControl" class="is-fixed" @click="showCode = false" circle>
+        <img src="../assets/hidden-code.png" width="18" />
+      </el-button>
     </el-tooltip>
   </div>
 </template>
@@ -49,7 +36,7 @@ export default {
       type: Object,
       default: () => ({}),
     },
-    title: String,
+    description: String,
     label: {
       type: String,
       default: "Vue",
@@ -77,7 +64,11 @@ export default {
         return;
       }
       setTimeout(() => {
-        window.addEventListener("scroll", this.scrollHandler);
+        this.scrollParent = document.querySelector(
+          ".page-component__scroll > .el-scrollbar__wrap"
+        );
+        this.scrollParent &&
+          this.scrollParent.addEventListener("scroll", this.scrollHandler);
         this.scrollHandler();
       }, 200);
     },
@@ -104,12 +95,14 @@ export default {
     },
 
     removeScrollHandler() {
-      window.removeEventListener("scroll", this.scrollHandler);
+      this.scrollParent &&
+        this.scrollParent.removeEventListener("scroll", this.scrollHandler);
     },
   },
 };
 </script>
 <style lang="scss" scoped>
+$themeColor: #2d61a2;
 .code-example {
   border: 1px solid #ebebeb;
   border-radius: 3px;
@@ -129,8 +122,9 @@ export default {
   }
   .is-fixed {
     position: fixed;
-    bottom: 50px;
-    right: 150px;
+    bottom: 150px;
+    margin-left: 795px;
+    // right: 150px;
     color: #2d61a2;
     font-size: 16px;
   }
@@ -164,7 +158,7 @@ export default {
       display: inline-block;
     }
     &:hover {
-      color: #409eff;
+      color: $themeColor;
       background-color: #f9fafc;
     }
     & .text-slide-enter,

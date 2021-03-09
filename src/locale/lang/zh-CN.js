@@ -30,6 +30,7 @@ export default {
       refresh: "刷新",
     },
     table: {
+      ok: "确定",
       select_columns: "选列"
     }
   }

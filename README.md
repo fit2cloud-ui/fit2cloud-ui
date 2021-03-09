@@ -26,10 +26,12 @@ npm install -D sass-loader node-sass
 
 ```sh
 import Vue from 'vue';
+import ElementUI from 'element-ui'
 import Fit2CloudUI from 'fit2cloud-ui';
 import "fit2cloud-ui/src/styles/index.scss"; // 已经包含了element ui的scss
 import App from './App.vue';
 
+Vue.use(ElementUI);
 Vue.use(Fit2CloudUI);
 
 new Vue({

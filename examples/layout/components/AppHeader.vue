@@ -34,23 +34,23 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .header-wrapper {
-  background-color: #fff;
+  // background-color: #fff;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
   .logo {
-    margin-left: 25px;
+    margin-left: 15px;
   }
-  .right {
-    margin-right: 25px;
-  }
+  // .right {
+  //   margin-right: 0;
+  // }
   .version {
     font-size: 16px;
     margin-right: 25px;
     vertical-align: super;
-    color: #888;
+    color: #ffffff;
   }
 }
 </style>

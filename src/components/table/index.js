@@ -1,11 +1,13 @@
 import FuTable from "./FuTable";
 import FuTablePagination from "./FuTablePagination";
-import FuColumnSelect from "./FuTableColumnSelect";
+import FuTableOperations from "./table-operations";
+import FuTableColumnSelect from "./table-column-select";
 
 FuTable.install = function (Vue) {
   Vue.component(FuTable.name, FuTable);
   Vue.component(FuTablePagination.name, FuTablePagination);
-  Vue.component(FuColumnSelect.name, FuColumnSelect);
+  Vue.use(FuTableOperations)
+  Vue.use(FuTableColumnSelect)
 };
 
 export default FuTable;

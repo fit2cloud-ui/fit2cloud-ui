@@ -1,37 +1,83 @@
-<example path="./examples/ComplexTableDemo.vue"/>
+<example path="./examples/BaseTable.vue"/>
+<example path="./examples/SelectColumn.vue"/>
+<example path="./examples/SaveSelectColumn.vue"/>
+<example path="./examples/TableOperationsDemo.vue"/>
+<example path="./examples/TablePaginationDemo.vue"/>
 
 <template>
   <div>
     <!-- 文档说明 -->
-    <document-table :data="attributes" />
-    <!-- 展示内容 -->
-    <p>用于展示多条结构类似的数据，可对数据进行搜索、筛选、刷新等操作。</p>
-    <br>
-    <h2>动态表格</h2>
-    <p>基础的表格展示用法。</p>
-    <code-example
-      title="ComplexTable"
-      :component="examples['complex-table-demo']"
-    />
+    <document-table :data="attributes"/>
+    <!-- 一级描述 -->
+    <p>el-table的扩展，增加选列功能，除了以下额外增加的功能和属性，其他的用法与el-table一致</p>
+    <!-- BaseTable内容 -->
+    <div class="component-block" v-for="(item, index) in comList" :key="index">
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.titleDesc }}</p>
+      <code-example :description="item.description" :component="examples[item.component]"/>
+    </div>
   </div>
 </template>
 
 <script>
 import examples from "../../mixins/docsExample";
 import attributes from "./attributes";
+
 export default {
   name: "TableDoc",
   mixins: [examples],
   data() {
     return {
+      url: "./examples/SaveSelectColumn.vue",
       attributes,
+      comList: [
+        {
+          title: "基本用法",
+          titleDesc: "基础的表格展示用法。",
+          component: "BaseTable",
+          description: `与el-table一致`
+        },
+        {
+          title: "选列",
+          titleDesc: "给columns赋值则开启选列功能，选择显示或隐藏某些列",
+          component: "SelectColumn",
+          description: `建议与TableColumnSelect一起使用。设置fix属性或者type属性为selection/index/expand的列不可选择显隐，设置:show="false"的列，默认隐藏`
+        },
+        {
+          title: "选列保存",
+          titleDesc: "给表格设置唯一的local-key，将选列状态自动保存到localStorage",
+          component: "SaveSelectColumn",
+        },
+        {
+          title: "操作列",
+          titleDesc: "TableOperations: 按钮过多自动折叠，提供选列功能，控制显隐或禁用",
+          component: "TableOperationsDemo",
+          description: `控制台查看click事件`
+        }
+      ]
     };
   },
   methods: {},
-  created() {},
-  mounted() {},
+  created() {
+  },
+  mounted() {
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.component-block {
+  margin-top: 40px;
+
+  p {
+    font-size: 14px;
+    color: #5e6d82;
+    line-height: 1.5em;
+  }
+
+  h2 {
+    font-weight: 400;
+    color: #1f2f3d;
+  }
+}
 </style>

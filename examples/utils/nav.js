@@ -7,7 +7,7 @@
 const navList = {
   "components": [
     {
-      name: 'ComplexTable 复合表格',
+      name: 'Table 表格',
       path: 'table',
       component: 'TableDoc'
     },
@@ -20,19 +20,14 @@ const navList = {
       name: 'SearchBar 搜索条',
       path: 'search',
       component: 'SearchDoc'
-    },
-    {
-      name: 'Example 文档加载',
-      path: 'example-loader',
-      component: 'ExampleLoader'
-    },
+    }
 
   ],
   "filters": [],
   "directives": [],
 }
 /**
- * @type 一级分类 
+ * @type 一级分类
  */
 const type = [
   {
@@ -49,8 +44,9 @@ const type = [
   },
 
 ]
+
 /**
- * @getTypeName 将一级分类的value转name 
+ * @getTypeName 将一级分类的value转name
  */
 function getTypeName(val) {
   let name

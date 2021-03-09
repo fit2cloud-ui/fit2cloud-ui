@@ -15,9 +15,11 @@ export default {
 <style>
 body {
   margin: 0;
+  padding: 0!important;
   height: 100%;
   color: #333333;
   font-size:14px;
+  overflow: hidden;
 }
 
 #app {
