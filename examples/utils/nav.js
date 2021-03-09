@@ -7,7 +7,7 @@
 const navList = {
   "components": [
     {
-      name: 'ComplexTable 复合表格',
+      name: 'Table 表格',
       path: 'table',
       component: 'TableDoc'
     },
@@ -49,10 +49,11 @@ const type = [
   },
 
 ]
+
 /**
  * @getTypeName 将一级分类的value转name
  */
-function getTypeName (val) {
+function getTypeName(val) {
   let name
   type.map(item => {
     if (val === item.value) {

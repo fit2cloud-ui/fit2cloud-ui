@@ -5,7 +5,7 @@
     <!-- <document-table :data="attributes"/> -->
     <code-example
       title="ComplexTable"
-      :component="examples['search-demo']"
+      :component="examples['SearchDemo']"
     />
   </div>
 </template>

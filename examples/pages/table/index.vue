@@ -1,13 +1,15 @@
-<example path="./examples/BaseTable.vue" />
-<example path="./examples/StripeTable.vue" />
-<example path="./examples/ComplexTableDemo.vue" />
+<example path="./examples/BaseTable.vue"/>
+<example path="./examples/SelectColumn.vue"/>
+<example path="./examples/SaveSelectColumn.vue"/>
+<example path="./examples/TableOperationsDemo.vue"/>
+<example path="./examples/TablePaginationDemo.vue"/>
 
 <template>
   <div>
     <!-- 文档说明 -->
-    <document-table :data="attributes" />
+    <document-table :data="attributes"/>
     <!-- 一级描述 -->
-    <p>用于展示多条结构类似的数据，可对数据进行搜索、筛选、刷新等操作。</p>
+    <p>el-table的扩展，增加选列功能，除了以下额外增加的功能和属性，其他的用法与el-table一致</p>
     <!-- BaseTable内容 -->
     <div class="component-block" v-for="(item, index) in comList" :key="index">
       <h2>{{ item.title }}</h2>
@@ -20,47 +22,59 @@
 <script>
 import examples from "../../mixins/docsExample";
 import attributes from "./attributes";
+
 export default {
   name: "TableDoc",
   mixins: [examples],
   data() {
     return {
+      url: "./examples/SaveSelectColumn.vue",
       attributes,
       comList: [
         {
           title: "基本用法",
           titleDesc: "基础的表格展示用法。",
-          component: "base-table",
-          description: `当<keyword>el-table</keyword>元素中注入data对象数组后，在el-table-column中用prop属性来对应对象中的键名即可填入数据，用label属性来定义表格的列名。
-          可以使用width属性来定义列宽。`
+          component: "BaseTable",
+          description: `与el-table一致`
         },
         {
-          title: "带斑马纹表格",
-          titleDesc: "使用带斑马纹的表格，可以更容易区分出不同行的数据。",
-          component: "stripe-table"
+          title: "选列",
+          titleDesc: "给columns赋值则开启选列功能，选择显示或隐藏某些列",
+          component: "SelectColumn",
+          description: `建议与TableColumnSelect一起使用。设置fix属性或者type属性为selection/index/expand的列不可选择显隐，设置:show="false"的列，默认隐藏`
         },
         {
-          title: "动态表格",
-          titleDesc: "基础的表格展示用法。",
-          component: "complex-table-demo"
+          title: "选列保存",
+          titleDesc: "给表格设置唯一的local-key，将选列状态自动保存到localStorage",
+          component: "SaveSelectColumn",
+        },
+        {
+          title: "操作列",
+          titleDesc: "TableOperations: 按钮过多自动折叠，提供选列功能，控制显隐或禁用",
+          component: "TableOperationsDemo",
+          description: `控制台查看click事件`
         }
       ]
     };
   },
   methods: {},
-  created() {},
-  mounted() {}
+  created() {
+  },
+  mounted() {
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .component-block {
   margin-top: 40px;
+
   p {
     font-size: 14px;
     color: #5e6d82;
     line-height: 1.5em;
   }
+
   h2 {
     font-weight: 400;
     color: #1f2f3d;

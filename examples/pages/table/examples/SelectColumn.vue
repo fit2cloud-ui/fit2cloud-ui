@@ -1,17 +1,22 @@
 <template>
-  <fu-table :data="tableData" style="width: 100%" @select="select">
-    <el-table-column type="selection"></el-table-column>
-    <el-table-column prop="date" label="日期" width="180"></el-table-column>
-    <el-table-column prop="name" label="姓名" width="180"></el-table-column>
-    <el-table-column prop="address" label="地址"></el-table-column>
-  </fu-table>
+  <div>
+    选列按钮：<fu-table-column-select :columns="columns"/>
+
+    <fu-table :data="tableData" :columns="columns">
+      <el-table-column type="selection"></el-table-column>
+      <el-table-column prop="date" label="日期" min-width="180"></el-table-column>
+      <el-table-column prop="name" label="姓名" min-width="180" fix></el-table-column>
+      <el-table-column prop="address" label="地址" :show="false"></el-table-column>
+    </fu-table>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "BaseTable",
+  name: "SelectColumn",
   data() {
     return {
+      columns: [],
       tableData: [{
         date: "2016-05-02",
         name: "张三",
@@ -29,12 +34,7 @@ export default {
         name: "张三",
         address: "北京朝阳区财富中心 3室",
       }]
-    };
-  },
-  methods: {
-    select(selection) {
-      console.log(selection)
     }
   }
-};
+}
 </script>

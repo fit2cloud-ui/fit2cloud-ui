@@ -5,7 +5,7 @@
     <!-- <document-table :data="attributes"/> -->
     <code-example
       title="ComplexTable"
-      :component="examples['speed-dial-demo']"
+      :component="examples['SpeedDialDemo']"
     />
   </div>
 </template>
