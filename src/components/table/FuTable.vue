@@ -100,6 +100,7 @@ export default {
   },
   created() {
     const children = this.$slots.default
+    if (!children) return
     // 不需要读取localStorage
     if (!this.localKey && this.columns.length === 0) {
       initColumns(children, this.columns)
