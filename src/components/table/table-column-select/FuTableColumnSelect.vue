@@ -7,7 +7,7 @@ export default {
   functional: true,
   render(h, {props, data, children}) {
     const {type} = props
-    if (type === "icon") {
+    if (type === "confirm") {
       return h(FuTableColumnSelectConfirm, data, children)
     } else {
       return h(FuTableColumnSelectImmediate, data, children)
