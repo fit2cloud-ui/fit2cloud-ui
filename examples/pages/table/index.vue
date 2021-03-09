@@ -33,12 +33,11 @@ export default {
       comList: [
         {
           title: "基本用法",
-          titleDesc: "基础的表格展示用法。",
+          titleDesc: "继承el-table的功能，增加选列功能，选列功能请看下一节",
           component: "BaseTable",
-          description: `与el-table一致`
         },
         {
-          title: "选列",
+          title: "表格选列",
           titleDesc: "给columns赋值则开启选列功能，选择显示或隐藏某些列",
           component: "SelectColumn",
           description: `建议与TableColumnSelect一起使用。设置fix属性或者type属性为selection/index/expand的列不可选择显隐，设置:show="false"的列，默认隐藏`
@@ -50,9 +49,9 @@ export default {
         },
         {
           title: "操作列",
-          titleDesc: "TableOperations: 按钮过多自动折叠，提供选列功能，控制显隐或禁用",
+          titleDesc: "TableOperations: 按钮自动折叠，提供选列功能，控制显隐或禁用",
           component: "TableOperationsDemo",
-          description: `控制台查看click事件`
+          description: `传入columns则显示选列按钮。控制台查看按钮的click事件`
         }
       ]
     };
