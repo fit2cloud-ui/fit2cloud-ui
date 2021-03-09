@@ -47,7 +47,7 @@ const copyColumns = (source, target) => {
 
 const updateColumns = (nodes, columns) => {
   if (nodes.length !== columns.length) {
-    cleanColumns()
+    cleanColumns(columns)
     initColumns(nodes, columns)
     return;
   }
@@ -112,7 +112,7 @@ export default {
           updateColumns(children, this.columns)
           return
         } catch (e) {
-          console.warn("get columns error", e)
+          console.error("get columns error", e)
         }
       }
     }
