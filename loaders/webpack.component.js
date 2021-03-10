@@ -5,14 +5,14 @@ const nodeExternals = require('webpack-node-externals');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 
-const components = fs.readdirSync('./packages/components');
+const components = fs.readdirSync('./src/components');
 const dirs = components.filter(v => {
-  return fs.statSync(path.resolve('./packages/components', v)).isDirectory();
+  return fs.statSync(path.resolve('./src/components', v)).isDirectory();
 });
 
 const entryHash = {};
 dirs.forEach(v => {
-  entryHash[v] = `./packages/components/${v}/index.js`;
+  entryHash[v] = `./src/components/${v}/index.js`;
 });
 
 const externals = [Object.assign({

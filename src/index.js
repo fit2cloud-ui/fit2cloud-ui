@@ -21,7 +21,8 @@ const plugin = {
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(plugin);
+  plugin.install(window.Vue)
+  // window.Vue.use(plugin);
 }
 
 export default plugin;
