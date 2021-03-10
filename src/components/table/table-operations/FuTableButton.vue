@@ -1,6 +1,6 @@
 <template>
   <el-tooltip :content="label" :disabled="!label">
-    <el-button circle v-on="$listeners" :type="type" :disabled="disabled" :size="size">
+    <el-button circle :type="type" :disabled="disabled" :size="size" v-on="$listeners" v-bind="$attrs">
       <slot>
         <i :class="icon"/>
       </slot>
