@@ -1,6 +1,6 @@
 <template>
   <div class="document-table">
-    <el-tooltip content="代码说明" placement="left">
+    <el-tooltip content="属性说明" placement="left">
       <el-button @click="drawer = true" class="attributesButton" icon="el-icon-reading" circle>
       </el-button>
     </el-tooltip>
