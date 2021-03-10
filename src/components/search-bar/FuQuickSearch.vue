@@ -17,7 +17,6 @@ export default {
     },
     value: String,
     placeholder: String,
-    useCleanButton: Boolean,
     useIcon: {
       type: Boolean,
       default: true
