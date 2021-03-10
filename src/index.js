@@ -17,11 +17,12 @@ const plugin = {
       let component = components(key).default;
       Vue.use(component);
     })
-  }
+  },
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(plugin);
+  plugin.install(window.Vue)
+  // window.Vue.use(plugin);
 }
 
 export default plugin;

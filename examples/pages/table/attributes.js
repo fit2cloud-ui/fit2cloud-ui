@@ -3,6 +3,7 @@
  * @name 表格名称
  * @header 表格头部参数,任意定义
  * @table table内容,字段要和header定义的属性保持一直
+ * @children 多表使用
  */
 export default [
   {
@@ -189,49 +190,56 @@ export default [
       }
     ]
   },
+  // 多表
   {
-    name: 'Table Pagination Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
+    name: 'Table Pagination',
+    children: [
       {
-        prop: 'current-page',
-        desc: '当前页数，支持 .sync 修饰符',
-        type: 'Number',
-        enum: '-',
-        default: '1',
+        name: '@Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'current-page',
+            desc: '当前页数，支持 .sync 修饰符',
+            type: 'Number',
+            enum: '-',
+            default: '1',
+          },
+          {
+            prop: 'page-size',
+            desc: '每页显示条目个数，支持 .sync 修饰符',
+            type: 'Number',
+            enum: '-',
+            default: '5',
+          },
+          {
+            prop: 'page-sizes',
+            desc: '每页显示个数选择器的选项设置',
+            type: 'Array of Number',
+            enum: '-',
+            default: '[5, 10, 20, 50, 100]',
+          },
+          {
+            prop: 'total',
+            desc: '总页数',
+            type: 'Number',
+            enum: '-',
+            default: '0',
+          }
+        ]
       },
       {
-        prop: 'page-size',
-        desc: '每页显示条目个数，支持 .sync 修饰符',
-        type: 'Number',
-        enum: '-',
-        default: '5',
-      },
-      {
-        prop: 'page-sizes',
-        desc: '每页显示个数选择器的选项设置',
-        type: 'Array of Number',
-        enum: '-',
-        default: '[5, 10, 20, 50, 100]',
-      },
-      {
-        prop: 'total',
-        desc: '总页数',
-        type: 'Number',
-        enum: '-',
-        default: '0',
+        name: '@Methods',
+        header: {method: '方法名', desc: "说明", value: '参数'},
+        table: [
+          {
+            method: 'change',
+            desc: 'currentPage 或 pageSize 变更时触发',
+            value: '-',
+          }
+        ]
       }
     ]
   },
-  {
-    name: 'Table Pagination Methods',
-    header: {method: '方法名', desc: "说明", value: '参数'},
-    table: [
-      {
-        method: 'change',
-        desc: 'currentPage 或 pageSize 变更时触发',
-        value: '-',
-      }
-    ]
-  }
+
 ];
