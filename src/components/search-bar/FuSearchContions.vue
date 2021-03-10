@@ -23,6 +23,7 @@ export default {
   methods: {
     remove(index) {
       this.conditions.splice(index, 1)
+      this.$emit("change", this.conditions)
     }
   }
 }

@@ -2,25 +2,15 @@
   <div class="fu-search-bar">
     <div class="fu-search-bar__content">
       <fu-complex-search :components="components" @change="change" :size="size" v-if="showComplex"/>
-      <fu-search-conditions :conditions="conditions" :size="size"/>
-      <fu-quick-search :size="size"
-                       :use-icon="false"
-                       :placeholder="placeholder"
-                       v-model="quick"
-                       @change="quickChange"
+      <fu-search-conditions :conditions="conditions" :size="size" @change="change"/>
+      <fu-quick-search :size="size" :use-icon="false" :placeholder="placeholder" v-model="quick" @change="quickChange"
                        v-if="showQuick"/>
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
-        <fu-search-bar-button icon="el-icon-close"
-                              @click="clean"
-                              :size="size"
-                              :tooltip="t('fu.search_bar.clean')"
+        <fu-search-bar-button icon="el-icon-close" @click="clean" :size="size" :tooltip="t('fu.search_bar.clean')"
                               v-if="showClean"/>
-        <fu-search-bar-button icon="el-icon-refresh"
-                              @click="exec"
-                              :size="size"
-                              :tooltip="t('fu.search_bar.refresh')"/>
+        <fu-search-bar-button icon="el-icon-refresh" @click="exec" :size="size" :tooltip="t('fu.search_bar.refresh')"/>
         <slot></slot>
       </slot>
     </div>
@@ -105,6 +95,7 @@ export default {
     clean() {
       this.quick = ""
       this.conditions = []
+      this.$emit("exec", this.condition)
     }
   },
   computed: {
