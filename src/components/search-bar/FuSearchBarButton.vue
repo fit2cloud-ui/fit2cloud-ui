@@ -1,9 +1,7 @@
 <template>
   <el-tooltip :content="tooltip" :disabled="!tooltip">
-    <el-button circle class="fu-search-bar-button" :type="type" :size="size" @click="click">
-      <slot>
-        <i :class="icon"/>
-      </slot>
+    <el-button class="fu-search-bar-button" circle :size="size" v-on="$listeners" v-bind="$attrs">
+      <slot></slot>
     </el-button>
   </el-tooltip>
 </template>
@@ -16,18 +14,7 @@ export default {
       type: String,
       default: "mini"
     },
-    icon: String,
-    type: String,
     tooltip: String
-  },
-  methods: {
-    click(e) {
-      this.$emit("click", e)
-    }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
