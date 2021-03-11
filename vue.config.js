@@ -32,7 +32,8 @@ const config = () => {
         examples: {
           entry: "./examples/main.js",
           template: "./examples/index.html",
-          filename: "index.html"
+          filename: "index.html",
+          title: 'FIT2CLOUD UI',
         }
       }
     }
