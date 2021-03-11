@@ -5,9 +5,9 @@
     </h4>
     <fu-search-bar quick-placeholder="快速搜索" @exec="search">
       <template v-slot:complex>
-        <fu-complex-input field="username" label="输入"/>
-        <fu-complex-select field="status" label="选项" :options="options" multiple filterable/>
-        <fu-complex-async-select field="status" label="异步选项" :options="options" :init-options="initOptions"/>
+        <fu-complex-input field="username" label="用户名"/>
+        <fu-complex-select field="status" label="状态" :options="options" multiple filterable/>
+        <fu-complex-async-select field="async_status" label="状态(异步加载)" :init-options="initOptions"/>
         <fu-complex-date field="date" label="日期"/>
         <fu-complex-date-time field="time" label="日期时间"/>
       </template>
@@ -17,7 +17,6 @@
       2、使用components数组
     </h4>
     <fu-search-bar quick-placeholder="快速搜索" :components="components" @exec="search"/>
-    <h4>搜索条件：</h4>
     <pre class="condition_display">{{ condition }}</pre>
   </div>
 </template>
@@ -36,14 +35,15 @@ const getOptions = () => {
 }
 
 export default {
-  name: "ComplexSearchDemo",
+  name: "ComplexComponentsDemo",
   data() {
     return {
+      options: [{label: "启用", value: "Enable"}, {label: "禁用", value: "Disable"}],
       components: [
-        {field: "name", label: "输入", component: "FuComplexInput"},
+        {field: "name", label: "用户名", component: "FuComplexInput"},
         {
           field: "status",
-          label: "选项",
+          label: "状态",
           component: "FuComplexSelect",
           options: [{label: "启用", value: "Enable"}, {label: "禁用", value: "Disable"}],
           multiple: true,

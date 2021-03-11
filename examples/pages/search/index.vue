@@ -3,6 +3,7 @@
 <example path="./examples/QuickSearchDemo.vue"/>
 <example path="./examples/ComplexSearchDemo.vue"/>
 <example path="./examples/ComplexComponentsDemo.vue"/>
+<example path="./examples/CustomComponentsDemo.vue"/>
 
 <template>
   <div>
@@ -44,7 +45,7 @@ export default {
         },
         {
           title: "快速搜索",
-          titleDesc: "如果需要单独使用快速搜索，两种方式: 1、单独使用快速搜索组件。2、禁用高级搜索(不设置高级搜索组件)",
+          titleDesc: "两种方式: 1、直接使用快速搜索组件。2、禁用高级搜索(不设置高级搜索组件)",
           component: "QuickSearchDemo",
           description: `控制台显示change事件输出`
         },
@@ -59,6 +60,12 @@ export default {
           titleDesc: "高级搜索提供5种常用的搜索组件: 输入框，选择框，异步选择框，日期选择，日期时间选择",
           component: "ComplexComponentsDemo",
           description: `组件的属性情况属性说明`
+        },
+        {
+          title: "自定义搜索组件",
+          titleDesc: "高级搜索除了5种常用的搜索组件，也可以自定义搜索组件",
+          component: "CustomComponentsDemo",
+          description: `搜索组件需要提供init和getCondition方法`
         }
       ]
     };

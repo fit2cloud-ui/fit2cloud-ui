@@ -10,14 +10,12 @@
         <fu-complex-date-time field="create_time" label="创建时间"/>
       </template>
     </fu-search-bar>
-    <h4>搜索条件：</h4>
     <pre class="condition_display">{{ condition }}</pre>
 
     <h4>
       2、使用components数组
     </h4>
     <fu-search-bar :use-quick-search="false" :components="components" @exec="search"/>
-    <h4>搜索条件：</h4>
     <pre class="condition_display">{{ condition }}</pre>
   </div>
 </template>

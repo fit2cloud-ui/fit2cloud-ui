@@ -1,20 +1,18 @@
 <template>
   <div>
     <h4>
-      单独使用快速搜索组件
+      1、快速搜索组件
     </h4>
     <fu-quick-search placeholder="按 姓名/邮箱 搜索" v-model="quick" @change="change" style="width: 200px"/>
-    <h4>搜索条件：</h4>
     <pre class="condition_display">{{ quick }}</pre>
 
     <h4>
-      使用搜索条组件，禁用高级搜索
+      2、禁用高级搜索
     </h4>
     <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" @exec="search" style="width: 200px">
       <fu-search-bar-button tooltip="下载" icon="el-icon-download"/>
       <fu-search-bar-button tooltip="上传" icon="el-icon-upload2"/>
     </fu-search-bar>
-    <h4>搜索条件：</h4>
     <pre class="condition_display">{{ condition }}</pre>
   </div>
 </template>
@@ -37,7 +35,7 @@ export default {
   data() {
     return {
       quick: "",
-      condition: {}
+      condition: ""
     }
   },
   methods: {
