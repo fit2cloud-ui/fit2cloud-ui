@@ -4,45 +4,39 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-function pages() {
-  if (process.env.NODE_ENV === 'examples') {
+const config = () => {
+  if (process.env.NODE_ENV === 'production') {
     return {
-      examples: {
-        entry: "./examples/main.js",
-        template: "./examples/index.html",
-        filename: "index.html"
+      chainWebpack: config => {
+        config.devtool('source-map')
+        config.resolve.alias.set('@', resolve('./src'))
+        config.output.library("Fit2CloudUI")
       }
     }
   }
-  return {
-    dev: {
-      entry: "./dev/main.js",
-      template: "./dev/index.html",
-      filename: "index.html"
+
+  if (process.env.NODE_ENV === 'examples') {
+    return {
+      publicPath: "./",
+      chainWebpack: config => {
+        config.devtool('source-map')
+        config.resolve.alias.set('@', resolve('./src'))
+        config.module
+          .rule('example')
+          .resourceQuery(/blockType=example/)
+          .use('example-loader')
+          .loader('./loaders/example-loader')
+          .end()
+      },
+      pages: {
+        examples: {
+          entry: "./examples/main.js",
+          template: "./examples/index.html",
+          filename: "index.html"
+        }
+      }
     }
   }
 }
-module.exports = {
-  publicPath: "./",
-  productionSourceMap: true,
-  configureWebpack: {
-    devtool: 'source-map',
-    resolve: {
-      alias: {
-        '@': resolve('./src'),
-      }
-    },
-    output: {
-      library: 'Fit2CloudUI',
-    },
-  },
-  pages: pages(),
-  chainWebpack: config => {
-    config.module
-      .rule('example')
-      .resourceQuery(/blockType=example/)
-      .use('example-loader')
-      .loader('./loaders/example-loader')
-      .end()
-  }
-};
+
+module.exports = config();
