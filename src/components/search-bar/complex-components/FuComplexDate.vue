@@ -30,12 +30,15 @@ export default {
     },
     field: String,
     label: String,
-    defaultOperator: String,
+    defaultOperator: {
+      type: String,
+      default: "between"
+    },
     options: Array
   },
   data() {
     return {
-      operator: this.defaultOperator || "between",
+      operator: this.defaultOperator,
       value: "",
       operators: [{
         label: "fu.search_bar.between",

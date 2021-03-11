@@ -20,11 +20,14 @@ export default {
     },
     field: String,
     label: String,
-    defaultOperator: String
+    defaultOperator: {
+      type: String,
+      default: "like"
+    }
   },
   data() {
     return {
-      operator: this.defaultOperator || "like",
+      operator: this.defaultOperator,
       value: "",
       operators: [{
         label: "fu.search_bar.like",

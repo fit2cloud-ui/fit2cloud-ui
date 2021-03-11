@@ -6,7 +6,7 @@
       </fu-complex-search>
       <fu-search-conditions :conditions="conditions" :size="size" @change="change" v-if="showComplex"/>
       <fu-quick-search :size="size" :use-icon="!showComplex" :placeholder="placeholder" v-model="quick"
-                       @change="quickChange" v-if="showQuick"/>
+                       @change="quickChange" v-if="useQuickSearch"/>
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
@@ -66,11 +66,7 @@ export default {
       type: Boolean,
       default: true
     },
-    useQuickSearch: { // 是否使用快速查询
-      type: Boolean,
-      default: true
-    },
-    combine: { // 是否同时使用快速查询和高级查询
+    useQuickSearch: { // 是否使用快速搜索
       type: Boolean,
       default: true
     },
@@ -96,26 +92,23 @@ export default {
       this.conditions = merge(this.conditions, conditions)
       this.exec()
     },
-    exec(e) {
+    clean() {
+      this.quick = ""
+      this.conditions = []
+      this.$emit("exec", this.condition)
+    },
+    exec() {
       // 只有快速搜索
       if (!this.showComplex) {
         this.$emit("exec", this.quick)
         return
       }
-      this.$emit("exec", this.condition, e)
-    },
-    clean() {
-      this.quick = ""
-      this.conditions = []
       this.$emit("exec", this.condition)
     }
   },
   computed: {
     placeholder() {
       return this.quickPlaceholder ? this.quickPlaceholder : this.t('fu.search_bar.search')
-    },
-    showQuick() {
-      return this.useQuickSearch && (this.combine || this.conditions.length === 0)
     },
     showComplex() {
       if (this.$slots?.complex) return true
