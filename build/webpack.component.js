@@ -11,7 +11,6 @@ const { VueLoaderPlugin } = require('vue-loader');
 
 // 整理入口
 const Components = require('../components.json');
-const config = require('../vue.config');
 const entrys = {}
 Object.keys(Components).forEach(item => {
   entrys[item] = Components[item]
