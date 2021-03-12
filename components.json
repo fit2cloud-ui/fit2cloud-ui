@@ -1,0 +1,6 @@
+{
+  "index": "./src/index.js",
+  "fu-search-bar": "./src/components/search-bar/index.js",
+  "fu-speed-dial": "./src/components/speed-dial/index.js",
+  "fu-table": "./src/components/table/index.js"
+}

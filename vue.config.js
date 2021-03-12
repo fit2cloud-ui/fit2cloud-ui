@@ -42,7 +42,7 @@ module.exports = {
       .rule('example')
       .resourceQuery(/blockType=example/)
       .use('example-loader')
-      .loader('./loaders/example-loader')
+      .loader('./build/example-loader')
       .end()
   }
 };
