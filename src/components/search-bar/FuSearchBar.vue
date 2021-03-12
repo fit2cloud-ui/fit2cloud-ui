@@ -1,16 +1,19 @@
 <template>
   <div class="fu-search-bar">
     <div class="fu-search-bar__content">
-      <fu-complex-search :components="components" @change="change" :size="size" v-if="showComplex"/>
-      <fu-search-conditions :conditions="conditions" :size="size" @change="change"/>
-      <fu-quick-search :size="size" :use-icon="false" :placeholder="placeholder" v-model="quick" @change="quickChange"
-                       v-if="showQuick"/>
+      <fu-complex-search :components="components" @change="change" :size="size" v-if="showComplex">
+        <slot name="complex"></slot>
+      </fu-complex-search>
+      <fu-search-conditions :conditions="conditions" :size="size" @change="change" v-if="showComplex"/>
+      <fu-quick-search :size="size" :use-icon="!showComplex" :placeholder="placeholder" v-model="quick"
+                       @change="quickChange" v-if="useQuickSearch"/>
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
         <fu-search-bar-button icon="el-icon-close" @click="clean" :size="size" :tooltip="t('fu.search_bar.clean')"
                               v-if="showClean"/>
-        <fu-search-bar-button icon="el-icon-refresh" @click="exec" :size="size" :tooltip="t('fu.search_bar.refresh')"/>
+        <fu-search-bar-button icon="el-icon-refresh" @click="exec" :size="size" :tooltip="t('fu.search_bar.refresh')"
+                              v-if="showRefresh"/>
         <slot></slot>
       </slot>
     </div>
@@ -55,15 +58,15 @@ export default {
       default: "quick"
     },
     quickPlaceholder: String,
-    useQuickSearch: { // 是否使用快速查询
+    useCleanButton: { // 是否使用清除按钮
       type: Boolean,
       default: true
     },
-    useComplexSearch: { // 是否使用高级查询
+    useRefreshButton: { // 是否使用刷新按钮
       type: Boolean,
       default: true
     },
-    combine: { // 是否同时使用快速查询和高级查询
+    useQuickSearch: { // 是否使用快速搜索
       type: Boolean,
       default: true
     },
@@ -89,12 +92,17 @@ export default {
       this.conditions = merge(this.conditions, conditions)
       this.exec()
     },
-    exec(e) {
-      this.$emit("exec", this.condition, e)
-    },
     clean() {
       this.quick = ""
       this.conditions = []
+      this.$emit("exec", this.condition)
+    },
+    exec() {
+      // 只有快速搜索
+      if (!this.showComplex) {
+        this.$emit("exec", this.quick)
+        return
+      }
       this.$emit("exec", this.condition)
     }
   },
@@ -102,14 +110,15 @@ export default {
     placeholder() {
       return this.quickPlaceholder ? this.quickPlaceholder : this.t('fu.search_bar.search')
     },
-    showQuick() {
-      return this.useQuickSearch && (this.combine || this.conditions.length === 0)
-    },
     showComplex() {
-      return this.useComplexSearch && this.components && this.components.length > 0
+      if (this.$slots?.complex) return true
+      return this.components?.length > 0;
     },
     showClean() {
-      return this.conditions.length > 0 || this.quick
+      return this.useCleanButton && this.showComplex && (this.conditions.length > 0 || this.quick)
+    },
+    showRefresh() {
+      return this.useRefreshButton && this.showComplex
     },
     condition() {
       const condition = {}

@@ -2,7 +2,7 @@
   <div :class="['fu-quick-search', 'fu-quick-search--' + size]">
     <i class="el-icon-search" v-if="useIcon"/>
     <label>
-      <input :placeholder="placeholder" v-model="quick" @input="input" @blur="blur" @keydown="keydown"/>
+      <input :placeholder="placeholder" @input="input" @blur="blur" @keydown="keydown"/>
     </label>
   </div>
 </template>
@@ -17,15 +17,9 @@ export default {
     },
     value: String,
     placeholder: String,
-    useCleanButton: Boolean,
     useIcon: {
       type: Boolean,
       default: true
-    }
-  },
-  watch: {
-    value: function (v) {
-      this.quick = v
     }
   },
   data() {
@@ -34,8 +28,9 @@ export default {
     }
   },
   methods: {
-    input() {
-      this.$emit("input", this.quick)
+    input(e) {
+      this.quick = e.target.value
+      this.$emit("input", this.quick, e)
     },
     blur(e) {
       this.$emit("change", this.quick, e)

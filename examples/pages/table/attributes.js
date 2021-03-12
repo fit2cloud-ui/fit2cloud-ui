@@ -34,7 +34,7 @@ export default [
     ]
   },
   {
-    name: 'Table Column Attributes',
+    name: 'TableColumn Attributes',
     header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
     table: [
       {
@@ -61,7 +61,7 @@ export default [
     ]
   },
   {
-    name: 'Table Column Select Attributes',
+    name: 'TableColumnSelect Attributes',
     header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
     table: [
       {
@@ -95,7 +95,7 @@ export default [
     ]
   },
   {
-    name: 'Table Operations Attributes',
+    name: 'TableOperations Attributes',
     header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
     table: [
       {
@@ -136,63 +136,72 @@ export default [
     ]
   },
   {
-    name: 'Table Button Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
+    name: 'TableButton',
+    children: [
       {
-        prop: 'label',
-        desc: '按钮名称',
-        type: 'String',
-        enum: '-',
-        default: '-',
+        name: '@Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'label',
+            desc: '按钮名称',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'icon',
+            desc: '图标，目前仅支持Element UI的图标，后续版本会增加其他图标',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'type',
+            desc: '按钮类型',
+            type: 'String',
+            enum: 'primary / success / warning / danger / info / text',
+            default: '-',
+          },
+          {
+            prop: 'disabled',
+            desc: '禁用',
+            type: 'Boolean',
+            enum: 'true / false',
+            default: '-',
+          },
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'show',
+            desc: '是否显示',
+            type: 'Boolean',
+            enum: 'true / false',
+            default: '-',
+          }
+        ]
       },
       {
-        prop: 'icon',
-        desc: '图标，目前仅支持Element UI的图标，后续版本会增加其他图标',
-        type: 'String',
-        enum: '-',
-        default: '-',
-      },
-      {
-        prop: 'type',
-        desc: '按钮类型',
-        type: 'String',
-        enum: 'primary / success / warning / danger / info / text',
-        default: '-',
-      },
-      {
-        prop: 'click',
-        desc: '点击方法，参数为row',
-        type: 'Function',
-        enum: '-',
-        default: '-',
-      },
-      {
-        prop: 'disabled',
-        desc: '禁用',
-        type: 'Boolean',
-        enum: 'true / false',
-        default: '-',
-      },
-      {
-        prop: 'size',
-        desc: '大小',
-        type: 'String',
-        enum: 'medium / small / mini',
-        default: 'mini',
-      },
-      {
-        prop: 'show',
-        desc: '是否显示',
-        type: 'Boolean',
-        enum: 'true / false',
-        default: '-',
+        name: '@Events',
+        header: {event: '事件名', desc: "说明", value: '回调参数'},
+        table: [
+          {
+            event: 'click',
+            desc: '点击时触发',
+            value: '-',
+          }
+        ]
       }
     ]
   },
   // 多表
   {
-    name: 'Table Pagination',
+    name: 'TablePagination',
     children: [
       {
         name: '@Attributes',

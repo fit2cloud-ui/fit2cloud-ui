@@ -75,13 +75,15 @@ export default {
     }
   },
   computed: {
-    operators() {
+    isMultiple() {
       const {multiple} = this.$attrs
-      return multiple ? MULTIPLE_OPERATORS : OPERATORS
+      return multiple !== undefined && multiple !== false
+    },
+    operators() {
+      return this.isMultiple ? MULTIPLE_OPERATORS : OPERATORS
     },
     valueLabel() {
-      const {multiple} = this.$attrs
-      if (multiple) {
+      if (this.isMultiple) {
         let values = []
         this.value.forEach(v => {
           values.push(this.getValueLabel(v))

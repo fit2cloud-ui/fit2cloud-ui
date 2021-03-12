@@ -3,234 +3,405 @@
  * @name 表格名称
  * @header 表格头部参数,任意定义
  * @table table内容,字段要和header定义的属性保持一直
+ * @children 多表使用
  */
 export default [
   {
-    name: 'Table Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
+    name: 'SearchBar',
+    children: [
       {
-        prop: 'columns',
-        desc: '选列数组，传入则开启选列功能，如果数组长度为0则自动根据表格内容填充数组',
-        type: 'Array',
-        enum: '-',
-        default: '-',
+        name: '@Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'quick-key',
+            desc: '快速搜索字段名称，如何快速搜索的默认字段名称与实际需求有冲突，可以修改',
+            type: 'String',
+            enum: '-',
+            default: 'quick',
+          },
+          {
+            prop: 'quick-placeholder',
+            desc: '快速搜索placeholder',
+            type: 'String',
+            enum: '-',
+            default: '搜索',
+          },
+          {
+            prop: 'use-clean-button',
+            desc: '是否使用清除按钮',
+            type: 'Boolean',
+            enum: '-',
+            default: 'true',
+          },
+          {
+            prop: 'use-refresh-button',
+            desc: '是否使用刷新按钮',
+            type: 'Boolean',
+            enum: '-',
+            default: 'true',
+          },
+          {
+            prop: 'use-quick-search',
+            desc: '是否使用快速搜索',
+            type: 'Boolean',
+            enum: '-',
+            default: 'true',
+          },
+          {
+            prop: 'components',
+            desc: '高级搜索组件数组',
+            type: 'Array',
+            enum: '-',
+            default: '-',
+          }
+        ]
       },
       {
-        prop: 'local-key',
-        desc: '设置一个唯一的Key，将选列状态自动保存到localStorage，刷新页面表格列仍然是保存时的状态，不设置则不保存',
-        type: 'String',
-        enum: '-',
-        default: '-',
+        name: '@Events',
+        header: {event: '事件名', desc: "说明", value: '回调参数'},
+        table: [
+          {
+            event: 'exec',
+            desc: '搜索条件变更时触发',
+            value: '搜索条件Object',
+          }
+        ]
       },
       {
-        prop: 'refresh',
-        desc: 'refresh为true可以避免抖动或闪烁，但是table会更新一次，如有特殊需求可以关闭',
-        type: 'Boolean',
-        enum: 'true / false',
-        default: 'true',
+        name: '@Slots',
+        header: {name: 'name', desc: "说明"},
+        table: [
+          {
+            name: 'complex',
+            desc: '高级搜索内容',
+          },
+          {
+            name: '-',
+            desc: '按钮内容',
+          }
+        ]
       }
     ]
   },
   {
-    name: 'Table Column Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
+    name: 'SearchBarButton',
+    children: [
       {
-        prop: 'label',
-        desc: '表头名称，如需选列(非fix，非el-table type=selection/index/expand)，则必填',
-        type: 'String',
-        enum: '-',
-        default: '-',
+        name: '@Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'tooltip',
+            desc: '提示',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: '...ElButton',
+            desc: '继承ElButton的属性',
+            type: '-',
+            enum: '-',
+            default: '-',
+          },
+        ]
       },
       {
-        prop: 'show',
-        desc: '未设置show 或者 show 不等于 false 时则显示该列',
-        type: 'Boolean',
-        enum: 'true / false',
-        default: '-',
-      },
-      {
-        prop: 'fix',
-        desc: '设置了fix 并且 fix 不等于 false 时则该列不可隐藏',
-        type: 'Boolean',
-        enum: 'true / false',
-        default: '-',
+        name: '@Slots',
+        header: {name: 'name', desc: "说明"},
+        table: [
+          {
+            name: '-',
+            desc: '按钮内容',
+          }
+        ]
       }
     ]
   },
   {
-    name: 'Table Column Select Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
+    name: 'QuickSearch',
+    children: [
       {
-        prop: 'type',
-        desc: '选列按钮类别: immediate每次勾选立即生效，confirm点击确认后才生效',
-        type: 'Boolean',
-        enum: 'confirm / immediate',
-        default: 'immediate',
+        name: '@Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'placeholder',
+            desc: 'placeholder',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'use-icon',
+            desc: '是否显示搜索图标(放大镜图标)',
+            type: 'Boolean',
+            enum: '-',
+            default: 'true',
+          },
+        ]
       },
       {
-        prop: 'columns',
-        desc: '选列数组，必须与fu-table传入的columns是同一个数组，数组对象格式:{label: "XXX", show: true, fix: false}',
-        type: 'Array',
-        enum: '-',
-        default: '-',
-      },
-      {
-        prop: 'size',
-        desc: '按钮大小',
-        type: 'Array',
-        enum: 'medium / small / mini',
-        default: 'mini',
-      },
-      {
-        prop: 'icon',
-        desc: '触发按钮图标，使用Element UI的图标，如果有需求今后会做其他图标扩展',
-        type: 'String',
-        enum: '-',
-        default: 'el-icon-s-grid',
+        name: '@Events',
+        header: {event: '事件名', desc: "说明", value: '回调参数'},
+        table: [
+          {
+            event: 'input',
+            desc: '在值改变时触发',
+            value: '输入值',
+          },
+          {
+            event: 'change',
+            desc: '仅在输入框失去焦点或用户按下回车时触发',
+            value: '输入值',
+          }
+        ]
       }
     ]
   },
   {
-    name: 'Table Operations Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
+    name: 'Complex Components',
+    children: [
       {
-        prop: 'columns',
-        desc: '选列数组，传入则在操作列表头显示选列按钮',
-        type: 'Array',
-        enum: '-',
-        default: '-',
+        name: '@ComplexInput Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'field',
+            desc: '字段名',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'label',
+            desc: '字段Label',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'default-operator',
+            desc: '默认的运算符',
+            type: 'String',
+            enum: '-',
+            default: 'like',
+          },
+          {
+            prop: '...ElInput',
+            desc: '继承ElInput的属性',
+            type: '-',
+            enum: '-',
+            default: '-',
+          }
+        ]
       },
       {
-        prop: 'align',
-        desc: '对齐方式',
-        type: 'String',
-        enum: 'left / center / right',
-        default: 'center',
+        name: '@ComplexSelect Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'field',
+            desc: '字段名',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'label',
+            desc: '字段Label',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'default-operator',
+            desc: '默认的运算符',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'options',
+            desc: '候选项',
+            type: 'Array',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: '...ElSelect',
+            desc: '继承ElSelect的属性',
+            type: '-',
+            enum: '-',
+            default: '-',
+          }
+        ]
       },
       {
-        prop: 'width',
-        desc: '宽度，不设值则自动根据按钮数量计算宽度',
-        type: 'String / Number',
-        enum: '数值 / auto',
-        default: '-',
+        name: '@ComplexAsyncSelect Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'field',
+            desc: '字段名',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'label',
+            desc: '字段Label',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'default-operator',
+            desc: '默认的运算符',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'init-options',
+            desc: '候选项初始化方法, 回调参数(options:候选数组, loading: loading对象, 内容{status:true/false})',
+            type: 'Function',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: '...ElSelect',
+            desc: '继承ElSelect的属性',
+            type: '-',
+            enum: '-',
+            default: '-',
+          }
+        ]
       },
       {
-        prop: 'ellipsis',
-        desc: '超过几个按钮时显示省略号',
-        type: 'Number',
-        enum: '-',
-        default: '3',
+        name: '@ComplexDate Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'field',
+            desc: '字段名',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'label',
+            desc: '字段Label',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'default-operator',
+            desc: '默认的运算符',
+            type: 'String',
+            enum: '-',
+            default: 'between',
+          },
+          {
+            prop: '...ElDatePicker',
+            desc: '继承ElDatePicker的属性',
+            type: '-',
+            enum: '-',
+            default: '-',
+          }
+        ]
       },
       {
-        prop: 'buttons',
-        desc: '按钮数组: 数组对象的参数请看Table Button Attributes',
-        type: 'Array',
-        enum: '-',
-        default: '-',
-      }
-    ]
-  },
-  {
-    name: 'Table Button Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
-      {
-        prop: 'label',
-        desc: '按钮名称',
-        type: 'String',
-        enum: '-',
-        default: '-',
-      },
-      {
-        prop: 'icon',
-        desc: '图标，目前仅支持Element UI的图标，后续版本会增加其他图标',
-        type: 'String',
-        enum: '-',
-        default: '-',
-      },
-      {
-        prop: 'type',
-        desc: '按钮类型',
-        type: 'String',
-        enum: 'primary / success / warning / danger / info / text',
-        default: '-',
-      },
-      {
-        prop: 'click',
-        desc: '点击方法，参数为row',
-        type: 'Function',
-        enum: '-',
-        default: '-',
-      },
-      {
-        prop: 'disabled',
-        desc: '禁用',
-        type: 'Boolean',
-        enum: 'true / false',
-        default: '-',
-      },
-      {
-        prop: 'size',
-        desc: '大小',
-        type: 'String',
-        enum: 'medium / small / mini',
-        default: 'mini',
-      },
-      {
-        prop: 'show',
-        desc: '是否显示',
-        type: 'Boolean',
-        enum: 'true / false',
-        default: '-',
-      }
-    ]
-  },
-  {
-    name: 'Table Pagination Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
-      {
-        prop: 'current-page',
-        desc: '当前页数，支持 .sync 修饰符',
-        type: 'Number',
-        enum: '-',
-        default: '1',
-      },
-      {
-        prop: 'page-size',
-        desc: '每页显示条目个数，支持 .sync 修饰符',
-        type: 'Number',
-        enum: '-',
-        default: '5',
-      },
-      {
-        prop: 'page-sizes',
-        desc: '每页显示个数选择器的选项设置',
-        type: 'Array of Number',
-        enum: '-',
-        default: '[5, 10, 20, 50, 100]',
-      },
-      {
-        prop: 'total',
-        desc: '总页数',
-        type: 'Number',
-        enum: '-',
-        default: '0',
-      }
-    ]
-  },
-  {
-    name: 'Table Pagination Methods',
-    header: {method: '方法名', desc: "说明", value: '参数'},
-    table: [
-      {
-        method: 'change',
-        desc: 'currentPage 或 pageSize 变更时触发',
-        value: '-',
+        name: '@ComplexDateTime Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: 'mini',
+          },
+          {
+            prop: 'field',
+            desc: '字段名',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'label',
+            desc: '字段Label',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'default-operator',
+            desc: '默认的运算符',
+            type: 'String',
+            enum: '-',
+            default: 'between',
+          },
+          {
+            prop: '...ElDateTimePicker',
+            desc: '继承ElDateTimePicker的属性',
+            type: '-',
+            enum: '-',
+            default: '-',
+          }
+        ]
       }
     ]
   }

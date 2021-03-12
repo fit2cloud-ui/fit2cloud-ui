@@ -7,7 +7,9 @@
       popper-class="fu-complex-components">
 
       <div class="fu-complex-components__body">
-        <component v-for="(c, i) in components" :key="i" :is="c.component" :size="size" v-bind="c" :ref="c.field"/>
+        <slot>
+          <component v-for="(c, i) in components" :key="i" :is="c.component" :size="size" v-bind="c" :ref="c.field"/>
+        </slot>
       </div>
       <div class="fu-complex-components__footer">
         <el-button @click="toggle=false" :size="size">{{ t('fu.search_bar.cancel') }}</el-button>
@@ -38,10 +40,7 @@ export default {
       type: String,
       default: "mini"
     },
-    components: {
-      type: Array,
-      required: true
-    },
+    components: Array,
   },
   data() {
     return {
@@ -51,21 +50,23 @@ export default {
   methods: {
     open() {
       this.toggle = !this.toggle
-      this.components.forEach(c => {
-        let ref = this.$refs[c.field][0]
-        if (ref.init) {
-          ref.init()
+      this.refs.forEach(r => {
+        if (r.init) {
+          r.init()
+        } else {
+          console.warn("init undefined", r)
         }
       })
     },
     ok() {
       this.toggle = false
       let conditions = [];
-      this.components.forEach(c => {
-        let ref = this.$refs[c.field][0]
+      this.refs.forEach(r => {
         let condition
-        if (ref.getCondition) {
-          condition = ref.getCondition()
+        if (r.getCondition) {
+          condition = r.getCondition()
+        } else {
+          console.warn("getCondition undefined", r)
         }
         if (condition && condition.value !== undefined) {
           conditions.push(condition)
@@ -73,6 +74,23 @@ export default {
       })
       this.$emit("change", conditions)
     },
+  },
+  computed: {
+    refs() {
+      let refs = [];
+      if (this.$slots?.default) {
+        // 使用slot
+        this.$slots.default.forEach(component => {
+          refs.push(component.componentInstance)
+        })
+      } else {
+        // 使用components
+        this.components.forEach(c => {
+          refs.push(this.$refs[c.field][0])
+        })
+      }
+      return refs
+    }
   }
 }
 </script>

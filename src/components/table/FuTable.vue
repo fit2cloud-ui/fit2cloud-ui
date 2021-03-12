@@ -33,6 +33,9 @@ const initColumns = (nodes, columns) => {
     if (!label && !fix) {
       throw new Error("unfixed column's label is required.")
     }
+    if (!node.data.key) {
+      node.data.key = label || randomId()
+    }
     const {show} = node.data.attrs
 
     columns.push({label, show, fix})
