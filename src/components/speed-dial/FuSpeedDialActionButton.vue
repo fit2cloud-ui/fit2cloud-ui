@@ -2,7 +2,9 @@
   <div class="fu-speed-dial-action-button">
     <div v-if="title" class="fu-speed-dial-action-button__title" :style="titleSize">
       <slot name="title">
-        <div class="fu-speed-dial-action-button__text" :class="titleClass" :style="titleStyle" @click="click">{{ title }}</div>
+        <div class="fu-speed-dial-action-button__text" :class="titleClass" :style="titleStyle" @click="click">{{
+            title }}
+        </div>
       </slot>
     </div>
     <slot>
@@ -75,7 +77,8 @@ export default {
   },
   methods: {
     click(e) {
-      this.$emit("click", e);
+      const {index, title} = this
+      this.$emit("click", {index, title}, e);
       this["FuSpeedDial"].close();
     }
   }
