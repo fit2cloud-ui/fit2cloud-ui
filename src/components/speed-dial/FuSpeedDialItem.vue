@@ -2,7 +2,7 @@
   <transition :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave">
     <div v-if="isActive" class="fu-speed-dial-item" :style="itemSize">
       <slot>
-        <fu-speed-dial-action-button :index="getIndex" v-bind="item" @click="click"/>
+        <fu-speed-dial-action-button :index="index" v-bind="$attrs" v-on="$listeners"/>
       </slot>
     </div>
   </transition>
@@ -19,13 +19,9 @@ export default {
       type: Number,
       required: true
     },
-    item: Object,
   },
   inject: ["FuSpeedDial"],
   computed: {
-    getIndex() {
-      return this.item === undefined || this.item.index === undefined ? this.index : this.item.index;
-    },
     config() {
       return this["FuSpeedDial"].config
     },
@@ -84,11 +80,6 @@ export default {
         done()
       }, 200)
     },
-    click(e) {
-      if (this.item.click) {
-        this.item.click(this.item, this.getIndex, e)
-      }
-    }
   }
 }
 </script>
