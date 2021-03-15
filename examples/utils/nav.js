@@ -12,16 +12,15 @@ const navList = {
       component: 'TableDoc'
     },
     {
-      name: 'Speed Dial',
-      path: 'speed-dial',
-      component: 'SpeedDialDoc'
-    },
-    {
       name: 'SearchBar 搜索条',
       path: 'search',
       component: 'SearchDoc'
+    },
+    {
+      name: 'SpeedDial 快速拨号',
+      path: 'speed-dial',
+      component: 'SpeedDialDoc'
     }
-
   ],
   "filters": [],
   "directives": [],
