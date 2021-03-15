@@ -1,6 +1,6 @@
 <template>
-  <div :style="style" v-outside-click="outsideClickClose">
-    <div style="position: relative">
+  <div class="fu-speed-dial" :style="style" v-outside-click="outsideClickClose">
+    <div class="fu-speed-dial__content">
       <slot name="fab">
         <fu-speed-dial-button v-bind="buttonProps" @click="click" @mousedown="mousedown"/>
       </slot>
@@ -219,6 +219,7 @@ export default {
       }
     },
     itemClick(arg, e) {
+      console.log(arg)
       const {index} = arg
       if (index !== undefined) {
         const item = this.items[index];
