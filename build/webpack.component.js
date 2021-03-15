@@ -25,9 +25,9 @@ module.exports = {
   entry: entrys,
   output: {
     path: path.resolve(process.cwd(), './lib/'),
-    filename: '[name].js',
+    filename: '[name]/index.js',
     chunkFilename: '[id].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'umd'
   },
   externals: externals,
   resolve: {
@@ -81,7 +81,7 @@ module.exports = {
     new webpack.ProgressPlugin(),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'theme/[name].css',
+      filename: '[name]/style.css',
       allChunks: true
     }),
   ],

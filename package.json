@@ -2,8 +2,7 @@
   "name": "fit2cloud-ui",
   "version": "0.1.14",
   "main": "lib/fit2cloud-ui.common.js",
-  "style": "lib/theme/index.scss",
-
+  "style": "lib/fit2cloud-ui.css",
   "private": false,
   "scripts": {
     "serve-examples": "vue-cli-service serve --mode examples",
