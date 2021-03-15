@@ -1,6 +1,4 @@
-import Vue from 'vue'
 import locale from "@/locale"
-import "@/styles/index.scss"
 import PackageJSON from "../package.json"
 import FuSearchBar from '@/components/search-bar/index.js';
 import FuSpeedDial from '@/components/speed-dial/index.js';
@@ -22,16 +20,12 @@ const plugin = {
   locale: locale.use,
   i18n: locale.i18n,
   install,
-  FuSearchBar,
-  FuSpeedDial,
-  FuTable
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin);
 }
 export {
-  install,
   FuSearchBar,
   FuSpeedDial,
   FuTable
