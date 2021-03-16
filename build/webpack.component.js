@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const {
   VueLoaderPlugin
 } = require('vue-loader');
@@ -13,9 +13,7 @@ const Components = fs.readdirSync('./src/components');
 const dirs = Components.filter(v => {
   return fs.statSync(path.resolve('./src/components', v)).isDirectory();
 });
-const entrys = {
-  "index": "./src/index.js"
-};
+const entrys = {};
 dirs.forEach(v => {
   entrys[v] = `./src/components/${v}/index.js`;
 });
@@ -67,20 +65,20 @@ module.exports = {
           },
         }, ],
       },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "sass-loader"]
-        })
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: "style-loader",
+      //     use: "css-loader"
+      //   })
+      // },
+      // {
+      //   test: /\.scss$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: "style-loader",
+      //     use: ["css-loader", "sass-loader"]
+      //   })
+      // },
 
     ]
   },
@@ -88,10 +86,10 @@ module.exports = {
     new VueLoaderPlugin(),
     new webpack.ProgressPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin({
-      filename: 'theme/[name].css',
-      allChunks: true
-    }),
+    // new ExtractTextPlugin({
+    //   filename: 'theme/[name].css',
+    //   allChunks: true
+    // }),
   ],
   optimization: {
     minimize: true,
