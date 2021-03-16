@@ -1,33 +1,41 @@
 'use strict'
+const fs = require('fs');
 const path = require('path')
-
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader');
+const {
+  VueLoaderPlugin
+} = require('vue-loader');
 
 // 整理入口
-const Components = require('../components.json');
-const entrys = {}
-Object.keys(Components).forEach(item => {
-  entrys[item] = Components[item]
-})
+const Components = fs.readdirSync('./src/components');
+const dirs = Components.filter(v => {
+  return fs.statSync(path.resolve('./src/components', v)).isDirectory();
+});
+const entrys = {
+  "index": "./src/index.js"
+};
+dirs.forEach(v => {
+  entrys[v] = `./src/components/${v}/index.js`;
+});
 
 const externals = [Object.assign({
   vue: 'vue',
 }), nodeExternals()];
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 
 module.exports = {
   mode: 'production',
   entry: entrys,
   output: {
     path: path.resolve(process.cwd(), './lib/'),
-    filename: '[name]/index.js',
+    filename: `[name].js`,
     chunkFilename: '[id].js',
-    libraryTarget: 'umd'
+    libraryTarget: 'commonjs2'
   },
   externals: externals,
   resolve: {
@@ -81,7 +89,7 @@ module.exports = {
     new webpack.ProgressPlugin(),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: '[name]/style.css',
+      filename: 'theme/[name].css',
       allChunks: true
     }),
   ],
