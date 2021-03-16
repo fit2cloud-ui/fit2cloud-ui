@@ -5,7 +5,7 @@ import App from './App.vue'
 // import '@/styles/all.scss';
 
 // 按需引入
-import FULibrary from "../library"
+import Fit2CLoudUI from "../require"
 import ElementUI from 'element-ui';
 import router from "./router";
 import filters from "@/filters"
@@ -15,7 +15,7 @@ import './components'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
-Vue.use(FULibrary, "search-bar", "SpeedDial", "Table")
+Vue.use(Fit2CLoudUI, "search-bar", "SpeedDial", "Table")
 Vue.use(filters)
 
 new Vue({
