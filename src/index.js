@@ -1,8 +1,6 @@
 import locale from "@/locale"
 import PackageJSON from "../package.json"
-import FuSearchBar from '@/components/search-bar/index.js';
-import FuSpeedDial from '@/components/speed-dial/index.js';
-import FuTable from '@/components/table/index.js';
+
 const components = require.context('@/components/', true, /index\.js$/);
 
 const install = function (Vue, opts = {}) {
@@ -24,11 +22,6 @@ const plugin = {
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin);
-}
-export {
-  FuSearchBar,
-  FuSpeedDial,
-  FuTable
 }
 
 export default plugin

@@ -12,7 +12,7 @@
     "serve-examples": "vue-cli-service serve --mode examples",
     "build-examples": "vue-cli-service build --mode examples --dest docs",
     "build": "npm run build-lib && npm run build-components",
-    "build-lib": "vue-cli-service build --target lib --name fit2cloud-ui --dest lib ./src/index.js",
+    "build-lib": "vue-cli-service build --target lib --name fit2cloud-ui --dest lib ./src/index.js --formats commonjs",
     "build-components": "npx webpack --config ./build/webpack.component.js",
     "lint": "vue-cli-service lint"
   },

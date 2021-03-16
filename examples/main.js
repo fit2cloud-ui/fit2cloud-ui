@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Fit2CloudUI from "@/index"
+// 整体引入
+// import Fit2CloudUI from "@/index"
 // import '@/styles/all.scss';
-import './index.scss';
+
+// 按需引入
+import FULibrary from "../library"
 import ElementUI from 'element-ui';
 import router from "./router";
 import filters from "@/filters"
@@ -12,7 +15,7 @@ import './components'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
-Vue.use(Fit2CloudUI)
+Vue.use(FULibrary, "search-bar", "SpeedDial", "Table")
 Vue.use(filters)
 
 new Vue({
