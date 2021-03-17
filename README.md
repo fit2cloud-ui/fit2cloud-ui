@@ -69,6 +69,7 @@ Vue.use(Fit2CloudUI, {
 
 new Vue({
   el: '#app',
+  i18n,
   render: h => h(App)
 });
 ```
