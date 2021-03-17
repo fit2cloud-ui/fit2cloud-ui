@@ -5,7 +5,7 @@ function camelCaseToDash(str) {
 // 变量及element的scss
 import "../src/styles/require.scss";
 
-const Fit2CLoudUI = {
+const Fit2CloudUI = {
   install: function (Vue, ...names) {
     names.forEach(name => {
       // 按需加载组件的scss
@@ -17,4 +17,4 @@ const Fit2CLoudUI = {
   }
 }
 
-export default Fit2CLoudUI
+export default Fit2CloudUI
