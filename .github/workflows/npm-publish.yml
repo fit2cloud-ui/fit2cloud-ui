@@ -4,9 +4,8 @@
 name: FIT2CLOUD UI Publish
 
 on:
-  create:
-    tag:
-      - "v*"
+  release:
+    types: [ published ]
 
 jobs:
   publish-npm:
