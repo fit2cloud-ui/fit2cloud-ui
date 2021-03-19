@@ -1,15 +1,16 @@
 <template>
   <div class="code-example" @mouseenter="hovering = true" @mouseleave="hovering = false">
-    <div class="source">
+    <div class="source" v-if="component.name">
       <component :is="component.name" />
     </div>
-    <div class="meta" ref="meta" :style="{ height: childHeight }">
+    <div class="meta" ref="meta" :style="{ height: childHeight }" v-if="component.name">
       <code-block :label="label" :lang="lang" :description="description" ref="code-block"
         v-show="showCode">
         <slot>{{ component.source }}</slot>
       </code-block>
     </div>
-    <div class="demo-block-control" ref="control" @click="showCode = !showCode">
+    <div class="demo-block-control" ref="control" @click="showCode = !showCode"
+      v-if="component.name">
       <transition name="arrow-slide">
         <i :class="[iconClass(), { hovering: hovering }]"></i>
       </transition>
@@ -17,11 +18,15 @@
         <span v-show="hovering">{{ controlText() }}</span>
       </transition>
     </div>
-    <el-tooltip content="隐藏代码" placement="left">
+    <el-tooltip content="隐藏代码" placement="left" v-if="component.name">
       <el-button v-show="fixedControl" class="is-fixed" @click="showCode = false" circle>
         <img src="../assets/hidden-code.png" width="18" />
       </el-button>
     </el-tooltip>
+    <!-- 无组件情况 -->
+    <code-block :label="label" :lang="lang" :description="description" v-else>
+      <slot>{{ component.source }}</slot>
+    </code-block>
   </div>
 </template>
 
