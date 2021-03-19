@@ -2,7 +2,7 @@
   <div :class="['fu-quick-search', 'fu-quick-search--' + size]">
     <i class="el-icon-search" v-if="useIcon"/>
     <label>
-      <input :placeholder="placeholder" @input="input" @blur="blur" @keydown="keydown"/>
+      <input :placeholder="placeholder" v-model="quick" @input="input" @blur="blur" @keydown="keydown"/>
     </label>
   </div>
 </template>
@@ -27,9 +27,13 @@ export default {
       quick: ""
     }
   },
+  watch: {
+    value(v) {
+      this.quick = v
+    }
+  },
   methods: {
     input(e) {
-      this.quick = e.target.value
       this.$emit("input", this.quick, e)
     },
     blur(e) {
