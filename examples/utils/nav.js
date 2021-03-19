@@ -5,8 +5,12 @@
  * {name},目录的中文名以及页面标题
  */
 const navList = {
-  "components": [
-    {
+  "guide": [{
+    name: '快速上手',
+    path: 'getting-started',
+    component: 'GettingStartedDoc'
+  }],
+  "components": [{
       name: 'Table 表格',
       path: 'table',
       component: 'TableDoc'
@@ -28,7 +32,10 @@ const navList = {
 /**
  * @type 一级分类
  */
-const type = [
+const type = [{
+    name: '开发指南',
+    value: 'guide'
+  },
   {
     name: '组件',
     value: 'components'

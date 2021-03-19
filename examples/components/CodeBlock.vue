@@ -7,8 +7,7 @@
       <pre><code ref="block" :class="lang"><slot v-pre/></code></pre>
       <span class="copy-message" :class="{ active: showMessage }">Code copied!</span>
     </div>
-
-    <el-button ref="copy" class="copy">Copy</el-button>
+    <el-button ref="copy" class="copy" v-if="lang!=='shell'">Copy</el-button>
   </div>
 </template>
 
@@ -105,11 +104,14 @@ export default {
     max-width: 100%;
     margin: 0;
     white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   code {
     padding: 0;
     background: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
   .description {
     padding: 20px;
@@ -135,7 +137,7 @@ export default {
 .code-block-wrapper {
   // min-width: 100%;
   // max-height: 450px;
-  min-height: 86px;
+  // min-height: 86px;
   padding: 25px;
   overflow: auto;
 }
@@ -214,7 +216,7 @@ export default {
 }
 
 .hljs-subst {
-  color: #daefa3;
+  color: #e9c062;
 }
 
 .hljs-regexp,

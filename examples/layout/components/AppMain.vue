@@ -33,7 +33,7 @@ export default {
           component = item;
         }
       });
-      return component || navList["components"][0];
+      return component || navList["guide"][0];
     },
   },
 };

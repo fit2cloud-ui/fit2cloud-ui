@@ -1,6 +1,6 @@
 <template>
   <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="size">
-    <el-date-picker class="width-100"
+    <el-date-picker class="fu-complex-data-time"
                     v-model="value"
                     v-bind="$attrs"
                     :size="size"

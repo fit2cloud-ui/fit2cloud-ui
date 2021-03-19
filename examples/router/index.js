@@ -21,7 +21,7 @@ const router = new VueRouter({
 });
 router.beforeEach((to, from, next) => {
   if (to.path === '/') {
-    next('/components/table')
+    next('/guide/getting-started')
   }
   next()
 })
