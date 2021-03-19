@@ -234,9 +234,23 @@
     padding: 0 5px;
     flex-grow: 1;
     min-width: 240px;
+  }
+}
 
-    .width-100 {
-      width: 100%;
-    }
+@include b(complex-select) {
+  &.el-select {
+    width: 100% !important;
+  }
+}
+
+@include b(complex-data) {
+  &.el-date-editor {
+    width: 100% !important;
+  }
+}
+
+@include b(complex-data-time) {
+  &.el-date-editor {
+    width: 100% !important;
   }
 }
