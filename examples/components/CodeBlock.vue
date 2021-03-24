@@ -80,7 +80,7 @@ export default {
   background-color: #f5f9ff;
 
   ::selection {
-    background-color: #3e3d3d;
+    background-color: #DDD;
     color: inherit;
   }
 
