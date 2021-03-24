@@ -88,7 +88,7 @@ new  Vue({
 }`,
       demandIntro: `import Vue from 'vue';
 import  ElementUI from 'element-ui'
-import  'element-ui/lib/theme-chalk/index.css';
+import 'fit2cloud-ui/src/styles/require.scss'; // 已经包含了element ui的scss
 import  { SearchBar, Table } from 'fit2cloud-ui';
 import  App from './App.vue';
 
