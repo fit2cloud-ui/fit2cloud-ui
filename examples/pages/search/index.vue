@@ -34,7 +34,7 @@ export default {
       comList: [
         {
           title: "基本用法",
-          titleDesc: "使用size属性控制大小: medium / small / mini",
+          titleDesc: "使用size属性控制大小: 默认值(空) / medium / small / mini",
           component: "BaseSearchbar",
         },
         {

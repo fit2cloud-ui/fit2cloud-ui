@@ -18,7 +18,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'quick-key',
@@ -103,7 +103,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'tooltip',
@@ -145,7 +145,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'placeholder',
@@ -193,7 +193,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',
@@ -234,7 +234,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',
@@ -282,7 +282,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',
@@ -330,7 +330,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',
@@ -371,7 +371,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',

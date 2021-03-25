@@ -3,7 +3,7 @@
     <h4>
       1、使用v-slot:complex
     </h4>
-    <fu-search-bar :use-quick-search="false" @exec="search2">
+    <fu-search-bar :use-quick-search="false" @exec="search">
       <template v-slot:complex>
         <fu-complex-input field="username" label="用户名"/>
         <fu-complex-select field="status" label="状态" :options="options"/>
@@ -15,8 +15,8 @@
     <h4>
       2、使用components数组
     </h4>
-    <fu-search-bar :use-quick-search="false" :components="components" @exec="search"/>
-    <pre class="condition_display">{{ condition }}</pre>
+    <fu-search-bar :use-quick-search="false" :components="components" @exec="search2"/>
+    <pre class="condition_display">{{ condition2 }}</pre>
   </div>
 </template>
 
