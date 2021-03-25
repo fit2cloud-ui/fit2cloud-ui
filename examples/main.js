@@ -14,7 +14,7 @@ import './components'
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI)
+Vue.use(ElementUI, {size: "default"})
 Vue.use(Fit2CloudUI)
 Vue.use(filters)
 

@@ -83,7 +83,7 @@ export default [
         desc: '按钮大小',
         type: 'Array',
         enum: 'medium / small / mini',
-        default: 'mini',
+        default: '-',
       },
       {
         prop: 'icon',
