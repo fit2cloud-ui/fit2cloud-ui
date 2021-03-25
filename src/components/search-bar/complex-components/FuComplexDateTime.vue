@@ -3,6 +3,7 @@
     <el-date-picker class="fu-complex-data-time"
                     v-model="value"
                     v-bind="$attrs"
+                    :align="align"
                     :size="configSize"
                     :placeholder="t('fu.search_bar.select_date_time')"
                     :type="type" :key="type" value-format="timestamp"
@@ -26,6 +27,10 @@ export default {
   props: {
     field: String,
     label: String,
+    align: {
+      type: String,
+      default: "right"
+    },
     defaultOperator: {
       type: String,
       default: "between"

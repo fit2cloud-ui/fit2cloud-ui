@@ -4,6 +4,7 @@
                     v-model="value"
                     v-bind="$attrs"
                     :size="configSize"
+                    :align="align"
                     :placeholder="t('fu.search_bar.select_date')"
                     :type="type" :key="type" value-format="timestamp"
                     :range-separator="t('fu.search_bar.range_separator')"
@@ -26,6 +27,10 @@ export default {
   props: {
     field: String,
     label: String,
+    align: {
+      type: String,
+      default: "right"
+    },
     defaultOperator: {
       type: String,
       default: "between"
