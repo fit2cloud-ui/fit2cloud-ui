@@ -333,6 +333,13 @@ export default [
             default: '-',
           },
           {
+            prop: 'align',
+            desc: '对齐方式',
+            type: 'String',
+            enum: 'left / center / right',
+            default: 'right',
+          },
+          {
             prop: 'field',
             desc: '字段名',
             type: 'String',
@@ -372,6 +379,13 @@ export default [
             type: 'String',
             enum: 'medium / small / mini',
             default: '-',
+          },
+          {
+            prop: 'align',
+            desc: '对齐方式',
+            type: 'String',
+            enum: 'left / center / right',
+            default: 'right',
           },
           {
             prop: 'field',
