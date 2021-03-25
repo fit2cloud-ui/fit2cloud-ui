@@ -1,13 +1,13 @@
 <template>
   <div class="fu-operator-component">
-    <div :class="['fu-operator-component__label', 'fu-operator-component__label--' + size]">
+    <div :class="['fu-operator-component__label', 'fu-operator-component__label--' + configSize]">
       {{ label }}
     </div>
     <div class="fu-operator-component__operator">
       <el-select class="search-operator"
                  v-model="value"
                  :placeholder="t('fu.search_bar.please_select')"
-                 :size="size"
+                 :size="configSize"
                  @change="change"
                  @input="change">
         <el-option v-for="o in operators" :key="o.value" :label="t(o.label)" :value="o.value"/>
@@ -21,19 +21,16 @@
 
 <script>
 import Locale from "@/mixins/locale";
+import ConfigSize from "@/mixins/config-size";
 
 export default {
   name: "FuComplexOperator",
-  mixins: [Locale],
+  mixins: [Locale, ConfigSize],
   model: {
     prop: 'operator',
     event: 'change'
   },
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     label: String,
     operator: String,
     operators: Array,

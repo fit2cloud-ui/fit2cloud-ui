@@ -3,7 +3,7 @@
     <el-select class="fu-complex-select"
                v-model="value"
                :placeholder="t('fu.search_bar.please_select')"
-               :size="size"
+               :size="configSize"
                clearable
                :loading="loading.status"
                v-bind="$attrs">
@@ -40,10 +40,6 @@ export default {
   components: {FuComplexOperator},
   mixins: [mixins],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     field: String,
     label: String,
     defaultOperator: String,
