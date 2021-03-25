@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="fu-table-column-select__footer">
-      <el-button type="primary" :size="size" @click="ok">{{ t('fu.table.ok') }}</el-button>
+      <el-button type="primary" :size="configSize" @click="ok">{{ t('fu.table.ok') }}</el-button>
     </div>
 
     <el-tooltip :content="t('fu.table.select_columns')" slot="reference">

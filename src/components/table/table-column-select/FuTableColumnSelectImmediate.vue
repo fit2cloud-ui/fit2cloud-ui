@@ -14,7 +14,7 @@
         </el-checkbox>
       </div>
     </div>
-    <fu-search-bar-button slot="reference" :icon="icon" :size="size"/>
+    <fu-search-bar-button slot="reference" :icon="icon" :size="configSize"/>
   </el-popover>
 </template>
 
