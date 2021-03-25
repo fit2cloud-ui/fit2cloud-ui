@@ -54,9 +54,9 @@ export default {
   methods: {
     setPosition(el, position) {
       if (["top", "bottom"].includes(this.direction)) {
-        el.style.top = position
+        el.style.transform = "translateY(" + position + ")"
       } else {
-        el.style.left = position
+        el.style.transform = "translateX(" + position + ")"
       }
     },
     beforeEnter(el) {
