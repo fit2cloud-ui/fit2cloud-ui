@@ -46,7 +46,7 @@ export default [
             desc: '是否使用刷新按钮',
             type: 'Boolean',
             enum: '-',
-            default: 'true',
+            default: 'false',
           },
           {
             prop: 'use-quick-search',

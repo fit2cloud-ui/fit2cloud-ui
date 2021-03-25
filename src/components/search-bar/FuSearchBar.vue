@@ -64,7 +64,7 @@ export default {
     },
     useRefreshButton: { // 是否使用刷新按钮
       type: Boolean,
-      default: true
+      default: false
     },
     useQuickSearch: { // 是否使用快速搜索
       type: Boolean,
