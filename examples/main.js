@@ -3,9 +3,6 @@ import App from './App.vue'
 // 整体引入
 import Fit2CloudUI from "@/index"
 import '@/styles/index.scss';
-
-// 按需引入
-// import Fit2CloudUI from "../require"
 import ElementUI from 'element-ui';
 import router from "./router";
 import filters from "@/filters"

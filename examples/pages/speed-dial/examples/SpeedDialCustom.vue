@@ -33,13 +33,13 @@
       <h4>
         Item Slot
       </h4>
-      <fu-speed-dial>
+      <fu-speed-dial ref="speed-dial">
         <fu-speed-dial-item :index="0">
-          <el-button @click="clickItem({title: 'Item 1',index: 0},$event)">Item 1</el-button>
+          <el-button @click="clickItem({title: 'Item 1',index: 0, custom:true},$event)">Item 1</el-button>
         </fu-speed-dial-item>
 
         <fu-speed-dial-item :index="1">
-          <el-button @click="clickItem({title: 'Item 2',index: 1})">Item 2</el-button>
+          <el-button @click="clickItem({title: 'Item 2',index: 1, custom:true})">Item 2</el-button>
         </fu-speed-dial-item>
       </fu-speed-dial>
     </div>
@@ -77,6 +77,9 @@ export default {
       console.log(obj, e)
     },
     clickItem(item, e) {
+      if (item.custom) {
+        this.$refs["speed-dial"].close()
+      }
       console.log(item, e)
     }
   }
