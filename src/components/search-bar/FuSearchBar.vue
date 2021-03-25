@@ -1,7 +1,7 @@
 <template>
   <div class="fu-search-bar">
     <div class="fu-search-bar__content">
-      <fu-complex-search :components="components" @change="change" :size="size" v-if="showComplex">
+      <fu-complex-search ref="complex" :components="components" @change="change" :size="size" v-if="showComplex">
         <slot name="complex"></slot>
       </fu-complex-search>
       <fu-search-conditions :conditions="conditions" :size="size" @change="change" v-if="showComplex"/>
@@ -12,7 +12,7 @@
       <slot name="buttons">
         <fu-search-bar-button icon="el-icon-close" @click="clean" :size="size" :tooltip="t('fu.search_bar.clean')"
                               v-if="showClean"/>
-        <fu-search-bar-button icon="el-icon-refresh" @click="exec" :size="size" :tooltip="t('fu.search_bar.refresh')"
+        <fu-search-bar-button icon="el-icon-refresh" @click="refresh" :size="size" :tooltip="t('fu.search_bar.refresh')"
                               v-if="showRefresh"/>
         <slot></slot>
       </slot>
@@ -96,6 +96,10 @@ export default {
       this.quick = ""
       this.conditions = []
       this.$emit("exec", this.condition)
+    },
+    refresh() {
+      this.$refs.complex.close()
+      this.exec()
     },
     exec() {
       // 只有快速搜索
