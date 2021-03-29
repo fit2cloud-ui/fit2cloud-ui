@@ -1,8 +1,8 @@
 /**
  * @navList 配置导航目录
  * {component}是pages下每个文件夹的index.vue的name, 命名规则第一个字母大写Doc结尾
- * {path},动态路由
- * {name},目录的中文名以及页面标题
+ * {path}, 动态路由
+ * {name}, 目录的中文名以及页面标题
  */
 const navList = {
   "guide": [{
@@ -10,7 +10,8 @@ const navList = {
     path: 'getting-started',
     component: 'GettingStartedDoc'
   }],
-  "components": [{
+  "components": [
+    {
       name: 'Table 表格',
       path: 'table',
       component: 'TableDoc'
@@ -24,15 +25,21 @@ const navList = {
       name: 'SpeedDial 快速拨号',
       path: 'speed-dial',
       component: 'SpeedDialDoc'
+    },
+    {
+      name: 'ReadWriteSwitch 读写切换',
+      path: 'read-write-switch',
+      component: 'ReadWriteSwitchDoc'
     }
   ],
   "filters": [],
   "directives": [],
 }
 /**
- * @type 一级分类
+ * @type ({name: string, value: string})[]
  */
-const type = [{
+const type = [
+  {
     name: '开发指南',
     value: 'guide'
   },
@@ -48,7 +55,6 @@ const type = [{
     name: '指令',
     value: 'directives'
   },
-
 ]
 
 /**
