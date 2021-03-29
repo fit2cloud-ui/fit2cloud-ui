@@ -1,0 +1,6 @@
+@import "../common/mixins.scss";
+@import "../common/variables.scss";
+
+@include b(read-write-switch) {
+  min-height: 20px;
+}
