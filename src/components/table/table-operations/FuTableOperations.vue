@@ -1,8 +1,9 @@
 <template>
-  <el-table-column :align="align" :width="computeWidth" v-bind="$attrs" v-on="$listeners" v-if="showButtons">
+  <el-table-column class-name="fu-table-operations" :align="align" :width="computeWidth" v-bind="$attrs" v-on="$listeners"
+                   v-if="showButtons">
     <template #header>
       {{ $attrs.label }}
-      <fu-table-column-select type="confirm" :columns="columns"/>
+      <fu-table-column-select class="fu-" type="dialog" :columns="columns"/>
     </template>
     <template v-slot:default="{row}">
       <fu-table-button v-for="(btn, i) in defaultButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>

@@ -1,14 +1,11 @@
 <template>
-  <el-popover :trigger="trigger"
-              :visible-arrow="false"
-              class="fu-table-column-select"
-              popper-class="fu-table-column-select-popper"
-              v-if="hasSelect">
-    <div class="fu-table-column-select__title">
-      {{ t('fu.table.select_columns') }}
-    </div>
-    <div class="fu-table-column-select__body">
-      <div v-for="(c, i) in selectable" :key="i" class="fu-table-column-select__item">
+  <el-popover class="fu-table-column-select" popper-class="fu-table-column-select-popper" :trigger="trigger"
+              :visible-arrow="false" v-if="hasSelect">
+    <h3>
+      {{ t('fu.table.custom_table_fields') }}
+    </h3>
+    <div class="fu-table-column-select-popper__body">
+      <div v-for="(c, i) in selectable" :key="i" class="fu-table-column-select-popper__item">
         <el-checkbox v-model="c.show" :checked="c.show !== false">
           {{ c.label }}
         </el-checkbox>
@@ -23,7 +20,7 @@ import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 import mixins from "@/components/table/table-column-select/mixins";
 
 export default {
-  name: "FuTableColumnSelectImmediate",
+  name: "FuTableColumnSelectPopover",
   components: {FuSearchBarButton},
   mixins: [mixins],
 }

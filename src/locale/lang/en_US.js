@@ -31,7 +31,8 @@ export default {
     },
     table: {
       ok: "OK",
-      select_columns: "Select columns"
+      custom_table_fields: "Custom table fields",
+      custom_table_fields_desc: "Fixed field is unselectable",
     }
   }
 }
