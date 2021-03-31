@@ -42,7 +42,9 @@
 }
 
 @include b(table-column-select-dialog) {
-  width: 640px;
+  &.el-dialog {
+    width: 640px;
+  }
 
   .el-checkbox {
     width: 180px;
