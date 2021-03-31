@@ -75,17 +75,6 @@ export default {
   components: {CustomSearchComponent},
   data() {
     return {
-      components: [
-        {field: "name", label: "输入", component: "FuComplexInput"},
-        {
-          field: "status",
-          label: "选项",
-          component: "FuComplexSelect",
-          options: [{label: "启用", value: "Enable"}, {label: "禁用", value: "Disable"}],
-          multiple: true,
-          filterable: true,
-        }
-      ],
       condition: {},
     }
   },
