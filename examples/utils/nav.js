@@ -24,6 +24,11 @@ const navList = {
       name: 'SpeedDial 快速拨号',
       path: 'speed-dial',
       component: 'SpeedDialDoc'
+    },
+    {
+      name: 'Stepper 步骤条',
+      path: 'stepper',
+      component: 'StepperDoc'
     }
   ],
   "filters": [],

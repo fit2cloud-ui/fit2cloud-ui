@@ -1,0 +1,83 @@
+@import "../common/mixins.scss";
+@import "../common/variables.scss";
+
+@include b(steps) {
+  @include b(is-disable) {
+    cursor: not-allowed !important;
+    .is-wait {
+      color: #C0C4CC!important;
+      border-color: #C0C4CC!important;
+    }
+  }
+  .el-step:hover {
+    cursor: pointer;
+    .is-wait {
+      color: $--color-primary;
+      border-color: $--color-primary;
+    }
+  }
+}
+
+@include b(step-footer) {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// horizontal横向布局样式
+
+@include b(steps__horizontal-header) {
+  display: flex;
+}
+
+@include b(steps__horizontal-wrapper) {
+  overflow: hidden;
+  transition: none;
+  will-change: height;
+
+  @include b(steps__horizontal-container) {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    transform: translateZ(0);
+    transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+    will-change: transform;
+  }
+
+  @include b(is-horizontal) {
+    width: 100%;
+    flex: 1 0 100%;
+  }
+
+}
+
+// vertical纵向布局样式
+
+@include b(is-vertical) {
+  position: relative;
+  padding-bottom: 10px;
+
+  &:after {
+    width: 1px;
+    position: absolute;
+    top: 30px;
+    bottom: 7px;
+    left: 12px;
+    z-index: 2;
+    background-color: #e0e0e0;
+    content: " ";
+  }
+
+  @include b(step__content) {
+    padding: 0 24px 0 34px;
+    height: 0;
+    opacity: 0;
+  }
+
+  @include b(is-actived) {
+    height: auto;
+    padding-bottom: 20px;
+    opacity: 1;
+  }
+}
