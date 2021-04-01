@@ -18,7 +18,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'quick-key',
@@ -46,7 +46,7 @@ export default [
             desc: '是否使用刷新按钮',
             type: 'Boolean',
             enum: '-',
-            default: 'true',
+            default: 'false',
           },
           {
             prop: 'use-quick-search',
@@ -103,7 +103,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'tooltip',
@@ -145,7 +145,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'placeholder',
@@ -193,7 +193,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',
@@ -234,7 +234,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',
@@ -282,7 +282,7 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
           },
           {
             prop: 'field',
@@ -330,7 +330,14 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
+          },
+          {
+            prop: 'align',
+            desc: '对齐方式',
+            type: 'String',
+            enum: 'left / center / right',
+            default: 'right',
           },
           {
             prop: 'field',
@@ -371,7 +378,14 @@ export default [
             desc: '大小',
             type: 'String',
             enum: 'medium / small / mini',
-            default: 'mini',
+            default: '-',
+          },
+          {
+            prop: 'align',
+            desc: '对齐方式',
+            type: 'String',
+            enum: 'left / center / right',
+            default: 'right',
           },
           {
             prop: 'field',

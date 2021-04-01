@@ -1,18 +1,18 @@
 <template>
   <div class="fu-search-bar">
     <div class="fu-search-bar__content">
-      <fu-complex-search :components="components" @change="change" :size="size" v-if="showComplex">
+      <fu-complex-search ref="complex" :components="components" @change="change" :size="configSize" v-if="showComplex">
         <slot name="complex"></slot>
       </fu-complex-search>
-      <fu-search-conditions :conditions="conditions" :size="size" @change="change" v-if="showComplex"/>
-      <fu-quick-search :size="size" :use-icon="!showComplex" :placeholder="placeholder" v-model="quick"
+      <fu-search-conditions :conditions="conditions" :size="configSize" @change="change" v-if="showComplex"/>
+      <fu-quick-search :size="configSize" :use-icon="!showComplex" :placeholder="placeholder" v-model="quick"
                        @change="quickChange" v-if="useQuickSearch"/>
     </div>
     <div class="fu-search-bar__buttons">
       <slot name="buttons">
-        <fu-search-bar-button icon="el-icon-close" @click="clean" :size="size" :tooltip="t('fu.search_bar.clean')"
+        <fu-search-bar-button icon="el-icon-close" @click="clean" :size="configSize" :tooltip="t('fu.search_bar.clean')"
                               v-if="showClean"/>
-        <fu-search-bar-button icon="el-icon-refresh" @click="exec" :size="size" :tooltip="t('fu.search_bar.refresh')"
+        <fu-search-bar-button icon="el-icon-refresh" @click="refresh" :size="configSize" :tooltip="t('fu.search_bar.refresh')"
                               v-if="showRefresh"/>
         <slot></slot>
       </slot>
@@ -25,6 +25,7 @@ import FuQuickSearch from "./FuQuickSearch";
 import FuComplexSearch from "./FuComplexSearch";
 import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 import Locale from "@/mixins/locale";
+import ConfigSize from "@/mixins/config-size";
 import FuSearchConditions from "@/components/search-bar/FuSearchContions";
 import {ComplexCondition} from "@/components/search-bar/model";
 
@@ -47,12 +48,8 @@ function merge(source, target) {
 export default {
   name: "FuSearchBar",
   components: {FuSearchConditions, FuSearchBarButton, FuComplexSearch, FuQuickSearch},
-  mixins: [Locale],
+  mixins: [Locale, ConfigSize],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     quickKey: {
       type: String,
       default: "quick"
@@ -64,7 +61,7 @@ export default {
     },
     useRefreshButton: { // 是否使用刷新按钮
       type: Boolean,
-      default: true
+      default: false
     },
     useQuickSearch: { // 是否使用快速搜索
       type: Boolean,
@@ -96,6 +93,10 @@ export default {
       this.quick = ""
       this.conditions = []
       this.$emit("exec", this.condition)
+    },
+    refresh() {
+      this.$refs.complex.close()
+      this.exec()
     },
     exec() {
       // 只有快速搜索

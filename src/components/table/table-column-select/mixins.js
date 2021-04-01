@@ -1,12 +1,9 @@
 import Locale from "@/mixins/locale";
+import ConfigSize from "@/mixins/config-size";
 
 export default {
-  mixins: [Locale],
+  mixins: [Locale, ConfigSize],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     icon: {
       type: String,
       default: "el-icon-s-grid"

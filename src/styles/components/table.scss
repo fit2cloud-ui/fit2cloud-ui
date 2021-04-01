@@ -3,10 +3,6 @@
 
 @include b(table) {
   &.el-table {
-    td {
-      padding: 8px 0;
-    }
-
     th.el-table-column--selection > .cell {
       padding-left: 14px;
       padding-right: 14px;
@@ -16,18 +12,18 @@
       background: $fu-table-striped-bgColor;
     }
   }
+
+  &.el-table--small {
+    font-size: 13px;
+  }
 }
 
 @include b(table-column-select) {
   margin-left: 10px;
   margin-right: 10px;
+}
 
-  @include e(title) {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
+@include b(table-column-select-popper) {
   @include e(body) {
     max-height: 600px;
     overflow-y: auto;
@@ -43,20 +39,22 @@
     margin-top: 10px;
     text-align: center;
   }
+}
 
-  @include e(trigger) {
-    cursor: pointer;
-    @include active-scale()
+@include b(table-column-select-dialog) {
+  &.el-dialog {
+    width: 640px;
+  }
+
+  .el-checkbox {
+    width: 180px;
+    margin: 5px 10px;
   }
 }
 
-@include b(table-column-select-popper) {
-  min-width: 100px;
-}
-
 @include b(table-operations) {
-  @include e(header) {
-    @include flex-row(flex-start, center);
+  div[type='dialog'] > .fu-search-bar-button {
+    border: none;
   }
 }
 

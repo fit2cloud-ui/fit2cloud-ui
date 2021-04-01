@@ -2,26 +2,26 @@
   <div class="fu-complex-search">
     <el-popover
       trigger="manual"
-      v-model="toggle"
+      v-model="active"
       :visible-arrow="false"
       popper-class="fu-complex-components">
 
       <div class="fu-complex-components__body">
         <slot>
-          <component v-for="(c, i) in components" :key="i" :is="c.component" :size="size" v-bind="c" :ref="c.field"/>
+          <component v-for="(c, i) in components" :key="i" :is="c.component" :size="configSize" v-bind="c" :ref="c.field"/>
         </slot>
       </div>
       <div class="fu-complex-components__footer">
-        <el-button @click="toggle=false" :size="size">{{ t('fu.search_bar.cancel') }}</el-button>
-        <el-button type="primary" @click="ok" :size="size">{{ t('fu.search_bar.ok') }}</el-button>
+        <el-button @click="active=false" :size="configSize">{{ t('fu.search_bar.cancel') }}</el-button>
+        <el-button type="primary" @click="ok" :size="configSize">{{ t('fu.search_bar.ok') }}</el-button>
       </div>
 
       <fu-search-bar-button
         slot="reference"
         icon="el-icon-arrow-right"
-        @click="open"
-        :size="size"
-        :class="['fu-complex-search__trigger',{'is-active':toggle}]"
+        @click="toggle"
+        :size="configSize"
+        :class="['fu-complex-search__trigger',{'is-active':active}]"
         :tooltip="t('fu.search_bar.adv_search')"/>
     </el-popover>
   </div>
@@ -30,26 +30,23 @@
 <script>
 import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton";
 import Locale from "@/mixins/locale";
+import ConfigSize from "@/mixins/config-size";
 
 export default {
   name: "FuComplexSearch",
   components: {FuSearchBarButton},
-  mixins: [Locale],
+  mixins: [Locale, ConfigSize],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     components: Array,
   },
   data() {
     return {
-      toggle: false,
+      active: false,
     }
   },
   methods: {
-    open() {
-      this.toggle = !this.toggle
+    toggle() {
+      this.active = !this.active
       this.refs.forEach(r => {
         if (r.init) {
           r.init()
@@ -58,8 +55,11 @@ export default {
         }
       })
     },
+    close() {
+      this.active = false
+    },
     ok() {
-      this.toggle = false
+      this.active = false
       let conditions = [];
       this.refs.forEach(r => {
         let condition

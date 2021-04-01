@@ -1,5 +1,5 @@
 <template>
-  <div :class="['fu-search-conditions', 'fu-search-conditions--' + size]">
+  <div :class="['fu-search-conditions', 'fu-search-conditions--' + configSize]">
     <div class="fu-search-conditions__item" v-for="(condition, index) in conditions" :key="index">
       <div v-if="condition.label">{{ condition.label }}</div>
       <div v-if="condition.operatorLabel">{{ condition.operatorLabel }}</div>
@@ -11,13 +11,12 @@
 
 <script>
 
+import ConfigSize from "@/mixins/config-size";
+
 export default {
   name: "FuSearchConditions",
+  mixins: [ConfigSize],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     conditions: Array
   },
   methods: {

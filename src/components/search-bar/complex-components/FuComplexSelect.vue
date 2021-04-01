@@ -1,9 +1,9 @@
 <template>
-  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="size">
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize">
     <el-select class="fu-complex-select"
                v-model="value"
                :placeholder="t('fu.search_bar.please_select')"
-               :size="size"
+               :size="configSize"
                clearable
                v-bind="$attrs">
       <el-option v-for="o in options" :key="o.value" :label="o.label" :value="o.value"></el-option>
@@ -40,10 +40,6 @@ export default {
   components: {FuComplexOperator},
   mixins: [mixins],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     field: String,
     label: String,
     defaultOperator: String,

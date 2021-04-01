@@ -66,10 +66,10 @@ export default [
     table: [
       {
         prop: 'type',
-        desc: '选列按钮类别: immediate每次勾选立即生效，confirm点击确认后才生效',
+        desc: '选列按钮类别: popover方式显示，dialog方式显示',
         type: 'Boolean',
-        enum: 'confirm / immediate',
-        default: 'immediate',
+        enum: 'dialog / popover',
+        default: 'popover',
       },
       {
         prop: 'columns',
@@ -83,7 +83,7 @@ export default [
         desc: '按钮大小',
         type: 'Array',
         enum: 'medium / small / mini',
-        default: 'mini',
+        default: '-',
       },
       {
         prop: 'icon',

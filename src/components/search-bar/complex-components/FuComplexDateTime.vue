@@ -3,7 +3,8 @@
     <el-date-picker class="fu-complex-data-time"
                     v-model="value"
                     v-bind="$attrs"
-                    :size="size"
+                    :align="align"
+                    :size="configSize"
                     :placeholder="t('fu.search_bar.select_date_time')"
                     :type="type" :key="type" value-format="timestamp"
                     :range-separator="t('fu.search_bar.range_separator')"
@@ -24,12 +25,12 @@ export default {
   components: {FuComplexOperator},
   mixins: [mixins],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     field: String,
     label: String,
+    align: {
+      type: String,
+      default: "right"
+    },
     defaultOperator: {
       type: String,
       default: "between"

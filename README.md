@@ -22,7 +22,7 @@ npm install element-ui
 npm install -D sass-loader node-sass
 ```
 
-### 引入
+### 完整引入
 
 ```sh
 import Vue from 'vue';
@@ -37,6 +37,58 @@ Vue.use(Fit2CloudUI);
 new Vue({
   el: '#app',
   render: h => h(App)
+});
+```
+
+### 按需引入
+
+借助 babel-plugin-import，我们可以只引入需要的组件，以达到减小项目体积的目的。
+
+首先，安装 babel-plugin-component：
+
+```sh
+npm install babel-plugin-import -D
+```
+
+然后，在 babel.config.js 中写入以下内容：
+
+⚠️ 注意：如果改为完整引入，请把这部分还原。
+
+```js
+module.exports = {
+  presets: [
+    '@vue/cli-plugin-babel/preset'
+  ],
+  plugins: [
+    [
+      "import",
+      {
+        "libraryName": "fit2cloud-ui",
+        "customStyleName": (name) => {
+          return `fit2cloud-ui/src/styles/components/${name}.scss`;
+        },
+      },
+    ],
+  ]
+}
+```
+
+接下来，就可以引入部分组件，比如 SearchBar 和 Table，那么需要在 main.js 中写入以下内容：
+
+```sh
+import Vue from 'vue';
+import ElementUI from 'element-ui'
+import'fit2cloud-ui/src/styles/require.scss'; // 已经包含了element ui的scss
+import { SearchBar, Table } from 'fit2cloud-ui';
+import App from './App.vue';
+
+Vue.use(ElementUI);
+Vue.use(SearchBar);
+Vue.use(Table);
+
+new Vue({
+ el: '#app',
+ render: h => h(App)
 });
 ```
 

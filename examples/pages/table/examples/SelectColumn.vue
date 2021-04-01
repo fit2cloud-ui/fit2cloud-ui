@@ -1,6 +1,11 @@
 <template>
   <div>
-    选列按钮：<fu-table-column-select :columns="columns"/>
+    Popover选列按钮(hover)：
+    <fu-table-column-select :columns="columns"/>
+    Popover选列按钮(click)：
+    <fu-table-column-select :columns="columns" trigger="click"/>
+    Dialog选列按钮：
+    <fu-table-column-select type="dialog" :columns="columns"/>
 
     <fu-table :data="tableData" :columns="columns">
       <el-table-column type="selection"></el-table-column>

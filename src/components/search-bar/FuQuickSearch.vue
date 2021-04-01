@@ -1,20 +1,19 @@
 <template>
-  <div :class="['fu-quick-search', 'fu-quick-search--' + size]">
+  <div :class="['fu-quick-search', 'fu-quick-search--' + configSize]">
     <i class="el-icon-search" v-if="useIcon"/>
     <label>
-      <input :placeholder="placeholder" @input="input" @blur="blur" @keydown="keydown"/>
+      <input :placeholder="placeholder" v-model="quick" @input="input" @blur="blur" @keydown="keydown"/>
     </label>
   </div>
 </template>
 
 <script>
+import ConfigSize from "@/mixins/config-size";
+
 export default {
   name: "FuQuickSearch",
+  mixins: [ConfigSize],
   props: {
-    size: {
-      type: String,
-      default: "mini"
-    },
     value: String,
     placeholder: String,
     useIcon: {
@@ -27,9 +26,13 @@ export default {
       quick: ""
     }
   },
+  watch: {
+    value(v) {
+      this.quick = v
+    }
+  },
   methods: {
     input(e) {
-      this.quick = e.target.value
       this.$emit("input", this.quick, e)
     },
     blur(e) {
