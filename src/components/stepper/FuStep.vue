@@ -1,11 +1,9 @@
 <script>
-import FuStepFooter from "./FuStepFooter";
 import FuStepHeader from "./FuStepHeader";
 export default {
   name: "FuStep",
   components: {
     FuStepHeader,
-    FuStepFooter,
   },
   props: {
     id: String,
@@ -77,8 +75,6 @@ export default {
         v-loading={this.loading}
         class={{ "fu-step__content": true, "fu-is-actived": this.isActive }}>
         {this.$slots.default}
-        {parent.footer}
-        <fu-step-footer index={this.index} />
       </div>
     );
     return (

@@ -5,9 +5,6 @@ export default {
   components: {
     FuStepButton,
   },
-  props: {
-    index: Number,
-  },
   inject: ["fuSteps"],
   data() {
     return {};
@@ -15,12 +12,12 @@ export default {
   computed: {
     isFirst() {
       const parent = this["fuSteps"];
-      const isThis = this["fuSteps"].steps[this.index];
+      const isThis = this["fuSteps"].steps[this["fuSteps"].active];
       return parent.steps[0] === isThis;
     },
     isLast() {
       const parent = this["fuSteps"];
-      const isThis = this["fuSteps"].steps[this.index];
+      const isThis = this["fuSteps"].steps[this["fuSteps"].active];
       return parent.steps[parent.steps.length - 1] === isThis;
     },
   },
@@ -63,7 +60,7 @@ export default {
               完成
             </fu-Step-button>
           )}
-          {this["fuSteps"].$slots.footer}
+          {this.$slots.footer}
         </div>
       </div>
     );

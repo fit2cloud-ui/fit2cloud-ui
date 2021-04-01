@@ -1,4 +1,5 @@
 <script>
+import FuStepFooter from "./FuStepFooter";
 import FuStepHeader from "./FuStepHeader";
 import Migrating from "element-ui/src/mixins/migrating";
 
@@ -7,6 +8,7 @@ export default {
   mixins: [Migrating],
   components: {
     FuStepHeader,
+    FuStepFooter,
   },
   props: {
     space: [Number, String],
@@ -65,8 +67,8 @@ export default {
         }
         this.$emit("active", newObj);
         this.loading = false;
-      }else{
-        return
+      } else {
+        return;
       }
     },
     cancel(e) {
@@ -76,10 +78,10 @@ export default {
       this.$emit("finish", e);
     },
     next() {
-      this.updateActiveHandle(this.active+1);
+      this.updateActiveHandle(this.active + 1);
     },
     prev() {
-      this.updateActiveHandle(this.active-1);
+      this.updateActiveHandle(this.active - 1);
     },
     checking(val) {
       const newActive = this.steps[val];
@@ -150,7 +152,8 @@ export default {
         class={{
           "fu-steps__horizontal-header": true,
           "el-steps--simple": this.simple,
-        }}>
+        }}
+      >
         {this._l(this.steps, (item, index) => (
           <fu-step-header key={index} index={index} />
         ))}
@@ -161,17 +164,22 @@ export default {
         class={{
           "fu-steps": true,
           [`el-steps--${this.direction}`]: !this.simple,
-        }}>
+        }}
+      >
         {this.direction === "horizontal" && header}
         {!this.isVertical ? (
           <div class="fu-steps__horizontal-wrapper">
             <div
               class="fu-steps__horizontal-container"
-              style={this.containerStyles}>
+              style={this.containerStyles}
+            >
               {this.$slots.default}
             </div>
           </div>
-        ) : (this.$slots.default)}
+        ) : (
+          this.$slots.default
+        )}
+        <fu-step-footer/>
       </div>
     );
   },

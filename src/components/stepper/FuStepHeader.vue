@@ -57,13 +57,7 @@ export default {
       return this["fuSteps"].steps[this.index];
     },
     isDisable() {
-      if (this.data && this.data.disable) {
-        return true;
-      }
-      if (this["fuSteps"].historyActive < this.index) {
-        return true;
-      }
-       return false;
+      return this["fuSteps"].historyActive < this.index;
     },
     currentStatus() {
       return (this.data && this.data.status) || this.internalStatus;
@@ -121,7 +115,7 @@ export default {
 
   methods: {
     handleClick(e) {
-      if (this.data.disable) {
+      if (this.isDisable) {
         e.preventDefault();
       } else {
         this["fuSteps"].updateActiveHandle(this.index);
