@@ -1,12 +1,11 @@
 <template>
   <div>
-    <fu-steps ref="steps" finish-status="success" @close="cancel" @finish="submit"
-      @active="handleActive">
-      <fu-step id="cluster" title="集群" :before-next="beforeNext">
+    <fu-steps ref="steps" finish-status="success" @cancel="cancel" @finish="submit">
+      <fu-step id="cluster" title="集群" :beforeLeave="beforeLeave">
         <div class="example" :style="{background:'#e7faf0'}">1</div>
       </fu-step>
-      <fu-step id="network" title="网络" :before-active="beforeActive" :before-leave="beforeLeave"
-        :before-prev="beforePrev" description="这是一段很长很长很长的描述性文字">
+      <fu-step id="network" title="网络" :beforeActive="beforeActive"
+        description="这是一段很长很长很长的描述性文字">
         <div class="example">2</div>
       </fu-step>
       <fu-step id="storage" title="存储">
@@ -34,22 +33,8 @@ export default {
     submit() {
       console.log("完成");
     },
-    handleActive({ id, title, index }) {
-      console.log("handleActive" +  index);
-
-    },
-    beforePrev({ id, title, index }) {
-      console.log("beforePrev" + index);
-    },
     beforeLeave({ id, title, index }) {
-      console.log("beforeLeave" + index);
-      // return true;
-    },
-    beforeActive({ id, title, index }) {
-      console.log("beforeActive" + index);
-    },
-    beforeNext({ id, title, index }) {
-      console.log("beforeNext" + index);
+      console.log("beforeLeave" + id);
       if (id === "cluster") {
         // 校验成功
         if (this.validateCluster !== true) {
@@ -57,7 +42,7 @@ export default {
           setTimeout(() => {
             this.validateCluster = true;
             // 重新触发beforeNext，但是validateCluster已经为true
-            this.$refs.steps.next();
+            this.$refs.steps.$func('next');
           }, 3000);
           // 校验通过前先返回false
           console.log(id + "异步校验执行中，需要loading");
@@ -75,6 +60,10 @@ export default {
         console.log(index + " 异步校验通过");
         // 同步校验, 返回undefined
       }
+      // return true;
+    },
+    beforeActive({ id, title, index }) {
+      console.log("beforeActive" + index);
     },
   },
 };

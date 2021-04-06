@@ -1,0 +1,22 @@
+<template>
+  <el-steps :active="index" v-bind="$parent.$attrs">
+    <el-step v-for="(step, index) in steps" :key="index" v-bind="step" @click.native="click(index)"
+      :class="disable(index) && 'fu-step--disable'" />
+  </el-steps>
+</template>
+
+<script>
+export default {
+  name: "FuHorizontalNavigation",
+  props: {
+    steps: Array,
+    index: Number,
+    disable: Function,
+  },
+  methods: {
+    click(index) {
+      (!this.disable(index))&&this.$emit("active", index);
+    },
+  },
+};
+</script>

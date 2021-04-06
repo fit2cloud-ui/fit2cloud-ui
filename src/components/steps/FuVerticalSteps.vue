@@ -1,0 +1,63 @@
+<script>
+import FuVerticalNavigation from "./FuVerticalNavigation";
+import FuStepsFooter from "./FuStepsFooter";
+import { Step, Stepper } from "./Stepper";
+
+export default {
+  name: "FuVerticalSteps",
+  components: { FuVerticalNavigation, FuStepsFooter },
+  data() {
+    return {
+      stepper: new Stepper(),
+    };
+  },
+  created() {
+    this.stepper.activeSet.add(0)
+  },
+  render() {
+    let currentNode;
+    let steps = [];
+    if (this.$slots.default) {
+      this.$slots.default.forEach((node, index) => {
+        const options = {
+          index: index,
+          ...node.data.attrs,
+        };
+        const step = new Step(options);
+        steps.push(step);
+        if (this.stepper.isCurrent(index)) {
+          currentNode = node;
+        }
+      });
+    }
+    this.stepper.steps = steps;
+
+    return (
+      <div class="fu-steps fu-steps--vertical">
+        <fu-vertical-navigation
+          steps={steps}
+          index={this.stepper.index}
+          v-on:active={this.active}
+          disable={this.disable}
+        >
+          {currentNode}
+        </fu-vertical-navigation>
+        <fu-steps-footer parent={this.stepper} vOn:stepperFn={this.$func} />
+      </div>
+    );
+  },
+
+  methods: {
+    active(index) {
+      this.stepper.active(index);
+    },
+    disable(index) {
+      return !this.stepper.isActive(index);
+    },
+    $func(name) {
+      this.stepper[name] && this.stepper[name]();
+      this.$emit(name);
+    },
+  },
+};
+</script>
