@@ -50,7 +50,11 @@ export default {
             </transition>
           </div>
         </div>
-        <fu-steps-footer parent={this.stepper} vOn:stepperFn={this.$func} />
+        <div class="fu-steps__footer">
+          {this.$slots.footer || (
+            <fu-steps-footer parent={this.stepper} vOn:stepperFn={this.$func} />
+          )}
+        </div>
       </div>
     );
   },

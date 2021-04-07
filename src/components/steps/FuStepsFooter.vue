@@ -12,13 +12,13 @@ export default {
   render(h) {
     const button = (value) => {
       return (
-        <el-button vOn:click={() => this.click(value)}>
+        <el-button size={this.parent.buttonSize} vOn:click={() => this.click(value)}>
           {this.parent[`${value}ButtonText`]}
         </el-button>
       );
     };
     return (
-      <div class="fu-steps__footer">
+      <div class="fu-steps__footer--flex">
         <div class="fu-steps__footer--left">{button("cancel")}</div>
         <div class="fu-steps__footer--right">
           {!this.parent.isFirst(this.parent.index) && button("prev")}

@@ -12,6 +12,7 @@ export class Stepper {
     this.confirmButtonText = options.confirmButtonText || 'Ok'
     this.prevButtonText = options.prevButtonText || 'Prev'
     this.nextButtonText = options.nextButtonText || 'Next'
+    this.buttonSize = options.buttonSize || 'medium'
     // // 激活前钩子
     // this.beforeActive = options.beforeActive
     // // 离开前钩子

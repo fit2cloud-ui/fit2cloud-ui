@@ -38,10 +38,13 @@ export default {
           steps={steps}
           index={this.stepper.index}
           v-on:active={this.active}
-          disable={this.disable}>
+          disable={this.disable}
+        >
           {currentNode}
         </fu-vertical-navigation>
-        <fu-steps-footer parent={this.stepper} vOn:stepperFn={this.$func} />
+        <div class="fu-steps__footer">
+          <fu-steps-footer parent={this.stepper} vOn:stepperFn={this.$func} />
+        </div>
       </div>
     );
   },

@@ -4,9 +4,11 @@
 @include b(steps) {
   @include e(footer) {
     margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    @include m(flex) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   // horizontal横向布局样式
@@ -15,16 +17,27 @@
       overflow: hidden;
       transition: none;
     }
+
     @include e(container) {
       display: flex;
       align-items: flex-start;
       flex-wrap: nowrap;
     }
+
     @include b(step) {
       width: 100%;
       flex: 1 0 100%;
     }
   }
+
+  // vertical横向布局样式
+  @include m(vertical) {
+    .el-step__description {
+      padding-right: 0;
+    }
+  }
+
+
 
   // 禁用样式
   @include b(step) {
@@ -63,7 +76,7 @@
   opacity: 0;
 }
 
-.carousel-leave-to{
+.carousel-leave-to {
   transform: translateX(-100%);
   opacity: 0;
 }
