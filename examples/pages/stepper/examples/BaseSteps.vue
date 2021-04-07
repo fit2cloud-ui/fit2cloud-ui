@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-steps ref="steps" finish-status="success" @cancel="cancel" @finish="submit">
+    <fu-steps ref="steps" finish-status="success" @cancel="cancel" @confirm="submit">
       <fu-step id="cluster" title="集群" :beforeLeave="beforeLeave">
         <div class="example" :style="{background:'#e7faf0'}">1</div>
       </fu-step>

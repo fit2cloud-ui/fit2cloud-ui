@@ -42,7 +42,7 @@ export default {
         />
         <div class="fu-steps__wrapper">
           <div class="fu-steps__container">
-            <transition name="slide-fade" mode="out-in">
+            <transition name="carousel" mode="out-in">
               {this._l(
                 this.$slots.default,
                 (item, index) => this.stepper.index === index && item

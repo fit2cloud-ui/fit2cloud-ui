@@ -6,24 +6,25 @@ export default {
   },
   methods: {
     click(fnName) {
-      this.$emit('stepperFn',fnName)
+      this.$emit("stepperFn", fnName);
     },
   },
   render(h) {
+    const button = (value) => {
+      return (
+        <el-button vOn:click={() => this.click(value)}>
+          {this.parent[`${value}ButtonText`]}
+        </el-button>
+      );
+    };
     return (
       <div class="fu-steps__footer">
-        <div class="fu-steps__footer--left">
-          <el-button vOn:click={()=>this.click('cancel')}>Cancel</el-button>
-        </div>
+        <div class="fu-steps__footer--left">{button("cancel")}</div>
         <div class="fu-steps__footer--right">
-          {!this.parent.isFirst(this.parent.index) && (
-            <el-button vOn:click={()=>this.click('prev')}>Prev</el-button>
-          )}
-          {this.parent.isLast(this.parent.index) ? (
-            <el-button vOn:click={()=>this.click('finish')}>OK</el-button>
-          ) : (
-            <el-button vOn:click={()=>this.click('next')}>Next</el-button>
-          )}
+          {!this.parent.isFirst(this.parent.index) && button("prev")}
+          {this.parent.isLast(this.parent.index)
+            ? button("confirm")
+            : button("next")}
         </div>
       </div>
     );

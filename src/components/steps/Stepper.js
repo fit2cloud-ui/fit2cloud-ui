@@ -7,13 +7,15 @@ export class Stepper {
     // 激活过的节点的索引
     this.activeSet = new Set()
     this.loading = options.loading
+    // footer 属性
+    this.cancelButtonText = options.cancelButtonText || 'Cancel'
+    this.confirmButtonText = options.confirmButtonText || 'Ok'
+    this.prevButtonText = options.prevButtonText || 'Prev'
+    this.nextButtonText = options.nextButtonText || 'Next'
     // // 激活前钩子
     // this.beforeActive = options.beforeActive
     // // 离开前钩子
     // this.beforeLeave = options.beforeLeave
-    // el-steps 属性
-    // this.direction = options.direction
-    // this.finishStatus = options.finishStatus
   }
 
   // index是否为第一个节点
