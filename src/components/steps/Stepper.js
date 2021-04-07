@@ -53,7 +53,6 @@ export class Stepper {
         }
       }
     }
-    console.log(this.activeSet)
   }
 
   // 反激活
@@ -123,8 +122,8 @@ export class Step {
   constructor(options = {}) {
     this.id = options.id
     this.index = options.index,
-      // 激活前钩子
-      this.beforeActive = options.beforeActive
+    // 激活前钩子
+    this.beforeActive = options.beforeActive
     // 离开前钩子
     this.beforeLeave = options.beforeLeave
     // el-step 属性

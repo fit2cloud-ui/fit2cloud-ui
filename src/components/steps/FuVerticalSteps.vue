@@ -12,7 +12,7 @@ export default {
     };
   },
   created() {
-    this.stepper.activeSet.add(0)
+    this.stepper.activeSet.add(0);
   },
   render() {
     let currentNode;
@@ -38,8 +38,7 @@ export default {
           steps={steps}
           index={this.stepper.index}
           v-on:active={this.active}
-          disable={this.disable}
-        >
+          disable={this.disable}>
           {currentNode}
         </fu-vertical-navigation>
         <fu-steps-footer parent={this.stepper} vOn:stepperFn={this.$func} />

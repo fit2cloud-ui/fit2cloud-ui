@@ -11,13 +11,6 @@ export default {
       stepper: new Stepper(),
     };
   },
-  computed: {
-    containerStyles() {
-      return {
-        transform: `translate3D(${-this.stepper.index * 100}%, 0, 0)`,
-      };
-    },
-  },
   created() {
     this.stepper.activeSet.add(0);
   },
