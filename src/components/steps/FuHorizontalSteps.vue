@@ -38,8 +38,7 @@ export default {
           steps={steps}
           index={this.stepper.index}
           disable={this.disable}
-          vOn:active={this.active}
-        />
+          vOn:active={this.active}/>
         <div class="fu-steps__wrapper">
           <div class="fu-steps__container">
             <transition name="carousel" mode="out-in">
