@@ -6,17 +6,20 @@ export class Stepper {
     this.index = options.index === undefined ? 0 : options.index
     // 激活过的节点的索引
     this.activeSet = new Set()
-    this.loading = options.loading
+    // loading状态
+    this.isLoading = options.isLoading
     // footer 属性
     this.cancelButtonText = options.cancelButtonText || 'Cancel'
     this.confirmButtonText = options.confirmButtonText || 'Ok'
     this.prevButtonText = options.prevButtonText || 'Prev'
     this.nextButtonText = options.nextButtonText || 'Next'
-    this.buttonSize = options.buttonSize || 'medium'
-    // // 激活前钩子
-    // this.beforeActive = options.beforeActive
-    // // 离开前钩子
-    // this.beforeLeave = options.beforeLeave
+    this.buttonSize = options.buttonSize
+    // 是否显示取消按钮
+    this.showCancel = options.showCancel === undefined ? false : options.showCancel
+    // 激活前钩子
+    this.beforeActive = options.beforeActive
+    // 离开前钩子
+    this.beforeLeave = options.beforeLeave
   }
 
   // index是否为第一个节点
@@ -52,7 +55,6 @@ export class Stepper {
           // 激活
           this.index = index
           this.activeSet.add(index)
-          this.loading = false
         }
       }
     }
@@ -109,13 +111,11 @@ export class Stepper {
     const step = this.getStep(index)
     // 如果节点定义了钩子方法，执行节点的
     if (step[functionName]) {
-      this.loading = true
       return step[functionName](step)
     }
 
     // 节点没定义，则执行Steps的钩子方法
     if (this[functionName]) {
-      this.loading = true
       return this[functionName](step)
     }
   }
@@ -125,8 +125,8 @@ export class Step {
   constructor(options = {}) {
     this.id = options.id
     this.index = options.index,
-    // 激活前钩子
-    this.beforeActive = options.beforeActive
+      // 激活前钩子
+      this.beforeActive = options.beforeActive
     // 离开前钩子
     this.beforeLeave = options.beforeLeave
     // el-step 属性

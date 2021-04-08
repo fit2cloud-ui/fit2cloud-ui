@@ -14,6 +14,16 @@ export default {
   created() {
     this.stepper.activeSet.add(0);
   },
+  provide() {
+    return {
+      stepper: this.stepper,
+    };
+  },
+  watch: {
+    "stepper.index"(value) {
+      this.$emit("change", this.stepper.steps[value]);
+    },
+  },
   render() {
     let currentNode;
     let steps = [];
@@ -31,18 +41,18 @@ export default {
       });
     }
     this.stepper.steps = steps;
-
+    this.stepper = Object.assign(this.stepper, this.$attrs);
     return (
       <div class="fu-steps fu-steps--vertical">
         <fu-vertical-navigation
+          stepper={this.stepper}
           steps={steps}
-          index={this.stepper.index}
           v-on:active={this.active}
-          disable={this.disable}>
+          disable={this.disable} >
           {currentNode}
         </fu-vertical-navigation>
         <div class="fu-steps__footer">
-          <fu-steps-footer parent={this.stepper} vOn:stepperFn={this.$func} />
+          <fu-steps-footer vOn:stepperFn={this.$func} />
         </div>
       </div>
     );
@@ -55,8 +65,13 @@ export default {
     disable(index) {
       return !this.stepper.isActive(index);
     },
+    next() {
+      this.stepper.next();
+    },
+    prev() {
+      this.stepper.prev();
+    },
     $func(name) {
-      this.stepper[name] && this.stepper[name]();
       this.$emit(name);
     },
   },

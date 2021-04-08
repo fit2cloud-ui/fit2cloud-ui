@@ -7,9 +7,10 @@
 <script>
 export default {
   name: "FuStep",
+  inject: ['stepper'],
   computed: {
     loading() {
-      return this.$parent.stepper?.loading || false;
+      return this.stepper?.isLoading || false;
     },
   },
 };

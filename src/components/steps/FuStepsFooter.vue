@@ -1,35 +1,42 @@
 <script>
+import ConfigSize from "@/mixins/config-size";
 export default {
   name: "FuStepsFooter",
-  props: {
-    parent: Object,
-  },
+  mixins: [ConfigSize],
+  inject: ["stepper"],
   computed: {
     isFirst() {
-      return this.parent.isFirst(this.parent.index);
+      return this.stepper.isFirst(this.stepper.index);
     },
     isLast() {
-      return this.parent.isLast(this.parent.index);
+      return this.stepper.isLast(this.stepper.index);
+    },
+    showCancel() {
+      return this.stepper.showCancel !== false;
     },
   },
   methods: {
     click(fnName) {
-      this.$emit("stepperFn", fnName);
+      this.stepper[fnName]
+        ? this.stepper[fnName]()
+        : this.$emit("stepperFn", fnName);
     },
   },
   render(h) {
     const button = (value) => {
       return (
         <el-button
-          size={this.parent.buttonSize}
+          size={this.stepper.buttonSize || this.configSize}
           vOn:click={() => this.click(value)}>
-          {this.parent[`${value}ButtonText`]}
+          {this.stepper[`${value}ButtonText`]}
         </el-button>
       );
     };
     return (
       <div class="fu-steps__footer--flex">
-        <div class="fu-steps__footer--left">{button("cancel")}</div>
+        <div class="fu-steps__footer--left">
+          {this.showCancel && button("cancel")}
+        </div>
         <div class="fu-steps__footer--right">
           {!this.isFirst && button("prev")}
           {this.isLast ? button("confirm") : button("next")}

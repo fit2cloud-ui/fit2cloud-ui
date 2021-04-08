@@ -1,5 +1,5 @@
 <template>
-  <el-steps :active="index" v-bind="$parent.$attrs">
+  <el-steps :active="stepper.index" v-bind="stepper">
     <el-step v-for="(step, index) in steps" :key="index" v-bind="step" @click.native="click(index)"
       :class="disable(index) && 'fu-step--disable'" />
   </el-steps>
@@ -9,13 +9,14 @@
 export default {
   name: "FuHorizontalNavigation",
   props: {
+    stepper : Object,
     steps: Array,
-    index: Number,
+    // index: Number,
     disable: Function,
   },
   methods: {
     click(index) {
-      (!this.disable(index))&&this.$emit("active", index);
+      (!this.disable(index)) && this.$emit("active", index);
     },
   },
 };

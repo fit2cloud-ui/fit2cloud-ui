@@ -1,11 +1,11 @@
 <template>
-  <el-steps :active="index" v-bind="$parent.$attrs">
+  <el-steps :active="stepper.index" v-bind="stepper">
     <el-step v-for="(step, i) in steps" :key="i" v-bind="step" @click.native="click(i)"
       :class="disable(i) && 'fu-step--disable'">
       <template #description>
         <span>{{ step.description }}</span>
         <el-collapse-transition>
-          <div v-if="i === index">
+          <div v-if="i === stepper.index">
             <slot v-bind:step="step"></slot>
           </div>
         </el-collapse-transition>
@@ -18,13 +18,14 @@
 export default {
   name: "FuVerticalNavigation",
   props: {
+    stepper : Object,
     steps: Array,
-    index: Number,
+    // index: Number,
     disable: Function,
   },
   methods: {
     click(index) {
-      (!this.disable(index))&&this.$emit("active", index);
+      (!this.disable(index)) && this.$emit("active", index);
     },
   },
 };

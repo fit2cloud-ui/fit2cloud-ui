@@ -27,9 +27,9 @@ const navList = {
       component: 'SpeedDialDoc'
     },
     {
-      name: 'Stepper 步骤条',
-      path: 'stepper',
-      component: 'StepperDoc'
+      name: 'Steps 步骤条',
+      path: 'steps',
+      component: 'StepsDoc'
     },
     {
       name: 'ReadWriteSwitch 读写切换',
