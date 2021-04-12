@@ -62,14 +62,14 @@ export default {
     active(index) {
       this.stepper.active(index);
     },
-    disable(index) {
-      return !this.stepper.isActive(index);
-    },
     next() {
       this.stepper.next();
     },
     prev() {
       this.stepper.prev();
+    },
+    disable(index) {
+      return !this.stepper.isActive(index);
     },
     $func(name) {
       this.$emit(name);

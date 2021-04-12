@@ -22,7 +22,7 @@ export default {
         : this.$emit("stepperFn", fnName);
     },
   },
-  render(h) {
+  render() {
     const button = (value) => {
       return (
         <el-button

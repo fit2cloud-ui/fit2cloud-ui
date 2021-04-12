@@ -25,7 +25,7 @@ export default {
     },
   },
   render(h) {
-    let currentNode;
+    // let currentNode;
     let steps = [];
     if (this.$slots.default) {
       this.$slots.default.forEach((node, index) => {
@@ -35,9 +35,9 @@ export default {
         };
         const step = new Step(options);
         steps.push(step);
-        if (this.stepper.isCurrent(index)) {
-          currentNode = node;
-        }
+        // if (this.stepper.isCurrent(index)) {
+        //   currentNode = node;
+        // }
       });
     }
     this.stepper.steps = steps;
@@ -70,14 +70,14 @@ export default {
     active(index) {
       this.stepper.active(index);
     },
-    disable(index) {
-      return !this.stepper.isActive(index);
-    },
     next() {
       this.stepper.next();
     },
     prev() {
       this.stepper.prev();
+    },
+    disable(index) {
+      return !this.stepper.isActive(index);
     },
     $func(name) {
       this.$emit(name);

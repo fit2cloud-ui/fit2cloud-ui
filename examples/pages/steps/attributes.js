@@ -15,14 +15,14 @@ export default [
         table: [
           {
             prop: 'beforeActive',
-            desc: '节点激活之前的钩子，若返回 false 则阻止激活，返回 true 则进入下一个节点。',
+            desc: '节点激活之前的钩子，若返回 false 则阻止激活，其他情况则进入下一个节点。',
             type: 'Function({ id, title, index })',
             enum: '-',
             default: '-',
           },
           {
             prop: 'beforeLeave',
-            desc: '节点离开之前的钩子，若返回 false 则阻止离开，返回 true 则进入下一个节点',
+            desc: '节点离开之前的钩子，若返回 false 则阻止离开，其他情况则进入下一个节点',
             type: 'Function({ id, title, index })',
             enum: '-',
             default: '-',

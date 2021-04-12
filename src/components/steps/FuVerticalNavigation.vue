@@ -20,7 +20,6 @@ export default {
   props: {
     stepper : Object,
     steps: Array,
-    // index: Number,
     disable: Function,
   },
   methods: {
