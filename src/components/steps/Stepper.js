@@ -12,7 +12,7 @@ export class Stepper {
     this.isLoading = options.isLoading
     // footer 属性
     this.cancelButtonText = options.cancelButtonText || t("fu.steps.cancel")
-    this.confirmButtonText = options.confirmButtonText || t("fu.steps.ok")
+    this.finishButtonText = options.finishButtonText || t("fu.steps.finish")
     this.prevButtonText = options.prevButtonText || t("fu.steps.prev")
     this.nextButtonText = options.nextButtonText || t("fu.steps.next")
     this.buttonSize = options.buttonSize

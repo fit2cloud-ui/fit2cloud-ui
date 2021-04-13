@@ -38,7 +38,7 @@ export default {
       cancel: "取消",
       next: "下一步",
       prev: "上一步",
-      ok: "完成",
+      finish: "完成",
     }
   }
 }

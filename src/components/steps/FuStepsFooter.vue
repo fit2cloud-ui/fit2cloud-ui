@@ -39,7 +39,7 @@ export default {
         </div>
         <div class="fu-steps__footer--right">
           {!this.isFirst && button("prev")}
-          {this.isLast ? button("confirm") : button("next")}
+          {this.isLast ? button("finish") : button("next")}
         </div>
       </div>
     );

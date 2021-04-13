@@ -38,7 +38,7 @@ export default {
       cancel: "Cancel",
       next: "Next",
       prev: "Prev",
-      ok: "OK",
+      finish: "OK",
     }
   }
 }
