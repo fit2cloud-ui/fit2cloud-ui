@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-steps ref="steps" finish-status="success" @cancel="cancel" @confirm="submit" showCancel>
+    <fu-steps ref="steps" finish-status="success" @cancel="cancel" @finish="submit" showCancel>
       <fu-step id="cluster" title="第1步">
         <div class="example">
           <h1>Step 1</h1>

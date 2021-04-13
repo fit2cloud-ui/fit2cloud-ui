@@ -1,8 +1,8 @@
 <template>
   <div>
-    <fu-steps ref="steps" finish-status="success" @confirm="submit"
-      :confirmButtonText="confirmText" :prevButtonText="prevText" :nextButtonText="nextText"
-      buttonSize="small">
+    <fu-steps ref="steps" finish-status="success" @finish="submit"
+              :finishButtonText="finishText" :prevButtonText="prevText" :nextButtonText="nextText"
+              buttonSize="small">
       <fu-step id="cluster" title="第1步">
         <div class="example">
           <h1>Step 1</h1>
@@ -36,9 +36,9 @@ export default {
   name: "SettingFooterDemo",
   data() {
     return {
-      prevText: "上一步",
-      nextText: "下一步",
-      confirmText: "提交",
+      prevText: "Prev",
+      nextText: "Next",
+      finishText: "Submit",
     };
   },
   methods: {

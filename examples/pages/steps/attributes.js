@@ -35,13 +35,6 @@ export default [
             default: 'Cancel',
           },
           {
-            prop: 'confirmButtonText',
-            desc: '确定按钮的文本内容',
-            type: 'String',
-            enum: '-',
-            default: 'Ok',
-          },
-          {
             prop: 'prevButtonText',
             desc: '上一步按钮的文本内容',
             type: 'String',
@@ -54,6 +47,13 @@ export default [
             type: 'String',
             enum: '-',
             default: 'Next',
+          },
+          {
+            prop: 'finishButtonText',
+            desc: '完成按钮的文本内容',
+            type: 'String',
+            enum: '-',
+            default: 'Ok',
           },
           {
             prop: 'showCancel',
@@ -95,7 +95,7 @@ export default [
             value: '-',
           },
           {
-            event: 'confirm',
+            event: 'finish',
             desc: '完成按钮回调',
             value: '-',
           },
