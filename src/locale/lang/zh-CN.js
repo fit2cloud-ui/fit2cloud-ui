@@ -33,6 +33,12 @@ export default {
       ok: "确定",
       custom_table_fields: "自定义表格字段",
       custom_table_fields_desc: "固定字段不在选择范围",
+    },
+    steps: {
+      cancel: "取消",
+      next: "下一步",
+      prev: "上一步",
+      ok: "完成",
     }
   }
 }

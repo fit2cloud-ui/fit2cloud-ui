@@ -1,3 +1,5 @@
+import {t} from '@/locale';
+
 export class Stepper {
   constructor(options = {}) {
     // 所有步骤节点(Step对象数组)
@@ -9,10 +11,10 @@ export class Stepper {
     // loading状态
     this.isLoading = options.isLoading
     // footer 属性
-    this.cancelButtonText = options.cancelButtonText || 'Cancel'
-    this.confirmButtonText = options.confirmButtonText || 'Ok'
-    this.prevButtonText = options.prevButtonText || 'Prev'
-    this.nextButtonText = options.nextButtonText || 'Next'
+    this.cancelButtonText = options.cancelButtonText || t("fu.steps.cancel")
+    this.confirmButtonText = options.confirmButtonText || t("fu.steps.ok")
+    this.prevButtonText = options.prevButtonText || t("fu.steps.prev")
+    this.nextButtonText = options.nextButtonText || t("fu.steps.next")
     this.buttonSize = options.buttonSize
     // 是否显示取消按钮
     this.showCancel = options.showCancel === undefined ? false : options.showCancel

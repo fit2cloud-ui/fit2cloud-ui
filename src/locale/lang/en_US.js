@@ -33,6 +33,12 @@ export default {
       ok: "OK",
       custom_table_fields: "Custom table fields",
       custom_table_fields_desc: "Fixed field is unselectable",
+    },
+    steps: {
+      cancel: "Cancel",
+      next: "Next",
+      prev: "Prev",
+      ok: "OK",
     }
   }
 }
