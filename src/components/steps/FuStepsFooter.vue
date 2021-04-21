@@ -4,6 +4,11 @@ export default {
   name: "FuStepsFooter",
   mixins: [ConfigSize],
   inject: ["stepper"],
+  data() {
+    return {
+      disabledButton: false,
+    };
+  },
   computed: {
     isFirst() {
       return this.stepper.isFirst(this.stepper.index);
@@ -14,18 +19,26 @@ export default {
     showCancel() {
       return this.stepper.showCancel !== false;
     },
+    disabled() {
+      return this.stepper?.isLoading || this.disabledButton;
+    },
   },
   methods: {
     click(fnName) {
       this.stepper[fnName]
         ? this.stepper[fnName]()
         : this.$emit("stepperFn", fnName);
+      this.disabledButton = true;
+      setTimeout(() => {
+        this.disabledButton = false;
+      }, 500);
     },
   },
   render() {
     const button = (value) => {
       return (
         <el-button
+          disabled={this.disabled}
           size={this.stepper.buttonSize || this.configSize}
           vOn:click={() => this.click(value)}>
           {this.stepper[`${value}ButtonText`]}
