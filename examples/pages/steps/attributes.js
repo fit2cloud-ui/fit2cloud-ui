@@ -78,8 +78,8 @@ export default [
           },
           {
             prop: 'height',
-            desc: 'step中的内容统一高度',
-            type: 'string/number',
+            desc: '内容高度',
+            type: 'String/Number',
             enum: '-',
             default: 'auto',
           },
