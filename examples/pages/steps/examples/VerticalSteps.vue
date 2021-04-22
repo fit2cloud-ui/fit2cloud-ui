@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-steps ref="steps" direction="vertical" finish-status="success">
+    <fu-steps ref="steps" direction="vertical" finish-status="success" height="150">
       <fu-step id="cluster" title="第1步">
         <div class="example">
           <h1>Step 1</h1>
@@ -38,8 +38,3 @@ export default {
   methods: {},
 };
 </script>
-<style lang="scss" scoped>
-.example {
-  height: 150px;
-}
-</style>

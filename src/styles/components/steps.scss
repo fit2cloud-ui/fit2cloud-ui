@@ -4,11 +4,17 @@
 @include b(steps) {
   @include e(footer) {
     margin-top: 15px;
+
     @include m(flex) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
+  }
+
+  @include e(container) {
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   // horizontal横向布局样式

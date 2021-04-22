@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-steps ref="steps" finish-status="success" @finish="submit"
+    <fu-steps ref="steps" finish-status="success" height="200" @finish="submit"
               :finishButtonText="finishText" :prevButtonText="prevText" :nextButtonText="nextText"
               buttonSize="small">
       <fu-step id="cluster" title="第1步">
@@ -48,8 +48,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.example {
-  height: 200px;
-}
-</style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-steps ref="steps" finish-status="success" @change="handleChange">
+    <fu-steps ref="steps" finish-status="success" @change="handleChange" height="200">
       <fu-step id="cluster" title="第1步">
         <div class="example">
           <h1>Step 1</h1>
@@ -60,9 +60,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.example {
-  height: 200px;
-}
 .footer {
   text-align: right;
 }

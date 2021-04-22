@@ -24,6 +24,13 @@ export default {
       this.$emit("change", this.stepper.steps[value]);
     },
   },
+  computed: {
+    heightStyle() {
+      return {
+        height: parseInt(this.stepper?.height) + "px" || "auto",
+      };
+    },
+  },
   render(h) {
     // let currentNode;
     let steps = [];
@@ -50,7 +57,7 @@ export default {
           disable={this.disable}
           vOn:active={this.active} />
         <div class="fu-steps__wrapper">
-          <div class="fu-steps__container">
+          <div class="fu-steps__container" style={this.heightStyle}>
             <transition name="carousel" mode="out-in">
               {this._l(
                 this.$slots.default,
