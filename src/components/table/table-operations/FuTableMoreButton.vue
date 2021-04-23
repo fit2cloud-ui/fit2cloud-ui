@@ -2,7 +2,7 @@
   <el-dropdown @command="handleCommand" class="fu-table-more-button">
     <el-button circle icon="el-icon-more" :size="size"/>
     <el-dropdown-menu slot="dropdown">
-      <el-dropdown-item v-for="(btn, i) in buttons" :key="i" :icon="btn.icon" :disabled="btn.disabled" :command="btn">
+      <el-dropdown-item v-for="(btn, i) in buttons" :key="i" :icon="btn.icon" :disabled="disabled(btn)" :command="btn">
         {{ btn.label }}
       </el-dropdown-item>
     </el-dropdown-menu>
@@ -28,6 +28,13 @@ export default {
   methods: {
     handleCommand(btn) {
       btn.click(this.row)
+    }
+  },
+  computed: {
+    disabled({row}) {
+      return btn => {
+        return typeof btn.disabled === "function" ? btn.disabled(row) : btn.disabled
+      }
     }
   }
 }

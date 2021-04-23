@@ -6,7 +6,8 @@
       <fu-table-column-select type="dialog" :columns="columns" v-if="columns"/>
     </template>
     <template v-slot:default="{row}">
-      <fu-table-button v-for="(btn, i) in defaultButtons" :key="i" v-bind="btn" @click="btn.click(row)"/>
+      <fu-table-button v-for="(btn, i) in defaultButtons" :key="i" v-bind="btn" @click="btn.click(row)"
+                       :disabled="disableButton(btn, row)"/>
       <fu-table-more-button :buttons="moreButtons" :row="row" v-if="moreButtons.length > 0"/>
     </template>
   </el-table-column>
@@ -42,13 +43,13 @@ export default {
       return this.buttons?.filter(btn => btn.show !== false)
     },
     hasMore() {
-      return this.showButtons?.length > this.ellipsis + 1;
+      return this.showButtons?.length > this.ellipsis + 1
     },
     defaultButtons() {
-      return this.hasMore ? this.showButtons.slice(0, this.ellipsis) : this.showButtons;
+      return this.hasMore ? this.showButtons.slice(0, this.ellipsis) : this.showButtons
     },
     moreButtons() {
-      return this.hasMore ? this.showButtons.slice(this.ellipsis) : [];
+      return this.hasMore ? this.showButtons.slice(this.ellipsis) : []
     },
     computeWidth() {
       let buttonsWidth = 20 + this.defaultButtons.length * 38 + 38
@@ -56,6 +57,11 @@ export default {
         buttonsWidth = buttonsWidth < this.minWidth ? this.minWidth : buttonsWidth
       }
       return this.width ? this.width : buttonsWidth
+    },
+    disableButton() {
+      return (btn, row) => {
+        return typeof btn.disabled === "function" ? btn.disabled(row) : btn.disabled
+      }
     }
   }
 }
