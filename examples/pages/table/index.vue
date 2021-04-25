@@ -3,7 +3,7 @@
 <example path="./examples/SaveSelectColumn.vue"/>
 <example path="./examples/TableOperationsDemo.vue"/>
 <example path="./examples/TablePaginationDemo.vue"/>
-
+<example path="./examples/ColumnDropdownDemo.vue"/>
 <template>
   <div>
     <!-- 文档说明 -->
@@ -52,7 +52,13 @@ export default {
           titleDesc: "TableOperations: 按钮自动折叠，提供选列功能，控制显隐或禁用",
           component: "TableOperationsDemo",
           description: `传入columns则显示选列按钮。控制台查看按钮的click事件`
+        },
+        {
+          title: "列自定义下拉菜单",
+          titleDesc: "可增加一列下拉菜单，允许自定义",
+          component: "ColumnDropdownDemo",
         }
+
       ]
     };
   },
