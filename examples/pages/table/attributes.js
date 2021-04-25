@@ -5,12 +5,16 @@
  * @table table内容,字段要和header定义的属性保持一直
  * @children 多表使用
  */
-export default [
-  {
+export default [{
     name: 'Table Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
-      {
+    header: {
+      prop: '参数',
+      desc: "说明",
+      type: '类型',
+      enum: "可选值",
+      default: "默认值"
+    },
+    table: [{
         prop: 'columns',
         desc: '选列数组，传入则开启选列功能，如果数组长度为0则自动根据表格内容填充数组',
         type: 'Array',
@@ -35,9 +39,14 @@ export default [
   },
   {
     name: 'TableColumn Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
-      {
+    header: {
+      prop: '参数',
+      desc: "说明",
+      type: '类型',
+      enum: "可选值",
+      default: "默认值"
+    },
+    table: [{
         prop: 'label',
         desc: '表头名称，如需选列(非fix，非el-table type=selection/index/expand)，则必填',
         type: 'String',
@@ -62,9 +71,14 @@ export default [
   },
   {
     name: 'TableColumnSelect Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
-      {
+    header: {
+      prop: '参数',
+      desc: "说明",
+      type: '类型',
+      enum: "可选值",
+      default: "默认值"
+    },
+    table: [{
         prop: 'type',
         desc: '选列按钮类别: popover方式显示，dialog方式显示',
         type: 'Boolean',
@@ -96,9 +110,14 @@ export default [
   },
   {
     name: 'TableOperations Attributes',
-    header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-    table: [
-      {
+    header: {
+      prop: '参数',
+      desc: "说明",
+      type: '类型',
+      enum: "可选值",
+      default: "默认值"
+    },
+    table: [{
         prop: 'columns',
         desc: '选列数组，传入则在操作列表头显示选列按钮',
         type: 'Array',
@@ -137,12 +156,16 @@ export default [
   },
   {
     name: 'TableButton',
-    children: [
-      {
+    children: [{
         name: '@Attributes',
-        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-        table: [
-          {
+        header: {
+          prop: '参数',
+          desc: "说明",
+          type: '类型',
+          enum: "可选值",
+          default: "默认值"
+        },
+        table: [{
             prop: 'label',
             desc: '按钮名称',
             type: 'String',
@@ -188,26 +211,32 @@ export default [
       },
       {
         name: '@Events',
-        header: {event: '事件名', desc: "说明", value: '回调参数'},
-        table: [
-          {
-            event: 'click',
-            desc: '点击时触发',
-            value: '-',
-          }
-        ]
+        header: {
+          event: '事件名',
+          desc: "说明",
+          value: '回调参数'
+        },
+        table: [{
+          event: 'click',
+          desc: '点击时触发',
+          value: '-',
+        }]
       }
     ]
   },
   // 多表
   {
     name: 'TablePagination',
-    children: [
-      {
+    children: [{
         name: '@Attributes',
-        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
-        table: [
-          {
+        header: {
+          prop: '参数',
+          desc: "说明",
+          type: '类型',
+          enum: "可选值",
+          default: "默认值"
+        },
+        table: [{
             prop: 'current-page',
             desc: '当前页数，支持 .sync 修饰符',
             type: 'Number',
@@ -239,16 +268,115 @@ export default [
       },
       {
         name: '@Methods',
-        header: {method: '方法名', desc: "说明", value: '参数'},
+        header: {
+          method: '方法名',
+          desc: "说明",
+          value: '参数'
+        },
+        table: [{
+          method: 'change',
+          desc: 'currentPage 或 pageSize 变更时触发',
+          value: '-',
+        }]
+      }
+    ]
+  },
+
+  // 列组件下拉列表
+  {
+    name: 'TableColumnDropdown',
+    children: [{
+        name: '@Attributes',
+        header: {
+          prop: '参数',
+          desc: "说明",
+          type: '类型',
+          enum: "可选值",
+          default: "默认值"
+        },
+        table: [{
+            prop: 'showType',
+            desc: '组件显示方式',
+            type: 'String',
+            enum: 'always / hover / selected',
+            default: 'always',
+          },
+          {
+            prop: 'menus',
+            desc: '下拉列表数组: 数组对象的参数请看TableColumnDropdown @menus',
+            type: 'Array',
+            enum: '-',
+            default: '[]',
+          },
+          {
+            prop: 'title',
+            desc: '下拉列表中标题，例如：已选中1项',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+        ]
+      },
+      {
+        name: '@menus',
+        header: {
+          prop: '参数',
+          desc: "说明",
+          type: '类型',
+          enum: "可选值",
+          default: "默认值"
+        },
+        table: [{
+            prop: 'label',
+            desc: '名称',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'icon',
+            desc: '图标，目前仅支持Element UI的图标，后续版本会增加其他图标',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'disabled',
+            desc: '禁用',
+            type: 'Boolean / Function(row)',
+            enum: 'true / false',
+            default: '-',
+          },
+          {
+            prop: 'divided',
+            desc: '与上一个的分割线',
+            type: 'Boolean',
+            enum: 'true / false',
+            default: '-',
+          }
+        ]
+      },
+      {
+        name: '@Slots',
+        header: {
+          method: 'name',
+          desc: "说明"
+        },
         table: [
           {
-            method: 'change',
-            desc: 'currentPage 或 pageSize 变更时触发',
-            value: '-',
+            method: 'icon',
+            desc: '自定义触发按钮',
+          },
+          {
+            method: 'title',
+            desc: '下拉列表中标题',
+          },
+          {
+            method: '-',
+            desc: '列表内容',
           }
         ]
       }
     ]
   },
-
 ];

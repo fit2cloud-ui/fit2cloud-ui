@@ -55,8 +55,9 @@ export default {
         },
         {
           title: "列自定义下拉菜单",
-          titleDesc: "可增加一列下拉菜单，允许自定义",
+          titleDesc: "可增加一列下拉菜单组件，有三种显示方式，允许自定义内容",
           component: "ColumnDropdownDemo",
+          description: `通过show设置三种显示方式，always/hover/selected`
         }
 
       ]

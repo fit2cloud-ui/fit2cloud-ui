@@ -1,8 +1,15 @@
 <template>
   <div>
-    <fu-table :data="tableData" local-key="TableDoc">
+    <el-radio-group v-model="showType" style="margin-bottom: 20px">
+      <el-radio-button label="always">always</el-radio-button>
+      <el-radio-button label="hover">hover</el-radio-button>
+      <el-radio-button label="selected">selected</el-radio-button>
+    </el-radio-group>
+    <h3>基本用法</h3>
+    <fu-table :data="tableData" local-key="TableDoc" @selection-change="handleSelectionChange">
       <el-table-column type="selection"></el-table-column>
-      <fu-table-column-dropdown :menus="menus"></fu-table-column-dropdown>
+      <fu-table-column-dropdown :menus="menus" :title="`已选中${selectRows.length}项`"
+        :showType="showType"></fu-table-column-dropdown>
       <el-table-column prop="date" label="日期" min-width="180"></el-table-column>
       <el-table-column prop="name" label="姓名" min-width="180" fix></el-table-column>
       <el-table-column prop="address" label="地址" min-width="300" :show="false"></el-table-column>
@@ -15,23 +22,29 @@ export default {
   name: "ColumnDropdownDemovue",
   data() {
     return {
+      selectRows: [],
+      showType: "always",
       tableData: [
         {
-          date: "2016-05-02",
+          id: 1,
+          date: "2016-05-01",
           name: "张三",
           address: "北京朝阳区财富中心 0室",
         },
         {
+          id: 2,
           date: "2016-05-02",
           name: "张三",
-          address: "北京朝阳区财富中心 0室",
+          address: "北京朝阳区财富中心 1室",
         },
         {
+          id: 3,
           date: "2016-05-01",
           name: "张三",
           address: "北京朝阳区财富中心 2室",
         },
         {
+          id: 4,
           date: "2016-05-03",
           name: "张三",
           address: "北京朝阳区财富中心 3室",
@@ -51,6 +64,11 @@ export default {
           click: (row) => {
             console.log("移动:" + row.name);
           },
+          disabled: (row) => {
+            if (row.id === 1) {
+              return true;
+            }
+          },
         },
         {
           label: "批量删除",
@@ -63,6 +81,10 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    handleSelectionChange(value) {
+      this.selectRows = value;
+    },
+  },
 };
 </script>

@@ -65,6 +65,12 @@
 }
 
 @include b(table-column-dropdown) {
+  @include e(title) {
+    padding: 5px;
+    text-align: center;
+    color: #888888;
+  }
+
   .el-dropdown-link {
     cursor: pointer;
   }
@@ -76,6 +82,7 @@
   @include b(show-icon) {
     display: none;
   }
+
 }
 
 .el-table__body tr:hover {
