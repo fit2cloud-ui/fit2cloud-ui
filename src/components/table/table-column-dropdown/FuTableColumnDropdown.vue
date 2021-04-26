@@ -3,7 +3,7 @@
     align="center" v-bind="$attrs" v-on="$listeners">
     <template slot-scope="scope">
       <el-dropdown @command="handleCommand" :class="showType === 'hover' ? 'fu-show-icon' : ''"
-        v-if="isShow(scope.row)" placement="bottom" trigger="click" size="medium">
+        v-if="isShow(scope.row)" placement="bottom" :trigger="trigger">
         <span class="el-dropdown-link">
           <slot name="icon">
             <i class="el-icon-more fu-icon-more" />
@@ -43,6 +43,10 @@ export default {
       default: () => [],
     },
     title: String,
+    trigger: {
+      type: String,
+      default: "click",
+    },
   },
   computed: {
     isShow() {

@@ -315,6 +315,13 @@ export default [{
             enum: '-',
             default: '-',
           },
+          {
+            prop: 'trigger',
+            desc: '触发下拉的行为',
+            type: 'String',
+            enum: 'hover / click',
+            default: 'click',
+          },
         ]
       },
       {
