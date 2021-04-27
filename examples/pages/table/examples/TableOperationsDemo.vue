@@ -40,6 +40,8 @@ export default {
         {
           label: "查看", icon: "el-icon-view", click: (row) => {
             console.log("查看:" + row.name)
+          }, disabled: row => {
+            return row.date === "2016-05-01"
           }
         },
         {

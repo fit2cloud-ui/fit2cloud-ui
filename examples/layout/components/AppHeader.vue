@@ -19,14 +19,9 @@ export default {
   data() {
     return {
       PackageJSON,
-      isDot: false,
-      number: "",
-      input2: "",
-      // dialogUpdateForm: false
     };
   },
   mounted() {
-    // this.unread()
   },
   methods: {},
 };
@@ -43,9 +38,6 @@ export default {
   .logo {
     margin-left: 15px;
   }
-  // .right {
-  //   margin-right: 0;
-  // }
   .version {
     font-size: 16px;
     margin-right: 25px;

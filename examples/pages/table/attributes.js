@@ -188,8 +188,8 @@ export default [{
           },
           {
             prop: 'disabled',
-            desc: '禁用',
-            type: 'Boolean',
+            desc: '禁用, Function时参数为行内容',
+            type: 'Boolean / Function(row)',
             enum: 'true / false',
             default: '-',
           },

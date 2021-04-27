@@ -1,6 +1,6 @@
 <template>
   <el-tooltip :content="label" :disabled="!label">
-    <el-button circle :size="size" v-on="$listeners" v-bind="$attrs">
+    <el-button circle :size="size" v-on="$listeners" v-bind="$attrs" :disabled="disabled">
       <slot></slot>
     </el-button>
   </el-tooltip>
@@ -14,6 +14,7 @@ export default {
       default: "mini"
     },
     label: String,
+    disabled: Boolean
   },
 }
 </script>

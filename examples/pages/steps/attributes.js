@@ -77,6 +77,13 @@ export default [
             default: 'false',
           },
           {
+            prop: 'height',
+            desc: '内容高度',
+            type: 'String/Number',
+            enum: '-',
+            default: 'auto',
+          },
+          {
             prop: '...ElSteps',
             desc: '继承ElSteps的属性',
             type: '-',

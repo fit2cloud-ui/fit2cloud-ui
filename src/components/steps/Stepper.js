@@ -22,6 +22,8 @@ export class Stepper {
     this.beforeActive = options.beforeActive
     // 离开前钩子
     this.beforeLeave = options.beforeLeave
+    // 高度
+    this.height = options.height
   }
 
   // index是否为第一个节点
