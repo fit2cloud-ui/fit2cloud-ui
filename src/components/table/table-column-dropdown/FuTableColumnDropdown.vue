@@ -1,9 +1,10 @@
 <template>
-  <el-table-column class-name="fu-table-column-dropdown" width="40" :resizable="false"
+  <el-table-column class-name="fu-table-column-dropdown" :width="width" :resizable="false"
     align="center" v-bind="$attrs" v-on="$listeners">
-    <template slot-scope="scope">
-      <el-dropdown @command="handleCommand" :class="showType === 'hover' ? 'fu-show-icon' : ''"
-        v-if="isShow(scope.row)" placement="bottom" :trigger="trigger">
+    <template v-slot:default="scope">
+      <el-dropdown @command="handleCommand" :trigger="trigger"
+        :class="showType === 'hover' ? 'fu-show-icon' : ''" v-if="isShow(scope.row)"
+        placement="bottom" :ref="`dropdown${scope.$index}`">
         <span class="el-dropdown-link">
           <slot name="icon">
             <i class="el-icon-more fu-icon-more" />
@@ -15,7 +16,7 @@
               {{ title }}
             </div>
           </slot>
-          <slot>
+          <slot v-bind="scope">
             <el-dropdown-item v-for="(item, i) in menus" :key="i" :icon="item.icon"
               :disabled="disabled(item, scope.row)" :divided="item.divided"
               :command="composeValue(item, scope.row)">
@@ -35,8 +36,9 @@ export default {
   components: {},
   props: {
     showType: {
-      type: String, // always/hover/selected
+      type: String,
       default: "always",
+      validator: (val) => ["always", "hover", "selected"].includes(val),
     },
     menus: {
       type: Array,
@@ -46,6 +48,10 @@ export default {
     trigger: {
       type: String,
       default: "click",
+    },
+    width: {
+      type: String,
+      default: "40",
     },
   },
   computed: {
@@ -75,6 +81,12 @@ export default {
         item,
         row,
       };
+    },
+    show(index) {
+      this.$refs[`dropdown${index}`].show();
+    },
+    hide(index) {
+      this.$refs[`dropdown${index}`].hide();
     },
   },
 };

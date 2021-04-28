@@ -5,21 +5,20 @@
       <el-radio-button label="hover">hover</el-radio-button>
       <el-radio-button label="selected">selected</el-radio-button>
     </el-radio-group>
-    <h3>基本用法</h3>
     <fu-table :data="tableData" local-key="TableDoc" @selection-change="handleSelectionChange">
       <el-table-column type="selection"></el-table-column>
       <fu-table-column-dropdown :menus="menus" :title="`已选中${selectRows.length}项`"
         :showType="showType"></fu-table-column-dropdown>
       <el-table-column prop="date" label="日期" min-width="180"></el-table-column>
-      <el-table-column prop="name" label="姓名" min-width="180" fix></el-table-column>
-      <el-table-column prop="address" label="地址" min-width="300" :show="false"></el-table-column>
+      <el-table-column prop="name" label="姓名" min-width="180"></el-table-column>
+      <el-table-column prop="address" label="地址" min-width="300"></el-table-column>
     </fu-table>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ColumnDropdownDemovue",
+  name: "ColumnDropdownDemo",
   data() {
     return {
       selectRows: [],

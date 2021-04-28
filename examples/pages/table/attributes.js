@@ -322,6 +322,13 @@ export default [{
             enum: 'hover / click',
             default: 'click',
           },
+          {
+            prop: 'width',
+            desc: '组件宽度',
+            type: 'String',
+            enum: '-',
+            default: '40',
+          },
         ]
       },
       {
@@ -361,6 +368,22 @@ export default [{
             enum: 'true / false',
             default: '-',
           }
+        ]
+      },
+      {
+        name: '@Methods',
+        header: {event: '方法名', desc: "说明", value: '参数'},
+        table: [
+          {
+            event: 'hide',
+            desc: '关闭下拉菜单',
+            value: 'index',
+          },
+          {
+            event: 'show',
+            desc: '显示下拉菜单',
+            value: 'index',
+          },
         ]
       },
       {
