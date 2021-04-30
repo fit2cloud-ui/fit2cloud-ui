@@ -1,7 +1,7 @@
 <template>
   <div>
     <fu-table :data="tableData" local-key="TableDoc">
-      <el-table-column type="selection"></el-table-column>
+      <el-table-column type="selection"/>
       <fu-table-column-dropdown showType="always" width="auto" ref="tableDrop">
         <!-- 自定义触发图标 -->
         <template v-slot:icon>
@@ -12,12 +12,12 @@
           <div class="example-title">自定义标题</div>
         </template>
         <!-- 内容 -->
-        <template slot-scope="scope">
+        <template v-slot:default="scope">
           <div class="example">
             <el-checkbox-group v-model="checkList">
-              <el-checkbox label="复选框 A"></el-checkbox>
-              <el-checkbox label="复选框 B"></el-checkbox>
-              <el-checkbox label="复选框 C"></el-checkbox>
+              <el-checkbox label="复选框 A"/>
+              <el-checkbox label="复选框 B"/>
+              <el-checkbox label="复选框 C"/>
             </el-checkbox-group>
             <div class="example-button">
               <el-button type="primary" size="mini">确认</el-button>
@@ -26,9 +26,9 @@
           </div>
         </template>
       </fu-table-column-dropdown>
-      <el-table-column prop="date" label="日期" min-width="180"></el-table-column>
-      <el-table-column prop="name" label="姓名" min-width="180"></el-table-column>
-      <el-table-column prop="address" label="地址" min-width="300"></el-table-column>
+      <el-table-column prop="date" label="日期" min-width="180"/>
+      <el-table-column prop="name" label="姓名" min-width="180"/>
+      <el-table-column prop="address" label="地址" min-width="300"/>
     </fu-table>
   </div>
 </template>
@@ -81,9 +81,11 @@ export default {
   text-align: center;
   padding: 5px 0;
 }
+
 .example {
   padding: 10px 20px;
   width: 125px;
+
   .example-button {
     margin-top: 10px;
   }

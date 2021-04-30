@@ -6,12 +6,11 @@
       <el-radio-button label="selected">selected</el-radio-button>
     </el-radio-group>
     <fu-table :data="tableData" local-key="TableDoc" @selection-change="handleSelectionChange">
-      <el-table-column type="selection"></el-table-column>
-      <fu-table-column-dropdown :menus="menus" :title="`已选中${selectRows.length}项`"
-        :showType="showType"></fu-table-column-dropdown>
-      <el-table-column prop="date" label="日期" min-width="180"></el-table-column>
-      <el-table-column prop="name" label="姓名" min-width="180"></el-table-column>
-      <el-table-column prop="address" label="地址" min-width="300"></el-table-column>
+      <el-table-column type="selection"/>
+      <fu-table-column-dropdown :menus="menus" :title="`已选中${selectRows.length}项`" :showType="showType"/>
+      <el-table-column prop="date" label="日期" min-width="180"/>
+      <el-table-column prop="name" label="姓名" min-width="180"/>
+      <el-table-column prop="address" label="地址" min-width="300"/>
     </fu-table>
   </div>
 </template>
