@@ -23,6 +23,10 @@ export class Stepper {
     this.beforeActive = options.beforeActive
     // 离开前钩子
     this.beforeLeave = options.beforeLeave
+    // 下一步前钩子
+    this.beforeNext = options.beforeNext
+    // 上一步前钩子
+    this.beforePrev = options.beforePrev
     // 高度
     this.height = options.height
   }
@@ -73,14 +77,18 @@ export class Stepper {
   // 下一步
   next() {
     if (!this.isLast(this.index)) {
-      this.active(this.index + 1)
+      if (this.execBeforeNext(this.index) !== false) {
+        this.active(this.index + 1)
+      }
     }
   }
 
   // 上一步
   prev() {
     if (!this.isFirst(this.index)) {
-      this.active(this.index - 1)
+      if (this.execBeforePrev(this.index) !== false) {
+        this.active(this.index - 1)
+      }
     }
   }
 
@@ -112,6 +120,14 @@ export class Stepper {
     return this.executeHook("beforeLeave", index)
   }
 
+  execBeforeNext(index) {
+    return this.executeHook("beforeNext", index)
+  }
+
+  execBeforePrev(index) {
+    return this.executeHook("beforePrev", index)
+  }
+
   executeHook(functionName, index) {
     const step = this.getStep(index)
     // 如果节点定义了钩子方法，执行节点的
@@ -134,6 +150,10 @@ export class Step {
     this.beforeActive = options.beforeActive
     // 离开前钩子
     this.beforeLeave = options.beforeLeave
+    // 下一步前钩子
+    this.beforeNext = options.beforeNext
+    // 上一步前钩子
+    this.beforePrev = options.beforePrev
     // el-step 属性
     this.title = options.title
     this.description = options.description
