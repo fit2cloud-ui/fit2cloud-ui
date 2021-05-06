@@ -46,7 +46,7 @@ export default {
         },
         {
           title: "footer步骤按钮的配置",
-          titleDesc: "目前footer按钮可以修改文字和大小",
+          titleDesc: "目前footer按钮可以修改文字、大小以及对齐方式",
           component: "SettingFooterDemo",
         },
         {

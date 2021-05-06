@@ -70,6 +70,13 @@ export default [
             default: 'default',
           },
           {
+            prop: 'footerAlign',
+            desc: 'footer按钮对齐方式',
+            type: 'String',
+            enum: 'flex / left / right / center',
+            default: 'flex',
+          },
+          {
             prop: 'isLoading',
             desc: 'loading加载状态',
             type: 'Boolean',

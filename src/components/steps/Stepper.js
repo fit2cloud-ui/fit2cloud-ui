@@ -16,6 +16,7 @@ export class Stepper {
     this.prevButtonText = options.prevButtonText || t("fu.steps.prev")
     this.nextButtonText = options.nextButtonText || t("fu.steps.next")
     this.buttonSize = options.buttonSize
+    this.footerAlign = options.footerAlign || 'flex'
     // 是否显示取消按钮
     this.showCancel = options.showCancel === undefined ? false : options.showCancel
     // 激活前钩子

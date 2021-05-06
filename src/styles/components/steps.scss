@@ -5,11 +5,28 @@
   @include e(footer) {
     margin-top: 15px;
 
+    @include m(block) {
+      display: inline-block;
+    }
+
     @include m(flex) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
+
+    @include m(left) {
+      text-align: left;
+    }
+
+    @include m(right) {
+      text-align: right;
+    }
+
+    @include m(center) {
+      text-align: center;
+    }
+
   }
 
   @include e(container) {
@@ -42,6 +59,7 @@
     .el-step__description {
       padding-right: 0;
     }
+
     @include b(step) {
       font-size: 14px;
     }
