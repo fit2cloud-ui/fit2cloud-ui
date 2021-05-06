@@ -28,6 +28,20 @@ export default [
             default: '-',
           },
           {
+            prop: 'beforeNext',
+            desc: '下一步之前的钩子，若返回 false 则阻止下一步，返回 true 则执行下一步。',
+            type: 'Function({ id, title, index })',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'beforePrev',
+            desc: '上一步之前的钩子，若返回 false 则阻止上一步，返回 true 则执行上一步',
+            type: 'Function({ id, title, index })',
+            enum: '-',
+            default: '-',
+          },
+          {
             prop: 'cancelButtonText',
             desc: '取消按钮的文本内容',
             type: 'String',
