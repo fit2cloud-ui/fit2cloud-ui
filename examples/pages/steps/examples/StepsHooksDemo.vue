@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-steps ref="steps" finish-status="success" :beforeLeave="beforeLeave" :isLoading="loading">
+    <fu-steps ref="steps" finish-status="success" :beforeNext="beforeNext" :isLoading="loading">
       <fu-step id="cluster" title="第1步">
         <div class="example">
           <el-form ref="ruleForm" label-width="80px" :model="ruleForm" :rules="rules">
@@ -51,7 +51,7 @@ export default {
       });
       return bool;
     },
-    beforeLeave({ id, title, index }) {
+    beforeNext({ id, title, index }) {
       if (index === 0) {
         // 第一步校验
         if (this.submitForm()) {

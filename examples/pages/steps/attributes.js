@@ -70,6 +70,13 @@ export default [
             default: 'default',
           },
           {
+            prop: 'footerAlign',
+            desc: 'footer按钮对齐方式',
+            type: 'String',
+            enum: 'flex / left / right / center',
+            default: 'flex',
+          },
+          {
             prop: 'isLoading',
             desc: 'loading加载状态',
             type: 'Boolean',
@@ -170,6 +177,20 @@ export default [
           {
             prop: 'beforeLeave',
             desc: '节点离开之前的钩子，若返回 false 则阻止离开，返回 true 则进入下一个节点',
+            type: 'Function({ id, title, index })',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'beforeNext',
+            desc: '下一步之前的钩子，若返回 false 则阻止下一步，返回 true 则执行下一步。',
+            type: 'Function({ id, title, index })',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'beforePrev',
+            desc: '上一步之前的钩子，若返回 false 则阻止上一步，返回 true 则执行上一步',
             type: 'Function({ id, title, index })',
             enum: '-',
             default: '-',

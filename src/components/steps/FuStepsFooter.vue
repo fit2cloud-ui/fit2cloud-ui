@@ -46,11 +46,11 @@ export default {
       );
     };
     return (
-      <div class="fu-steps__footer--flex">
-        <div class="fu-steps__footer--left">
+      <div class={`fu-steps__footer--${this.stepper.footerAlign}`}>
+        <div class="fu-steps__footer--block" style="margin-right:10px">
           {this.showCancel && button("cancel")}
         </div>
-        <div class="fu-steps__footer--right">
+        <div class="fu-steps__footer--block">
           {!this.isFirst && button("prev")}
           {this.isLast ? button("finish") : button("next")}
         </div>

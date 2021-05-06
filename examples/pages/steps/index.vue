@@ -41,12 +41,12 @@ export default {
         },
         {
           title: "扩展的钩子用法",
-          titleDesc: "节点激活前beforeActive、节点离开前beforeLeave两个钩子函数，即可用在节点fu-step上，也可用在fu-steps上，效果一样。",
+          titleDesc: "钩子函数，即可用在节点fu-step上，也可用在fu-steps上，效果一样。",
           component: "StepsHooksDemo",
         },
         {
           title: "footer步骤按钮的配置",
-          titleDesc: "目前footer按钮可以修改文字和大小",
+          titleDesc: "目前footer按钮可以修改文字、大小以及对齐方式",
           component: "SettingFooterDemo",
         },
         {
