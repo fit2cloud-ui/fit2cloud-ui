@@ -23,10 +23,6 @@ export class Stepper {
     this.beforeActive = options.beforeActive
     // 离开前钩子
     this.beforeLeave = options.beforeLeave
-    // 下一步前钩子
-    this.beforeNext = options.beforeNext
-    // 上一步前钩子
-    this.beforePrev = options.beforePrev
     // 高度
     this.height = options.height
   }
@@ -55,12 +51,12 @@ export class Stepper {
   active(index) {
     // 在节点范围内，并且不等于当前节点
     const isValid = index >= 0 && index < this.steps.length && this.index !== index
-
+    const forward = index > this.index
     if (isValid) {
       // 离开前钩子返回false，则不执行激活
-      if (this.execBeforeLeave(this.index) !== false) {
+      if (this.executeHook("beforeLeave", this.index, forward) !== false) {
         // 激活前钩子返回false，则不执行激活
-        if (this.execBeforeActive(index) !== false) {
+        if (this.executeHook("beforeActive", index, forward)!== false) {
           // 激活
           this.index = index
           this.activeSet.add(index)
@@ -77,18 +73,14 @@ export class Stepper {
   // 下一步
   next() {
     if (!this.isLast(this.index)) {
-      if (this.execBeforeNext(this.index) !== false) {
-        this.active(this.index + 1)
-      }
+      this.active(this.index + 1)
     }
   }
 
   // 上一步
   prev() {
     if (!this.isFirst(this.index)) {
-      if (this.execBeforePrev(this.index) !== false) {
-        this.active(this.index - 1)
-      }
+      this.active(this.index - 1)
     }
   }
 
@@ -112,32 +104,16 @@ export class Stepper {
     return -1;
   }
 
-  execBeforeActive(index) {
-    return this.executeHook("beforeActive", index)
-  }
-
-  execBeforeLeave(index) {
-    return this.executeHook("beforeLeave", index)
-  }
-
-  execBeforeNext(index) {
-    return this.executeHook("beforeNext", index)
-  }
-
-  execBeforePrev(index) {
-    return this.executeHook("beforePrev", index)
-  }
-
-  executeHook(functionName, index) {
+  executeHook(functionName, index, forward) {
     const step = this.getStep(index)
     // 如果节点定义了钩子方法，执行节点的
     if (step[functionName]) {
-      return step[functionName](step)
+      return step[functionName](step, forward)
     }
 
     // 节点没定义，则执行Steps的钩子方法
     if (this[functionName]) {
-      return this[functionName](step)
+      return this[functionName](step, forward)
     }
   }
 }
@@ -150,10 +126,6 @@ export class Step {
     this.beforeActive = options.beforeActive
     // 离开前钩子
     this.beforeLeave = options.beforeLeave
-    // 下一步前钩子
-    this.beforeNext = options.beforeNext
-    // 上一步前钩子
-    this.beforePrev = options.beforePrev
     // el-step 属性
     this.title = options.title
     this.description = options.description
