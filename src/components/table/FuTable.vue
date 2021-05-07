@@ -99,7 +99,8 @@ export default {
     }
   },
   created() {
-    const children = this.$slots.default
+    // 去掉v-if=false的node
+    const children = this.$slots.default.filter(c => c.tag !== undefined)
     // 表格没有内容或者不需要选列
     if (!children || !this.columns) return
 
