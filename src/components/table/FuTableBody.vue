@@ -13,7 +13,7 @@ export default {
   },
   render(h, context) {
     let {columns} = context.props
-    const children = context.children
+    const children = context.children.filter(c => c.tag !== undefined)
     const nodes = [];
 
     if (!children) return nodes
