@@ -6,7 +6,7 @@
                     :align="align"
                     :size="configSize"
                     :placeholder="t('fu.search_bar.select_date_time')"
-                    :type="type" :key="type" value-format="timestamp"
+                    :type="type" :key="type" :value-format="valueFormat"
                     :range-separator="t('fu.search_bar.range_separator')"
                     :start-placeholder="t('fu.search_bar.start_date_time')"
                     :end-placeholder="t('fu.search_bar.end_date_time')">
@@ -34,6 +34,10 @@ export default {
     defaultOperator: {
       type: String,
       default: "between"
+    },
+    valueFormat: {
+      type: String,
+      default: "timestamp",
     },
   },
   data() {
