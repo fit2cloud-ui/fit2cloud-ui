@@ -35,6 +35,11 @@ const navList = {
       name: 'ReadWriteSwitch 读写切换',
       path: 'read-write-switch',
       component: 'ReadWriteSwitchDoc'
+    },
+    {
+      name: 'SplitPane 分割面板',
+      path: 'split-pane',
+      component: 'SplitPaneDoc'
     }
   ],
   "filters": [],

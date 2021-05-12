@@ -9,7 +9,7 @@
     <document-table :data="attributes"/>
     <!-- 一级描述 -->
     <p>el-steps的扩展，增加展示区、步骤按钮以及激活、离开的钩子函数等，除了以下额外增加的功能和属性，其他的用法与el-steps一致</p>
-    <!-- BaseTable内容 -->
+    <!-- 内容 -->
     <div class="component-block" v-for="(item, index) in comList" :key="index">
       <h2>{{ item.title }}</h2>
       <p>{{ item.titleDesc }}</p>
