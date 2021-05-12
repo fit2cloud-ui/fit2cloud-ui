@@ -49,10 +49,12 @@ const copyColumns = (source, target) => {
 }
 
 const updateColumns = (nodes, columns) => {
+  if (columns === undefined) return
+
   if (nodes.length !== columns.length) {
     cleanColumns(columns)
     initColumns(nodes, columns)
-    return;
+    return
   }
   nodes.forEach((node, i) => {
     columns[i].label = getLabel(node)
@@ -97,6 +99,11 @@ export default {
     columnsKey() {
       return "FU-T-" + this.localKey
     }
+  },
+  updated() {
+    // 去掉v-if=false的node
+    const children = this.$slots.default.filter(c => c.tag !== undefined)
+    updateColumns(children, this.columns)
   },
   created() {
     // 去掉v-if=false的node
