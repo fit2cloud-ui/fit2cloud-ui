@@ -65,8 +65,8 @@ export default [{
           prop: 'resizer-type',
           desc: '分割线的类型',
           type: 'String',
-          enum: 'line',
-          default: '-',
+          enum: 'line / resizer',
+          default: 'resizer',
         },
         {
           prop: 'resizer-style',

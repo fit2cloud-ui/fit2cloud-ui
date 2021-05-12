@@ -13,11 +13,11 @@
     width: 100%;
 
     @include when(horizontal) {
-      left: 0px;
+      left: 0;
     }
 
     @include when(vertical) {
-      top: 0px;
+      top: 0;
     }
   }
 
@@ -29,11 +29,11 @@
     width: 100%;
 
     @include when(horizontal) {
-      right: 0px;
+      right: 0;
     }
 
     @include when(vertical) {
-      bottom: 0px;
+      bottom: 0;
     }
   }
 
