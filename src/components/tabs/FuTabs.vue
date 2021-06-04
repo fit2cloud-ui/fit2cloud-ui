@@ -66,7 +66,7 @@ export default {
       const name = uuid();
       let obj = null
       if (e) {
-        obj = this.dropdownMenus.find((item) => item.command == e);
+        obj = this.dropdownMenus.find((item) => item.command === e);
       }
       this.$emit("command", name, obj);
     },
@@ -75,7 +75,6 @@ export default {
     beforeLeave(currentName, oldName) {
       // 如果name是add，则什么都不触发
       if (currentName == "add") {
-        // this.addTab();
         return false;
       }
     },
