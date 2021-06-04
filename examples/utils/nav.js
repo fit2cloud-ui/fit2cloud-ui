@@ -40,6 +40,11 @@ const navList = {
       name: 'SplitPane 分割面板',
       path: 'split-pane',
       component: 'SplitPaneDoc'
+    },
+    {
+      name: 'Tabs 标签页',
+      path: 'tabs',
+      component: 'TabsDoc'
     }
   ],
   "filters": [],

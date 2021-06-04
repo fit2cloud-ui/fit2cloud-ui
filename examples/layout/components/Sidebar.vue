@@ -33,7 +33,7 @@ export default {
     getTypeName,
     isPath (path, key) {
       this.showPath = path;
-      this.$router.replace(`/${key}/${path}`);
+      this.$router.push(`/${key}/${path}`);
     },
   },
 };

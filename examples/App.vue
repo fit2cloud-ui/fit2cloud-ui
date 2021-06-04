@@ -1,24 +1,23 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {}
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
 body {
   margin: 0;
-  padding: 0!important;
+  padding: 0 !important;
   height: 100%;
   color: #333333;
-  font-size:14px;
+  font-size: 14px;
   overflow: hidden;
 }
 
@@ -52,12 +51,11 @@ ol {
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
-  scrollbar-width:none;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: rgba(144,147,153,.3);
+  background-color: rgba(144, 147, 153, 0.3);
 }
 
 ::-webkit-scrollbar-track {

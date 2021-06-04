@@ -1,6 +1,6 @@
 <template>
   <el-dropdown @command="handleCommand" class="fu-table-more-button">
-    <el-button circle icon="el-icon-more" :size="size"/>
+    <el-button circle icon="el-icon-more" :size="size" @click.stop/>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item v-for="(btn, i) in buttons" :key="i" :icon="btn.icon" :disabled="disabled(btn)" :command="btn">
         {{ btn.label }}
