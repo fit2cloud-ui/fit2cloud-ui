@@ -1,14 +1,14 @@
 <template>
   <el-table-column class-name="fu-table-operations" :align="align" :width="computeWidth" v-bind="$attrs"
-                   v-on="$listeners" v-if="showButtons">
+                   v-on="$listeners">
     <template #header>
       {{ $attrs.label }}
       <fu-table-column-select type="dialog" :columns="columns" v-if="columns"/>
     </template>
     <template v-slot:default="{row}">
-      <fu-table-button v-for="(btn, i) in defaultButtons" :key="i" v-bind="btn" @click.stop="btn.click(row)"
+      <fu-table-button v-for="(btn, i) in defaultButtons(row)" :key="i" v-bind="btn" @click.stop="btn.click(row)"
                        :disabled="disableButton(btn, row)"/>
-      <fu-table-more-button :buttons="moreButtons" :row="row" v-if="moreButtons.length > 0"/>
+      <fu-table-more-button :buttons="moreButtons(row)" :row="row" v-if="moreButtons(row).length > 0"/>
     </template>
   </el-table-column>
 </template>
@@ -38,21 +38,31 @@ export default {
       required: true
     },
   },
-  computed: {
-    showButtons() {
-      return this.buttons?.filter(btn => btn.show !== false)
+  methods: {
+    showButtons(row) {
+      return this.buttons?.filter(btn => typeof btn.show === "function" ? btn.show(row) !== false : btn.show !== false)
     },
-    hasMore() {
-      return this.showButtons?.length > this.ellipsis + 1
+    hasMore(row) {
+      return this.showButtons(row)?.length > this.ellipsis + 1
+    }
+  },
+  computed: {
+    hasShowFunc() {
+      return this.buttons.some(btn => typeof btn.show === "function")
     },
     defaultButtons() {
-      return this.hasMore ? this.showButtons.slice(0, this.ellipsis) : this.showButtons
+      return row => {
+        return this.hasMore(row) ? this.showButtons(row).slice(0, this.ellipsis) : this.showButtons(row)
+      }
     },
     moreButtons() {
-      return this.hasMore ? this.showButtons.slice(this.ellipsis) : []
+      return row => {
+        return this.hasMore(row) ? this.showButtons(row).slice(this.ellipsis) : []
+      }
     },
     computeWidth() {
-      let buttonsWidth = 20 + this.defaultButtons.length * 38 + 38
+      let length = this.hasShowFunc ? this.ellipsis : this.defaultButtons().length
+      let buttonsWidth = 20 + length * 38 + 38
       if (this.minWidth) {
         buttonsWidth = buttonsWidth < this.minWidth ? this.minWidth : buttonsWidth
       }
