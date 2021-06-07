@@ -202,8 +202,8 @@ export default [{
           },
           {
             prop: 'show',
-            desc: '是否显示',
-            type: 'Boolean',
+            desc: '是否显示, Function时参数为行内容',
+            type: 'Boolean / Function(row)',
             enum: 'true / false',
             default: '-',
           }
