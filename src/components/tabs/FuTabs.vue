@@ -8,7 +8,9 @@
           <!-- 下拉方式 -->
           <el-dropdown @command="handleCommand" v-if="addType==='dropdown'" :trigger="addTrigger">
             <slot name="dropdownButton">
-              <el-button type="primary" plain :icon="addIcon" size="mini">{{addButtonLabel}}</el-button>
+              <el-button type="primary" plain :icon="addIcon" size="mini">
+                <template v-if="addButtonLabel">{{addButtonLabel}}</template>
+              </el-button>
             </slot>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="(item, i) in dropdownMenus" :key="i" :icon="item.icon"
@@ -18,8 +20,9 @@
             </el-dropdown-menu>
           </el-dropdown>
           <!-- 默认 -->
-          <el-button v-else @click="handleCommand" type="primary" plain :icon="addIcon"
-            size="mini">{{addButtonLabel}}</el-button>
+          <el-button v-else @click="handleCommand" type="primary" plain :icon="addIcon" size="mini">
+            <template v-if="addButtonLabel">{{addButtonLabel}}</template>
+          </el-button>
         </slot>
       </template>
     </el-tab-pane>
