@@ -93,7 +93,7 @@ export default [{
         {
           prop: 'disabled',
           desc: '禁用',
-          type: 'Boolean / Function(row)',
+          type: 'Boolean',
           enum: 'true / false',
           default: '-',
         },

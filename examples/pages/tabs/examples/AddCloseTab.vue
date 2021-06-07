@@ -3,7 +3,7 @@
     <fu-tabs v-model="editableTabsValue" addable addType="dropdown" :dropdownMenus="menus"
       @command="handleCommand" @tab-remove="removeTab">
       <el-tab-pane :key="item.name" v-for="item in editableTabs" :label="item.title"
-        :name="item.name">
+        :name="item.name" closable>
         {{item.content}}
       </el-tab-pane>
     </fu-tabs>
