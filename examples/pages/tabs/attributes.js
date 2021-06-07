@@ -13,14 +13,14 @@ export default [{
         prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"
       },
       table: [{
-          prop: 'fuAddable',
-          desc: '标签是否可增加，同时增加按钮紧贴标签',
+          prop: 'addable',
+          desc: '标签是否可增加，同时增加按钮紧贴标签，原有ElTabs中editable和addable失效',
           type: 'Boolean',
           enum: '-',
           default: 'false',
         },
         {
-          prop: 'fuAddType',
+          prop: 'addType',
           desc: '增加按钮类型，按钮或者下拉类型',
           type: 'String',
           enum: 'default / dropdown',
@@ -28,17 +28,31 @@ export default [{
         },
         {
           prop: 'dropdownMenus',
-          desc: '定义下拉列表数组，只有fuAddType为dropdown类型时定义，数组对象的参数请看Tabs @menus',
+          desc: '定义下拉列表数组，只有addType为dropdown类型时定义，数组对象的参数请看Tabs @menus',
           type: 'Array',
           enum: '-',
           default: '[]',
         },
         {
-          prop: 'fuAddTrigger',
-          desc: 'fuAddType为dropdown类型，触发下拉的行为',
+          prop: 'addTrigger',
+          desc: 'addType为dropdown类型，触发下拉的行为',
           type: 'String',
           enum: 'hover / click',
           default: 'hover',
+        },
+        {
+          prop: 'addIcon',
+          desc: '自定义添加按钮的icon',
+          type: 'String',
+          enum: '-',
+          default: 'el-icon-plus',
+        },
+        {
+          prop: 'addButtonLabel',
+          desc: '自定义添加按钮的label文字',
+          type: 'String',
+          enum: '-',
+          default: '-',
         },
         {
           prop: '...ElTabs',
@@ -112,7 +126,7 @@ export default [{
         name: 'add',
         desc: '自定义新增按钮',
       }, {
-        name: 'dropdownIcon',
+        name: 'dropdownButton',
         desc: '如果是dropdown类型可自定义按钮',
       }]
     }

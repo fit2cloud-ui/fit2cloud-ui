@@ -1,0 +1,10 @@
+@import "../common/mixins.scss";
+@import "../common/variables.scss";
+
+@include b(tabs) {
+  #tab-add {
+    .el-icon-close {
+      display: none;
+    }
+  }
+}
