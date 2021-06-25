@@ -23,3 +23,7 @@ $fu-search-bar-condition-color: #424242 !default;
 $fu-search-bar-condition-bgColor: #E6E6E6 !default;
 
 $fu-table-striped-bgColor: mix($--color-primary, #FFF, 5%) !default;
+
+.iconfont {
+  font-size: inherit!important;
+}

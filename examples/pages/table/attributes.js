@@ -101,7 +101,7 @@ export default [{
       },
       {
         prop: 'icon',
-        desc: '触发按钮图标，使用Element UI的图标，如果有需求今后会做其他图标扩展',
+        desc: '触发按钮图标',
         type: 'String',
         enum: '-',
         default: 'el-icon-s-grid',
@@ -174,7 +174,7 @@ export default [{
           },
           {
             prop: 'icon',
-            desc: '图标，目前仅支持Element UI的图标，后续版本会增加其他图标',
+            desc: '图标',
             type: 'String',
             enum: '-',
             default: '-',
@@ -349,7 +349,7 @@ export default [{
           },
           {
             prop: 'icon',
-            desc: '图标，目前仅支持Element UI的图标，后续版本会增加其他图标',
+            desc: '图标',
             type: 'String',
             enum: '-',
             default: '-',

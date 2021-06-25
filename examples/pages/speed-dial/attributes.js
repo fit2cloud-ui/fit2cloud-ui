@@ -43,14 +43,14 @@ export default [
           },
           {
             prop: 'icon',
-            desc: '主按钮图标，目前只支持Element UI的图标',
+            desc: '主按钮图标',
             type: 'String',
             enum: '-',
             default: 'el-icon-plus',
           },
           {
             prop: 'active-icon',
-            desc: '主按钮激活时图标，目前只支持Element UI的图标',
+            desc: '主按钮激活时图标',
             type: 'String',
             enum: '-',
             default: 'el-icon-close',
@@ -204,7 +204,7 @@ export default [
           },
           {
             prop: 'icon',
-            desc: '图标，目前只支持Element UI的图标',
+            desc: '图标',
             type: 'String',
             enum: '-',
             default: 'el-icon-plus',

@@ -85,7 +85,7 @@ export default [{
         },
         {
           prop: 'icon',
-          desc: '图标，目前仅支持Element UI的图标，后续版本会增加其他图标',
+          desc: '图标',
           type: 'String',
           enum: '-',
           default: '-',

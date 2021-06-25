@@ -1,0 +1,23 @@
+{
+  "id": "2389754",
+  "name": "fit2cloud-ui",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11488305",
+      "name": "product",
+      "font_class": "product",
+      "unicode": "e788",
+      "unicode_decimal": 59272
+    },
+    {
+      "icon_id": "4255936",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    }
+  ]
+}

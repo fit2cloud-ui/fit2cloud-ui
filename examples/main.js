@@ -8,6 +8,8 @@ import router from "./router";
 import filters from "@/filters"
 import './pages'
 import './components'
+/* ions */
+import './assets/iconfont/iconfont.css'
 
 Vue.config.productionTip = false
 
