@@ -45,6 +45,11 @@
       <code-example>
         {{vueI18n}}
       </code-example>
+      <h2>Icon</h2>
+      <p>图标类全部支持iconfont，按照iconfont的class规则正常引入即可。引入后使用方式如下：</p>
+      <code-example label="Shell" lang="shell">
+       {{icon}}
+      </code-example>
     </div>
   </div>
 </template>
@@ -57,6 +62,7 @@ export default {
   mixins: [examples],
   data() {
     return {
+      icon: `<i class="iconfont icon-xxx"></i>`,
       fullBundle: `import Vue from 'vue';
 import  ElementUI from 'element-ui'
 import  Fit2CloudUI from 'fit2cloud-ui';

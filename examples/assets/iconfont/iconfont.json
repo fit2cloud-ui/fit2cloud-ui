@@ -6,11 +6,18 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "11488305",
-      "name": "product",
-      "font_class": "product",
-      "unicode": "e788",
-      "unicode_decimal": 59272
+      "icon_id": "436377",
+      "name": "钱",
+      "font_class": "money",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "22241530",
+      "name": "会员-线性3-0",
+      "font_class": "huiyuan",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
     },
     {
       "icon_id": "4255936",

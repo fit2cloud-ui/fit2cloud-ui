@@ -8,7 +8,7 @@
     <!-- 文档说明 -->
     <document-table :data="attributes"/>
     <!-- 一级描述 -->
-    <p>快速拨号，支持4个方向，支持固定位置，支持移动位置</p>
+    <p>快速拨号，支持4个方向，支持固定位置，支持移动位置；图标支持iconfont；</p>
     <!-- BaseTable内容 -->
     <div class="component-block" v-for="(item, index) in comList" :key="index">
       <h2>{{ item.title }}</h2>

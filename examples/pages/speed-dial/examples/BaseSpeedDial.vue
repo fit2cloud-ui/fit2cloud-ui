@@ -10,7 +10,7 @@
     </div>
 
     <div>
-      <fu-speed-dial id="right" size="medium" direction="right" type="warning" :items="items" @click="click"/>
+      <fu-speed-dial icon="iconfont icon-money" id="right" size="medium" direction="right" type="warning" :items="items" @click="click"/>
     </div>
 
     <div>
@@ -27,7 +27,7 @@ export default {
       items: [
         {title: "Item 1", click: this.clickItem},
         {title: "Item 2", click: this.clickItem},
-        {title: "Item 3", click: this.clickItem},
+        {title: "Item 3", click: this.clickItem, icon: "iconfont icon-huiyuan"},
         {title: "Item 4", click: this.clickItem},
         {title: "Item 5", click: this.clickItem},
       ]
