@@ -85,8 +85,9 @@ export default {
         })
       } else {
         // 使用components
+        let $refs = this.$refs
         this.components.forEach(c => {
-          refs.push(this.$refs[c.field][0])
+          refs.push($refs[c.field][0])
         })
       }
       return refs
