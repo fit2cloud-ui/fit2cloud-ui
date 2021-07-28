@@ -8,7 +8,8 @@
 
       <div class="fu-complex-components__body">
         <slot>
-          <component v-for="(c, i) in components" :key="i" :is="c.component" :size="configSize" v-bind="c" :ref="c.field"/>
+          <component v-for="(c, i) in components" :key="i" :is="c.component" :size="configSize" v-bind="c"
+                     :ref="c.field"/>
         </slot>
       </div>
       <div class="fu-complex-components__footer">
@@ -74,6 +75,20 @@ export default {
       })
       this.$emit("change", conditions)
     },
+    createConditions(conditions) {
+      let result = []
+      if (conditions) {
+        Object.keys(conditions).forEach(key => {
+          let c = conditions[key]
+          this.refs.forEach(r => {
+            if (r.field === key) {
+              result.push(r.createCondition(c.value, c.operator))
+            }
+          })
+        })
+      }
+      return result
+    }
   },
   computed: {
     refs() {

@@ -4,6 +4,7 @@
 <example path="./examples/ComplexSearchDemo.vue"/>
 <example path="./examples/ComplexComponentsDemo.vue"/>
 <example path="./examples/CustomComponentsDemo.vue"/>
+<example path="./examples/EchoConditionsDemo.vue"/>
 
 <template>
   <div>
@@ -65,6 +66,13 @@ export default {
           title: "自定义搜索组件",
           titleDesc: "高级搜索除了5种常用的搜索组件，也可以自定义搜索组件",
           component: "CustomComponentsDemo",
+          description: `搜索组件需要提供init和getCondition方法`
+        }
+        ,
+        {
+          title: "回显条件",
+          titleDesc: "设置初始条件，搜索框自动回显",
+          component: "EchoConditionsDemo",
           description: `搜索组件需要提供init和getCondition方法`
         }
       ]

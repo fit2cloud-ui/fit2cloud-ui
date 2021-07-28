@@ -12,7 +12,8 @@
       <slot name="buttons">
         <fu-search-bar-button icon="el-icon-close" @click="clean" :size="configSize" :tooltip="t('fu.search_bar.clean')"
                               v-if="showClean"/>
-        <fu-search-bar-button icon="el-icon-refresh" @click="refresh" :size="configSize" :tooltip="t('fu.search_bar.refresh')"
+        <fu-search-bar-button icon="el-icon-refresh" @click="refresh" :size="configSize"
+                              :tooltip="t('fu.search_bar.refresh')"
                               v-if="showRefresh"/>
         <slot></slot>
       </slot>
@@ -67,7 +68,7 @@ export default {
       type: Boolean,
       default: true
     },
-    components: Array
+    components: Array,
   },
   data() {
     return {
@@ -76,6 +77,10 @@ export default {
     }
   },
   methods: {
+    setConditions(conditions) {
+      this.conditions = this.$refs.complex.createConditions(conditions)
+      this.refresh()
+    },
     quickChange(value, e) {
       if (value) {
         const field = this.quickKey
