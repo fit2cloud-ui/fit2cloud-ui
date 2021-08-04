@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button @click="init">设置条件</el-button>
-    <fu-search-bar :use-quick-search="false" :components="components" @exec="search" ref="search"/>
+    <fu-search-bar :components="components" @exec="search" ref="search"/>
     <pre class="condition_display">{{ condition }}</pre>
   </div>
 </template>
@@ -28,6 +28,9 @@ export default {
   methods: {
     init() {
       let conditions = {
+        quick: {
+          value: "快速查询值"
+        },
         name: {
           operator: "eq",
           value: "张三"
@@ -39,10 +42,8 @@ export default {
       }
       this.$refs.search.setConditions(conditions)
     },
-    change(value) {
-      console.log(value)
-    },
     search(condition) {
+      console.log(condition)
       this.condition = condition
     },
   }
