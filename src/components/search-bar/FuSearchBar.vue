@@ -79,7 +79,13 @@ export default {
   methods: {
     setConditions(conditions) {
       this.conditions = this.$refs.complex.createConditions(conditions)
-      this.refresh()
+
+      if (this.useQuickSearch && conditions[this.quickKey] !== undefined) {
+        this.quick = conditions[this.quickKey].value
+        this.quickChange(this.quick)
+      } else {
+        this.refresh()
+      }
     },
     quickChange(value, e) {
       if (value) {
