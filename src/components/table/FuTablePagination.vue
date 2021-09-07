@@ -36,11 +36,13 @@ export default {
   methods: {
     handleSizeChange: function (size) {
       this.$emit('update:pageSize', size)
-      this.$emit("change");
+      this.$emit("size-change");
+      this.$emit("change"); // 兼容历史版本
     },
     handleCurrentChange(current) {
       this.$emit('update:currentPage', current)
-      this.$emit("change");
+      this.$emit("current-change");
+      this.$emit("change"); // 兼容历史版本
     }
   }
 }
