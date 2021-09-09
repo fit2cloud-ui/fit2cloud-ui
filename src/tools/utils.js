@@ -1,17 +1,28 @@
-export const download = function (name, content) {
-  const blob = new Blob([content]);
-  if ("download" in document.createElement("a")) {
-    // 非IE下载
-    //  chrome/firefox
-    let aTag = document.createElement('a');
-    aTag.download = name;
-    aTag.href = URL.createObjectURL(blob);
-    aTag.click();
-    URL.revokeObjectURL(aTag.href)
+export const download = function ({url, name, content}) {
+  if (url) {
+    downloadByURL(url)
   } else {
-    // IE10+下载
-    navigator.msSaveBlob(blob, name)
+    downloadByContent(name, content)
   }
+}
+
+export const downloadByContent = function (name, content) {
+  const blob = new Blob([content])
+  const a = document.createElement('a')
+  a.setAttribute('href', window.URL.createObjectURL(blob))
+  a.setAttribute('download', name)
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}
+
+export const downloadByURL = function (url) {
+  const a = document.createElement('a')
+  a.setAttribute('href', url)
+  a.setAttribute('download', url)
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
 }
 
 export const uuid = function () {
