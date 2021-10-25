@@ -55,6 +55,12 @@ export default {
           description: `传入columns则显示选列按钮。控制台查看按钮的click事件`
         },
         {
+          title: "分页",
+          titleDesc: "TablePagination: 表格分页",
+          component: "TablePaginationDemo",
+          description: `传入columns则显示选列按钮。控制台查看按钮的click事件`
+        },
+        {
           title: "列组件下拉菜单",
           titleDesc: "可增加一列下拉菜单组件，有三种显示方式，允许自定义内容",
           component: "ColumnDropdownDemo",
