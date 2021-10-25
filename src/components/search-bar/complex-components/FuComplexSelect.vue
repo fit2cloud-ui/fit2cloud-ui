@@ -5,7 +5,8 @@
                :placeholder="t('fu.search_bar.please_select')"
                :size="configSize"
                clearable
-               v-bind="$attrs">
+               v-bind="$attrs"
+               v-on="$listeners">
       <el-option v-for="o in options" :key="o.value" :label="o.label" :value="o.value"></el-option>
     </el-select>
   </fu-complex-operator>

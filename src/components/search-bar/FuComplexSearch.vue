@@ -8,8 +8,7 @@
 
       <div class="fu-complex-components__body">
         <slot>
-          <component v-for="(c, i) in components" :key="i" :is="c.component" :size="configSize" v-bind="c"
-                     :ref="c.field"/>
+          <component v-for="(c, i) in components" :key="i" :is="c.component" :size="configSize" v-bind="c" :ref="c.field" v-on="c"/>
         </slot>
       </div>
       <div class="fu-complex-components__footer">

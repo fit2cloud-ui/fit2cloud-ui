@@ -22,6 +22,9 @@ export default {
           label: "状态",
           component: "FuComplexSelect",
           options: [{label: "启用", value: "Enable"}, {label: "禁用", value: "Disable"}],
+          change: (val) => {
+            console.log(val)
+          }
         }
       ],
       condition: {}

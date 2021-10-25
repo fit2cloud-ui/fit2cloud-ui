@@ -6,7 +6,7 @@
     <fu-search-bar :use-quick-search="false" @exec="search">
       <template v-slot:complex>
         <fu-complex-input field="username" label="用户名"/>
-        <fu-complex-select field="status" label="状态" :options="options"/>
+        <fu-complex-select field="status" label="状态" :options="options" @change="change"/>
         <fu-complex-date-time field="create_time" label="创建时间"/>
       </template>
     </fu-search-bar>
