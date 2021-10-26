@@ -1,7 +1,7 @@
 <template>
   <div class="fu-search-bar">
     <div class="fu-search-bar__content">
-      <fu-complex-search ref="complex" :components="components" @change="change" :size="configSize" v-if="showComplex">
+      <fu-complex-search ref="complex" :components="components" @change="change" :size="configSize" v-if="showComplex" @close="closePopover">
         <slot name="complex"></slot>
       </fu-complex-search>
       <fu-search-conditions :conditions="conditions" :size="configSize" @change="change" v-if="showComplex"/>
@@ -77,6 +77,9 @@ export default {
     }
   },
   methods: {
+    closePopover(){
+      this.$emit("close")
+    },
     setConditions(conditions) {
       this.conditions = this.$refs.complex.createConditions(conditions)
 
