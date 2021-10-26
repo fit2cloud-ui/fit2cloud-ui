@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search"/>
+      <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search" @close="close"/>
       <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search" size="medium"/>
       <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search" size="small"/>
       <fu-search-bar quick-placeholder="按 姓名/邮箱 搜索" :components="components" @exec="search" size="mini"/>
@@ -31,6 +31,9 @@ export default {
     }
   },
   methods: {
+    close() {
+      console.log('关闭高级搜索弹出框')
+    },
     search(condition) {
       this.condition = condition
     }

@@ -72,6 +72,11 @@ export default [
             event: 'exec',
             desc: '搜索条件变更时触发',
             value: '搜索条件Object',
+          },
+          {
+            event: 'close',
+            desc: '高级搜索弹出框关闭时触发',
+            value: '-',
           }
         ]
       },

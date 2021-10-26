@@ -4,6 +4,7 @@
       trigger="manual"
       v-model="active"
       :visible-arrow="false"
+      @hide="closePopover"
       popper-class="fu-complex-components">
 
       <div class="fu-complex-components__body">
@@ -45,6 +46,9 @@ export default {
     }
   },
   methods: {
+    closePopover() {
+      this.$emit("close")
+    },
     toggle() {
       this.active = !this.active
       this.refs.forEach(r => {
