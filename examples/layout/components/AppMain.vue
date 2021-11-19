@@ -47,7 +47,7 @@ export default {
     color: #1f2f3d;
     font-size: 28px;
   }
-  /deep/.page-container {
+  :v-deep.page-container {
     position: relative;
   }
 }

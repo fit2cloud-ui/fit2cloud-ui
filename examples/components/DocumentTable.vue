@@ -75,7 +75,7 @@ export default {
 .el-icon-s-flag {
   color: #409eff;
 }
-/deep/.el-drawer__header {
+::v-deep.el-drawer__header {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 0;
@@ -92,7 +92,7 @@ export default {
     color: #999999;
   }
 }
-/deep/.attr-table-th th {
+::v-deep.attr-table-th th {
   background: #f5f7fa;
 }
 </style>
