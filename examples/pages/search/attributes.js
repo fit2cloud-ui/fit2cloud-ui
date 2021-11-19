@@ -421,6 +421,54 @@ export default [
             default: '-',
           }
         ]
+      },
+      {
+        name: '@ComplexInputNumber Attributes',
+        header: {prop: '参数', desc: "说明", type: '类型', enum: "可选值", default: "默认值"},
+        table: [
+          {
+            prop: 'size',
+            desc: '大小',
+            type: 'String',
+            enum: 'medium / small / mini',
+            default: '-',
+          },
+          {
+            prop: 'field',
+            desc: '字段名',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'label',
+            desc: '字段Label',
+            type: 'String',
+            enum: '-',
+            default: '-',
+          },
+          {
+            prop: 'default-operator',
+            desc: '默认的运算符',
+            type: 'String',
+            enum: '-',
+            default: 'between',
+          },
+          {
+            prop: 'range-separator',
+            desc: '选择范围时的分隔符',
+            type: 'String',
+            enum: '-',
+            default: '至',
+          },
+          {
+            prop: '...ElInputNumber',
+            desc: '继承ElInputNumber的属性',
+            type: '-',
+            enum: '-',
+            default: '-',
+          }
+        ]
       }
     ]
   }

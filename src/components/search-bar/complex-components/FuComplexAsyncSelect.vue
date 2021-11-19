@@ -1,5 +1,5 @@
 <template>
-  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="size">
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize">
     <el-select class="fu-complex-select"
                v-model="value"
                :placeholder="t('fu.search_bar.please_select')"

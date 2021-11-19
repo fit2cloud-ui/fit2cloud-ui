@@ -62,18 +62,23 @@
 
   @include m(medium) {
     font-size: 14px;
+
     @include e(item) {
       height: 28px;
     }
   }
+
   @include m(small) {
     font-size: 13px;
+
     @include e(item) {
       height: 26px;
     }
   }
+
   @include m(mini) {
     font-size: 12px;
+
     @include e(item) {
       height: 24px;
     }
@@ -96,7 +101,7 @@
       margin-right: 10px;
     }
 
-    div + div {
+    div+div {
       margin-left: 4px;
     }
 
@@ -252,5 +257,28 @@
 @include b(complex-data-time) {
   &.el-date-editor {
     width: 100% !important;
+  }
+}
+
+@include b(complex-input-number) {
+  margin-right: -10px;
+
+  @include e(input) {
+    display: inline-block;
+
+    .is-hide {
+      .el-input-number__decrease {
+        visibility: hidden;
+      }
+
+      .el-input-number__increase {
+        visibility: hidden;
+      }
+    }
+
+  }
+
+  .range-separator {
+    margin: 0 8px
   }
 }
