@@ -18,7 +18,7 @@
       </code-example>
       <p>因为需要使用scss，所以需要安装sass，(sass-loader要求11以下)</p>
       <code-example label="Shell" lang="shell">
-        npm install -D sass-loader@10.1.0 node-sass
+        npm install -D sass sass-loader
       </code-example>
       <h2>完整引入</h2>
       <p>在 main.js 中写入以下内容：</p>
