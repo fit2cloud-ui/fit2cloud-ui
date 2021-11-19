@@ -114,7 +114,7 @@ export default {
         (this.value.length && this.value[0] === this.value[1])
       )
         return;
-      let { field, label, operator, operatorLabel, value, valueLabel, rangeSeparator } = this;
+      let { field, label, operator, operatorLabel, value, valueLabel } = this;
       if (this.isBetween) {
         operatorLabel = "";
       }
@@ -125,7 +125,6 @@ export default {
         operatorLabel,
         value,
         valueLabel,
-        rangeSeparator,
       });
     },
     init() {
