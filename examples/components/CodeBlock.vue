@@ -124,7 +124,7 @@ export default {
     word-break: break-word;
     margin: 10px;
     background-color: #fff;
-    /deep/keyword {
+    ::v-deep keyword {
       color: #5e6d82;
       background-color: #e6effb;
       margin: 0 4px;

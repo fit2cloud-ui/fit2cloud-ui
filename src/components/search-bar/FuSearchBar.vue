@@ -77,7 +77,7 @@ export default {
     }
   },
   methods: {
-    closePopover(){
+    closePopover() {
       this.$emit("close")
     },
     setConditions(conditions) {

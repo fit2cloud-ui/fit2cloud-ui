@@ -95,12 +95,12 @@ export default {
     width: 25%;
   }
 
-  /deep/ .custom-button {
+  ::v-deep .custom-button {
     color: #222;
     background-color: #DDD;
   }
 
-  /deep/ .custom-title {
+  ::v-deep .custom-title {
     color: #555;
     background-color: #F1F1F1;
   }

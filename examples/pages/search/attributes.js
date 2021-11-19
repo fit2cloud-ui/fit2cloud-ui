@@ -75,7 +75,7 @@ export default [
           },
           {
             event: 'close',
-            desc: '高级搜索窗口关闭时触发',
+            desc: '高级搜索弹出框关闭时触发',
             value: '-',
           }
         ]

@@ -31,8 +31,8 @@ export default {
     }
   },
   methods: {
-    close(){
-      console.log("窗口关闭")
+    close() {
+      console.log('关闭高级搜索弹出框')
     },
     search(condition) {
       this.condition = condition
