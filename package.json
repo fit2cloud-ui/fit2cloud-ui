@@ -1,6 +1,6 @@
 {
   "name": "fit2cloud-ui",
-  "version": "1.5.4",
+  "version": "1.6.0-beta.0",
   "main": "lib/fit2cloud-ui.common.js",
   "style": "lib/fit2cloud-ui.css",
   "private": false,
