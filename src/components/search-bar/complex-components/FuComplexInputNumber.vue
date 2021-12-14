@@ -5,15 +5,16 @@
         @mouseleave="mouseleave('start')">
         <el-input-number ref="start" :value="value && value[0]" :size="configSize"
           @change="change($event,'start')" v-bind="$attrs" :class="getClassName('start')"
-          @focus="focus('start')">
+          @focus="focus('start')" style="width:100%">
         </el-input-number>
       </div>
-      <span class="range-separator">{{ rangeSeparator || t('fu.search_bar.range_separator') }}</span>
+      <span
+        class="range-separator">{{ rangeSeparator || t('fu.search_bar.range_separator') }}</span>
       <div class="fu-complex-input-number__input" @mouseenter="isShow='end'"
         @mouseleave="mouseleave('end')">
         <el-input-number ref="end" :value="value && value[1]" :size="configSize"
           @change="change($event,'end')" v-bind="$attrs" :class="getClassName('end')"
-          @focus="focus('end')">
+          @focus="focus('end')" style="width:100%">
         </el-input-number>
       </div>
     </div>
@@ -152,7 +153,7 @@ export default {
         return (
           this.value[0] +
           " " +
-          (this.rangeSeparator || this.t('fu.search_bar.range_separator'))+
+          (this.rangeSeparator || this.t("fu.search_bar.range_separator")) +
           " " +
           this.value[1]
         );

@@ -262,10 +262,10 @@
 
 @include b(complex-input-number) {
   margin-right: -10px;
+  display: flex;
+  align-items: center;
 
   @include e(input) {
-    display: inline-block;
-
     .is-hide {
       .el-input-number__decrease {
         visibility: hidden;
