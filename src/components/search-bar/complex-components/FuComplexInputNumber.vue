@@ -1,5 +1,5 @@
 <template>
-  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize">
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize" @change="operatorChange">
     <div v-if="isBetween" class="fu-complex-input-number">
       <div class="fu-complex-input-number__input" @mouseenter="isShow='start'"
         @mouseleave="mouseleave('start')">
@@ -77,6 +77,17 @@ export default {
     };
   },
   methods: {
+    operatorChange() {
+      if (this.isBetween) {
+        if (!Array.isArray(this.value)) {
+          this.value = [0, 0];
+        }
+      } else {
+        if (Array.isArray(this.value)) {
+          this.value = 0;
+        }
+      }
+    },
     change(val, type) {
       if (this.isBetween) {
         if (type === "start") {
@@ -130,18 +141,6 @@ export default {
     },
     init() {
       this.value = "";
-    },
-  },
-  watch: {
-    operator: {
-      immediate: true,
-      handler(newVal, oldVal) {
-        if (newVal === "between") {
-          this.value = [0, 0];
-        } else if (oldVal === "between") {
-          this.value = 0;
-        }
-      },
     },
   },
   computed: {

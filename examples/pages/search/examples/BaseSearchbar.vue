@@ -35,9 +35,6 @@ export default {
           label: "区域",
           component: "FuComplexMixSelect",
           options: [{label: "北区", value: "1"}, {label: "南区", value: "2"}, {label: "东区", value: "3"}],
-          change: (val) => {
-            console.log(val)
-          }
         }
       ],
       condition: {}
