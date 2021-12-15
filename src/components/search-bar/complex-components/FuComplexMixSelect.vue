@@ -1,5 +1,5 @@
 <template>
-  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize">
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize" @change="operatorChange">
     <el-select class="fu-complex-select" v-model="value"
       :placeholder="t('fu.search_bar.please_select')" :size="configSize" clearable
       :multiple="isMultiple" v-if="show" v-bind="$attrs" v-on="$listeners">
@@ -52,6 +52,17 @@ export default {
     };
   },
   methods: {
+    operatorChange() {
+      if (this.isMultiple) {
+        this.value = [];
+      } else {
+        this.value = "";
+      }
+      this.show = false;
+      setTimeout(() => {
+        this.show = true;
+      });
+    },
     getValueLabel(value) {
       for (let o of this.options) {
         if (o.value === value) {
@@ -74,22 +85,6 @@ export default {
     },
     init() {
       this.value = "";
-    },
-  },
-  watch: {
-    operator: {
-      immediate: true,
-      handler(val) {
-        if (this.isMultiple) {
-          this.value = [];
-        } else {
-          this.value = "";
-        }
-        this.show = false;
-        setTimeout(() => {
-          this.show = true;
-        });
-      },
     },
   },
   computed: {
