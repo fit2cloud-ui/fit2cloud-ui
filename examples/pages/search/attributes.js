@@ -500,7 +500,7 @@ export default [
             desc: '默认的运算符',
             type: 'String',
             enum: '-',
-            default: 'between',
+            default: 'eq',
           },
           {
             prop: 'options',
