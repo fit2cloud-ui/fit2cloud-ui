@@ -1,5 +1,5 @@
 <template>
-  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize">
+  <fu-complex-operator :label="label" v-model="operator" :operators="operators" :size="configSize" @change="operatorChange">
     <el-date-picker class="fu-complex-data-time" v-model="value" v-bind="$attrs" :align="align"
       :size="configSize" :placeholder="t('fu.search_bar.select_date_time')" :type="type" :key="type"
       :value-format="valueFormat" :range-separator="t('fu.search_bar.range_separator')"
@@ -68,7 +68,7 @@ export default {
     };
   },
   methods: {
-    change() {
+    operatorChange() {
       if (this.isBetween) {
         if (!Array.isArray(this.value)) {
           this.value = [];
@@ -96,18 +96,6 @@ export default {
     },
     init() {
       this.value = "";
-    },
-  },
-  watch: {
-    operator: {
-      immediate: true,
-      handler(newVal, oldVal) {
-        if (newVal === "between") {
-          this.value = [];
-        } else if (oldVal === "between") {
-          this.value = "";
-        }
-      },
     },
   },
   computed: {
