@@ -48,8 +48,9 @@ export default {
       cloneColumns(this.columns, this.cloneColumns);
     },
     ok() {
-      this.columns.forEach((c, i) => {
-        c.show = this.cloneColumns[i].show;
+      this.columns.splice(0, this.columns.length)
+      this.cloneColumns.forEach(c => {
+        this.columns.push(c)
       })
       this.visible = false
     }
