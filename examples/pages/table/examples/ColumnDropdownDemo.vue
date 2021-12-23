@@ -5,7 +5,7 @@
       <el-radio-button label="hover">hover</el-radio-button>
       <el-radio-button label="selected">selected</el-radio-button>
     </el-radio-group>
-    <fu-table :data="tableData" local-key="TableDoc" @selection-change="handleSelectionChange">
+    <fu-table :data="tableData" @selection-change="handleSelectionChange">
       <el-table-column type="selection"/>
       <fu-table-column-dropdown :menus="menus" :title="`已选中${selectRows.length}项`" :showType="showType"/>
       <el-table-column prop="date" label="日期" min-width="180"/>

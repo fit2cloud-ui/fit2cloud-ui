@@ -2,7 +2,7 @@
   <div>
     <el-button size="mini" @click="enableAll">启用全部按钮</el-button>
     <el-button size="mini" @click="showAll">显示全部按钮</el-button>
-    <fu-table :data="tableData" :columns="columns" local-key="TableDoc">
+    <fu-table :data="tableData" :columns="columns" local-key="TableOperations">
       <el-table-column type="selection"></el-table-column>
       <el-table-column prop="date" label="日期" min-width="180"></el-table-column>
       <el-table-column prop="name" label="姓名" min-width="180" fix></el-table-column>

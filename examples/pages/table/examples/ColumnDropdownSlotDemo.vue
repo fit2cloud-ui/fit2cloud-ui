@@ -1,6 +1,6 @@
 <template>
   <div>
-    <fu-table :data="tableData" local-key="TableDoc">
+    <fu-table :data="tableData">
       <el-table-column type="selection"/>
       <fu-table-column-dropdown showType="always" width="auto" ref="tableDrop">
         <!-- 自定义触发图标 -->
