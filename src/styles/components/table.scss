@@ -1,6 +1,3 @@
-@import "../common/mixins.scss";
-@import "../common/variables.scss";
-
 @include b(table) {
   &.el-table {
     th.el-table-column--selection>.cell {

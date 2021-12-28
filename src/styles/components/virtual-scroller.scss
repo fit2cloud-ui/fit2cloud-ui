@@ -1,0 +1,21 @@
+@include b(virtual-scroll) {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  background-color: #F5F5F5;
+  position: relative;
+
+  @include e(item) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+
+  @include when(horizontal) {
+    @include e(item) {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+  }
+}
