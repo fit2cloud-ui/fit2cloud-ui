@@ -48,3 +48,13 @@ export const randomId = function () {
 export const hasOwn = function (obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
+
+export const convertToUnit = function (value, unit = "px") {
+  if (value == null || value === '') {
+    return undefined
+  } else if (isNaN(+value)) {
+    return String(value)
+  } else {
+    return `${Number(value)}${unit}`
+  }
+}

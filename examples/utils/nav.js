@@ -45,6 +45,11 @@ const navList = {
       name: 'Tabs 标签页',
       path: 'tabs',
       component: 'TabsDoc'
+    },
+    {
+      name: 'VirtualScroll 虚拟滚动',
+      path: 'virtual-scroll',
+      component: 'VirtualScrollDoc'
     }
   ],
   "filters": [],
