@@ -1,8 +1,9 @@
 <script>
 const isFix = node => {
+  const includeTag = node.tag.indexOf("FuTableColumnDropdown")>=0
   const {fix} = node.data.attrs
   let {type} = node.componentOptions.propsData
-  return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type)
+  return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type) || includeTag
 }
 
 export default {
@@ -20,7 +21,7 @@ export default {
     if (!columns || columns?.length === 0) return children
     // 只渲染show为undefined或true的
     children.forEach((node, i) => {
-      if (isFix(node) || columns[i].show !== false) {
+      if (isFix(node) || columns[i]?.show !== false) {
         nodes.push(node);
       }
     })

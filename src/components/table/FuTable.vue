@@ -11,9 +11,10 @@ import FuTableBody from "@/components/table/FuTableBody";
 import {randomId} from "@/tools/utils";
 
 const isFix = node => {
+  const includeTag = node.tag.indexOf("FuTableColumnDropdown")>=0
   const {fix} = node.data.attrs
   let {type} = node.componentOptions.propsData
-  return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type)
+  return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type) || includeTag
 }
 
 const getLabel = node => {
