@@ -33,7 +33,7 @@ export default {
           component: "VirtualScrollBaseDemo",
         }, {
           title: "自定义Item",
-          titleDesc: "通过<template v-slot=\"{item}\">自定义Item内容",
+          titleDesc: "通过<template v-slot=\"{item, index}\">自定义Item内容",
           component: "VirtualScrollCustomItem",
         }, {
           title: "水平滚动",
