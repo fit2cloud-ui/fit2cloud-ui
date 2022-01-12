@@ -1,6 +1,6 @@
 <template>
   <el-table class="fu-table" v-on="$listeners" v-bind="$attrs" :key="key">
-    <fu-table-body :columns="columns" :children="children">
+    <fu-table-body :columns="columns">
       <slot></slot>
     </fu-table-body>
   </el-table>
@@ -58,12 +58,20 @@ const updateColumns = (nodes, columns) => {
     cleanColumns(columns)
     initColumns(nodes, columns)
   }
-  
+
   if (columns.some(col => col.label === undefined)) {
     columns.forEach((col, i) => {
       col.label ??= getLabel(nodes[i])
     })
   }
+}
+
+const updateNodes = nodes => {
+  nodes.forEach(node => {
+    if (!node.data.key) {
+      node.data.key = getLabel(node)
+    }
+  })
 }
 
 export default {
@@ -79,8 +87,7 @@ export default {
   },
   data() {
     return {
-      key: 0,
-      children: [],
+      key: 0
     }
   },
   watch: {
@@ -108,18 +115,16 @@ export default {
     }
   },
   updated() {
-    updateColumns(this.children, this.columns)
+    const children = this.$slots.default.filter(c => c.tag !== undefined)
+    updateNodes(children)
+    updateColumns(children, this.columns)
   },
   created() {
     // 去掉v-if=false的node
-    this.children = this.$slots.default.filter(c => c.tag !== undefined)
-    this.children.forEach(node => {
-      if (!node.data.key) {
-        node.data.key = getLabel(node)
-      }
-    })
+    const children = this.$slots.default.filter(c => c.tag !== undefined)
+    updateNodes(children)
     // 表格没有内容或者不需要选列
-    if (!this.children || !this.columns) return
+    if (!children || !this.columns) return
 
     // 需要读取localStorage
     if (this.localKey) {
@@ -129,7 +134,7 @@ export default {
           const columns = JSON.parse(str)
           cleanColumns(this.columns)
           copyColumns(columns, this.columns)
-          updateColumns(this.children, this.columns)
+          updateColumns(children, this.columns)
           return
         } catch (e) {
           console.error("get columns error", e)
@@ -138,7 +143,7 @@ export default {
     }
 
     if (this.columns.length === 0) {
-      initColumns(this.children, this.columns)
+      initColumns(children, this.columns)
     }
   }
 }

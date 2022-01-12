@@ -14,19 +14,19 @@ const getLabel = node => {
   if (includeTag) label = prefix + "dropdown"
   label ??= node.data.attrs.label
   label ??= prefix + type
-  return label;
+  return label
 }
 
 export default {
   name: "FuTableBody",
   functional: true,
   props: {
-    columns: Array,
-    children: Array
+    columns: Array
   },
   render(h, context) {
     const nodes = [];
-    let {columns, children} = context.props
+    let {columns} = context.props
+    const children = context.children.filter(c => c.tag !== undefined)
     if (!children) return nodes
     if (!columns || columns?.length === 0) return children
     columns.forEach(col => {
