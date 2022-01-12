@@ -1,6 +1,6 @@
 @include b(table) {
   &.el-table {
-    th.el-table-column--selection>.cell {
+    th.el-table-column--selection > .cell {
       padding-left: 14px;
       padding-right: 14px;
     }
@@ -26,8 +26,12 @@
     overflow-y: auto;
   }
 
+  @include e(footer) {
+    text-align: center;
+  }
+
   @include e(item) {
-    &+& {
+    & + & {
       margin-top: 5px;
     }
   }
@@ -50,13 +54,13 @@
 }
 
 @include b(table-operations) {
-  div[type='dialog']>.fu-search-bar-button {
+  div[type='dialog'] > .fu-search-bar-button {
     border: none;
   }
 }
 
 @include b(table-more-button) {
-  button+& {
+  button + & {
     margin-left: 10px;
   }
 }

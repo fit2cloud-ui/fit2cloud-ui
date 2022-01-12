@@ -3,7 +3,7 @@
                    v-on="$listeners">
     <template #header>
       {{ $attrs.label }}
-      <fu-table-column-select type="dialog" :columns="columns" v-if="columns"/>
+      <fu-table-column-select type="dialog" :columns="columns" :local-key="localKey" v-if="columns"/>
     </template>
     <template v-slot:default="{row}">
       <fu-table-button v-for="(btn, i) in defaultButtons(row)" :key="i" v-bind="btn" @click.stop="btn.click(row)"
@@ -36,8 +36,9 @@ export default {
     buttons: {
       type: Array,
       required: true
-    },
+    }
   },
+  inject: ["localKey"],
   methods: {
     showButtons(row) {
       return this.buttons?.filter(btn => typeof btn.show === "function" ? btn.show(row) !== false : btn.show !== false)

@@ -31,8 +31,9 @@ export default {
     },
     table: {
       ok: "確定",
+      reset: "重置",
       custom_table_fields: "自定義表格字段",
-      custom_table_fields_desc: "固定字段不在選擇範圍",
+      custom_table_fields_desc: "固定欄位不在選擇範圍，可拖拽自定義順序",
     },
     steps: {
       cancel: "取消",

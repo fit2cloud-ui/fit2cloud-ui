@@ -31,8 +31,9 @@ export default {
     },
     table: {
       ok: "OK",
+      reset: "Reset",
       custom_table_fields: "Custom table fields",
-      custom_table_fields_desc: "Fixed field is unselectable",
+      custom_table_fields_desc: "Fixed field is unselectable, others can be checked and dragged",
     },
     steps: {
       cancel: "Cancel",

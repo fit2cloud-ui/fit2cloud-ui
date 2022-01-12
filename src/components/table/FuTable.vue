@@ -1,6 +1,6 @@
 <template>
   <el-table class="fu-table" v-on="$listeners" v-bind="$attrs" :key="key">
-    <fu-table-body :columns="columns">
+    <fu-table-body :columns="columns" :children="children">
       <slot></slot>
     </fu-table-body>
   </el-table>
@@ -8,18 +8,23 @@
 
 <script>
 import FuTableBody from "@/components/table/FuTableBody";
-import {randomId} from "@/tools/utils";
+
+const prefix = "FU-T-"
 
 const isFix = node => {
-  const includeTag = node.tag.indexOf("FuTableColumnDropdown")>=0
+  const includeTag = node.tag.indexOf("FuTableColumnDropdown") >= 0
   const {fix} = node.data.attrs
   let {type} = node.componentOptions.propsData
   return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type) || includeTag
 }
 
 const getLabel = node => {
-  let {label} = node.componentOptions.propsData
+  if (node.data.key) return node.data.key
+  const includeTag = node.tag.indexOf("FuTableColumnDropdown") >= 0
+  let {label, type} = node.componentOptions.propsData
+  if (includeTag) label = prefix + "dropdown"
   label ??= node.data.attrs.label
+  label ??= prefix + type
   return label;
 }
 
@@ -29,15 +34,12 @@ const cleanColumns = columns => {
 
 const initColumns = (nodes, columns) => {
   nodes.forEach(node => {
-    let label = getLabel(node)
+    const label = getLabel(node)
     const fix = isFix(node);
+    const {show} = node.data.attrs
     if (!label && !fix) {
       throw new Error("unfixed column's label is required.")
     }
-    if (!node.data.key) {
-      node.data.key = label || randomId()
-    }
-    const {show} = node.data.attrs
 
     columns.push({label, show, fix})
   })
@@ -51,19 +53,17 @@ const copyColumns = (source, target) => {
 
 const updateColumns = (nodes, columns) => {
   if (columns === undefined) return
-
+  // 如果保存的列跟实际的列冲突则以实际的为准
   if (nodes.length !== columns.length) {
     cleanColumns(columns)
     initColumns(nodes, columns)
-    return
   }
-  nodes.forEach((node, i) => {
-    columns[i].label = getLabel(node)
-    columns[i].fix = isFix(node)
-    if (!node.data.key) {
-      node.data.key = columns[i].label || randomId()
-    }
-  })
+  
+  if (columns.some(col => col.label === undefined)) {
+    columns.forEach((col, i) => {
+      col.label ??= getLabel(nodes[i])
+    })
+  }
 }
 
 export default {
@@ -79,7 +79,8 @@ export default {
   },
   data() {
     return {
-      key: 0
+      key: 0,
+      children: [],
     }
   },
   watch: {
@@ -96,32 +97,39 @@ export default {
       deep: true
     }
   },
+  provide() {
+    return {
+      localKey: this.localKey
+    }
+  },
   computed: {
     columnsKey() {
-      return "FU-T-" + this.localKey
+      return prefix + this.localKey
     }
   },
   updated() {
-    // 去掉v-if=false的node
-    const children = this.$slots.default.filter(c => c.tag !== undefined)
-    updateColumns(children, this.columns)
+    updateColumns(this.children, this.columns)
   },
   created() {
     // 去掉v-if=false的node
-    const children = this.$slots.default.filter(c => c.tag !== undefined)
+    this.children = this.$slots.default.filter(c => c.tag !== undefined)
+    this.children.forEach(node => {
+      if (!node.data.key) {
+        node.data.key = getLabel(node)
+      }
+    })
     // 表格没有内容或者不需要选列
-    if (!children || !this.columns) return
+    if (!this.children || !this.columns) return
 
     // 需要读取localStorage
     if (this.localKey) {
-      let columnsKey = localStorage.getItem(this.columnsKey)
-      if (columnsKey) {
+      let str = localStorage.getItem(this.columnsKey)
+      if (str) {
         try {
+          const columns = JSON.parse(str)
           cleanColumns(this.columns)
-          const columns = JSON.parse(localStorage.getItem(this.columnsKey))
           copyColumns(columns, this.columns)
-          // 如果保存的列跟实际的列冲突则以实际的为准
-          updateColumns(children, this.columns)
+          updateColumns(this.children, this.columns)
           return
         } catch (e) {
           console.error("get columns error", e)
@@ -130,7 +138,7 @@ export default {
     }
 
     if (this.columns.length === 0) {
-      initColumns(children, this.columns)
+      initColumns(this.children, this.columns)
     }
   }
 }

@@ -6,22 +6,34 @@ const isFix = node => {
   return (fix !== undefined && fix !== false) || ["selection", "index", "expand"].includes(type) || includeTag
 }
 
+const getLabel = node => {
+  if (node.data.key) return node.data.key
+  const prefix = "FU-T-"
+  const includeTag = node.tag.indexOf("FuTableColumnDropdown") >= 0
+  let {label, type} = node.componentOptions.propsData
+  if (includeTag) label = prefix + "dropdown"
+  label ??= node.data.attrs.label
+  label ??= prefix + type
+  return label;
+}
+
 export default {
   name: "FuTableBody",
   functional: true,
   props: {
-    columns: Array
+    columns: Array,
+    children: Array
   },
   render(h, context) {
-    let {columns} = context.props
-    const children = context.children.filter(c => c.tag !== undefined)
     const nodes = [];
-
+    let {columns, children} = context.props
     if (!children) return nodes
     if (!columns || columns?.length === 0) return children
-    // 只渲染show为undefined或true的
-    children.forEach((node, i) => {
-      if (isFix(node) || columns[i]?.show !== false) {
+    columns.forEach(col => {
+      let node = children.find(child => {
+        return col.label === getLabel(child)
+      })
+      if (node && (isFix(node) || col.show !== false)) {
         nodes.push(node);
       }
     })
