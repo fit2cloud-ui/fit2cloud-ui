@@ -1,6 +1,6 @@
 {
   "name": "fit2cloud-ui",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "main": "lib/fit2cloud-ui.common.js",
   "style": "lib/fit2cloud-ui.css",
   "private": false,
@@ -17,7 +17,7 @@
     "lint": "vue-cli-service lint"
   },
   "author": "fit2cloud",
-  "license": "GPL-2.0 License",
+  "license": "GPL-3.0 License",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fit2cloud-ui/fit2cloud-ui.git"
