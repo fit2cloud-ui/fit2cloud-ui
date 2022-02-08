@@ -1,3 +1,6 @@
+@import "../common/mixins.scss";
+@import "../common/variables.scss";
+
 @include b(virtual-scroll) {
   overflow: auto;
   height: 100%;

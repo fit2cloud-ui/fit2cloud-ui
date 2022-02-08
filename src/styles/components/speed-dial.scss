@@ -1,3 +1,6 @@
+@import "../common/mixins.scss";
+@import "../common/variables.scss";
+
 @mixin speed-dial-button-variant($color, $background-color) {
   color: $color;
   background-color: $background-color;

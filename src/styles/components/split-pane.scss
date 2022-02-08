@@ -1,3 +1,6 @@
+@import "../common/mixins.scss";
+@import "../common/variables.scss";
+
 @include b(split-pane) {
   height: 100%;
   position: relative;
