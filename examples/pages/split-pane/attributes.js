@@ -84,14 +84,25 @@ export default [{
       },
       {
         prop: 'local-key',
-        desc: '设置唯一 local-key 将拖住分割线的位置保存到localStorage。保存的是像素值，保存之后初始设置的值失效',
-        type: 'String',
-        enum: '-',
+        desc: '设置唯一 local-key 将拖住分割线的位置保存到localStorage。保存的是当前位置属性以及对应数值，保存之后初始设置的值失效',
+        type: 'Object',
+        enum: '例：{ bottom: 200 }',
         default: '-',
       },
     ]
   },
-    {
+  {
+    name: '@Events',
+    header: {event: '事件名', desc: "说明", value: '回调参数'},
+    table: [
+      {
+        event: 'changeSplit',
+        desc: '拖拽后当前位置的数值',
+        value: 'value',
+      },
+    ]
+  },
+  {
       name: '@Slots',
       header: {
         name: 'name', desc: "说明"
