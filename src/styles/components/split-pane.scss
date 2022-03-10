@@ -95,8 +95,13 @@
   }
 
   .is-resizable {
+    &.hover {
+      background: $--color-primary-light-9;
+    }
+
     @include when(horizontal) {
       cursor: col-resize;
+
     }
 
     @include when(vertical) {

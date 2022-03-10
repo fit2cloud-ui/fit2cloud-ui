@@ -5,7 +5,7 @@
       <slot :name="isHorizontal ? 'left' : 'top'"></slot>
     </div>
     <div :class="resizerClasses" :style="{ [resizerAttr]: `${value}px`, ...resizerStyle}"
-      @mousedown="onMouseDown">
+      @mousedown="onMouseDown" @mouseover="hover = true" @mouseleave="hover= false">
       <div class="icon" v-if="resizerType==='resizer'">
         <slot name="resizer">
           <i class="el-icon-more"></i>
@@ -46,6 +46,7 @@ export default {
     },
     resizerClass: String,
     resizerStyle: Object,
+    resizerHoverClass: String,
   },
   watch: {
     left: {
@@ -129,6 +130,7 @@ export default {
         `is-${this.direction}`,
         this.resizable && "is-resizable",
         this.resizerClass,
+        this.hover && (this.resizerHoverClass || "hover"),
       ];
       return classes;
     },
@@ -142,6 +144,7 @@ export default {
       value: 0,
       oldValue: 0,
       initOffset: 0,
+      hover: false,
     };
   },
   mounted() {
