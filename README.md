@@ -17,7 +17,7 @@ npm install element-ui
 因为需要使用scss，所以需要安装sass
 
 ```sh
-npm install -D sass-loader node-sass
+npm install -D sass-loader@10.1.0 sass@1.43.4
 ```
 
 ### 完整引入
