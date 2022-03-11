@@ -3,23 +3,23 @@
     <el-divider content-position="left">水平分割</el-divider>
     <div class="demo-split">
       <fu-split-pane left="200px">
-        <div slot="left">
+        <template v-slot:left>
           Left
-        </div>
-        <div slot="right">
+        </template>
+        <template v-slot:right>
           Right
-        </div>
+        </template>
       </fu-split-pane>
     </div>
     <el-divider content-position="left">垂直分割</el-divider>
     <div class="demo-split">
       <fu-split-pane top="40%" direction="vertical">
-        <div slot="top">
+        <template v-slot:top>
           Top
-        </div>
-        <div slot="bottom">
+        </template>
+        <template v-slot:bottom>
           Bottom
-        </div>
+        </template>
       </fu-split-pane>
     </div>
   </div>

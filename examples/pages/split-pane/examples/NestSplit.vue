@@ -1,19 +1,21 @@
 <template>
   <div class="demo-split">
     <fu-split-pane left="200" direction="horizontal">
-      <div slot="left" class="demo-split-child">
-        <fu-split-pane top="50%" direction="vertical">
-          <div slot="top">
-            Top
-          </div>
-          <div slot="bottom">
-            Bottom
-          </div>
-        </fu-split-pane>
-      </div>
-      <div slot="right">
+      <template v-slot:left>
+        <div class="demo-split-child">
+          <fu-split-pane top="50%" direction="vertical">
+            <template v-slot:top>
+              Top
+            </template>
+            <template v-slot:bottom>
+              Bottom
+            </template>
+          </fu-split-pane>
+        </div>
+      </template>
+      <template v-slot:right>
         Right
-      </div>
+      </template>
     </fu-split-pane>
   </div>
 </template>
@@ -22,8 +24,7 @@
 export default {
   name: "BaseSplit",
   data() {
-    return {
-    };
+    return {};
   },
   methods: {},
 };

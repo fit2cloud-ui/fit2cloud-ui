@@ -3,32 +3,40 @@
     <el-divider content-position="left">线状分割</el-divider>
     <div class="demo-split">
       <fu-split-pane left="200px" resizer-type="line" :resizable="false">
-        <div slot="left">
+        <template v-slot:left>
           Left
-        </div>
-        <div slot="right">
+        </template>
+        <template v-slot:right>
           Right
-        </div>
+        </template>
       </fu-split-pane>
     </div>
     <el-divider content-position="left">定义分割线样式</el-divider>
     <div class="demo-split">
       <fu-split-pane left="200px" resizer-type="line" :resizable="false"
         :resizer-style="{background:'none'}">
-        <div slot="left" class="demo-split-child">
-          <fu-split-pane top="50%" direction="vertical" resizer-type="line"
-            :resizer-style="{background:'none'}">
-            <div slot="top" class="pane" style="background: #f9e29a;">
-              Top
-            </div>
-            <div slot="bottom" class="pane" style="background: #a8dfd3;">
-              Bottom
-            </div>
-          </fu-split-pane>
-        </div>
-        <div slot="right" class="pane" style="background: #fbbbbb;">
-          Right
-        </div>
+        <template v-slot:left>
+          <div class="demo-split-child">
+            <fu-split-pane top="50%" direction="vertical" resizer-type="line"
+              :resizer-style="{background:'none'}">
+              <template v-slot:top>
+                <div class="pane" style="background: #f9e29a;">
+                  Top
+                </div>
+              </template>
+              <template v-slot:bottom>
+                <div class="pane" style="background: #a8dfd3;">
+                  Bottom
+                </div>
+              </template>
+            </fu-split-pane>
+          </div>
+        </template>
+        <template v-slot:right>
+          <div class="pane" style="background: #fbbbbb;">
+            Right
+          </div>
+        </template>
       </fu-split-pane>
     </div>
   </div>

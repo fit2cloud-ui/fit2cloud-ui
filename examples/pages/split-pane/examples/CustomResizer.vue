@@ -2,29 +2,35 @@
   <div>
     <div class="demo-split">
       <fu-split-pane left="200" direction="horizontal" :resizer-style="{width:'10px'}">
-        <div slot="left" style="padding-right:5px">
-          Left
-        </div>
-        <div slot="resizer">
+        <template v-slot:left>
+          <div style="padding-right:5px">
+            Left
+          </div>
+        </template>
+        <template v-slot:resizer>
           <i class="el-icon-d-caret"></i>
-        </div>
-        <div slot="right" style="padding-left:5px">
-          Right
-        </div>
+        </template>
+        <template v-slot:right>
+          <div style="padding-left:5px">
+            Right
+          </div>
+        </template>
       </fu-split-pane>
     </div>
     <el-divider></el-divider>
     <div class="demo-split">
       <fu-split-pane top="50%" direction="vertical" :resizer-style="{height:'10px'}">
-        <div slot="top">
+        <template v-slot:top>
           Top
-        </div>
-        <div slot="resizer">
+        </template>
+        <template v-slot:resizer>
           <i class="el-icon-d-caret"></i>
-        </div>
-        <div slot="bottom" style="padding-top:5px">
-          Bottom
-        </div>
+        </template>
+        <template v-slot:bottom>
+          <div style="padding-top:5px">
+            Bottom
+          </div>
+        </template>
       </fu-split-pane>
     </div>
   </div>
