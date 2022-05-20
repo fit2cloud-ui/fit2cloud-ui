@@ -37,25 +37,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.fu-filter-option {
-  padding: 1px 6px;
-  font-size: 14px;
-  line-height: 22px;
-  background: #F5F6F7;
-  border-radius: 2px;
-  color: #1F2329;
-  cursor: pointer;
-  margin: 11px 6px;
-
-  &.is-selected, &:hover {
-    background: rgba(51, 112, 255, 0.1);
-    color: #0C296E;
-  }
-
-  &:active {
-    transform: scale(0.9)
-  }
-}
-</style>
