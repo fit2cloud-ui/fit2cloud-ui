@@ -22,6 +22,11 @@ const navList = {
       component: 'SearchDoc'
     },
     {
+      name: 'FilterBar 筛选条',
+      path: 'filter',
+      component: 'FilterBarDoc'
+    },
+    {
       name: 'SpeedDial 快速拨号',
       path: 'speed-dial',
       component: 'SpeedDialDoc'
