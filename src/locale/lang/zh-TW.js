@@ -1,5 +1,15 @@
 export default {
   fu: {
+    filter_bar: {
+      filter: "篩選",
+      results: "個結果",
+      clear: "清空條件",
+      drawer_title: "篩選條件",
+      cancel: "取消",
+      search: "查詢",
+      select_all: "全選",
+      more: "更多"
+    },
     search_bar: {
       search: "搜索",
       adv_search: "高級搜索",

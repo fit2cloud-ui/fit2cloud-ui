@@ -1,5 +1,15 @@
 export default {
   fu: {
+    filter_bar: {
+      filter: "Filter",
+      results: "Items",
+      clear: "Clear",
+      drawer_title: "Filter",
+      cancel: "Cancel",
+      search: "Search",
+      select_all: "Select All",
+      more: "More"
+    },
     search_bar: {
       search: "Search",
       adv_search: "Advanced Search",
