@@ -44,6 +44,8 @@ export default {
       reset: "Reset",
       custom_table_fields: "Custom table fields",
       custom_table_fields_desc: "Fixed field is unselectable, others can be checked and dragged",
+      columns: "Columns",
+      columns_title: "Please select the information to display in the table",
     },
     steps: {
       cancel: "Cancel",

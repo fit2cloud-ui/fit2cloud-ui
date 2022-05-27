@@ -24,6 +24,11 @@
 }
 
 @include b(table-column-select-popper) {
+  @include e(header) {
+    font-size: 14px;
+    line-height: 22px;
+    color: $fu-table-select-columns-title-color;
+  }
   @include e(body) {
     max-height: 600px;
     overflow-y: auto;
@@ -34,6 +39,7 @@
   }
 
   @include e(item) {
+    line-height: 22px;
     & + & {
       margin-top: 5px;
     }

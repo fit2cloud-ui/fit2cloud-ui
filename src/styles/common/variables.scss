@@ -23,13 +23,14 @@ $fu-search-bar-condition-color: #424242 !default;
 $fu-search-bar-condition-bgColor: #E6E6E6 !default;
 
 $fu-table-striped-bgColor: mix($--color-primary, #FFF, 5%) !default;
+$fu-table-select-columns-title-color: #8F959E !default;
 
 $filter-color: #646A73 !default;
 $filter-drawer-color: #646A73 !default;
 $filter-condition-color: #0C296E !default;
 $filter-condition-bgColor: rgba(51, 112, 255, 0.1) !default;
-$filter-option-bgColor:  #F5F6F7 !default;
-$filter-scroll-bgColor:  rgba(31, 35, 41, 0.1) !default;
+$filter-option-bgColor: #F5F6F7 !default;
+$filter-scroll-bgColor: rgba(31, 35, 41, 0.1) !default;
 
 .iconfont {
   font-size: inherit !important;

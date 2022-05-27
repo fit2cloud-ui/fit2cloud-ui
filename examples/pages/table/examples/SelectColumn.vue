@@ -6,6 +6,8 @@
     <fu-table-column-select :columns="columns" trigger="click"/>
     Dialog选列按钮：
     <fu-table-column-select type="dialog" :columns="columns"/>
+    Button选列按钮：
+    <fu-table-column-select type="button" :columns="columns"/>
 
     <fu-table :data="tableData" :columns="columns">
       <el-table-column type="selection"></el-table-column>
