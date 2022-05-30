@@ -58,9 +58,6 @@ export default {
     }
   },
   methods: {
-    init() {
-      this.$refs.filter.setConditions({user: {value: [2, 3, 4]}})
-    },
     exec(condition) {
       this.condition = condition
       this.count = Object.keys(condition).length * 10

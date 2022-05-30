@@ -48,7 +48,7 @@ export default {
   mounted() {
     this.$nextTick(
       () => {
-        this.$refs.filter.setConditions({user: {value: [2, 3, 4]}})
+        this.init()
       }
     )
 
