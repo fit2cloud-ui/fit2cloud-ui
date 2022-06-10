@@ -17,7 +17,7 @@
     <div class="fu-table-column-select-popper__footer">
       <el-button :size="configSize" @click="reset" v-if="columnsKey">{{ t('fu.table.reset') }}</el-button>
     </div>
-    <el-button slot="reference" @click="open" :size="configSize">
+    <el-button slot="reference" :size="configSize">
       <i class="el-icon-setting"/> {{ t('fu.table.columns') }}
     </el-button>
   </el-popover>
