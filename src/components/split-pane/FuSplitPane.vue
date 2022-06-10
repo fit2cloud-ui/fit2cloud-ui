@@ -1,19 +1,19 @@
 <template>
-  <div :style="{ cursor, userSelect}" class="fu-split-pane" ref="outerWrapper">
-    <div :class="[`is-${direction}`,'fu-split-pane__left']"
+  <div :style="{ cursor, userSelect }" class="fu-split-pane" ref="outerWrapper">
+    <div :class="[`is-${direction}`, 'fu-split-pane__left']"
       :style="{ [attr]: isReverse ? valueAnother : `${value}px`, 'padding-right': padding }">
       <slot :name="isHorizontal ? 'left' : 'top'"></slot>
     </div>
-    <div :class="resizerClasses" :style="{ [resizerAttr]: `${value}px`, ...resizerStyle}"
-      @mousedown="onMouseDown" @mouseover="hover = true" @mouseleave="hover= false">
-      <div class="icon" v-if="resizerType==='resizer'">
+    <div :class="resizerClasses" :style="{ [resizerAttr]: `${value}px`, ...resizerStyle }" @mousedown="onMouseDown"
+      @mouseover="hover = true" @mouseleave="hover = false">
+      <div class="icon" v-if="resizerType === 'resizer'">
         <slot name="resizer">
           <i class="el-icon-more"></i>
         </slot>
       </div>
     </div>
-    <div :class="[`is-${direction}`,'fu-split-pane__right']"
-      :style="{ [attr]: isReverse ? `${value}px` : valueAnother, 'padding-left':padding}">
+    <div :class="[`is-${direction}`, 'fu-split-pane__right']"
+      :style="{ [attr]: isReverse ? `${value}px` : valueAnother, 'padding-left': padding }">
       <slot :name="isHorizontal ? 'right' : 'bottom'"></slot>
     </div>
   </div>
@@ -98,12 +98,12 @@ export default {
         return this.left
           ? this.getMin(this.percentToValue(this.left))
           : (this.right && this.getMin(this.percentToValue(this.right))) ||
-              this.outerWrapperSize / 2;
+          this.outerWrapperSize / 2;
       } else {
         return this.top
           ? this.getMin(this.percentToValue(this.top))
           : (this.bottom && this.getMin(this.percentToValue(this.bottom))) ||
-              this.outerWrapperSize / 2;
+          this.outerWrapperSize / 2;
       }
     },
     valueAnother() {
@@ -118,8 +118,8 @@ export default {
           ? "right"
           : "left"
         : this.isReverse
-        ? "bottom"
-        : "top";
+          ? "bottom"
+          : "top";
     },
     saveKey({ localKey }) {
       return "Fu-SP-" + localKey;
@@ -135,7 +135,7 @@ export default {
       return classes;
     },
     padding() {
-      return this.resizerType === "resizer" && "3px";
+      return this.resizerType === "resizer" && this.isHorizontal && "3px";
     },
   },
   data() {
