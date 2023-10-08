@@ -26,7 +26,6 @@
 <script>
 import Locale from "@/mixins/locale";
 import ConfigSize from "@/mixins/config-size";
-import {ComplexCondition} from "@/components/filter-bar/model";
 
 export default {
   name: "FuFilterBar",

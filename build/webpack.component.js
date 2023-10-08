@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const {
   VueLoaderPlugin
 } = require('vue-loader');
@@ -13,14 +12,12 @@ const Components = fs.readdirSync('./src/components');
 const dirs = Components.filter(v => {
   return fs.statSync(path.resolve('./src/components', v)).isDirectory();
 });
-const entrys = {};
+const entries = {};
 dirs.forEach(v => {
-  entrys[v] = `./src/components/${v}/index.js`;
+  entries[v] = `./src/components/${v}/index.js`;
 });
 
-const externals = [Object.assign({
-  vue: 'vue',
-}), nodeExternals()];
+const externals = [{vue: 'vue',}, nodeExternals()];
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -28,7 +25,7 @@ function resolve(dir) {
 
 module.exports = {
   mode: 'production',
-  entry: entrys,
+  entry: entries,
   output: {
     path: path.resolve(process.cwd(), './lib/'),
     filename: `[name].js`,
@@ -45,9 +42,9 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
+      test: /\.vue$/,
+      loader: 'vue-loader',
+    },
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -63,7 +60,7 @@ module.exports = {
             publicPath: '../fonts/',
             outputPath: '/fonts/',
           },
-        }, ],
+        },],
       },
     ]
   },

@@ -1,6 +1,5 @@
 import Locale from "@/mixins/locale";
 import ConfigSize from "@/mixins/config-size";
-import {ComplexCondition} from "@/components/search-bar/model";
 
 export default {
   props: ConfigSize.props,

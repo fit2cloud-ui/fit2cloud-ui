@@ -72,7 +72,7 @@ export default {
         } else {
           console.warn("getCondition undefined", r)
         }
-        if (condition && condition.value !== undefined) {
+        if (condition?.value !== undefined) {
           conditions.push(condition)
         }
       })

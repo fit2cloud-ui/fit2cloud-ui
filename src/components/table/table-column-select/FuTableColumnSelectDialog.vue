@@ -27,17 +27,17 @@
 </template>
 
 <script>
-import mixins from "./mixins"
-import FuSearchBarButton from "@/components/search-bar/FuSearchBarButton"
+import mixins from './mixins'
+import FuSearchBarButton from '@/components/search-bar/FuSearchBarButton'
 
 const cloneColumns = (source, target) => {
   source.forEach(col => {
-    target.push(Object.assign({}, col))
+    target.push({...col})
   })
   return target
 }
 export default {
-  name: "FuTableColumnSelectDialog",
+  name: 'FuTableColumnSelectDialog',
   components: {FuSearchBarButton},
   mixins: [mixins],
   data() {

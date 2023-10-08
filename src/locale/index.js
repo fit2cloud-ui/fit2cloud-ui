@@ -4,14 +4,14 @@ import {hasOwn} from "@/tools/utils";
 
 let lang = defaultLang;
 
-const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
+const RE_NARGS = /(%|)\{(\w+)\}/g;
 
 const format = function (string, ...args) {
   if (args.length === 1 && typeof args[0] === 'object') {
     args = args[0];
   }
 
-  if (!args || !args.hasOwnProperty) {
+  if (!args?.hasOwnProperty) {
     args = {};
   }
 

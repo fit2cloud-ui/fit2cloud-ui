@@ -219,7 +219,6 @@ export default {
       }
     },
     itemClick(arg, e) {
-      console.log(arg)
       const {index} = arg
       if (index !== undefined) {
         const item = this.items[index];
@@ -235,7 +234,7 @@ export default {
       if (this.items && this.items.length > 0) {
         return true
       }
-      return this.$slots && this.$slots.default
+      return this.$slots?.default
     },
     config() {
       return this.sizeOptions[this.size] || this.sizeOptions["default"]

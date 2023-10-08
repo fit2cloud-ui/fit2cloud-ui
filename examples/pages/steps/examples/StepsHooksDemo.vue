@@ -85,7 +85,6 @@ export default {
         console.log(index + " 异步校验通过");
         // 同步校验, 返回undefined
       }
-      // return true;
     },
     beforeActive({ id, title, index }) {
       console.log(index + "激活前");

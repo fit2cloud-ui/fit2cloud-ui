@@ -82,10 +82,8 @@ export default {
         if (!Array.isArray(this.value)) {
           this.value = [0, 0];
         }
-      } else {
-        if (Array.isArray(this.value)) {
-          this.value = 0;
-        }
+      } else if (Array.isArray(this.value)) {
+        this.value = 0;
       }
     },
     change(val, type) {

@@ -72,8 +72,7 @@ export default {
         this.scrollParent = document.querySelector(
           ".page-component__scroll > .el-scrollbar__wrap"
         );
-        this.scrollParent &&
-          this.scrollParent.addEventListener("scroll", this.scrollHandler);
+        this.scrollParent.addEventListener("scroll", this.scrollHandler);
         this.scrollHandler();
       }, 200);
     },
@@ -88,9 +87,6 @@ export default {
     controlText() {
       return this.showCode ? "隐藏代码" : "显示代码";
     },
-    codeArea() {
-      return this.$ref["code-block"];
-    },
     scrollHandler() {
       const { top, bottom, left } = this.$refs.meta.getBoundingClientRect();
       this.fixedControl =
@@ -100,8 +96,7 @@ export default {
     },
 
     removeScrollHandler() {
-      this.scrollParent &&
-        this.scrollParent.removeEventListener("scroll", this.scrollHandler);
+      this.scrollParent?.removeEventListener('scroll', this.scrollHandler);
     },
   },
 };

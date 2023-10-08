@@ -73,10 +73,8 @@ export default {
         if (!Array.isArray(this.value)) {
           this.value = [];
         }
-      } else {
-        if (Array.isArray(this.value)) {
-          this.value = "";
-        }
+      } else if (Array.isArray(this.value)) {
+        this.value = '';
       }
     },
     getCondition() {
