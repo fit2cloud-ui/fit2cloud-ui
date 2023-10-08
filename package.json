@@ -10,10 +10,10 @@
   ],
   "scripts": {
     "serve-examples": "vue-cli-service serve --mode examples",
-    "build-examples": "set NODE_OPTIONS=--openssl-legacy-provider & vue-cli-service build --mode examples --dest docs",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider & npm run build-lib && npm run build-components",
-    "build-lib": "set NODE_OPTIONS=--openssl-legacy-provider & vue-cli-service build --target lib --name fit2cloud-ui --dest lib ./src/index.js --formats commonjs",
-    "build-components": "set NODE_OPTIONS=--openssl-legacy-provider & npx webpack --config ./build/webpack.component.js",
+    "build-examples": "export NODE_OPTIONS=--openssl-legacy-provider & vue-cli-service build --mode examples --dest docs",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider & npm run build-lib && npm run build-components",
+    "build-lib": "export NODE_OPTIONS=--openssl-legacy-provider & vue-cli-service build --target lib --name fit2cloud-ui --dest lib ./src/index.js --formats commonjs",
+    "build-components": "export NODE_OPTIONS=--openssl-legacy-provider & npx webpack --config ./build/webpack.component.js",
     "lint": "vue-cli-service lint"
   },
   "author": "fit2cloud",
