@@ -32,10 +32,6 @@ export default {
     description: String,
     lang: String,
     label: String,
-    // height: {
-    //   type: [Number, String],
-    //   default: "450px",
-    // },
   },
   data: () => ({
     showMessage: false,
@@ -135,9 +131,6 @@ export default {
 }
 
 .code-block-wrapper {
-  // min-width: 100%;
-  // max-height: 450px;
-  // min-height: 86px;
   padding: 25px;
   overflow: auto;
 }

@@ -1,5 +1,4 @@
 <script>
-import {uuid} from "@/tools/utils"
 
 const TRIGGERS = ['manual', 'click', 'dblclick']
 
@@ -29,7 +28,7 @@ export default {
   },
   data() {
     return {
-      id: uuid(),
+      id: crypto.randomUUID(),
       write: this.value === undefined ? false : this.value
     }
   },

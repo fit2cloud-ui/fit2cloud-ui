@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { uuid } from "@/tools/utils";
 export default {
   name: "FuTabs",
   props: {
@@ -63,7 +62,7 @@ export default {
   created() {},
   methods: {
     handleCommand(e) {
-      const name = uuid();
+      const name = crypto.randomUUID();
       let obj = null;
       if (e) {
         obj = this.dropdownMenus.find((item) => item.command === e);
