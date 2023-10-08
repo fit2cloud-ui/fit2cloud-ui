@@ -1,13 +1,14 @@
 <template>
   <div class="main-wrapper">
     <h1>{{ nowComponent.name }}</h1>
-    <component :is="nowComponent.component" class="page-container" />
+    <component :is="nowComponent.component" class="page-container"/>
   </div>
 </template>
 <script>
-import { navList } from "../../utils/nav";
+import {navList} from '../../utils/nav';
+
 export default {
-  name: "AppMain",
+  name: 'AppMain',
   data() {
     return {
       navList,
@@ -33,7 +34,7 @@ export default {
           component = item;
         }
       });
-      return component || navList["guide"][0];
+      return component || navList['guide'][0];
     },
   },
 };
@@ -41,13 +42,13 @@ export default {
 
 <style lang="scss" scoped>
 .main-wrapper {
-  // width: 100%;
   h1 {
     font-weight: 400;
     color: #1f2f3d;
     font-size: 28px;
   }
-  :v-deep.page-container {
+
+  ::v-deep.page-container {
     position: relative;
   }
 }

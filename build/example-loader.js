@@ -5,13 +5,13 @@ const fs = require('fs');
 const {parseQuery} = require('loader-utils');
 
 module.exports = function (source, map) {
-  this.cacheable && this.cacheable();
+  this.cacheable?.();
   const query = parseQuery(this.resourceQuery);
   const src = query['path'];
   const fileDir = this.resourcePath.replace(path.basename(this.resourcePath), '');
   const filePath = path.resolve(fileDir, query['path']);
   const fileName = path.basename(filePath).replace('.vue', '');
-  source = fs.readFileSync(filePath, 'utf8');
+  const fileContent = fs.readFileSync(filePath, 'utf8');
   console.log("\nadd example:", src)
 
   const code = `
@@ -28,7 +28,7 @@ module.exports = function (source, map) {
       component.options.examples = component.options.examples || {};
       component.options.examples['${fileName}'] = {
         name: '${fileName}',
-        source: ${JSON.stringify(source)}
+        source: ${JSON.stringify(fileContent)}
       }
     }`
 

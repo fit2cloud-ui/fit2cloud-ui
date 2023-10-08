@@ -20,7 +20,7 @@
     </div>
     <el-tooltip content="隐藏代码" placement="left" v-if="component.name">
       <el-button v-show="fixedControl" class="is-fixed" @click="showCode = false" circle>
-        <img src="../assets/hidden-code.png" width="18" />
+        <img src="../assets/hidden-code.png" width="18" alt="隐藏代码"/>
       </el-button>
     </el-tooltip>
     <!-- 无组件情况 -->
