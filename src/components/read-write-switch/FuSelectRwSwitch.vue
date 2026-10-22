@@ -6,8 +6,8 @@
       </slot>
     </template>
     <template v-slot:default="{read}">
-      <el-select v-model="data" v-bind="$attrs" @input="input" @blur="blur(read, $event)"
-                 @change="change(read, $event)">
+      <el-select v-model="data" v-bind="$attrs" @input="input" @blur="blur"
+                 @change="change" @visible-change="visibleChange(read, $event)">
         <slot>
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"/>
         </slot>
@@ -44,15 +44,16 @@ export default {
     input(e) {
       this.$emit("input", this.data, e)
     },
-    blur(read, e) {
-      setTimeout(() => {
-        read()
-      }, 100)
+    blur(e) {
       this.$emit("blur", this.data, e)
     },
-    change(read, e) {
+    change(e) {
       this.$emit("change", this.data, e)
-      read()
+    },
+    visibleChange(read, visible) {
+      if (!visible) {
+        read()
+      }
     }
   }
 }
