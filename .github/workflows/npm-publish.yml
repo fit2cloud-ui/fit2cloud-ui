@@ -1,5 +1,4 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+# Build and publish to npm using Trusted Publishing (OIDC) when a release is published.
 
 name: FIT2CLOUD UI Publish
 
@@ -9,15 +8,26 @@ on:
 
 jobs:
   publish-npm:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 12
+          node-version: '24.15.0'
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm run build
-      - run: npm publish
+          package-manager-cache: false
+      - name: Install npm with Trusted Publishing support
+        run: npm install --global npm@11.12.1
+      - run: npm ci
+      - name: Build package
+        run: npm run build
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          # Vue CLI 4 / webpack 4 requires the legacy OpenSSL provider on Node 24.
+          NODE_OPTIONS: --openssl-legacy-provider
+      - name: Check package contents
+        run: npm pack --dry-run
+      - name: Publish to npm with OIDC
+        run: npm publish
